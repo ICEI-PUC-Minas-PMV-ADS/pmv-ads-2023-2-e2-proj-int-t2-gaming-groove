@@ -10,11 +10,12 @@ Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo de
 
 ## Integrantes
 
-* SHIGERY FRANÇA DUTRA SASAKI
-* João Leonardo Ohasi Amorim
-* Mirella Gabriela Silva Bonutty De Freitas
 * Ana Clara Rozinholi
+* João Leonardo Ohasi Amorim
 * Lucas Marlon Oliveira De Jesus
+* Mirella Gabriela Silva Bonutty De Freitas
+* Renan Stankevicius
+* Shigery França Dutra Sasaki
 
 ## Orientador
 
