@@ -12,7 +12,7 @@ Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo de
 
 * SHIGERY FRANÇA DUTRA SASAKI
 * João Leonardo Ohasi Amorim
-* Nome completo do aluno 3
+* Mirella Gabriela Silva Bonutty De Freitas
 * Nome completo do aluno 4
 
 ## Orientador
