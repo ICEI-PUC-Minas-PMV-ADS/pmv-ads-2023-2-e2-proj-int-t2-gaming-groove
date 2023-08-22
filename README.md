@@ -1,17 +1,17 @@
-# TÍTULO DO PROJETO
+# Gaming Groove
 
-`CURSO`
+`Análise e Desenvolvimento de Sistemas`
 
-`DISCIPLINA`
+`Eixo 2 - Projeto: Desenvolvimento de uma Aplicação Interativa`
 
-`SEMESTRE`
+`Segundo Semestre`
 
 Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo desenvolvido.
 
 ## Integrantes
 
 * SHIGERY FRANÇA DUTRA SASAKI
-* Nome completo do aluno 2
+* João Leonardo Ohasi Amorim
 * Nome completo do aluno 3
 * Nome completo do aluno 4
 
