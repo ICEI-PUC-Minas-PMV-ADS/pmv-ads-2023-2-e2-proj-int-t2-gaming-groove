@@ -1,10 +1,20 @@
 # Especificações do Projeto
-
-<span style="color:red">Pré-requisitos: <a href="1-Documentação de Contexto.md"> Documentação de Contexto</a></span>
-
-Definição do problema e ideia de solução a partir da perspectiva do usuário. É composta pela definição do  diagrama de personas, histórias de usuários, requisitos funcionais e não funcionais além das restrições do projeto.
-
-Apresente uma visão geral do que será abordado nesta parte do documento, enumerando as técnicas e/ou ferramentas utilizadas para realizar a especificações do projeto
+O projeto visa criar uma plataforma de rede social dedicada a jogadores, proporcionando um espaço centralizado para compartilhamento de informações sobre jogos, comunicação entre os jogadores, formação de grupos e equipes, e discussões por meio de mensagens diretas e fóruns. A plataforma será projetada para aprimorar a experiência dos jogadores, facilitando a conexão entre aqueles que possuem interesses comuns.
+Ferramentas ultilizadas:
+Discord 
+https://discord.com/
+Github
+https://github.com/
+Figma
+https://www.figma.com/
+Visual studio 
+https://visualstudio.microsoft.com/pt-br/
+My SQL
+https://www.mysql.com/
+Miro 
+https://miro.com/pt/
+Rider
+https://www.jetbrains.com/pt-br/rider/features/
 
 ## Personas
 
