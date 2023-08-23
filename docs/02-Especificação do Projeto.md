@@ -43,15 +43,23 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 |ID    | Descrição do Requisito  | Prioridade |
 |------|-----------------------------------------|----|
-|RF-001| Permitir que o usuário cadastre tarefas. | ALTA | 
-|RF-002| Emitir um relatório de tarefas no mês.  | MÉDIA |
+|RF-001| Permitir que o usuário se cadastre e faça login. | ALTA | 
+|RF-002| A plataforma deve possuir um sistema de chat.| ALTA |
+|RF-003| A plataforma deve possuir um sistema de fórum. | ALTA | 
+|RF-004| A plataforma deve possuir um sistema de formação de equipe e gerenciamento de membros. | ALTA | 
+|RF-005| A plataforma deve conter uma ferramenta para adicionar, remover ou bloquear usuários.| ALTA | 
+|RF-006| A plataforma deve conter uma ferramenta de pesquisa de usuários ou jogos. | MÉDIA | 
+|RF-007| A plataforma deve conter uma ferramenta para reportar usuários. | MÉDIA | 
+|RF-008| A plataforma deve permitir gerenciamento de perfil. | MÉDIA | 
+
 
 ### Requisitos não Funcionais
 
 |ID     | Descrição do Requisito  |Prioridade |
 |-------|-------------------------|----|
-|RNF-001| O sistema deve ser responsivo para se adaptar a dispositivos móveis. | MÉDIA | 
-|RNF-002| Deve processar requisições do usuário em no máximo 3s. |  BAIXA | 
+|RNF-001| O sistema deve ser responsivo para se adaptar a dispositivos móveis. | ALTA | 
+|RNF-002| O site deve ser compatível com os principais navegadores do mercado (Google Chrome, Firefox, Microsoft Edge)	|  ALTA | 
+|RNF-003| O site deve ser publicado em um ambiente acessível publicamente na Internet. |  MÉDIA | 
 
 ## Restrições
 
