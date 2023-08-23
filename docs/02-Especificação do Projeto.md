@@ -15,7 +15,8 @@ https://www.mysql.com/
 https://miro.com/pt/
 - Rider
 https://www.jetbrains.com/pt-br/rider/features/
-
+- Git Mind
+  https://gitmind.com/pt/
 ## Personas
 
 <img width="708" alt="lucas-de-almeida-soares" src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e2-proj-int-t2-rede-social/assets/89418479/e538cb06-6c41-47b7-b340-9e1c762552bb">
