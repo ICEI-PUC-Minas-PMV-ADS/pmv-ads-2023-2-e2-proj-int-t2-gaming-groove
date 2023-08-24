@@ -48,7 +48,7 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 |RF-003| A plataforma deve possuir um sistema de fórum. | ALTA | 
 |RF-004| A plataforma deve possuir um sistema de formação de equipe e gerenciamento de membros. | ALTA | 
 |RF-005| A plataforma deve conter uma ferramenta para adicionar, remover ou bloquear usuários.| ALTA | 
-|RF-006| A plataforma deve conter uma ferramenta de pesquisa de usuários ou jogos. | MÉDIA | 
+|RF-006| A plataforma deve conter uma ferramenta de pesquisa de usuários ou jogos. | ALTA | 
 |RF-007| A plataforma deve conter uma ferramenta para reportar usuários. | MÉDIA | 
 |RF-008| A plataforma deve permitir gerenciamento de perfil. | MÉDIA | 
 
@@ -59,7 +59,7 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 |-------|-------------------------|----|
 |RNF-001| O sistema deve ser responsivo para se adaptar a dispositivos móveis. | ALTA | 
 |RNF-002| O site deve ser compatível com os principais navegadores do mercado (Google Chrome, Firefox, Microsoft Edge)	|  ALTA | 
-|RNF-003| O site deve ser publicado em um ambiente acessível publicamente na Internet. |  MÉDIA | 
+|RNF-003| O sistema deve ser publicado em um ambiente acessível publicamente na Internet. |  MÉDIA | 
 
 ## Restrições
 
@@ -70,7 +70,8 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 |01| O projeto deverá ser entregue até o final do semestre.|
 |02| O projeto deve ser desenvolvido em C#, SQL, JavaScript e .NET.|
 |03| O uso do projeto para fins pessoais não é permitido.|
-|04| O servidor será armazenado na nuvem.|
+|04| Não deve ser utilizado nenhum framework front-end, exceto Bootstrap.|
+|05| Não é permitido utilizar sistemas de IAs generativos para gerar códigos.|
 
 ## Diagrama de Casos de Uso
 
