@@ -29,4 +29,4 @@ Dentre as plataformas disponíveis para interação como forma de comunidade, pe
 
 ## Público-Alvo
 
-Jogadores ávidos de videogames e board games.
+Interessados em videogames e board games que almejam ampliar sua experiência social.
