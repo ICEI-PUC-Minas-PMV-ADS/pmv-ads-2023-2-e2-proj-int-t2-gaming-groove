@@ -18,12 +18,18 @@ https://miro.com/pt/
 https://www.jetbrains.com/pt-br/rider/features/
 - Git Mind
 https://gitmind.com/pt/
-## Personas
 
+## Personas
 <img width="708" alt="lucas-de-almeida-soares" src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e2-proj-int-t2-rede-social/assets/89418479/e538cb06-6c41-47b7-b340-9e1c762552bb">
 </br>
 </br>
+<img width="708" alt="laura-ferreira-da-silva" src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e2-proj-int-t2-rede-social/assets/89418479/b861ad4a-9584-4579-bd4f-069600446039">
+</br>
+</br>
 <img width="708" alt="manuela-medeiros-de-assis" src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e2-proj-int-t2-rede-social/assets/89418479/03400730-9b22-49ac-975e-54e81b970eaa">
+</br>
+</br>
+<img width="708" alt="roberto-tanaka-watanabe" src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e2-proj-int-t2-rede-social/assets/89418479/03b77714-4899-4369-9ae7-ed7f1e2f3d3a">
 
 ## Histórias de Usuários
 
