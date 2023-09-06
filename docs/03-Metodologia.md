@@ -29,8 +29,6 @@ etiquetas:
 - `enhancement`: uma funcionalidade precisa ser melhorada
 - `feature`: uma nova funcionalidade precisa ser introduzida
 
-A ferramenta de versonamento de código escolhida foi o Visual Studio e Jetbrains Rider. 
-
 ## Gerenciamento de Projeto
 
 ### Divisão de Papéis
