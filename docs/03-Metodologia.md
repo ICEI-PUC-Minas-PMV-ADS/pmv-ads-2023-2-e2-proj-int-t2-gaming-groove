@@ -48,7 +48,7 @@ A ferramenta de versonamento de código escolhida foi o Visual Studio e Jetbrain
 - Lucas Marlon Oliveira De Jesus
 
 #### Design (Devs):
-- - Renan Stankevicius
+- Renan Stankevicius
 
 
 ### Processo
