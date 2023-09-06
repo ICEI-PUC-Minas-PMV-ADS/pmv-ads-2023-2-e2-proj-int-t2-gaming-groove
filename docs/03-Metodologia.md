@@ -44,8 +44,11 @@ A ferramenta de versonamento de código escolhida foi o Visual Studio e Jetbrain
 #### Desenvolvedores (Devs):
 
 - Mirella Gabriela Silva Bonutty De Freitas
-- Renan Stankevicius
 - Shigery França Dutra Sasaki
+- Lucas Marlon Oliveira De Jesus
+
+#### Design (Devs):
+- - Renan Stankevicius
 
 
 ### Processo
