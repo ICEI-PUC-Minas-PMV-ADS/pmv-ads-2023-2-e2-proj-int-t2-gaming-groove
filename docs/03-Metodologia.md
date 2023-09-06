@@ -55,6 +55,12 @@ A ferramenta de versonamento de código escolhida foi o Visual Studio e Jetbrain
 
 Utilizaremos a ferramenta de comunicação Discord pela dinamicidade, estabilidade, baixo consumo de internet e a opção de compartilhar tela para conseguirmos ver o desktop dos membros do grupo em alguma eventual necessidade. A ferramenta também disponibiliza a opção de organização de diversos chats nos quais podemos alocar informações importantes.
 
+#### Atualização 1
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e2-proj-int-t2-rede-social/assets/126729120/8dd61e33-729a-4653-b723-76260417b0d6)
+
+
+
 ### Ferramentas
 
 As ferramentas empregadas no projeto são:
