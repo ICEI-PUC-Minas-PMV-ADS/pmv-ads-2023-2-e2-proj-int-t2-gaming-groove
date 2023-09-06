@@ -3,7 +3,10 @@
 
 <span style="color:red">Pré-requisitos: <a href="2-Especificação do Projeto.md"> Documentação de Especificação</a></span>
 
-Descreva aqui a metodologia de trabalho do grupo para atacar o problema. Definições sobre os ambiente de trabalho utilizados pela  equipe para desenvolver o projeto. Abrange a relação de ambientes utilizados, a estrutura para gestão do código fonte, além da definição do processo e ferramenta através dos quais a equipe se organiza (Gestão de Times).
+Quando falamos em metodologia de grupo utilizaremos o método Scrum, pois além de ser uma metodologia muito difundida no mercado é a que tivemos mais familiaridade devido ao que foi passado no semestre passado. As reuniões estão marcadas sempre as terças e quintas, com a orientação do professor sendo na quarta-feira afim de alinhar o ritmo de entrega do projeto.
+
+A metodologia adotada pela equipe será o método ágil Scrum, devido a sua capacidade de promover colaboração, adaptação rápida, transparência e entregas incrementais. Esses elementos ajudam a equipe a alcançar eficiência, qualidade e maior alinhamento com as necessidades do projeto. As reuniões estão marcadas sempre as terças e quintas, com a orientação do professor, sendo na quarta-feira, a fim de alinhar o ritmo de entrega do projeto.
+
 
 ## Controle de Versão
 
@@ -26,25 +29,24 @@ etiquetas:
 - `enhancement`: uma funcionalidade precisa ser melhorada
 - `feature`: uma nova funcionalidade precisa ser introduzida
 
-Discuta como a configuração do projeto foi feita na ferramenta de versionamento escolhida. Exponha como a gerência de tags, merges, commits e branchs é realizada. Discuta como a gerência de issues foi realizada.
-
-> **Links Úteis**:
-> - [Tutorial GitHub](https://guides.github.com/activities/hello-world/)
-> - [Git e Github](https://www.youtube.com/playlist?list=PLHz_AreHm4dm7ZULPAmadvNhH6vk9oNZA)
->  - [Comparando fluxos de trabalho](https://www.atlassian.com/br/git/tutorials/comparing-workflows)
-> - [Understanding the GitHub flow](https://guides.github.com/introduction/flow/)
-> - [The gitflow workflow - in less than 5 mins](https://www.youtube.com/watch?v=1SXpE08hvGs)
+A ferramenta de versonamento de código escolhida foi o Visual Studio e Jetbrains Rider. 
 
 ## Gerenciamento de Projeto
 
 ### Divisão de Papéis
 
-Apresente a divisão de papéis entre os membros do grupo.
+#### Product Owner (P.O): 
+- João Leonardo Ohasi Amorim
 
-> **Links Úteis**:
-> - [11 Passos Essenciais para Implantar Scrum no seu 
-> Projeto](https://mindmaster.com.br/scrum-11-passos/)
-> - [Scrum em 9 minutos](https://www.youtube.com/watch?v=XfvQWnRgxG0)
+#### Scrum Master (Scrum): 
+- Ana Clara Rozinholi
+
+#### Desenvolvedores (Devs):
+
+- Mirella Gabriela Silva Bonutty De Freitas
+- Renan Stankevicius
+- Shigery França Dutra Sasaki
+
 
 ### Processo
 
@@ -60,18 +62,12 @@ Coloque  informações sobre detalhes da implementação do Scrum seguido pelo g
 
 As ferramentas empregadas no projeto são:
 
-- Editor de código.
-- Ferramentas de comunicação
-- Ferramentas de desenho de tela (_wireframing_)
+- Editor de código: Visual Studio e Jetbrains Rider
+- Ferramentas de comunicação: Whatsapp e Discord
+- Ferramentas de desenho de tela: draw.io
 
 O editor de código foi escolhido porque ele possui uma integração com o
 sistema de versão. As ferramentas de comunicação utilizadas possuem
 integração semelhante e por isso foram selecionadas. Por fim, para criar
 diagramas utilizamos essa ferramenta por melhor captar as
 necessidades da nossa solução.
-
-Liste quais ferramentas foram empregadas no desenvolvimento do projeto, justificando a escolha delas, sempre que possível.
- 
-> **Possíveis Ferramentas que auxiliarão no gerenciamento**: 
-> - [Slack](https://slack.com/)
-> - [Github](https://github.com/)
