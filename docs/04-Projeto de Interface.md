@@ -10,8 +10,8 @@ Visão geral da interação do usuário pelas telas do sistema e protótipo inte
 ## Diagrama de Fluxo
 
 O Diagrama de Fluxo foi desenvolvido por meio da ferramenta Draw.io
+![diagrama-fluxo drawio](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e2-proj-int-t2-gaming-groove/assets/100154380/cb52db4f-911c-4688-bf3e-e255df4b90d6)
 
-![diagrama-fluxo](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e2-proj-int-t2-gaming-groove/assets/89418479/a0cf9ee5-ecf2-43df-b790-37b96620ccea)
 
 ## Wireframes
 
