@@ -71,7 +71,7 @@ Apresente os cenários de testes utilizados na realização dos testes da sua ap
 | **Caso de Teste**   | **Caso de Teste CT- 12– Denúnciar usuários** |
 | Requisito Associado |RF-007	A plataforma deve conter uma ferramenta para denunciar usuários, comunidades e postagens..|
 | Objetivo do Teste   | Denúnciar usúarios aos administradores|
-| Passos  | 1- Selecionar o perfil que deseja denunciar <br><br>2--Clicar no botão com o ícone(!) .<br><br>3- Digitar o motivo da denúncia na caixa de texto 4-Clicar em "enviar denúncia"
+| Passos  | 1- Selecionar o perfil que deseja denunciar <br><br>2--Clicar no botão com o ícone(!) .<br><br>3- Digitar o motivo da denúncia na caixa de texto <br><br>4-Clicar em "enviar denúncia"
 |Critério de Êxito    |Denúncia encaminhada a um dos administradores|
 |   |   |
 | **Caso de Teste**   | **Caso de Teste CT- 12– Denúnciar comunidades** |
@@ -82,7 +82,7 @@ Apresente os cenários de testes utilizados na realização dos testes da sua ap
 |   |   |
 | **Caso de Teste**   | **Caso de Teste CT- 13– Denúnciar postagens** |
 | Requisito Associado |RF-007	A plataforma deve conter uma ferramenta para denunciar usuários, comunidades e postagens..|
-| Objetivo do Teste   | Denúnciar comunidades aos administradores|
+| Objetivo do Teste   | Denúnciar postagens aos administradores|
 | Passos  | 1- Selecionar a comunidade que deseja denunciar <br><br>2-Clicar no botaõ com o ícone (!) .<br><br>3- Digitar o motivo da denúncia na caixa de texto<br><br> 4-Clicar em "enviar denúncia" 
 |Critério de Êxito    |Denúncia encaminhada a um dos administradores|
 |   |   |
