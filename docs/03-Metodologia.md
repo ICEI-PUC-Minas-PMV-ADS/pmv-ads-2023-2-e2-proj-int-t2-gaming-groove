@@ -53,10 +53,9 @@ etiquetas:
 
 Utilizaremos o Discord como ferramenta de comunicação pela sua dinamicidade e estabilidade, além de recursos que podem ser úteis ao longo do desenvolvimento do projeto, como compartilhamento de telas. A ferramenta também disponibiliza a opção de organização de diversos chats nos quais podemos alocar informações importantes.
 
-#### Atualização 1
+O gerenciamento de tarefas está sendo realizado por meio do Kanban na plataforma GitHub.
 
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e2-proj-int-t2-rede-social/assets/126729120/8dd61e33-729a-4653-b723-76260417b0d6)
-
+![Kanban](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e2-proj-int-t2-gaming-groove/assets/89418479/56436b6b-9882-438d-b2b8-5b941256bd7c)
 
 ### Ferramentas  
 
