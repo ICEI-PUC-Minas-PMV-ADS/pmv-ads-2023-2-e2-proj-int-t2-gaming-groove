@@ -4,11 +4,11 @@
 |:---:	|:---:	|
 |	Requisito Associado 	| RF-001 - Permitir que o usuário se cadastre e faça login.|
 | Objetivo do Teste 	| Verificar se o usuário consegue se cadastrar na aplicação. |
-| Passos 	|<br>1- Acessar a página de boas vindas<br><br> 2- Clicar no botão "Cadastro"<br><br>3- Preencher os campos obrigatórios (Nome de usuário, nome completo, data de nascimento, e-mail, eenha e  confirmação de senha)<br><br>4- Clicar no botão "Criar conta"<br><br>
+| Passos 	|<br>1- Acessar a página de boas vindas<br><br> 2- Clicar no botão "Cadastro"<br><br>3- Preencher os campos obrigatórios (Nome de usuário, nome completo, data de nascimento, e-mail, senha e  confirmação de senha)<br><br>4- Clicar no botão "Criar conta"<br><br>
 |Critério de Êxito | O cadastro foi realizado. |
 |   |   |
 | Caso de Teste   | **Caso de Teste 02 – Realizar login** |
-|Requisito Associado | RF-002 - A plataforma deve possuir um sistema de chat. |
+|Requisito Associado | RF-001	Permitir que o usuário se cadastre e faça login. |
 | Objetivo do Teste   | Verificar se o usuário consegue logar na aplicação. |
 | Passos  | <br>1- Acessar página de boas vindas  <br><br> 2- Clicar no botão "Login"<br><br> 3- Preencher o campo de e-mail <br><br> 4- Preencher o campo da senha<br><br>5- Checar se a senha está correta <br><br>6- Receber um alerta caso a senha for digitada errada<br><br>7- Clicar em "Login"<br><br>
 |Critério de Êxito | O login foi efetuado e o usuário consegue entrar na aplicação.|
