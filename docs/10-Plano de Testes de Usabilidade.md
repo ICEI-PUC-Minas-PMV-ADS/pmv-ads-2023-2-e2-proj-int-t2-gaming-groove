@@ -1,15 +1,106 @@
 # Plano de Testes de Usabilidade
 
-Os testes de usabilidade permitem avaliar a qualidade da interface com o usuário da aplicação interativa.
+Para o Plano de Testes de Usabilidade foi decidido que aplicaríamos um questionário objetivo com um campo de observação para os usuários descreverem sua experiencia na aplicação. Os dados pessoais do usuário são essenciais para entender qual grupo de persona está realizando o teste, portanto um cabeçalho constando nome, idade, nível de familiaridade tecnológica alem de cidade e estado deverá ser preenchido.
+Foram decididas 11 perguntas onde o metodo de avaliação foram classificadas como: 
+ - [  ] Muito Difícil
+ - [  ] Difícil
+ - [  ]Neutro
+ - [  ]Fácil
+ - [  ]Muito Fácil
 
-Um plano de teste de usabilidade deverá conter: o detalhamento dos objetivos (em função dos requisitos levantados/implementados), dos critérios que serão utilizados para a seleção dos participantes, dos procedimentos a serem adotados pelos condutores de teste (por exemplo: os testes serão presenciais ou remotos? o método será observação direta, medição ou avaliação?), das tarefas a serem executadas, dos dados a serem coletados (quantidade de cliques, número de erros, tempo etc.), a ordem de execução das tarefas e das etapas da sessão de teste, recursos demandados, métricas coletadas etc.
 
-Para cada voluntário do teste, é fundamental coletar e apresentar todos os dados/métricas previamente definidos, mas não se esqueça: atendendo à LGPD (Lei Geral de Proteção de Dados), nenhum dado sensível, que permita identificar o voluntário, deverá ser apresentado).
+Avalie o cadastro e login:
+ - [  ] Muito Difícil
+ - [  ] Difícil
+ - [  ] Neutro
+ - [  ] Fácil
+ - [  ] Muito Fácil
+ 
+Avalie a função de edição de perfil:
+ - [  ] Muito Difícil
+ - [  ] Difícil
+ - [  ] Neutro
+ - [  ] Fácil
+ - [  ] Muito Fácil
 
-As referências abaixo irão auxiliá-lo na geração do artefato "Plano de Testes de Usabilidade".
+ Avalie a opção de adicionar amigos:
+ - [  ] Muito Difícil
+ - [  ] Difícil
+ - [  ] Neutro
+ - [  ] Fácil
+ - [  ] Muito Fácil
+ 
+ Avalie o sistema de chat:
+ - [  ] Muito Difícil
+ - [  ] Difícil
+ - [  ] Neutro
+ - [  ] Fácil
+ - [  ] Muito Fácil
 
-> **Links Úteis**:
-> - [Teste De Usabilidade: O Que É e Como Fazer Passo a Passo (neilpatel.com)](https://neilpatel.com/br/blog/teste-de-usabilidade/)
-> - [Teste de usabilidade: tudo o que você precisa saber! | by Jon Vieira | Aela.io | Medium](https://medium.com/aela/teste-de-usabilidade-o-que-voc%C3%AA-precisa-saber-39a36343d9a6/)
-> - [Planejando testes de usabilidade: o que (e o que não) fazer | iMasters](https://imasters.com.br/design-ux/planejando-testes-de-usabilidade-o-que-e-o-que-nao-fazer/)
-> - [Ferramentas de Testes de Usabilidade](https://www.usability.gov/how-to-and-tools/resources/templates.html)
+Avalie a funcionalidade de criar uma nova comunidade:
+ - [  ] Muito Difícil
+ - [  ] Difícil
+ - [  ] Neutro
+ - [  ] Fácil
+ - [  ] Muito Fácil
+
+ Avalie o sistema de formação de equipes: 
+ - [  ] Muito Difícil
+ - [  ] Difícil
+ - [  ] Neutro
+ - [  ] Fácil
+ - [  ] Muito Fácil
+ 
+Avalie a funcionalide de gerenciamento de membros dentro de uma equipe:
+ - [  ] Muito Difícil
+ - [  ] Difícil
+ - [  ] Neutro
+ - [  ] Fácil
+ - [  ] Muito Fácil
+
+ Avalie a ferramenta adicionar e remover amigos:
+ - [  ] Muito Difícil
+ - [  ] Difícil
+ - [  ] Neutro
+ - [  ] Fácil
+ - [  ] Muito Fácil
+
+ Avalie a ferramenta bloquear usúarios.
+- [  ] Muito Difícil
+- [  ] Difícil
+- [  ] Neutro
+- [  ] Fácil
+- [  ] Muito Fácil
+
+ Avalie a ferramenta de explorar:
+ - [  ] Muito Difícil
+ - [  ] Difícil
+ - [  ] Neutro
+ - [  ] Fácil
+ - [  ] Muito Fácil
+
+ Avalie a ferramenta de denúncia de usuarios, comunidades e postagens:
+ - [  ] Muito Difícil
+ - [  ] Difícil
+ - [  ] Neutro
+ - [  ] Fácil
+ - [  ] Muito Fácil
+
+
+Comentários e Sugestões:
+    Aspectos da aplicação que você achou mais intuitivos e fáceis de usar: <br> 
+    [Caixa de texto aberta para comentários]
+
+O que você acredita que poderia ser melhorado na aplicação em termos de usabilidade? <br>
+    [Caixa de texto aberta para comentários]
+
+Com base na sua experiência, o que mais chamou a sua atenção de forma positiva na aplicação? <br>
+    [Caixa de texto aberta para comentários]
+
+Você encontrou alguma funcionalidade que gostaria de ver adicionada à aplicação? Se sim, qual? <br>
+    [Caixa de texto aberta para comentários]
+
+Outros comentários ou sugestões: <br>
+    [Caixa de texto aberta para comentários]
+
+Este questionário terá como objetivo coletar informações valiosas sobre a usabilidade da aplicação, permitindo melhorias e otimizações com base nas experiências dos usuários. Agradecemos pela sua participação
