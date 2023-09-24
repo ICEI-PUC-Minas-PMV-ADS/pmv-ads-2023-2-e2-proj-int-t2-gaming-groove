@@ -64,6 +64,6 @@ As ferramentas empregadas no projeto são:
 - Editores de código: Visual Studio, Visual Studio Code e Jetbrains Rider
 - Ferramentas de comunicação: Whatsapp e Discord
 - Ferramenta para desenvolvimento de diagramas: Draw.io
-- Ferramenta de desenho de tela (wireframing): Figma
+- Ferramenta de desenho de tela (_wireframing_): Figma
 
 O editores de código foram escolhidos porque possuem boa integração com o sistema a ser desenvolvido. As ferramentas de comunicação utilizadas são de fácil acesso e possuem os recursos necessários para a comunicação da equipe. Para criar diagramas utilizaremos o Draw.io por sua facilidade de utilização e por preencher as necessidades da nossa solução. Além disso, Figma foi escolhido para etapas relacionadas a design em razão de sua praticidade.
