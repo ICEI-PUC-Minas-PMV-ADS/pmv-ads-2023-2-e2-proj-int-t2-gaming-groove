@@ -55,7 +55,7 @@ Utilizaremos o Discord como ferramenta de comunicação pela sua dinamicidade e 
 
 O gerenciamento de tarefas está sendo realizado por meio do Kanban na plataforma GitHub.
 
-![Kanban](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e2-proj-int-t2-gaming-groove/assets/89418479/56436b6b-9882-438d-b2b8-5b941256bd7c)
+![kanban-github](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e2-proj-int-t2-gaming-groove/assets/89418479/f2032f72-0fda-47bb-b8fc-2a45831147a4)
 
 ### Ferramentas  
 
