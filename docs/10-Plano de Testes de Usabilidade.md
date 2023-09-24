@@ -19,10 +19,10 @@ Além disso, serão disponibilizadas 5 perguntas a serem respondidas de forma di
 
 |Nº|Parâmetro avaliado                                           |
 |--|-------------------------------------------------------------|
-|1 |Cadastro e login                                             |
-|2 |Edição de perfil                                             |
+|1 |Cadastrar e fazer login                                      |
+|2 |Editar perfil                                                |
 |3 |Adicionar e remover amigos                                   |
-|4 |Sistema de chat                                              | 
+|4 |Utilizar o sistema de chat                                   | 
 |5 |Criar uma nova comunidade                                    |
 |6 |Ingressar comunidade e interagir com publicações             |
 |7 |Criar e ingressar equipes                                    |
