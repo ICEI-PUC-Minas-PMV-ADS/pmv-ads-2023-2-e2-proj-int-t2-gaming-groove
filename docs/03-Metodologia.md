@@ -59,12 +59,11 @@ O gerenciamento de tarefas está sendo realizado por meio do Kanban na plataform
 
 ### Ferramentas  
 
-*Tópico incompleto
-
 As ferramentas empregadas no projeto são:
 
-- Editores de código: Visual Studio e Jetbrains Rider
+- Editores de código: Visual Studio, Visual Studio Code e Jetbrains Rider
 - Ferramentas de comunicação: Whatsapp e Discord
-- Ferramentas de desenho de tela: draw.io
+- Ferramenta para desenvolvimento de diagramas: Draw.io
+- Ferramenta de desenho de tela (wireframing): Figma
 
-O editores de código foram escolhidos porque possuem boa integração com o sistema a ser desenvolvido. As ferramentas de comunicação utilizadas são de fácil acesso e possuem os recursos necessários para a comunicação da equipe. Para criar diagramas utilizaremos o Draw.io por sua facilidade de utilização e por preencher as necessidades da nossa solução.
+O editores de código foram escolhidos porque possuem boa integração com o sistema a ser desenvolvido. As ferramentas de comunicação utilizadas são de fácil acesso e possuem os recursos necessários para a comunicação da equipe. Para criar diagramas utilizaremos o Draw.io por sua facilidade de utilização e por preencher as necessidades da nossa solução. Além disso, Figma foi escolhido para etapas relacionadas a design em razão de sua praticidade.
