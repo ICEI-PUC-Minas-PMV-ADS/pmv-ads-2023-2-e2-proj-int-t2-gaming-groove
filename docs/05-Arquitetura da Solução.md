@@ -14,7 +14,7 @@ Definição de como o software é estruturado em termos dos componentes que faze
 
 ## Projeto da Base de Dados
 
-![projeto-base-dados](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e2-proj-int-t2-gaming-groove/assets/89418479/2dd4fc3c-9ea5-4ba1-bb6d-a9d0bb547ef6)
+![projeto-base-dados](https://github.com/renanstankev/Projeto-Eixo-2-Gaming-Groove/assets/89418479/24a9b331-9257-4de6-8300-98cd0f8e63dd)
 
 
 
