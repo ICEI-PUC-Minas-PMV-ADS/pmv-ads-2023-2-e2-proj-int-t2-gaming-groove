@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../buildMultiTargeting/GamingGroove.Web.props" />
+</Project>

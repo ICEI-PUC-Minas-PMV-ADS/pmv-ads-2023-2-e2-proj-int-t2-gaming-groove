@@ -1,0 +1,14 @@
+/Users/leoohasi/GamingGroove/GamingGroove.Data/bin/Debug/net7.0/GamingGroove.Data.deps.json
+/Users/leoohasi/GamingGroove/GamingGroove.Data/bin/Debug/net7.0/GamingGroove.Data.dll
+/Users/leoohasi/GamingGroove/GamingGroove.Data/bin/Debug/net7.0/GamingGroove.Data.pdb
+/Users/leoohasi/GamingGroove/GamingGroove.Data/obj/Debug/net7.0/GamingGroove.Data.csproj.AssemblyReference.cache
+/Users/leoohasi/GamingGroove/GamingGroove.Data/obj/Debug/net7.0/GamingGroove.Data.GeneratedMSBuildEditorConfig.editorconfig
+/Users/leoohasi/GamingGroove/GamingGroove.Data/obj/Debug/net7.0/GamingGroove.Data.AssemblyInfoInputs.cache
+/Users/leoohasi/GamingGroove/GamingGroove.Data/obj/Debug/net7.0/GamingGroove.Data.AssemblyInfo.cs
+/Users/leoohasi/GamingGroove/GamingGroove.Data/obj/Debug/net7.0/GamingGroove.Data.csproj.CoreCompileInputs.cache
+/Users/leoohasi/GamingGroove/GamingGroove.Data/obj/Debug/net7.0/GamingGroove.Data.dll
+/Users/leoohasi/GamingGroove/GamingGroove.Data/obj/Debug/net7.0/refint/GamingGroove.Data.dll
+/Users/leoohasi/GamingGroove/GamingGroove.Data/obj/Debug/net7.0/GamingGroove.Data.pdb
+/Users/leoohasi/GamingGroove/GamingGroove.Data/obj/Debug/net7.0/ref/GamingGroove.Data.dll
+/Users/leoohasi/GamingGroove/GamingGroove.Data/bin/Debug/net7.0/GamingGroove.Data.runtimeconfig.json
+/Users/leoohasi/GamingGroove/GamingGroove.Data/obj/Debug/net7.0/GamingGroove.Data.genruntimeconfig.cache

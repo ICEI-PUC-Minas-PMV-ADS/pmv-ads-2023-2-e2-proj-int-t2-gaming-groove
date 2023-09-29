@@ -1,0 +1,12 @@
+/Users/leoohasi/GamingGroove/GamingGroove.Models/bin/Debug/net7.0/GamingGroove.Models.deps.json
+/Users/leoohasi/GamingGroove/GamingGroove.Models/bin/Debug/net7.0/GamingGroove.Models.dll
+/Users/leoohasi/GamingGroove/GamingGroove.Models/bin/Debug/net7.0/GamingGroove.Models.pdb
+/Users/leoohasi/GamingGroove/GamingGroove.Models/obj/Debug/net7.0/GamingGroove.Models.csproj.AssemblyReference.cache
+/Users/leoohasi/GamingGroove/GamingGroove.Models/obj/Debug/net7.0/GamingGroove.Models.GeneratedMSBuildEditorConfig.editorconfig
+/Users/leoohasi/GamingGroove/GamingGroove.Models/obj/Debug/net7.0/GamingGroove.Models.AssemblyInfoInputs.cache
+/Users/leoohasi/GamingGroove/GamingGroove.Models/obj/Debug/net7.0/GamingGroove.Models.AssemblyInfo.cs
+/Users/leoohasi/GamingGroove/GamingGroove.Models/obj/Debug/net7.0/GamingGroove.Models.csproj.CoreCompileInputs.cache
+/Users/leoohasi/GamingGroove/GamingGroove.Models/obj/Debug/net7.0/GamingGroove.Models.dll
+/Users/leoohasi/GamingGroove/GamingGroove.Models/obj/Debug/net7.0/refint/GamingGroove.Models.dll
+/Users/leoohasi/GamingGroove/GamingGroove.Models/obj/Debug/net7.0/GamingGroove.Models.pdb
+/Users/leoohasi/GamingGroove/GamingGroove.Models/obj/Debug/net7.0/ref/GamingGroove.Models.dll
