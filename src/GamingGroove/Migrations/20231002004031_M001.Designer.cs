@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GamingGroove.Migrations
 {
     [DbContext(typeof(GamingGrooveDbContext))]
-    [Migration("20230929234451_Migracao001")]
-    partial class Migracao001
+    [Migration("20231002004031_M001")]
+    partial class M001
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
