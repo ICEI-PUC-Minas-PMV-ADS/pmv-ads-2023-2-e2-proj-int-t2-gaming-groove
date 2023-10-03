@@ -12,7 +12,7 @@ build_property.RootNamespace = GamingGroove
 build_property.ProjectDir = C:\Users\renan\OneDrive\Desktop\PUC\Projetos\Projeto-e2\Projeto-Eixo-2-Gaming-Groove\src\GamingGroove\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
-build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = true
 build_property.MSBuildProjectDirectory = C:\Users\renan\OneDrive\Desktop\PUC\Projetos\Projeto-e2\Projeto-Eixo-2-Gaming-Groove\src\GamingGroove
 build_property._RazorSourceGeneratorDebug = 
 
