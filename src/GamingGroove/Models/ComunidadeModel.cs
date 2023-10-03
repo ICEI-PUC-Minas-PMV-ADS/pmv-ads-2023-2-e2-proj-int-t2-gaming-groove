@@ -1,11 +1,13 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GamingGroove.Models
 {
+    [Table("Comunidades")]
     public class ComunidadeModel
     {
         [Key]
-        public int comunidadeID { get; set; }
+        public int comunidadeId { get; set; }
 
         public string nomeComunidade { get; set; }
         
@@ -19,6 +21,13 @@ namespace GamingGroove.Models
 
         [DataType(DataType.Date)]
         public DateTime dataCriacaoComunidade { get; set; }    
+
+
+        public ICollection<DenunciaModel> ComunidadeDenuncia { get; set; }
+
+        public ICollection<PublicacaoModel> ComunidadePublicacao { get; set; }
+
+        public ICollection<UsuarioComunidadeModel> usuarioComunidade { get; set; }
     }
 }
 
