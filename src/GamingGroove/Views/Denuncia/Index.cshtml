@@ -1,0 +1,71 @@
+﻿@model IEnumerable<GamingGroove.Models.DenunciaModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.denunciante)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.denunciado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.publicacao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.comunidade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.descricaoDenuncia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.situacaoDenuncia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dataDenuncia)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.denunciante.usuarioId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.denunciado.usuarioId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.publicacao.publicacaoId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.comunidade.comunidadeId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.descricaoDenuncia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.situacaoDenuncia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dataDenuncia)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.denunciaId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.denunciaId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.denunciaId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

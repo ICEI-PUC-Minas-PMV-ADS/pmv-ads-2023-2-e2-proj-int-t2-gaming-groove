@@ -1,0 +1,48 @@
+﻿@model GamingGroove.Models.EquipeModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>EquipeModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.nomeEquipe)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.nomeEquipe)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.iconeEquipe)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.iconeEquipe)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.descricaoEquipe)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.descricaoEquipe)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.jogoEquipe)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.jogoEquipe)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.dataCriacaoEquipe)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.dataCriacaoEquipe)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.equipeId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

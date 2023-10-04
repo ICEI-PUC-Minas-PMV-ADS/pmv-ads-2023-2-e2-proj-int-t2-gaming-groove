@@ -1,0 +1,53 @@
+﻿@model IEnumerable<GamingGroove.Models.UsuarioEquipeModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.usuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.equipe)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cargoEquipe)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dataVinculoEquipe)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.usuario.usuarioId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.equipe.equipeId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cargoEquipe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dataVinculoEquipe)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.usuarioEquipeId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.usuarioEquipeId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.usuarioEquipeId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,42 @@
+﻿@model GamingGroove.Models.ChatModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>ChatModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.equipe)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.equipe.equipeId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.amizade)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.amizade.amizadeId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.historico)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.historico)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.dataChat)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.dataChat)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.chatId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

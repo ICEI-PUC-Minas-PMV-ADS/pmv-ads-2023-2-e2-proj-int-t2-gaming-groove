@@ -357,14 +357,14 @@ namespace GamingGroove.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<DateTime>("registrationDate")
+                    b.Property<DateTime?>("registrationDate")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("senha")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("tipoUsuario")
+                    b.Property<int?>("tipoUsuario")
                         .HasColumnType("int");
 
                     b.HasKey("usuarioId");

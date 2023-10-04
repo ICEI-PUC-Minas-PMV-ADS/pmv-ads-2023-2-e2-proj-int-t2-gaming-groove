@@ -1,0 +1,48 @@
+﻿@model GamingGroove.Models.ComentarioModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>ComentarioModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.usuario)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.usuario.usuarioId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.publicacao)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.publicacao.publicacaoId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.textoComentario)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.textoComentario)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.midiaComentario)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.midiaComentario)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.dataComentario)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.dataComentario)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.comentarioId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
