@@ -22,13 +22,8 @@
             </div>
             <div class="form-group">
                 <label asp-for="cargo" class="control-label"></label>
-                <select asp-for="cargo" class="form-control"></select>
+                <select asp-for="cargo" class="form-control" asp-items="Html.GetEnumSelectList<CargosEnum>()"></select>
                 <span asp-validation-for="cargo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="dataVinculoComunidade" class="control-label"></label>
-                <input asp-for="dataVinculoComunidade" class="form-control" />
-                <span asp-validation-for="dataVinculoComunidade" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

@@ -11,13 +11,17 @@ namespace GamingGroove.Models
 
         public int usuarioId { get; set; }
         [ForeignKey("usuarioId")]
-        public UsuarioModel usuario { get; set; }
+        [Display(Name = "Usuário")]
+        public UsuarioModel? usuario { get; set; }
 
         public int publicacaoId { get; set; }
         [ForeignKey("publicacaoId")]
-        public PublicacaoModel publicacao { get; set; }
+        [Display(Name = "Publicação")]
+        public PublicacaoModel? publicacao { get; set; }
 
-        public DateTime dataCurtida { get; set; }
+        [Display(Name = "Data da Curtida")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public DateTime? dataCurtida { get; set; }  
     }
 }
 

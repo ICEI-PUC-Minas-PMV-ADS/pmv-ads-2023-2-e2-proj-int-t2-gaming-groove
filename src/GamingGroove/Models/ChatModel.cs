@@ -11,15 +11,20 @@ namespace GamingGroove.Models
 
         public int equipeId { get; set; }
         [ForeignKey("equipeId")]
-        public EquipeModel equipe { get; set; }
+        [Display(Name = "Equipe")]
+        public EquipeModel? equipe { get; set; }
 
         public int amizadeId { get; set; }
         [ForeignKey("amizadeId")]
-        public AmizadeModel amizade { get; set; }
+        [Display(Name = "Amizade")]
+        public AmizadeModel? amizade { get; set; }
 
-        public string historico { get; set; }
+        [Display(Name = "Histórico")]
+        public string? historico { get; set; }
 
-        public DateTime dataChat { get; set; }
+        [Display(Name = "Data")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public DateTime? dataChat { get; set; }
     }
 }
 

@@ -11,25 +11,36 @@ namespace GamingGroove.Models
 
         public int denuncianteId { get; set; }
         [ForeignKey("denuncianteId")]
+        [Display(Name = "Denunciante")]
         public UsuarioModel denunciante { get; set; }
 
-        public int denunciadoId { get; set; }
+        public int? denunciadoId { get; set; }
         [ForeignKey("denunciadoId")]
-        public UsuarioModel denunciado { get; set; }
+        [Display(Name = "Denunciado")]
+        public UsuarioModel? denunciado { get; set; }
 
-        public int publicacaoId { get; set; }
+        public int? publicacaoId { get; set; }
         [ForeignKey("publicacaoId")]
-        public PublicacaoModel publicacao { get; set; }
+        [Display(Name = "Publicação")]
+        public PublicacaoModel? publicacao { get; set; }
 
-        public int comunidadeId { get; set; }
+        public int? comunidadeId { get; set; }
         [ForeignKey("comunidadeId")]
-        public ComunidadeModel comunidade { get; set; }
+        [Display(Name = "Comunidade")]
+        public ComunidadeModel? comunidade { get; set; }
 
+        [Display(Name = "Descrição")]
         public string descricaoDenuncia { get; set; }
 
-        public string situacaoDenuncia { get; set; }
+        [Display(Name = "Tipo de Denúncia")]
+        public TiposDenuncia? TipoDenuncia { get; set; }
 
-        public DateTime dataDenuncia { get; set; }
+        [Display(Name = "Situação")]
+        public SituacaoDenuncia? situacaoDenuncia { get; set; }
+
+        [Display(Name = "Data da Denúncia")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public DateTime? dataDenuncia { get; set; }  
     }
 }
 

@@ -22,13 +22,8 @@
             </div>
             <div class="form-group">
                 <label asp-for="estadoAmizade" class="control-label"></label>
-                <input asp-for="estadoAmizade" class="form-control" />
+                <select asp-for="estadoAmizade" class="form-control" asp-items="Html.GetEnumSelectList<EstadoAmizade>()"></select>
                 <span asp-validation-for="estadoAmizade" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="dataAmizade" class="control-label"></label>
-                <input asp-for="dataAmizade" class="form-control" />
-                <span asp-validation-for="dataAmizade" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
