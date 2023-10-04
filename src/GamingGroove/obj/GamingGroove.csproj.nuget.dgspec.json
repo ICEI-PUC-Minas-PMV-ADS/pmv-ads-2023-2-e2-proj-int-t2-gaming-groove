@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\renan\\OneDrive\\Desktop\\PUC\\Projetos\\Projeto-e2\\Projeto-Eixo-2-Gaming-Groove\\src\\GamingGroove\\GamingGroove.csproj": {}
+    "C:\\Users\\User\\source\\repos\\pmv-ads-2023-2-e2-proj-int-t2-rede-social\\src\\GamingGroove\\GamingGroove.csproj": {}
   },
   "projects": {
-    "C:\\Users\\renan\\OneDrive\\Desktop\\PUC\\Projetos\\Projeto-e2\\Projeto-Eixo-2-Gaming-Groove\\src\\GamingGroove\\GamingGroove.csproj": {
+    "C:\\Users\\User\\source\\repos\\pmv-ads-2023-2-e2-proj-int-t2-rede-social\\src\\GamingGroove\\GamingGroove.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\renan\\OneDrive\\Desktop\\PUC\\Projetos\\Projeto-e2\\Projeto-Eixo-2-Gaming-Groove\\src\\GamingGroove\\GamingGroove.csproj",
+        "projectUniqueName": "C:\\Users\\User\\source\\repos\\pmv-ads-2023-2-e2-proj-int-t2-rede-social\\src\\GamingGroove\\GamingGroove.csproj",
         "projectName": "GamingGroove",
-        "projectPath": "C:\\Users\\renan\\OneDrive\\Desktop\\PUC\\Projetos\\Projeto-e2\\Projeto-Eixo-2-Gaming-Groove\\src\\GamingGroove\\GamingGroove.csproj",
-        "packagesPath": "C:\\Users\\renan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\renan\\OneDrive\\Desktop\\PUC\\Projetos\\Projeto-e2\\Projeto-Eixo-2-Gaming-Groove\\src\\GamingGroove\\obj\\",
+        "projectPath": "C:\\Users\\User\\source\\repos\\pmv-ads-2023-2-e2-proj-int-t2-rede-social\\src\\GamingGroove\\GamingGroove.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\User\\source\\repos\\pmv-ads-2023-2-e2-proj-int-t2-rede-social\\src\\GamingGroove\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\renan\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -61,6 +63,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[7.0.11, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[7.0.9, )"
             },
             "MySql.EntityFrameworkCore": {
               "target": "Package",

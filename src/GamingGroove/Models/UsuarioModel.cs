@@ -30,9 +30,9 @@ namespace GamingGroove.Models
 
         public string? biografia { get; set; }    
 
-        public DateTime registrationDate { get; set; }
+        public DateTime? registrationDate { get; set; }
 
-        public TipoUsuario tipoUsuario { get; set; } 
+        public TipoUsuario? tipoUsuario { get; set; } 
         
 
         public ICollection<AmizadeModel> solicitanteAmizade { get; set; }
@@ -53,7 +53,7 @@ namespace GamingGroove.Models
         
     }
 
-    public enum TipoUsuario {
+     public enum TipoUsuario {
         ADM,
         Usuario
     }

@@ -1,0 +1,101 @@
+﻿@model IEnumerable<GamingGroove.Models.UsuarioModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nomeUsuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nomeCompleto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dataNascimento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.senha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.iconePerfil)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.capaPerfil)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fotosGaleria)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.jogosFavoritos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.biografia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.registrationDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tipoUsuario)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nomeUsuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nomeCompleto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dataNascimento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.senha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.iconePerfil)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.capaPerfil)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fotosGaleria)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.jogosFavoritos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.biografia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.registrationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tipoUsuario)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.usuarioId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.usuarioId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.usuarioId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
