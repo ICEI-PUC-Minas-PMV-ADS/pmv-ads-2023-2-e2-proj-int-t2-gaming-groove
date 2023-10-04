@@ -9,25 +9,32 @@ namespace GamingGroove.Models
         [Key]
         public int comunidadeId { get; set; }
 
+        [Display(Name = "Nome")]
         public string nomeComunidade { get; set; }
         
-        public byte[] iconeComunidade { get; set; }
+        [Display(Name = "Ícone")]
+        public byte[]? iconeComunidade { get; set; }
 
-        public byte[] capaComunidade { get; set; }
+        [Display(Name = "Imagem de Capa")]
+        public byte[]? capaComunidade { get; set; }
 
-        public string jogosRelacionados { get; set; }    
+        [Display(Name = "Jogos Relacionados")]
+        public JogosEnum? jogosRelacionados { get; set; }    
 
-        public string descricaoComunidade { get; set; }    
+        [Display(Name = "Descrição")]
+        public string? descricaoComunidade { get; set; }    
 
+        [Display(Name = "Data de Criação")]
         [DataType(DataType.Date)]
-        public DateTime dataCriacaoComunidade { get; set; }    
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public DateTime? dataCriacaoComunidade { get; set; }  
 
 
-        public ICollection<DenunciaModel> ComunidadeDenuncia { get; set; }
+        public ICollection<DenunciaModel>? ComunidadeDenuncia { get; set; }
 
-        public ICollection<PublicacaoModel> ComunidadePublicacao { get; set; }
+        public ICollection<PublicacaoModel>? ComunidadePublicacao { get; set; }
 
-        public ICollection<UsuarioComunidadeModel> usuarioComunidade { get; set; }
+        public ICollection<UsuarioComunidadeModel>? usuarioComunidade { get; set; }
     }
 }
 

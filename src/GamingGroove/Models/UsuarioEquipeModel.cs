@@ -11,20 +11,20 @@ namespace GamingGroove.Models
 
         public int usuarioId { get; set; }
         [ForeignKey("usuarioId")]
+        [Display(Name = "Usuário")]
         public UsuarioModel usuario { get; set; }
 
         public int equipeId { get; set; }
         [ForeignKey("equipeId")]
+        [Display(Name = "Equipe")]
         public EquipeModel equipe { get; set; }
         
-        public CargoEquipe cargoEquipe { get; set; }
+        [Display(Name = "Cargo")]
+        public CargosEnum cargoEquipe { get; set; }
 
-        public DateTime dataVinculoEquipe { get; set; }
-    }
-
-    public enum CargoEquipe {
-        ADM,
-        Membro
+        [Display(Name = "Data de Vínculo")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public DateTime? dataVinculoEquipe { get; set; }
     }
 }
 

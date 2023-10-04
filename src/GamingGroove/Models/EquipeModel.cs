@@ -9,19 +9,26 @@ namespace GamingGroove.Models
         [Key]
         public int equipeId { get; set; }
 
+        [Display(Name = "Nome")]
         public string nomeEquipe { get; set; }
 
-        public byte[] iconeEquipe { get; set; }
+        [Display(Name = "Ícone")]
+        public byte[]? iconeEquipe { get; set; }
 
-        public string descricaoEquipe { get; set; }
+        [Display(Name = "Descrição")]
+        public string? descricaoEquipe { get; set; }
 
-        public string jogoEquipe { get; set; }
+        [Display(Name = "Jogo")]
+        public JogosEnum jogoEquipe { get; set; }
 
-        public DateTime dataCriacaoEquipe { get; set; }
+        [Display(Name = "Data de Criação")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public DateTime? dataCriacaoEquipe { get; set;}
 
-        public ICollection<ChatModel> chatEquipe { get; set; }
 
-        public ICollection<UsuarioEquipeModel> usuarioEquipe { get; set; }
+        public ICollection<ChatModel>? chatEquipe { get; set; }
+
+        public ICollection<UsuarioEquipeModel>? usuarioEquipe { get; set; }
 
     }
 }

@@ -25,12 +25,12 @@ namespace GamingGroove.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("dataAmizade")
+                    b.Property<DateTime?>("dataAmizade")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)");
 
-                    b.Property<string>("estadoAmizade")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<int?>("estadoAmizade")
+                        .HasColumnType("int");
 
                     b.Property<int>("receptorId")
                         .HasColumnType("int");
@@ -56,14 +56,14 @@ namespace GamingGroove.Migrations
                     b.Property<int>("amizadeId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("dataChat")
+                    b.Property<DateTime?>("dataChat")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)");
 
                     b.Property<int>("equipeId")
                         .HasColumnType("int");
 
                     b.Property<string>("historico")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("chatId");
@@ -81,11 +81,11 @@ namespace GamingGroove.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("dataComentario")
+                    b.Property<DateTime?>("dataComentario")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)");
 
                     b.Property<byte[]>("midiaComentario")
-                        .IsRequired()
                         .HasColumnType("longblob");
 
                     b.Property<int>("publicacaoId")
@@ -114,23 +114,20 @@ namespace GamingGroove.Migrations
                         .HasColumnType("int");
 
                     b.Property<byte[]>("capaComunidade")
-                        .IsRequired()
                         .HasColumnType("longblob");
 
-                    b.Property<DateTime>("dataCriacaoComunidade")
+                    b.Property<DateTime?>("dataCriacaoComunidade")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("descricaoComunidade")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<byte[]>("iconeComunidade")
-                        .IsRequired()
                         .HasColumnType("longblob");
 
-                    b.Property<string>("jogosRelacionados")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<int?>("jogosRelacionados")
+                        .HasColumnType("int");
 
                     b.Property<string>("nomeComunidade")
                         .IsRequired()
@@ -147,7 +144,8 @@ namespace GamingGroove.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("dataCurtida")
+                    b.Property<DateTime?>("dataCurtida")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)");
 
                     b.Property<int>("publicacaoId")
@@ -171,13 +169,17 @@ namespace GamingGroove.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("comunidadeId")
+                    b.Property<int?>("TipoDenuncia")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("dataDenuncia")
+                    b.Property<int?>("comunidadeId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("dataDenuncia")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int>("denunciadoId")
+                    b.Property<int?>("denunciadoId")
                         .HasColumnType("int");
 
                     b.Property<int>("denuncianteId")
@@ -187,12 +189,11 @@ namespace GamingGroove.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("publicacaoId")
+                    b.Property<int?>("publicacaoId")
                         .HasColumnType("int");
 
-                    b.Property<string>("situacaoDenuncia")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<int?>("situacaoDenuncia")
+                        .HasColumnType("int");
 
                     b.HasKey("denunciaId");
 
@@ -213,20 +214,18 @@ namespace GamingGroove.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("dataCriacaoEquipe")
+                    b.Property<DateTime?>("dataCriacaoEquipe")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("descricaoEquipe")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<byte[]>("iconeEquipe")
-                        .IsRequired()
                         .HasColumnType("longblob");
 
-                    b.Property<string>("jogoEquipe")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<int>("jogoEquipe")
+                        .HasColumnType("int");
 
                     b.Property<string>("nomeEquipe")
                         .IsRequired()
@@ -246,7 +245,8 @@ namespace GamingGroove.Migrations
                     b.Property<int>("comunidadeId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("dataPublicacao")
+                    b.Property<DateTime?>("dataPublicacao")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)");
 
                     b.Property<byte[]>("midiaPublicacao")
@@ -279,7 +279,8 @@ namespace GamingGroove.Migrations
                     b.Property<int>("comunidadeId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("dataVinculoComunidade")
+                    b.Property<DateTime?>("dataVinculoComunidade")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)");
 
                     b.Property<int>("usuarioId")
@@ -303,7 +304,8 @@ namespace GamingGroove.Migrations
                     b.Property<int>("cargoEquipe")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("dataVinculoEquipe")
+                    b.Property<DateTime?>("dataVinculoEquipe")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)");
 
                     b.Property<int>("equipeId")
@@ -346,8 +348,8 @@ namespace GamingGroove.Migrations
                     b.Property<byte[]>("iconePerfil")
                         .HasColumnType("longblob");
 
-                    b.Property<string>("jogosFavoritos")
-                        .HasColumnType("longtext");
+                    b.Property<int?>("jogosFavoritos")
+                        .HasColumnType("int");
 
                     b.Property<string>("nomeCompleto")
                         .IsRequired()
@@ -358,6 +360,7 @@ namespace GamingGroove.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<DateTime?>("registrationDate")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("senha")
@@ -452,15 +455,12 @@ namespace GamingGroove.Migrations
                 {
                     b.HasOne("GamingGroove.Models.ComunidadeModel", "comunidade")
                         .WithMany("ComunidadeDenuncia")
-                        .HasForeignKey("comunidadeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("comunidadeId");
 
                     b.HasOne("GamingGroove.Models.UsuarioModel", "denunciado")
                         .WithMany("denunciadoDenuncia")
                         .HasForeignKey("denunciadoId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("GamingGroove.Models.UsuarioModel", "denunciante")
                         .WithMany("denuncianteDenuncia")
@@ -470,9 +470,7 @@ namespace GamingGroove.Migrations
 
                     b.HasOne("GamingGroove.Models.PublicacaoModel", "publicacao")
                         .WithMany("publicacaoDenuncia")
-                        .HasForeignKey("publicacaoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("publicacaoId");
 
                     b.Navigation("comunidade");
 

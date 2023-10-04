@@ -30,13 +30,8 @@
             </div>
             <div class="form-group">
                 <label asp-for="jogoEquipe" class="control-label"></label>
-                <input asp-for="jogoEquipe" class="form-control" />
+                <select asp-for="jogoEquipe" class="form-control" asp-items="Html.GetEnumSelectList<JogosEnum>()"></select>
                 <span asp-validation-for="jogoEquipe" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="dataCriacaoEquipe" class="control-label"></label>
-                <input asp-for="dataCriacaoEquipe" class="form-control" />
-                <span asp-validation-for="dataCriacaoEquipe" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

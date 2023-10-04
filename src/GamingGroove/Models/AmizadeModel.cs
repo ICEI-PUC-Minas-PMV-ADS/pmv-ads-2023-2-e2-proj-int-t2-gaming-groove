@@ -11,17 +11,23 @@ namespace GamingGroove.Models
 
         public int solicitanteId { get; set; }
         [ForeignKey("solicitanteId")]
-        public UsuarioModel solicitante { get; set; }
+        [Display(Name = "Solicitante")]
+        public UsuarioModel? solicitante { get; set; }
 
         public int receptorId { get; set; }
         [ForeignKey("receptorId")]
-        public UsuarioModel receptor { get; set; }
+        [Display(Name = "Receptor")]
+        public UsuarioModel? receptor { get; set; }
 
-        public string estadoAmizade { get; set; }
+        [Display(Name = "Estado da Amizade")]
+        public EstadoAmizade? estadoAmizade { get; set; }
 
-        public DateTime dataAmizade { get; set; }
+        [Display(Name = "Início da Amizade")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public DateTime? dataAmizade { get; set; }
 
 
-        public ICollection<ChatModel> chatAmizade { get; set; }
+        public ICollection<ChatModel>? chatAmizade { get; set; }
     }
+
 }
