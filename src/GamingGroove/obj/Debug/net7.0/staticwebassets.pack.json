@@ -5,12 +5,96 @@
       "PackagePath": "staticwebassets\\GamingGroove.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\renan\\OneDrive\\Desktop\\PUC\\Projetos\\Projeto-e2\\Projeto-Eixo-2-Gaming-Groove\\src\\GamingGroove\\wwwroot\\css\\HomePage.css",
+      "PackagePath": "staticwebassets\\css\\HomePage.css"
+    },
+    {
+      "Id": "C:\\Users\\renan\\OneDrive\\Desktop\\PUC\\Projetos\\Projeto-e2\\Projeto-Eixo-2-Gaming-Groove\\src\\GamingGroove\\wwwroot\\css\\ProfilePage.css",
+      "PackagePath": "staticwebassets\\css\\ProfilePage.css"
+    },
+    {
+      "Id": "C:\\Users\\renan\\OneDrive\\Desktop\\PUC\\Projetos\\Projeto-e2\\Projeto-Eixo-2-Gaming-Groove\\src\\GamingGroove\\wwwroot\\css\\fonts.css",
+      "PackagePath": "staticwebassets\\css\\fonts.css"
+    },
+    {
       "Id": "C:\\Users\\renan\\OneDrive\\Desktop\\PUC\\Projetos\\Projeto-e2\\Projeto-Eixo-2-Gaming-Groove\\src\\GamingGroove\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
       "Id": "C:\\Users\\renan\\OneDrive\\Desktop\\PUC\\Projetos\\Projeto-e2\\Projeto-Eixo-2-Gaming-Groove\\src\\GamingGroove\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\renan\\OneDrive\\Desktop\\PUC\\Projetos\\Projeto-e2\\Projeto-Eixo-2-Gaming-Groove\\src\\GamingGroove\\wwwroot\\fonts\\Gamer.ttf",
+      "PackagePath": "staticwebassets\\fonts\\Gamer.ttf"
+    },
+    {
+      "Id": "C:\\Users\\renan\\OneDrive\\Desktop\\PUC\\Projetos\\Projeto-e2\\Projeto-Eixo-2-Gaming-Groove\\src\\GamingGroove\\wwwroot\\fonts\\PlayMeGames.otf",
+      "PackagePath": "staticwebassets\\fonts\\PlayMeGames.otf"
+    },
+    {
+      "Id": "C:\\Users\\renan\\OneDrive\\Desktop\\PUC\\Projetos\\Projeto-e2\\Projeto-Eixo-2-Gaming-Groove\\src\\GamingGroove\\wwwroot\\images\\Karthus_17.jpg",
+      "PackagePath": "staticwebassets\\images\\Karthus_17.jpg"
+    },
+    {
+      "Id": "C:\\Users\\renan\\OneDrive\\Desktop\\PUC\\Projetos\\Projeto-e2\\Projeto-Eixo-2-Gaming-Groove\\src\\GamingGroove\\wwwroot\\images\\backgrounds\\homepage-background.png",
+      "PackagePath": "staticwebassets\\images\\backgrounds\\homepage-background.png"
+    },
+    {
+      "Id": "C:\\Users\\renan\\OneDrive\\Desktop\\PUC\\Projetos\\Projeto-e2\\Projeto-Eixo-2-Gaming-Groove\\src\\GamingGroove\\wwwroot\\images\\backgrounds\\space-cover.jpg",
+      "PackagePath": "staticwebassets\\images\\backgrounds\\space-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\renan\\OneDrive\\Desktop\\PUC\\Projetos\\Projeto-e2\\Projeto-Eixo-2-Gaming-Groove\\src\\GamingGroove\\wwwroot\\images\\icons\\communities-icon.svg",
+      "PackagePath": "staticwebassets\\images\\icons\\communities-icon.svg"
+    },
+    {
+      "Id": "C:\\Users\\renan\\OneDrive\\Desktop\\PUC\\Projetos\\Projeto-e2\\Projeto-Eixo-2-Gaming-Groove\\src\\GamingGroove\\wwwroot\\images\\icons\\explore-icon.svg",
+      "PackagePath": "staticwebassets\\images\\icons\\explore-icon.svg"
+    },
+    {
+      "Id": "C:\\Users\\renan\\OneDrive\\Desktop\\PUC\\Projetos\\Projeto-e2\\Projeto-Eixo-2-Gaming-Groove\\src\\GamingGroove\\wwwroot\\images\\icons\\feed-icon.svg",
+      "PackagePath": "staticwebassets\\images\\icons\\feed-icon.svg"
+    },
+    {
+      "Id": "C:\\Users\\renan\\OneDrive\\Desktop\\PUC\\Projetos\\Projeto-e2\\Projeto-Eixo-2-Gaming-Groove\\src\\GamingGroove\\wwwroot\\images\\icons\\homepage\\at.svg",
+      "PackagePath": "staticwebassets\\images\\icons\\homepage\\at.svg"
+    },
+    {
+      "Id": "C:\\Users\\renan\\OneDrive\\Desktop\\PUC\\Projetos\\Projeto-e2\\Projeto-Eixo-2-Gaming-Groove\\src\\GamingGroove\\wwwroot\\images\\icons\\homepage\\calendar-blank.svg",
+      "PackagePath": "staticwebassets\\images\\icons\\homepage\\calendar-blank.svg"
+    },
+    {
+      "Id": "C:\\Users\\renan\\OneDrive\\Desktop\\PUC\\Projetos\\Projeto-e2\\Projeto-Eixo-2-Gaming-Groove\\src\\GamingGroove\\wwwroot\\images\\icons\\homepage\\identification-card.svg",
+      "PackagePath": "staticwebassets\\images\\icons\\homepage\\identification-card.svg"
+    },
+    {
+      "Id": "C:\\Users\\renan\\OneDrive\\Desktop\\PUC\\Projetos\\Projeto-e2\\Projeto-Eixo-2-Gaming-Groove\\src\\GamingGroove\\wwwroot\\images\\icons\\homepage\\lock-key.svg",
+      "PackagePath": "staticwebassets\\images\\icons\\homepage\\lock-key.svg"
+    },
+    {
+      "Id": "C:\\Users\\renan\\OneDrive\\Desktop\\PUC\\Projetos\\Projeto-e2\\Projeto-Eixo-2-Gaming-Groove\\src\\GamingGroove\\wwwroot\\images\\icons\\homepage\\user.svg",
+      "PackagePath": "staticwebassets\\images\\icons\\homepage\\user.svg"
+    },
+    {
+      "Id": "C:\\Users\\renan\\OneDrive\\Desktop\\PUC\\Projetos\\Projeto-e2\\Projeto-Eixo-2-Gaming-Groove\\src\\GamingGroove\\wwwroot\\images\\icons\\teams-icon.svg",
+      "PackagePath": "staticwebassets\\images\\icons\\teams-icon.svg"
+    },
+    {
+      "Id": "C:\\Users\\renan\\OneDrive\\Desktop\\PUC\\Projetos\\Projeto-e2\\Projeto-Eixo-2-Gaming-Groove\\src\\GamingGroove\\wwwroot\\images\\logos\\gaminggroove-logo.png",
+      "PackagePath": "staticwebassets\\images\\logos\\gaminggroove-logo.png"
+    },
+    {
+      "Id": "C:\\Users\\renan\\OneDrive\\Desktop\\PUC\\Projetos\\Projeto-e2\\Projeto-Eixo-2-Gaming-Groove\\src\\GamingGroove\\wwwroot\\images\\logos\\gg-logo.png",
+      "PackagePath": "staticwebassets\\images\\logos\\gg-logo.png"
+    },
+    {
+      "Id": "C:\\Users\\renan\\OneDrive\\Desktop\\PUC\\Projetos\\Projeto-e2\\Projeto-Eixo-2-Gaming-Groove\\src\\GamingGroove\\wwwroot\\js\\HomePage.js",
+      "PackagePath": "staticwebassets\\js\\HomePage.js"
+    },
+    {
+      "Id": "C:\\Users\\renan\\OneDrive\\Desktop\\PUC\\Projetos\\Projeto-e2\\Projeto-Eixo-2-Gaming-Groove\\src\\GamingGroove\\wwwroot\\js\\Menu.js",
+      "PackagePath": "staticwebassets\\js\\Menu.js"
     },
     {
       "Id": "C:\\Users\\renan\\OneDrive\\Desktop\\PUC\\Projetos\\Projeto-e2\\Projeto-Eixo-2-Gaming-Groove\\src\\GamingGroove\\wwwroot\\js\\site.js",

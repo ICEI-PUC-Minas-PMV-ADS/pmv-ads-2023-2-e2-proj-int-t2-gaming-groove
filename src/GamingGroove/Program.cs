@@ -1,5 +1,7 @@
 using System.Globalization;
 using GamingGroove.Data;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -21,6 +23,18 @@ namespace GamingGroove
                 new MySqlServerVersion(new Version(8, 0, 34))) 
             );
 
+            builder.Services.Configure<CookiePolicyOptions>(options =>
+            {
+                options.CheckConsentNeeded = ContextBoundObject => true;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
+
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options => {
+                    options.AccessDeniedPath = "/Usuarios/AccessDenied/";
+                    options.LoginPath = "/Usuarios/Login/";
+                });
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -36,11 +50,12 @@ namespace GamingGroove
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=HomePage}/{action=Index}/{id?}");
 
             app.Run();
 

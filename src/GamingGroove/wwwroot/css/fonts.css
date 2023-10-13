@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap');
+
+@font-face {
+    font-family: 'Gamer';
+    src: url(/fonts/Gamer.ttf)
+}
+
+@font-face {
+    font-family: 'PlayMeGames';
+    src: url(/fonts/PlayMeGames.otf)
+}
