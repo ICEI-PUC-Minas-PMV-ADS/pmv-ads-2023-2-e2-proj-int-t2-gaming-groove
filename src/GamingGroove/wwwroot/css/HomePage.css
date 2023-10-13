@@ -1,0 +1,258 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
+
+@font-face {
+    font-family: 'Gamer';
+    src: url(/fonts/Gamer.ttf)
+}
+
+@font-face {
+    font-family: 'PlayMeGames';
+    src: url(/fonts/PlayMeGames.otf)
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.nav-bar-nav {
+  height: 30px;
+  width: 100%;
+  background-color: pink;
+}
+
+body {
+    height: 100vh;
+    background: url(/images/backgrounds/homepage-background.png);
+    background-size: cover;
+    backdrop-filter: brightness(0.8);
+}
+
+.main-container {
+  padding-top: 7%;
+    height: 80%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items:flex-start;
+    text-align: center;
+    justify-content: center; 
+    gap: 12vw;
+}
+
+.brand-container {
+    width: 550px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 50px;
+    margin-bottom: 100px;
+    padding-top: 4%;
+}
+
+.logo {
+    height: 200px;
+}
+
+.slogan {
+    color: white;
+    font-family: PlayMeGames;
+    font-weight: 200;
+    letter-spacing: 3px;
+    font-size: 2em;
+}
+
+.forms-container {
+  width: 400px;
+  margin-bottom: 80px;
+}
+
+.controls-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.controls {
+  align-items: center;
+  text-align: center;
+}
+
+.controls button {
+  font-family: PlayMeGames;
+  letter-spacing: 1px;
+  font-size: 20px;
+  margin-inline: 30px;
+  border: none;
+  background: none;
+  color: white;
+}
+
+[type="checkbox"]:checked,
+[type="checkbox"]:not(:checked){
+  display: none;
+}
+
+.checkbox:checked + label,
+.checkbox:not(:checked) + label{
+  position: relative;
+  display: block;
+  text-align: center;
+  width: 60px;
+  height: 20px;
+  border-radius: 12px;
+  padding: 0;
+  margin: 10px auto;
+  cursor: pointer;
+  background-color: #000000;
+  border: solid white 2px;
+  position: relative;
+    top: -20px;
+}
+
+.checkbox:checked + label:before,
+.checkbox:not(:checked) + label:before{
+    position: relative;
+    top: -20px;
+  display: block;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: #ffffff;
+  background-color: #0277F9;
+  border: solid white 2px;
+  font-family: 'unicons';
+  content: '\eb4f';
+  z-index: 20;
+  top: -10px;
+  left: -10px;
+  line-height: 36px;
+  text-align: center;
+  font-size: 24px;
+  transition: all 0.5s ease;
+}
+
+.checkbox:checked + label:before {
+  transform: translateX(44px) rotate(-270deg);
+}
+
+.card-front, .card-back {
+  font-family: PlayMeGames;
+  font-weight: 100;
+  text-align: center;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.603);
+  border-radius: 10px;
+  box-shadow: #0277F9 0 0 20px 3px;
+  position: relative;
+  border: solid #AFD3FF 2px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding-block: 30px;
+}
+
+.card-back {
+  display: none;
+}
+
+.access-title {
+  font-size: 28px;
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+}
+
+.card-front input, .card-back input {
+  font-family: 'Black Ops One';
+  width: 300px;
+  padding: 10px 6px 5px 45px;
+  margin-block: 14px;
+  border-radius: 2px;
+  border: none;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: black;
+}
+
+input::placeholder {
+  color: #888888;
+}
+
+input[type="date"] {
+  color: #888888;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+.card-front button, .card-back button {
+  height: 50px;
+  width: 150px;
+  border: none;
+  border-radius: 4px;
+  letter-spacing: 1px;
+  color: white;
+  background: rgba(0, 0, 0, 0.603);
+  box-shadow: #CF18EB 0px 0px 20px;
+  margin-top: 30px;
+}
+
+.card-front button:hover, .card-back button:hover {
+  background: #AFD3FF;
+  color: black;
+  box-shadow: #0277F9 0px 0px 20px 4px;
+  transition: 0.8s;
+
+}
+
+.forgot-password {
+  margin-top: 16px;
+}
+
+.card-front a {
+  color: #e850ff;
+  letter-spacing: 1px;
+  text-decoration: none;
+}
+
+.card-front a:hover {
+  transition: 0.5s;
+  color: #AFD3FF;
+}
+
+.form-group img {
+  height: 20px;
+  opacity: 0.5;
+  position: absolute;
+  left: 56px;  
+  margin-top: 20px;
+}
+
+footer {
+  width: 100%;
+  text-align: center;
+  letter-spacing: 2px;
+  color: white;
+  font-family: Verdana;
+  font-size: 12px;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  margin-top: 8.3%;
+  
+}
+
+.login-alert {
+  font-family: Play;
+  font-weight: bold;
+  font-size: 16px;
+  color: red;
+}
+
+.text-danger {
+  font-size: 14px;
+  font-family: Play;
+  font-weight: bold;
+}

@@ -335,7 +335,8 @@ namespace GamingGroove.Migrations
                     b.Property<byte[]>("capaPerfil")
                         .HasColumnType("longblob");
 
-                    b.Property<DateTime>("dataNascimento")
+                    b.Property<DateTime?>("dataNascimento")
+                        .IsRequired()
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("email")

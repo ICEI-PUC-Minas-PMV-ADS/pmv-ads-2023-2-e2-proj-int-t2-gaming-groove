@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "yDaOnd0LPmTkdrF8QFg46KOnvvdTswsHY2VjdODE6xWdqYz9ftmiFvm/6WPHp867IpBTRDZ+r53qjwH300z9Zg==",
+  "dgSpecHash": "HPIjpXpcG96FQeE9S7iGgvs63I1S03HtNzbT6d2MvZPTSeg7yLHdkDyQyp05ToNOA3ER52V6vcV35S2Hit2cNg==",
   "success": true,
   "projectFilePath": "C:\\Users\\renan\\OneDrive\\Desktop\\PUC\\Projetos\\Projeto-e2\\Projeto-Eixo-2-Gaming-Groove\\src\\GamingGroove\\GamingGroove.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\renan\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\renan\\.nuget\\packages\\google.protobuf\\3.21.9\\google.protobuf.3.21.9.nupkg.sha512",
     "C:\\Users\\renan\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\renan\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

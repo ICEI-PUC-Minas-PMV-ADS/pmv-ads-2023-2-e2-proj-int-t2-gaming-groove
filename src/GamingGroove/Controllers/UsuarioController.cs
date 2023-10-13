@@ -99,6 +99,7 @@ namespace GamingGroove.Controllers
             {
                 try
                 {
+                    usuarioModel.senha = BCrypt.Net.BCrypt.HashPassword(usuarioModel.senha);
                     _context.Update(usuarioModel);
                     await _context.SaveChangesAsync();
                 }

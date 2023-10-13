@@ -9,21 +9,25 @@ namespace GamingGroove.Models
         [Key]
         public int usuarioId { get; set; }
 
+        [Required(ErrorMessage = "Informe um nome de usuário válido.")]
         [Display(Name = "Nome de Usuário")]
-        public string nomeUsuario { get; set; }
+        public string? nomeUsuario { get; set; }
         
+        [Required(ErrorMessage = "Informe seu nome completo.")]
         [Display(Name = "Nome Completo")]
-        public string nomeCompleto { get; set; }
+        public string? nomeCompleto { get; set; }
         
+        [Required(ErrorMessage = "Informe sua data de nascimento.")]
         [Display(Name = "Data de Nascimento")]
         [DataType(DataType.Date)]
-        public DateTime dataNascimento { get; set; }
+        public DateTime? dataNascimento { get; set; }
 
-        [Display(Name = "E-mail")]
-        public string email { get; set; }
+        [Required(ErrorMessage = "Informe um e-mail válido.")]
+        public string? email { get; set; }
 
+        [Required(ErrorMessage = "Escolha uma senha válida. Sua senha deve possuir entre 6 e 12 caracteres e conter ao menos uma letra, um número e um símbolo.")]
         [Display(Name = "Senha")]
-        public string senha { get; set; }
+        public string? senha { get; set; }
 
         [Display(Name = "Ícone de Perfil")]
         public byte[]? iconePerfil { get; set; }

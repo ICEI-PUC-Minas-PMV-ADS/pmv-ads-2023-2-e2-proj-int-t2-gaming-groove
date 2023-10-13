@@ -156,6 +156,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXF1aXBlXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/renan/OneDrive/Desktop/PUC/Projetos/Projeto-e2/Projeto-Eixo-2-Gaming-Groove/src/GamingGroove/Views/HomePage/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVBhZ2VcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/renan/OneDrive/Desktop/PUC/Projetos/Projeto-e2/Projeto-Eixo-2-Gaming-Groove/src/GamingGroove/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -166,6 +170,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/renan/OneDrive/Desktop/PUC/Projetos/Projeto-e2/Projeto-Eixo-2-Gaming-Groove/src/GamingGroove/Views/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/renan/OneDrive/Desktop/PUC/Projetos/Projeto-e2/Projeto-Eixo-2-Gaming-Groove/src/GamingGroove/Views/Login/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/renan/OneDrive/Desktop/PUC/Projetos/Projeto-e2/Projeto-Eixo-2-Gaming-Groove/src/GamingGroove/Views/ProfilePage/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVBhZ2VcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/renan/OneDrive/Desktop/PUC/Projetos/Projeto-e2/Projeto-Eixo-2-Gaming-Groove/src/GamingGroove/Views/Publicacao/Create.cshtml]
@@ -190,6 +202,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/renan/OneDrive/Desktop/PUC/Projetos/Projeto-e2/Projeto-Eixo-2-Gaming-Groove/src/GamingGroove/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/renan/OneDrive/Desktop/PUC/Projetos/Projeto-e2/Projeto-Eixo-2-Gaming-Groove/src/GamingGroove/Views/Shared/HomePage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEhvbWVQYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/renan/OneDrive/Desktop/PUC/Projetos/Projeto-e2/Projeto-Eixo-2-Gaming-Groove/src/GamingGroove/Views/Shared/ProfilePage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFByb2ZpbGVQYWdlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/renan/OneDrive/Desktop/PUC/Projetos/Projeto-e2/Projeto-Eixo-2-Gaming-Groove/src/GamingGroove/Views/Shared/_ValidationScriptsPartial.cshtml]

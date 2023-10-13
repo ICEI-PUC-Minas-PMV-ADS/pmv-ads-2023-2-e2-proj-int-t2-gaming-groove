@@ -1240,3 +1240,4 @@ C:\Users\renan\OneDrive\Desktop\PUC\Projetos\Projeto-e2\Projeto-Eixo-2-Gaming-Gr
 C:\Users\renan\OneDrive\Desktop\PUC\Projetos\Projeto-e2\Projeto-Eixo-2-Gaming-Groove\src\GamingGroove\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
 C:\Users\renan\OneDrive\Desktop\PUC\Projetos\Projeto-e2\Projeto-Eixo-2-Gaming-Groove\src\GamingGroove\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\renan\OneDrive\Desktop\PUC\Projetos\Projeto-e2\Projeto-Eixo-2-Gaming-Groove\src\GamingGroove\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Users\renan\OneDrive\Desktop\PUC\Projetos\Projeto-e2\Projeto-Eixo-2-Gaming-Groove\src\GamingGroove\bin\Debug\net7.0\BCrypt.Net-Next.dll
