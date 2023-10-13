@@ -1,5 +1,5 @@
 # Especificações do Projeto
-O projeto visa criar uma plataforma de rede social dedicada a jogadores, proporcionando um espaço centralizado para compartilhamento de informações sobre jogos, comunicação entre os jogadores, formação de grupos e equipes, e discussões por meio de mensagens diretas e fóruns. A plataforma será projetada para aprimorar a experiência dos jogadores, facilitando a conexão entre aqueles que possuem interesses comuns.
+O projeto visa criar uma plataforma de rede social dedicada a jogadores, proporcionando um espaço centralizado para compartilhamento de informações sobre jogos, comunicação entre os jogadores, formação de grupos e equipes, e discussões por meio de mensagens diretas e publicações em comunidades. A plataforma será projetada para aprimorar a experiência dos jogadores, facilitando a conexão entre aqueles que possuem interesses comuns.
 
 ### Ferramentas utilizadas:
 - Discord
