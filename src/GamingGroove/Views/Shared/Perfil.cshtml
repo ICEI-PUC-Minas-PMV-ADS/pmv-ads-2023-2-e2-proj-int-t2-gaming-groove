@@ -1,4 +1,6 @@
-@model UsuarioModel
+@model GamingGroove.Models.UsuarioModel
+@using System.Security.Claims
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +27,7 @@
             <button id="menu-icon" class="menu-icon" onclick="openMenu()"></button>
             <nav id="listMenu" class="list-menu">
                 <div class="list">
-                    <a asp-area="" asp-controller="Perfil">Perfil</a>
+                    <a asp-area="" asp-controller="PerfilPage">Perfil</a>
                     <a asp-area="" asp-controller="Login" asp-action="Logout">Sair</a>
                 </div>
             </nav>

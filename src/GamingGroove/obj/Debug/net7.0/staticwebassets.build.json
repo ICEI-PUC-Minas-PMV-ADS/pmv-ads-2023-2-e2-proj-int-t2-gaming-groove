@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "FmVpQifQndVGaHB9FIaHlHON7UIBUiRg9/dfdNsumgs=",
+  "Hash": "S7BvdyVaS+AhkjxMo4MQt8MB2GYuX8PT+v30SXrodZ8=",
   "Source": "GamingGroove",
   "BasePath": "_content/GamingGroove",
   "Mode": "Default",
@@ -100,23 +100,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\Perfil.css"
-    },
-    {
-      "Identity": "C:\\Users\\renan\\OneDrive\\Desktop\\PUC\\Projetos\\Projeto-e2\\Projeto-Eixo-2-Gaming-Groove\\src\\GamingGroove\\wwwroot\\css\\ProfilePage.css",
-      "SourceId": "GamingGroove",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\renan\\OneDrive\\Desktop\\PUC\\Projetos\\Projeto-e2\\Projeto-Eixo-2-Gaming-Groove\\src\\GamingGroove\\wwwroot\\",
-      "BasePath": "_content/GamingGroove",
-      "RelativePath": "css/ProfilePage.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\ProfilePage.css"
     },
     {
       "Identity": "C:\\Users\\renan\\OneDrive\\Desktop\\PUC\\Projetos\\Projeto-e2\\Projeto-Eixo-2-Gaming-Groove\\src\\GamingGroove\\wwwroot\\css\\site.css",
