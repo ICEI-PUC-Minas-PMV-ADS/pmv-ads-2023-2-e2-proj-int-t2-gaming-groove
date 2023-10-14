@@ -1,0 +1,59 @@
+﻿@model GamingGroove.Models.DenunciaModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>DenunciaModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="denunciaId" />
+            <div class="form-group">
+                <label asp-for="denuncianteId" class="control-label"></label>
+                <select asp-for="denuncianteId" class="form-control" asp-items="ViewBag.denuncianteId"></select>
+                <span asp-validation-for="denuncianteId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="denunciadoId" class="control-label"></label>
+                <select asp-for="denunciadoId" class="form-control" asp-items="ViewBag.denunciadoId"></select>
+                <span asp-validation-for="denunciadoId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="publicacaoId" class="control-label"></label>
+                <select asp-for="publicacaoId" class="form-control" asp-items="ViewBag.publicacaoId"></select>
+                <span asp-validation-for="publicacaoId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="comunidadeId" class="control-label"></label>
+                <select asp-for="comunidadeId" class="form-control" asp-items="ViewBag.comunidadeId"></select>
+                <span asp-validation-for="comunidadeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="descricaoDenuncia" class="control-label"></label>
+                <input asp-for="descricaoDenuncia" class="form-control" />
+                <span asp-validation-for="descricaoDenuncia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="situacaoDenuncia" class="control-label"></label>
+                <input asp-for="situacaoDenuncia" class="form-control" />
+                <span asp-validation-for="situacaoDenuncia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

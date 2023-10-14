@@ -1,0 +1,54 @@
+﻿@model GamingGroove.Models.ComunidadeModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>ComunidadeModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.nomeComunidade)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.nomeComunidade)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.iconeComunidade)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.iconeComunidade)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.capaComunidade)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.capaComunidade)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.jogosRelacionados)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.jogosRelacionados)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.descricaoComunidade)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.descricaoComunidade)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.dataCriacaoComunidade)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.dataCriacaoComunidade)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.comunidadeId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

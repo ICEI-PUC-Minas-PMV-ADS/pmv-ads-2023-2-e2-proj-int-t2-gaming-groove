@@ -6,30 +6,17 @@ Definição de como o software é estruturado em termos dos componentes que faze
 
 ## Diagrama de Classes
 
-O diagrama de classes ilustra graficamente como será a estrutura do software, e como cada uma das classes da sua estrutura estarão interligadas. Essas classes servem de modelo para materializar os objetos que executarão na memória.
-
-As referências abaixo irão auxiliá-lo na geração do artefato “Diagrama de Classes”.
-
-> - [Diagramas de Classes - Documentação da IBM](https://www.ibm.com/docs/pt-br/rational-soft-arch/9.6.1?topic=diagrams-class)
-> - [O que é um diagrama de classe UML? | Lucidchart](https://www.lucidchart.com/pages/pt/o-que-e-diagrama-de-classe-uml)
+![diagrama-classes](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e2-proj-int-t2-gaming-groove/assets/121554044/612dbb19-eb2a-4630-9fe3-a4d0797977c8)
 
 ## Modelo ER (Projeto Conceitual)
 
-O Modelo ER representa através de um diagrama como as entidades (coisas, objetos) se relacionam entre si na aplicação interativa.
-
-Sugestão de ferramentas para geração deste artefato: LucidChart e Draw.io.
-
-A referência abaixo irá auxiliá-lo na geração do artefato “Modelo ER”.
-
-> - [Como fazer um diagrama entidade relacionamento | Lucidchart](https://www.lucidchart.com/pages/pt/como-fazer-um-diagrama-entidade-relacionamento)
+![Modelo-ER drawio (1)](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e2-proj-int-t2-gaming-groove/assets/108768143/407a64a3-1b91-4d02-b345-3031b129fa25)
 
 ## Projeto da Base de Dados
 
-![GG Database](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e2-proj-int-t2-gaming-groove/assets/100154380/a2074c8d-eb1e-401b-8b4d-db153bda0672)
+![projeto-base-dados](https://github.com/renanstankev/Projeto-Eixo-2-Gaming-Groove/assets/89418479/24a9b331-9257-4de6-8300-98cd0f8e63dd)
 
-O projeto da base de dados corresponde à representação das entidades e relacionamentos identificadas no Modelo ER, no formato de tabelas, com colunas e chaves primárias/estrangeiras necessárias para representar corretamente as restrições de integridade.
- 
-Para mais informações, consulte o microfundamento "Modelagem de Dados".
+
 
 ## Tecnologias Utilizadas
 

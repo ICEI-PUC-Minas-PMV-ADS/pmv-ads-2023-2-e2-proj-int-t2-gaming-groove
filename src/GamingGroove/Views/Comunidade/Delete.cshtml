@@ -1,0 +1,57 @@
+﻿@model GamingGroove.Models.ComunidadeModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ComunidadeModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.nomeComunidade)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.nomeComunidade)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.iconeComunidade)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.iconeComunidade)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.capaComunidade)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.capaComunidade)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.jogosRelacionados)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.jogosRelacionados)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.descricaoComunidade)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.descricaoComunidade)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.dataCriacaoComunidade)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.dataCriacaoComunidade)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="comunidadeId" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

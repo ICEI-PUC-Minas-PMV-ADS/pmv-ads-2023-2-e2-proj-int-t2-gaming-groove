@@ -1,12 +1,24 @@
 # Gaming Groove
 
-`Análise e Desenvolvimento de Sistemas`
+<br>
 
-`Eixo 2 - Projeto: Desenvolvimento de uma Aplicação Interativa`
+<div align="center">
+  <img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e2-proj-int-t2-gaming-groove/assets/89418479/c9a9829d-613f-425f-a894-8b625dd1c22c" height="200" />
+</div>
 
-`Segundo Semestre`
+<br>
+<br>
 
-Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo desenvolvido.
+<div align="center">
+  
+  `Análise e Desenvolvimento de Sistemas`
+  
+  `Eixo 2 - Projeto: Desenvolvimento de uma Aplicação Interativa`
+  
+  `Segundo Semestre`
+</div>
+
+  Gaming Groove é uma rede social dedicada a gamers, proporcionando um espaço centralizado para compartilhamento de informações sobre jogos, comunicação entre os jogadores, formação de grupos e equipes, e discussões por meio de mensagens diretas e publicações em comunidades. A plataforma foi projetada para aprimorar a experiência dos jogadores, facilitando a conexão entre aqueles que possuem interesses comuns.
 
 ## Integrantes
 

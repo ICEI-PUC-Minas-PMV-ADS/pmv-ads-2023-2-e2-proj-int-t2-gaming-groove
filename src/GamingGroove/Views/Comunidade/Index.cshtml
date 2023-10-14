@@ -1,0 +1,65 @@
+﻿@model IEnumerable<GamingGroove.Models.ComunidadeModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nomeComunidade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.iconeComunidade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.capaComunidade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.jogosRelacionados)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.descricaoComunidade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dataCriacaoComunidade)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nomeComunidade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.iconeComunidade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.capaComunidade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.jogosRelacionados)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.descricaoComunidade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dataCriacaoComunidade)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.comunidadeId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.comunidadeId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.comunidadeId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

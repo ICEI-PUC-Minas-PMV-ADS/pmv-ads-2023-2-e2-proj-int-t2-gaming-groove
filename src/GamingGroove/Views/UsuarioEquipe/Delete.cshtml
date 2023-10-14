@@ -1,0 +1,45 @@
+﻿@model GamingGroove.Models.UsuarioEquipeModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>UsuarioEquipeModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.usuario)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.usuario.usuarioId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.equipe)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.equipe.equipeId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.cargoEquipe)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.cargoEquipe)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.dataVinculoEquipe)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.dataVinculoEquipe)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="usuarioEquipeId" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

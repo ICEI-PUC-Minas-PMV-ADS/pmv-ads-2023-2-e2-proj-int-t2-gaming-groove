@@ -1,0 +1,53 @@
+﻿@model IEnumerable<GamingGroove.Models.ChatModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.equipe)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.amizade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.historico)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dataChat)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.equipe.equipeId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.amizade.amizadeId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.historico)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dataChat)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.chatId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.chatId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.chatId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
