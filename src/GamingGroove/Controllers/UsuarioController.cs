@@ -60,11 +60,12 @@ namespace GamingGroove.Controllers
         {
             if (ModelState.IsValid)
             {
+                usuarioModel.senha = BCrypt.Net.BCrypt.HashPassword(usuarioModel.senha);
                 _context.Add(usuarioModel);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "HomePage");
             }
-            return View(usuarioModel);
+            return View("Index", usuarioModel);
         }
 
         // GET: Usuario/Edit/5
@@ -99,8 +100,23 @@ namespace GamingGroove.Controllers
             {
                 try
                 {
-                    usuarioModel.senha = BCrypt.Net.BCrypt.HashPassword(usuarioModel.senha);
-                    _context.Update(usuarioModel);
+                    var existingUser = await _context.Usuarios.FindAsync(id);
+                    
+                    if (existingUser == null)
+                    {
+                        return NotFound();
+                    }
+
+                    if (usuarioModel.senha != existingUser.senha)
+                    {
+                        usuarioModel.senha = BCrypt.Net.BCrypt.HashPassword(usuarioModel.senha);
+                    }
+                    else
+                    {
+                        usuarioModel.senha = existingUser.senha;
+                    }
+              
+                    _context.Entry(existingUser).CurrentValues.SetValues(usuarioModel);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)

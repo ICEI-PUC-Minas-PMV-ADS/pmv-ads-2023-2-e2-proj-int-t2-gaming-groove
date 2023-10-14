@@ -48,6 +48,7 @@ namespace GamingGroove
                 {
                     new Claim(ClaimTypes.Name, dados.nomeUsuario),
                     new Claim(ClaimTypes.NameIdentifier, dados.usuarioId.ToString()),
+                    new Claim(ClaimTypes.Email, dados.email),
                 };
 
                 var usuarioIdentity = new ClaimsIdentity(claims, "login");
