@@ -63,7 +63,7 @@ namespace GamingGroove
                 
                 await HttpContext.SignInAsync(principal, props);
                 
-                return RedirectToAction("Index","ProfilePage");
+                return RedirectToAction("Index","Perfil");
 
             }
             else 
