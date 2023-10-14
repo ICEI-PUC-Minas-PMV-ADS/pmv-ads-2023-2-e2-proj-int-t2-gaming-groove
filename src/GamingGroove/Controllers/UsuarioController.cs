@@ -115,6 +115,8 @@ namespace GamingGroove.Controllers
                     {
                         usuarioModel.senha = existingUser.senha;
                     }
+
+                    usuarioModel.dataRegistro = existingUser.dataRegistro;
               
                     _context.Entry(existingUser).CurrentValues.SetValues(usuarioModel);
                     await _context.SaveChangesAsync();
