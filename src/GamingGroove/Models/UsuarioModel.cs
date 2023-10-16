@@ -49,7 +49,7 @@ namespace GamingGroove.Models
 
         [Display(Name = "Data de Registro")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public DateTime? registrationDate { get; set; }
+        public DateTime? dataRegistro { get; set; }
 
 
         
