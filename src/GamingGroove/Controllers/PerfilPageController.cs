@@ -9,7 +9,7 @@ using GamingGroove.Models; // Importe o namespace correto para acessar a classe 
 
 namespace GamingGroove
 {
-    public class PerfilController : Controller
+    public class PerfilPageController : Controller
     {
         public IActionResult Index()
         {
