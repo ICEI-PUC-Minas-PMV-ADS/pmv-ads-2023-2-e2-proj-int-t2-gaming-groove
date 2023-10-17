@@ -44,7 +44,7 @@ namespace GamingGroove
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
+            
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
@@ -54,8 +54,13 @@ namespace GamingGroove
             app.UseAuthorization();
 
             app.MapControllerRoute(
-                name: "default",
+                name: "home",
                 pattern: "{controller=HomePage}/{action=Index}/{id?}");
+
+            app.MapControllerRoute(
+                name: "perfil",
+                pattern: "PerfilPage/{id}",
+                defaults: new { controller = "PerfilPage", action = "Index" });
 
             app.Run();
 
