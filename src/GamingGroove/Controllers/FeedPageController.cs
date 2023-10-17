@@ -9,7 +9,7 @@ using GamingGroove.Models;
 
 namespace GamingGroove
 {
-    public class FeedController : Controller
+    public class FeedPageController : Controller
     {
         public IActionResult Index()
         {
