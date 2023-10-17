@@ -48,9 +48,9 @@
                     <img class="profile-pic" src="~/images/Karthus_17.jpg" alt="">
                     <div class="user-add-friend-container">
                         <div class="user-border">
-                            <div class="username">@User.Identity.Name</div>
+                            <div class="username">@Model.nomeUsuario</div>
                         </div>
-                        <button class="add-friend-button">F</button>
+                        <button class="add-friend-button"><img class="addUser-icon" src="~/images/icons/add-user.svg" alt=""></button>
                     </div>
                 </div>
                 <div class="cover-second-container">
@@ -64,8 +64,7 @@
                         <div class="column">
                             <h3>BIOGRAFIA</h3>
                             <div class="bio-text">
-                                <h1>Perfil de @Model.nomeUsuario</h1>
-                                <p>ID: @Model.usuarioId</p>
+                                 @Model.biografia
                             </div>
                         </div>
                         <div class="column">
