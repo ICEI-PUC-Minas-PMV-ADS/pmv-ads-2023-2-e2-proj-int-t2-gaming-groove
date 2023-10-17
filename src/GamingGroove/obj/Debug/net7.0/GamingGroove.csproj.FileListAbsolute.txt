@@ -1792,3 +1792,4 @@ C:\Users\PC\Desktop\puc\projeto 2\src\GamingGroove\obj\Debug\net7.0\refint\Gamin
 C:\Users\PC\Desktop\puc\projeto 2\src\GamingGroove\obj\Debug\net7.0\GamingGroove.pdb
 C:\Users\PC\Desktop\puc\projeto 2\src\GamingGroove\obj\Debug\net7.0\GamingGroove.genruntimeconfig.cache
 C:\Users\PC\Desktop\puc\projeto 2\src\GamingGroove\obj\Debug\net7.0\ref\GamingGroove.dll
+C:\Users\User\source\repos\pmv-ads-2023-2-e2-proj-int-t2-rede-social\src\GamingGroove\bin\Debug\net7.0\BCrypt.Net-Next.dll

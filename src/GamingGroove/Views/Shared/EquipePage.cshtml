@@ -1,0 +1,87 @@
+﻿@model GamingGroove.Models.EquipeModel
+@using System.Security.Claims
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feed</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css" />
+    <link rel="stylesheet" href="~/css/EquipePage.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/fonts.css" asp-append-version="true" />
+</head>
+<body>
+    
+        <header>
+            <img class="logo" src="~/images/logos/gg-logo.png" alt="">
+            <nav class="navbar">
+                <img src="~/images/icons/feed-icon.svg" alt="">
+                <img src="~/images/icons/communities-icon.svg" alt="">
+                <img src="~/images/icons/explore-icon.svg" alt="">
+                <img src="~/images/icons/teams-icon.svg" alt="">
+            </nav>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <button id="menu-icon" class="menu-icon" onclick="openMenu()"></button>
+                <nav id="listMenu" class="list-menu">
+                    <div class="list">
+                        <a asp-area="" asp-controller="PerfilPage">Perfil</a>
+                        <a asp-area="" asp-controller="Login" asp-action="Logout">Sair</a>
+                    </div>
+                </nav>
+            }
+            else
+            {
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Login"></a>
+                </li>
+            }
+
+                
+
+        </header>
+
+        <div class="container text-center">
+           <div class="row align-items-start">
+              <div class="col">
+                Teste
+              </div>
+           </div>
+        </div>
+
+
+           
+
+          
+                                            
+
+
+
+    <footer>
+        <div>© 2023 - GamingGroove - Privacy</div>
+    </footer>
+
+
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <style>
+        
+    </style>
+
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/Feed.js" asp-append-version="true"></script>
+    <script src="~/js/Menu.js"></script>
+ 
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
