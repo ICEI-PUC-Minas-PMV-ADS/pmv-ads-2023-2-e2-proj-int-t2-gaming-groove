@@ -1,0 +1,309 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background: #110B31;
+}
+
+header {
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 2%;
+}
+
+.logo {
+    height: 60px;
+}
+
+.navbar {
+    width: 480px;
+    height: 48px;
+    border: solid #AFD3FF 2px;
+    border-radius: 30px;
+    box-shadow: #0277F9 0 0 20px 9px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+    margin-top: 40px;
+}
+
+.navbar img {
+    height: 28px;
+}
+
+.menu-icon {
+    height: 60px;
+    width: 60px;
+    background: url(/images/Karthus_17.jpg) center center;
+    background-size: cover;
+    border: solid 2px #E3A5FF;
+    box-shadow: #B100FF 0 0 10px 3px;
+    border-radius: 50%;
+}
+
+.menu-icon:hover {
+    transition: 1s;
+    border: solid 2px #AFD3FF;
+    box-shadow: #0277F9 0 0 10px 3px;
+}
+
+.menu-icon:not(:hover) {
+    transition: 1s;
+    border: solid 2px #E3A5FF;
+    box-shadow: #B100FF 0 0 10px 3px;
+}
+
+.list-menu {
+    position: absolute;
+    top: 90px;
+    right: 85px;
+    height: 70px;
+    width: 150px;
+    background-color: #111738;
+    border: solid 2px #E3A5FF;
+    box-shadow: #B100FF 0 0 10px 3px;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    display: none;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+    padding-top: 4px;
+}
+
+.list a {
+    text-align: center;
+    font-family: Play;
+    width: 100%;
+    border: none;
+    background: none;
+    color: white;
+    letter-spacing: 1px;
+    text-decoration: none;
+}
+
+.list a:hover {
+    transition: 0.4s;
+    color: #00F0FF;
+    background-color: #232B58;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+}
+
+.main-container {
+    width: 70vw;
+    margin-top: 5vh;
+    height: 78vh;
+}
+
+.cover-pic {
+    background: url("/images/backgrounds/space-cover.jpg") center center;
+    background-size: cover;
+    height: 150px;
+    width: 100%;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 12px;
+    font-family: Play;
+}
+
+.cover-first-container, .cover-second-container {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: end;
+    gap: 1vw;   
+    padding-bottom: 8px;
+}
+
+.profile-pic {
+    height: 130px;
+    border-radius: 4px;
+}
+
+.user-add-friend-container {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    gap: 1vw;
+}
+
+.user-border {
+    height: 30px;
+    width: 200px;
+    background-color: #121433;
+    border: solid white 1px;
+    border-radius: 4px;
+    color: #00F0FF;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-friend-button {
+    height: 30px;
+    width: 40px;
+    background-color: #121433;
+    border: solid white 1px;
+    border-radius: 4px;
+    color: #00F0FF;
+}
+
+.edit-profile-button {
+    height: 30px;
+    width: 140px;
+    background-color: #121433;
+    border: solid white 1px;
+    border-radius: 4px;
+    color: #00F0FF;
+}
+
+.report-user-button {
+    height: 30px;
+    width: 40px;
+    background-color: #121433;
+    border: solid white 1px;
+    border-radius: 4px;
+    color: #00F0FF;
+}
+
+.profile-informations {
+    margin-top: 10px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+}
+
+.profile-first-container {
+    height: 80%;
+    width: 77%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.profile-second-container {
+    height: 80%;
+    width: 23%;
+    display: flex;
+}
+
+.communities-column {
+    height: 100%;
+    width: 100%;
+    background-color: #232B58;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: 20px;
+}
+
+h3 {
+    font-family: Gamer;
+    font-size: 32px;
+    color: white;
+}
+
+.communities-list {
+    height: 92%;
+    width: 84%;
+    background-color: #111738;
+    border-radius: 6px;
+}
+
+.inside-first-container {
+    height: 60%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.inside-second-container {
+    height: 40%;
+    background-color: #232B58;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.column {
+    height: 100%;
+    width: 100%;
+    background-color: #232B58;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px 20px 20px;
+}
+
+.column div {
+    height: 100%;
+    width: 100%;
+    background-color: #111738;
+    border-radius: 6px;
+}
+
+footer {
+    color: white;
+}
+
+#textoPublicacao {
+    width: 400px;
+    height: 150px;
+    white-space: pre-line;
+    overflow-y: auto;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.col-md-4 {
+    width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
