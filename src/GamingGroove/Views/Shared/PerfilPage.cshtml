@@ -17,17 +17,17 @@
     <header>      
         <img class="logo" src="~/images/logos/gg-logo.png" alt="">
         <nav class="navbar">
-            <img src="~/images/icons/feed-icon.svg" alt="">
+            <a href="~/FeedPage"><img src="~/images/icons/feed-icon.svg" alt=""></a>
             <img src="~/images/icons/communities-icon.svg" alt="">
             <img src="~/images/icons/explore-icon.svg" alt="">
-            <img src="~/images/icons/teams-icon.svg" alt="">
+            <a href="~/EquipePage"><img src="~/images/icons/teams-icon.svg" alt=""></a>
         </nav>
         @if (User.Identity.IsAuthenticated)
         {
             <button id="menu-icon" class="menu-icon" onclick="openMenu()"></button>
             <nav id="listMenu" class="list-menu">
                 <div class="list">
-                    <a asp-area="" asp-controller="PerfilPage">Perfil</a>
+                    <a href="~/PerfilPage/@User.FindFirst(ClaimTypes.Name)?.Value">Perfil</a>
                     <a asp-area="" asp-controller="Login" asp-action="Logout">Sair</a>
                 </div>
             </nav>
@@ -48,9 +48,9 @@
                     <img class="profile-pic" src="~/images/Karthus_17.jpg" alt="">
                     <div class="user-add-friend-container">
                         <div class="user-border">
-                            <div class="username">@User.Identity.Name</div>
+                            <div class="username">@Model.nomeUsuario</div>
                         </div>
-                        <button class="add-friend-button">F</button>
+                        <button class="add-friend-button"><img class="addUser-icon" src="~/images/icons/add-user.svg" alt=""></button>
                     </div>
                 </div>
                 <div class="cover-second-container">
@@ -64,8 +64,7 @@
                         <div class="column">
                             <h3>BIOGRAFIA</h3>
                             <div class="bio-text">
-                                <h1>Perfil de @Model.nomeUsuario</h1>
-                                <p>ID: @Model.usuarioId</p>
+                                 @Model.biografia
                             </div>
                         </div>
                         <div class="column">
