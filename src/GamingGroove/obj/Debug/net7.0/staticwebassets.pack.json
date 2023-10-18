@@ -53,6 +53,10 @@
       "PackagePath": "staticwebassets\\images\\backgrounds\\space-cover.jpg"
     },
     {
+      "Id": "C:\\Users\\renan\\OneDrive\\Desktop\\PUC\\Projetos\\Projeto-e2\\Projeto-Eixo-2-Gaming-Groove\\src\\GamingGroove\\wwwroot\\images\\icons\\add-user.svg",
+      "PackagePath": "staticwebassets\\images\\icons\\add-user.svg"
+    },
+    {
       "Id": "C:\\Users\\renan\\OneDrive\\Desktop\\PUC\\Projetos\\Projeto-e2\\Projeto-Eixo-2-Gaming-Groove\\src\\GamingGroove\\wwwroot\\images\\icons\\communities-icon.svg",
       "PackagePath": "staticwebassets\\images\\icons\\communities-icon.svg"
     },

@@ -176,6 +176,25 @@ main {
     border: solid white 1px;
     border-radius: 4px;
     color: #00F0FF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-friend-button:hover {
+    transition: 1s;
+    background-color: #00F0FF;
+    .addUser-icon {
+        filter: brightness(0);
+    }
+}
+
+.add-friend-button:not(:hover) {
+    transition: 1s;
+}
+
+.addUser-icon {
+    height: 16px;
 }
 
 .edit-profile-button {
@@ -282,5 +301,8 @@ h3 {
 }
 
 .bio-text {
+    font-size: 14px;
+    padding : 25px;
+    text-align: justify;
     color: white;
 }

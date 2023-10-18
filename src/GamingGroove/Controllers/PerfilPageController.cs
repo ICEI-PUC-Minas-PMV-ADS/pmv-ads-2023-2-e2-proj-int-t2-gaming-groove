@@ -5,8 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using GamingGroove.Data;
-using GamingGroove.Models; // Importe o namespace correto para acessar a classe UsuarioModel
-
+using GamingGroove.Models;
 namespace GamingGroove
 {
     public class PerfilPageController : Controller
@@ -18,15 +17,21 @@ namespace GamingGroove
             _contexto = contexto;
         }
 
-        public IActionResult Index(int id)
+        public IActionResult Index(string user)
         {
-            var usuario = _contexto.Usuarios.FirstOrDefault(u => u.usuarioId == id);
+            var usuario = _contexto.Usuarios.FirstOrDefault(u => u.nomeUsuario == user);
             if (usuario == null)
             {
                 return NotFound();
             }
 
             return View(usuario);
+        }
+
+        private string ObterBiografiaDoUsuario(int user)
+        {
+            var usuario = _contexto.Usuarios.FirstOrDefault(u => u.usuarioId == user);
+            return usuario != null ? usuario.biografia : string.Empty;
         }
     }
 }
