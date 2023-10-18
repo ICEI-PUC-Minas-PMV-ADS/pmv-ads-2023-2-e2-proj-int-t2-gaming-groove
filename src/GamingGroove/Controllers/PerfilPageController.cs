@@ -11,9 +11,22 @@ namespace GamingGroove
 {
     public class PerfilPageController : Controller
     {
-        public IActionResult Index()
+        private readonly GamingGrooveDbContext _contexto;
+
+        public PerfilPageController(GamingGrooveDbContext contexto)
         {
-            return View();
+            _contexto = contexto;
+        }
+
+        public IActionResult Index(int id)
+        {
+            var usuario = _contexto.Usuarios.FirstOrDefault(u => u.usuarioId == id);
+            if (usuario == null)
+            {
+                return NotFound();
+            }
+
+            return View(usuario);
         }
     }
 }
