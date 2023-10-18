@@ -39,7 +39,9 @@ namespace GamingGroove.Models
         public byte[]? fotosGaleria { get; set; }
 
         [Display(Name = "Jogos Favoritos")]
-        public JogosEnum? jogosFavoritos { get; set; }    
+        public JogosEnum? primeiroJogo { get; set; }    
+        public JogosEnum? segundoJogo { get; set; }
+        public JogosEnum? terceiroJogo { get; set; }
 
         [Display(Name = "Biografia")]
         public string? biografia { get; set; }    

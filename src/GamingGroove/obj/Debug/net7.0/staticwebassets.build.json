@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "JL5Be8xyiOCzmFVydglPn7aeMrfrOLTgsPc36cwPRQY=",
+  "Hash": "JoaKQBAgJND03/3rLpDJkDwD/nPl2K0WMgTG0kw4InI=",
   "Source": "GamingGroove",
   "BasePath": "_content/GamingGroove",
   "Mode": "Default",
@@ -389,6 +389,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\icons\\homepage\\user.svg"
+    },
+    {
+      "Identity": "C:\\Users\\renan\\OneDrive\\Desktop\\PUC\\Projetos\\Projeto-e2\\Projeto-Eixo-2-Gaming-Groove\\src\\GamingGroove\\wwwroot\\images\\icons\\jogos\\LeagueOfLegends.svg",
+      "SourceId": "GamingGroove",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\renan\\OneDrive\\Desktop\\PUC\\Projetos\\Projeto-e2\\Projeto-Eixo-2-Gaming-Groove\\src\\GamingGroove\\wwwroot\\",
+      "BasePath": "_content/GamingGroove",
+      "RelativePath": "images/icons/jogos/LeagueOfLegends.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\icons\\jogos\\LeagueOfLegends.svg"
     },
     {
       "Identity": "C:\\Users\\renan\\OneDrive\\Desktop\\PUC\\Projetos\\Projeto-e2\\Projeto-Eixo-2-Gaming-Groove\\src\\GamingGroove\\wwwroot\\images\\icons\\teams-icon.svg",

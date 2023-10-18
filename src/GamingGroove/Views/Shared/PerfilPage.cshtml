@@ -63,30 +63,53 @@
                     <div class="inside-first-container">
                         <div class="column">
                             <h3>BIOGRAFIA</h3>
-                            <div class="bio-text">
-                                 @Model.biografia
+                            <div class="inside-column">
+                                <div class="bio-text">
+                                    @Model.biografia
+                                </div>
                             </div>
                         </div>
                         <div class="column">
                             <h3>JOGOS FAvORITOS</h3>
-                            <div class="favorite-games-list"></div>
+                            <div class="inside-column">
+                                <div class="favorite-games-container">
+                                    <div class="favorite-games-items">
+                                        <div class="gameIcon-container">
+                                            <img src="~/images/icons/jogos/@(Model.primeiroJogo).svg" alt="">
+                                        </div>
+                                        <div>@EnumHelper.GetDisplayName(Model.primeiroJogo)</div>                                      
+                                    </div>
+                                    <div class="favorite-games-items">
+                                        <div class="gameIcon-container">
+                                            <img src="~/images/icons/jogos/@(Model.segundoJogo).svg" alt="">
+                                        </div>
+                                        <div>@EnumHelper.GetDisplayName(Model.segundoJogo)</div>                                               
+                                    </div>
+                                    <div class="favorite-games-items">
+                                        <div class="gameIcon-container">
+                                            <img src="~/images/icons/jogos/@(Model.terceiroJogo).svg" alt="">
+                                        </div>
+                                        <div>@EnumHelper.GetDisplayName(Model.terceiroJogo)</div>                                              
+                                    </div>                                        
+                                </div>                                                                  
+                            </div>
                         </div>
                         <div class="column">
                             <h3>EQUIPES</h3>
-                            <div class="teams-list"></div>
+                            <div class="inside-column"></div>
                         </div>
                     </div>
                     <div class="inside-second-container">
                         <div class="column">
                             <h3>GALERIA</h3>
-                            <div class="galery-list"></div>
+                            <div class="inside-column"></div>
                         </div>                        
                     </div>            
                 </div>
                 <div class="profile-second-container">
                     <div class="column">
                         <h3>COMUNIDADES</h3>
-                        <div class="communities-list"></div>
+                        <div class="inside-column"></div>
                     </div>
                 </div>     
             </div>
@@ -103,6 +126,7 @@
     
 
     <script src="~/js/Menu.js"></script>
+    <script src="~/js/JogosFavoritos.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
