@@ -1,59 +1,8 @@
 ﻿@model IEnumerable<GamingGroove.Models.EquipeModel>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Equipe";
+    Layout = "_Layout1";
 }
 
-<h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.nomeEquipe)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.iconeEquipe)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.descricaoEquipe)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.jogoEquipe)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.dataCriacaoEquipe)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.nomeEquipe)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.iconeEquipe)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.descricaoEquipe)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.jogoEquipe)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.dataCriacaoEquipe)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.equipeId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.equipeId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.equipeId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>

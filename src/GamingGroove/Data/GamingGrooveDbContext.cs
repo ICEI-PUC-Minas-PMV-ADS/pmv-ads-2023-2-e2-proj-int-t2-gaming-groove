@@ -21,6 +21,7 @@ namespace GamingGroove.Data
         public DbSet<PublicacaoModel> Publicacoes { get; set; }
         public DbSet<UsuarioModel> Usuarios { get; set; }
         
+        
         public DbSet<UsuarioComunidadeModel> UsuariosComunidades { get; set; }
         public DbSet<UsuarioEquipeModel> UsuariosEquipes { get; set; }
 

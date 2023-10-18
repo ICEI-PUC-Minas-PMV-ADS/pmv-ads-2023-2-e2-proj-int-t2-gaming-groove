@@ -1,0 +1,151 @@
+﻿@model IEnumerable<GamingGroove.Models.EquipeModel>
+
+@using System.Security.Claims
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feed</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css" />
+    <link rel="stylesheet" href="~/css/EquipePage.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/fonts.css" asp-append-version="true" />
+</head>
+<body>
+
+    <header>
+        <img class="logo" src="~/images/logos/gg-logo.png" alt="">
+        <nav class="navbar">
+            <img src="~/images/icons/feed-icon.svg" alt="">
+            <img src="~/images/icons/communities-icon.svg" alt="">
+            <img src="~/images/icons/explore-icon.svg" alt="">
+            <img src="~/images/icons/teams-icon.svg" alt="">
+        </nav>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <button id="menu-icon" class="menu-icon" onclick="openMenu()"></button>
+            <nav id="listMenu" class="list-menu">
+                <div class="list">
+                    <a asp-area="" asp-controller="PerfilPage">Perfil</a>
+                    <a asp-area="" asp-controller="Login" asp-action="Logout">Sair</a>
+                </div>
+            </nav>
+        }
+        else
+        {
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Login"></a>
+            </li>
+        }
+
+
+
+    </header>
+
+    <div class="container-text-center">
+        <div class="container">
+            <div class="row align-items-start">
+                <div class="col">
+                    <h2>Equipes</h2>
+                    <ul>
+                        @if (Model != null && Model.Any())
+                        {
+                            foreach (var Equipe in Model)
+                            {
+                                <li>@Equipe.nomeEquipe</li>
+                            }
+                        }
+                        else
+                        {
+                            <li>Nenhuma equipe encontrada.</li>
+                        }
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.nomeEquipe)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.iconeEquipe)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.descricaoEquipe)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.jogoEquipe)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.dataCriacaoEquipe)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nomeEquipe)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.iconeEquipe)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.descricaoEquipe)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.jogoEquipe)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.dataCriacaoEquipe)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.equipeId">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.equipeId">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.equipeId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+    <footer>
+        <div>© 2023 - GamingGroove - Privacy</div>
+    </footer>
+
+
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <style>
+
+    </style>
+
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/Feed.js" asp-append-version="true"></script>
+    <script src="~/js/Menu.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

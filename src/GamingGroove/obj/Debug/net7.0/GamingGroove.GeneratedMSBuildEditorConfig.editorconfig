@@ -136,10 +136,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVudW5jaWFcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/source/repos/pmv-ads-2023-2-e2-proj-int-t2-rede-social/src/GamingGroove/Views/EquipePage/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXF1aXBlUGFnZVxJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/User/source/repos/pmv-ads-2023-2-e2-proj-int-t2-rede-social/src/GamingGroove/Views/Equipe/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXF1aXBlXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -208,10 +204,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHVibGljYWNhb1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/source/repos/pmv-ads-2023-2-e2-proj-int-t2-rede-social/src/GamingGroove/Views/Shared/EquipePage.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVxdWlwZVBhZ2UuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/User/source/repos/pmv-ads-2023-2-e2-proj-int-t2-rede-social/src/GamingGroove/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -230,6 +222,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/User/source/repos/pmv-ads-2023-2-e2-proj-int-t2-rede-social/src/GamingGroove/Views/Shared/PerfilPage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBlcmZpbFBhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/User/source/repos/pmv-ads-2023-2-e2-proj-int-t2-rede-social/src/GamingGroove/Views/Shared/_Layout1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQxLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/User/source/repos/pmv-ads-2023-2-e2-proj-int-t2-rede-social/src/GamingGroove/Views/Shared/_ValidationScriptsPartial.cshtml]
