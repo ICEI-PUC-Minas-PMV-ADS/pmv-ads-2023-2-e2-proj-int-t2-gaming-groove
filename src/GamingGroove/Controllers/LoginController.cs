@@ -62,10 +62,8 @@ namespace GamingGroove
                 };
                 
                 await HttpContext.SignInAsync(principal, props);
-
-                var perfilUrl = $"/PerfilPage/{dados.usuarioId}";
                 
-                return Redirect(perfilUrl);
+                return RedirectToAction("Index","FeedPage");
 
             }
             else 

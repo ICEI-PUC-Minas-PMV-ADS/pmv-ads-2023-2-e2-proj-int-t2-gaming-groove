@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "EI8QxtnWh04mW/xNWjaQ4/R3LFk4MI1q1vMuYeEXvWc=",
+  "Hash": "JL5Be8xyiOCzmFVydglPn7aeMrfrOLTgsPc36cwPRQY=",
   "Source": "GamingGroove",
   "BasePath": "_content/GamingGroove",
   "Mode": "Default",
@@ -236,6 +236,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\backgrounds\\space-cover.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\renan\\OneDrive\\Desktop\\PUC\\Projetos\\Projeto-e2\\Projeto-Eixo-2-Gaming-Groove\\src\\GamingGroove\\wwwroot\\images\\icons\\add-user.svg",
+      "SourceId": "GamingGroove",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\renan\\OneDrive\\Desktop\\PUC\\Projetos\\Projeto-e2\\Projeto-Eixo-2-Gaming-Groove\\src\\GamingGroove\\wwwroot\\",
+      "BasePath": "_content/GamingGroove",
+      "RelativePath": "images/icons/add-user.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\icons\\add-user.svg"
     },
     {
       "Identity": "C:\\Users\\renan\\OneDrive\\Desktop\\PUC\\Projetos\\Projeto-e2\\Projeto-Eixo-2-Gaming-Groove\\src\\GamingGroove\\wwwroot\\images\\icons\\communities-icon.svg",

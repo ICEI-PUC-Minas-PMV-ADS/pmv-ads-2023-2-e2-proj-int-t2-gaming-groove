@@ -17,17 +17,17 @@
     <header>      
         <img class="logo" src="~/images/logos/gg-logo.png" alt="">
         <nav class="navbar">
-            <img src="~/images/icons/feed-icon.svg" alt="">
+            <a href="~/FeedPage"><img src="~/images/icons/feed-icon.svg" alt=""></a>
             <img src="~/images/icons/communities-icon.svg" alt="">
             <img src="~/images/icons/explore-icon.svg" alt="">
-            <img src="~/images/icons/teams-icon.svg" alt="">
+            <a href="~/EquipePage"><img src="~/images/icons/teams-icon.svg" alt=""></a>
         </nav>
         @if (User.Identity.IsAuthenticated)
         {
             <button id="menu-icon" class="menu-icon" onclick="openMenu()"></button>
             <nav id="listMenu" class="list-menu">
                 <div class="list">
-                    <a asp-area="" asp-controller="PerfilPage">Perfil</a>
+                    <a href="~/PerfilPage/@User.FindFirst(ClaimTypes.Name)?.Value">Perfil</a>
                     <a asp-area="" asp-controller="Login" asp-action="Logout">Sair</a>
                 </div>
             </nav>

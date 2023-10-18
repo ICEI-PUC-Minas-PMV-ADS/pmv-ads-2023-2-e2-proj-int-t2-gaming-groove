@@ -17,9 +17,9 @@ namespace GamingGroove
             _contexto = contexto;
         }
 
-        public IActionResult Index(int id)
+        public IActionResult Index(string user)
         {
-            var usuario = _contexto.Usuarios.FirstOrDefault(u => u.usuarioId == id);
+            var usuario = _contexto.Usuarios.FirstOrDefault(u => u.nomeUsuario == user);
             if (usuario == null)
             {
                 return NotFound();
@@ -28,9 +28,9 @@ namespace GamingGroove
             return View(usuario);
         }
 
-        private string ObterBiografiaDoUsuario(int id)
+        private string ObterBiografiaDoUsuario(int user)
         {
-            var usuario = _contexto.Usuarios.FirstOrDefault(u => u.usuarioId == id);
+            var usuario = _contexto.Usuarios.FirstOrDefault(u => u.usuarioId == user);
             return usuario != null ? usuario.biografia : string.Empty;
         }
     }
