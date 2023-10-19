@@ -56,7 +56,7 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 |RF-005| A plataforma deve conter uma ferramenta para adicionar, remover ou bloquear usuários.| ALTA | 
 |RF-006| A plataforma deve conter uma ferramenta de pesquisa de usuários ou comunidades. | ALTA | 
 |RF-007| A plataforma deve conter uma ferramenta para denunciar usuários, comunidades e postagens. | MÉDIA | 
-|RF-008| A plataforma deve permitir gerenciamento de perfil. | MÉDIA | 
+|RF-008| A plataforma deve permitir que cada usuário possua uma página de perfil editável. | MÉDIA | 
 
 ### Requisitos não Funcionais
 
