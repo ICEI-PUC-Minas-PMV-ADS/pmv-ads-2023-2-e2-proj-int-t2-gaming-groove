@@ -30,7 +30,7 @@
             <button id="menu-icon" class="menu-icon" onclick="openMenu()"></button>
             <nav id="listMenu" class="list-menu">
                 <div class="list">
-                    <a asp-area="" asp-controller="PerfilPage">Perfil</a>
+                    <a href="~/PerfilPage/@User.FindFirst(ClaimTypes.Name)?.Value">Perfil</a>
                     <a asp-area="" asp-controller="Login" asp-action="Logout">Sair</a>
                 </div>
             </nav>
