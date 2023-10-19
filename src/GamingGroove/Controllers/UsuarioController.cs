@@ -56,11 +56,20 @@ namespace GamingGroove.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("usuarioId,nomeUsuario,nomeCompleto,dataNascimento,email,senha,iconePerfil,capaPerfil,fotosGaleria,jogosFavoritos,biografia,registrationDate,tipoUsuario")] UsuarioModel usuarioModel)
+        public async Task<IActionResult> Create([Bind("usuarioId,nomeUsuario,nomeCompleto,dataNascimento,email,senha,iconePerfil,capaPerfil,fotosGaleria,primeiroJogo,segundoJogo,terceiroJogo,biografia,registrationDate,tipoUsuario")] UsuarioModel usuarioModel)
         {
+            
             if (ModelState.IsValid)
             {
                 usuarioModel.senha = BCrypt.Net.BCrypt.HashPassword(usuarioModel.senha);
+                
+                if (usuarioModel.primeiroJogo == usuarioModel.segundoJogo || 
+                    usuarioModel.primeiroJogo == usuarioModel.terceiroJogo || 
+                    usuarioModel.segundoJogo == usuarioModel.terceiroJogo)
+                {
+                    ModelState.AddModelError("", "Escolha três jogos diferentes.");
+                    return View(usuarioModel);
+                }
                 _context.Add(usuarioModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index", "HomePage");
@@ -89,7 +98,7 @@ namespace GamingGroove.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("usuarioId,nomeUsuario,nomeCompleto,dataNascimento,email,senha,iconePerfil,capaPerfil,fotosGaleria,jogosFavoritos,biografia,registrationDate,tipoUsuario")] UsuarioModel usuarioModel)
+        public async Task<IActionResult> Edit(int id, [Bind("usuarioId,nomeUsuario,nomeCompleto,dataNascimento,email,senha,iconePerfil,capaPerfil,fotosGaleria,primeiroJogo,segundoJogo,terceiroJogo,biografia,registrationDate,tipoUsuario")] UsuarioModel usuarioModel)
         {
             if (id != usuarioModel.usuarioId)
             {
