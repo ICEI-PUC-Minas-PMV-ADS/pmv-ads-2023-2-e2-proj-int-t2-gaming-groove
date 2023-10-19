@@ -34,9 +34,9 @@ header {
     margin-top: 40px;
 }
 
-.navbar img {
-    height: 28px;
-}
+    .navbar img {
+        height: 28px;
+    }
 
 .menu-icon {
     height: 60px;
@@ -48,17 +48,17 @@ header {
     border-radius: 50%;
 }
 
-.menu-icon:hover {
-    transition: 1s;
-    border: solid 2px #AFD3FF;
-    box-shadow: #0277F9 0 0 10px 3px;
-}
+    .menu-icon:hover {
+        transition: 1s;
+        border: solid 2px #AFD3FF;
+        box-shadow: #0277F9 0 0 10px 3px;
+    }
 
-.menu-icon:not(:hover) {
-    transition: 1s;
-    border: solid 2px #E3A5FF;
-    box-shadow: #B100FF 0 0 10px 3px;
-}
+    .menu-icon:not(:hover) {
+        transition: 1s;
+        border: solid 2px #E3A5FF;
+        box-shadow: #B100FF 0 0 10px 3px;
+    }
 
 .list-menu {
     position: absolute;
@@ -91,22 +91,22 @@ header {
     padding-top: 4px;
 }
 
-.list a {
-    text-align: center;
-    font-family: Play;
-    width: 100%;
-    border: none;
-    background: none;
-    color: white;
-    letter-spacing: 1px;
-    text-decoration: none;
-}
+    .list a {
+        text-align: center;
+        font-family: Play;
+        width: 100%;
+        border: none;
+        background: none;
+        color: white;
+        letter-spacing: 1px;
+        text-decoration: none;
+    }
 
-.list a:hover {
-    transition: 0.4s;
-    color: #00F0FF;
-    background-color: #232B58;
-}
+        .list a:hover {
+            transition: 0.4s;
+            color: #00F0FF;
+            background-color: #232B58;
+        }
 
 main {
     display: flex;
@@ -139,7 +139,7 @@ main {
     flex-direction: row;
     justify-content: space-around;
     align-items: end;
-    gap: 1vw;   
+    gap: 1vw;
     padding-bottom: 8px;
 }
 
@@ -274,12 +274,12 @@ h3 {
     padding: 10px 20px 20px 20px;
 }
 
-.column div {
-    height: 100%;
-    width: 100%;
-    background-color: #111738;
-    border-radius: 6px;
-}
+    .column div {
+        height: 100%;
+        width: 100%;
+        background-color: #111738;
+        border-radius: 6px;
+    }
 
 footer {
     color: white;
@@ -307,3 +307,40 @@ footer {
     text-align: center;
 }
 
+.container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px,20px,20px,20px;
+    padding: 10px;
+}
+
+.colunaEsquerda {
+    display: flex;
+    height: 70vh;
+    width: 200px;
+    border: 1px solid white;
+    color: white;
+}
+
+.colunaCentral {
+    display: flex;
+    height: 70vh;
+    width: 500px;
+    border: 1px solid white;
+    justify-content: center;
+    margin: 10px;
+    padding: 5px;
+}
+
+.colunaDireita {
+    display: flex;
+    height: 70vh;
+    width: 200px;
+    border: 1px solid white;
+    color: white;
+}
+
+#botaoPublicar {
+    width: 100px;
+    height: 50px;
+}
