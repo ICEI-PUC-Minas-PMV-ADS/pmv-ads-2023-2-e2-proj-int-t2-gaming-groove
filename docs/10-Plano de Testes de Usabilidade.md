@@ -19,18 +19,18 @@ Além disso, serão disponibilizadas 5 perguntas a serem respondidas de forma di
 
 |Nº  |Parâmetro avaliado                                             |
 |----|---------------------------------------------------------------|
-|001 |Cadastrar                                                    |
-|002 |Fazer login                                                  |
-|003 |Editar perfil                                                |
-|004 |Adicionar e remover amigos                                   |
-|005 |Utilizar o sistema de chat                                   | 
-|006 |Criar uma nova comunidade                                    |
-|007 |Ingressar comunidade e interagir com publicações             |
-|008 |Criar e ingressar equipes                                    |
-|009 |Gerenciar membros dentro de uma equipe                       |
-|010 |Bloquear usuários                                             |
-|011 |Navegar no menu "Explorar" e utilizar sua ferramenta de busca |
-|012 |Denunciar usuários, comunidades e publicações                 |
+|001 |Realizar cadastro                                              |
+|002 |Realizar login                                                 |
+|003 |Editar perfil                                                  |
+|004 |Adicionar e remover amigos                                     |
+|005 |Utilizar o sistema de chat                                     | 
+|006 |Criar uma nova comunidade                                      |
+|007 |Ingressar comunidade e interagir com publicações               |
+|008 |Criar e ingressar equipes                                      |
+|009 |Gerenciar membros dentro de uma equipe                         |
+|010 |Bloquear usuários                                              |
+|011 |Navegar no menu "Explorar" e utilizar sua ferramenta de busca  |
+|012 |Denunciar usuários, comunidades e publicações                  |
 
 <br>
 
