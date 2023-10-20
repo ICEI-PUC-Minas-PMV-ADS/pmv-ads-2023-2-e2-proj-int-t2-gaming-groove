@@ -2,7 +2,7 @@
 
 Para o Plano de Testes de Usabilidade foi decidido aplicar um questionário com espaço para usuários descreverem sua experiência na aplicação. Os dados pessoais do usuário são essenciais para que seja possível compreender e associar o perfil de usuário com sua visão da aplicação, assim, um cabeçalho solicitando "Nome", "Idade", "Nível de familiaridade com tecnologia" e "Grau de interesse por jogos" deverá ser preenchido.
 
-Foram decididos 11 parâmetros da aplicação a serem avaliados, todos com as seguintes possibilidades de avaliação:
+Foram decididos 12 parâmetros da aplicação a serem avaliados, todos com as seguintes possibilidades de avaliação:
 
 `Muito Fácil` <br>
 `Fácil` <br>
@@ -17,19 +17,20 @@ Além disso, serão disponibilizadas 5 perguntas a serem respondidas de forma di
 ### Os parâmetros escolhidos são:
 <br>
 
-|Nº|Parâmetro avaliado                                           |
-|--|-------------------------------------------------------------|
-|1 |Cadastrar e fazer login                                      |
-|2 |Editar perfil                                                |
-|3 |Adicionar e remover amigos                                   |
-|4 |Utilizar o sistema de chat                                   | 
-|5 |Criar uma nova comunidade                                    |
-|6 |Ingressar comunidade e interagir com publicações             |
-|7 |Criar e ingressar equipes                                    |
-|8 |Gerenciar membros dentro de uma equipe                       |
-|9 |Bloquear usuários                                            |
-|10|Navegar no menu "Explorar" e utilizar sua ferramenta de busca|
-|11|Denunciar usuários, comunidades e publicações                |
+|Nº  |Parâmetro avaliado                                             |
+|----|---------------------------------------------------------------|
+|001 |Cadastrar                                                    |
+|002 |Fazer login                                                  |
+|003 |Editar perfil                                                |
+|004 |Adicionar e remover amigos                                   |
+|005 |Utilizar o sistema de chat                                   | 
+|006 |Criar uma nova comunidade                                    |
+|007 |Ingressar comunidade e interagir com publicações             |
+|008 |Criar e ingressar equipes                                    |
+|009 |Gerenciar membros dentro de uma equipe                       |
+|010 |Bloquear usuários                                             |
+|011 |Navegar no menu "Explorar" e utilizar sua ferramenta de busca |
+|012 |Denunciar usuários, comunidades e publicações                 |
 
 <br>
 
