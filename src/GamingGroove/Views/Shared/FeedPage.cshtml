@@ -40,54 +40,54 @@
             }
         </header>
 
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                Launch static backdrop modal
-            </button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            Launch static backdrop modal
+        </button>
 
-           <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Publicação</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Publicação</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
 
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <form asp-controller="Publicacao" asp-action="Create">
-                                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <form asp-controller="Publicacao" asp-action="Create">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    
+                                    <div class="form-group">
+                                        <label asp-for="comunidadeId" class="control-label">Comunidade</label>
+                                        <select asp-for="comunidadeId" class="form-control" asp-items="ViewBag.comunidadeId"></select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="formFileMultiple" class="form-label">Arquivos</label>
+                                        <input class="form-control" type="file" id="formFileMultiple" multiple>
+                                    </div>
+                                    <div class="form-group">
                                         
-                                        <div class="form-group">
-                                            <label asp-for="comunidadeId" class="control-label">Comunidade</label>
-                                            <select asp-for="comunidadeId" class="form-control" asp-items="ViewBag.comunidadeId"></select>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="formFileMultiple" class="form-label">Arquivos</label>
-                                            <input class="form-control" type="file" id="formFileMultiple" multiple>
-                                        </div>
-                                        <div class="form-group">
-                                            
-                                            <label asp-for="textoPublicacao" class="control-label" >Texto</label>
-                                            <input asp-for="textoPublicacao" class="form-control" placeholder="Escreva Aqui" maxlength="100" />
-                                            <span asp-validation-for="textoPublicacao" class="text-danger"></span>
-                                            
-                                        </div>
+                                        <label asp-for="textoPublicacao" class="control-label" >Texto</label>
+                                        <input asp-for="textoPublicacao" class="form-control" placeholder="Escreva Aqui" maxlength="100" />
+                                        <span asp-validation-for="textoPublicacao" class="text-danger"></span>
                                         
-                                        <div class="form-group">
-                                            <input type="submit" value="Create" class="btn btn-primary" />
-                                        </div>
-                                    </form>
-                                </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <input type="submit" value="Create" class="btn btn-primary" />
+                                    </div>
+                                </form>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Understood</button>
-                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Understood</button>
                     </div>
                 </div>
             </div>
+        </div>
 
 
 

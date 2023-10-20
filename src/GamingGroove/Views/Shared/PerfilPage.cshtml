@@ -73,24 +73,27 @@
                             <h3>JOGOS FAvORITOS</h3>
                             <div class="inside-column">
                                 <div class="favorite-games-container">
-                                    <div class="favorite-games-items">
-                                        <div class="gameIcon-container">
-                                            <img src="~/images/icons/jogos/@(Model.primeiroJogo).svg" alt="">
+                                    @if (Model.primeiroJogo != null && Model.segundoJogo != null && Model.terceiroJogo != null)
+                                    {
+                                        <div class="favorite-games-items">
+                                            <div class="gameIcon-container">
+                                                <img src="~/images/icons/jogos/@(Model.primeiroJogo).svg" alt="">
+                                            </div>
+                                            <div>@EnumHelper.GetDisplayName(Model.primeiroJogo)</div>                                      
                                         </div>
-                                        <div>@EnumHelper.GetDisplayName(Model.primeiroJogo)</div>                                      
-                                    </div>
-                                    <div class="favorite-games-items">
-                                        <div class="gameIcon-container">
-                                            <img src="~/images/icons/jogos/@(Model.segundoJogo).svg" alt="">
+                                        <div class="favorite-games-items">
+                                            <div class="gameIcon-container">
+                                                <img src="~/images/icons/jogos/@(Model.segundoJogo).svg" alt="">
+                                            </div>
+                                            <div>@EnumHelper.GetDisplayName(Model.segundoJogo)</div>                                               
                                         </div>
-                                        <div>@EnumHelper.GetDisplayName(Model.segundoJogo)</div>                                               
-                                    </div>
-                                    <div class="favorite-games-items">
-                                        <div class="gameIcon-container">
-                                            <img src="~/images/icons/jogos/@(Model.terceiroJogo).svg" alt="">
+                                        <div class="favorite-games-items">
+                                            <div class="gameIcon-container">
+                                                <img src="~/images/icons/jogos/@(Model.terceiroJogo).svg" alt="">
+                                            </div>
+                                            <div>@EnumHelper.GetDisplayName(Model.terceiroJogo)</div>                                              
                                         </div>
-                                        <div>@EnumHelper.GetDisplayName(Model.terceiroJogo)</div>                                              
-                                    </div>                                        
+                                    }                                     
                                 </div>                                                                  
                             </div>
                         </div>
