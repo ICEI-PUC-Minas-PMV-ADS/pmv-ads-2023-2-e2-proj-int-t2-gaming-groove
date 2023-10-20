@@ -63,12 +63,15 @@ namespace GamingGroove.Controllers
             {
                 usuarioModel.senha = BCrypt.Net.BCrypt.HashPassword(usuarioModel.senha);
                 
-                if (usuarioModel.primeiroJogo == usuarioModel.segundoJogo || 
-                    usuarioModel.primeiroJogo == usuarioModel.terceiroJogo || 
-                    usuarioModel.segundoJogo == usuarioModel.terceiroJogo)
+                if (usuarioModel.primeiroJogo != null && usuarioModel.segundoJogo != null && usuarioModel.terceiroJogo != null)
                 {
-                    ModelState.AddModelError("", "Escolha três jogos diferentes.");
-                    return View(usuarioModel);
+                    if (usuarioModel.primeiroJogo == usuarioModel.segundoJogo || 
+                        usuarioModel.primeiroJogo == usuarioModel.terceiroJogo || 
+                        usuarioModel.segundoJogo == usuarioModel.terceiroJogo)
+                    {
+                        ModelState.AddModelError("", "Escolha três jogos diferentes.");
+                        return View(usuarioModel);
+                    }
                 }
                 _context.Add(usuarioModel);
                 await _context.SaveChangesAsync();
