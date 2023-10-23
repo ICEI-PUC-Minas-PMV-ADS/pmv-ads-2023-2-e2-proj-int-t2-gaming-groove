@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using GamingGroove.Data;
 using GamingGroove.Models;
+using GamingGroove.Views.PerfilPage;
 namespace GamingGroove
 {
     public class PerfilPageController : Controller
@@ -19,13 +20,14 @@ namespace GamingGroove
 
         public IActionResult Index(string user)
         {
-            var usuario = _contexto.Usuarios.FirstOrDefault(u => u.nomeUsuario == user);
-            if (usuario == null)
+            var viewModel = new PerfilPageViewModel(_contexto);
+            viewModel.OnGet(user);
+            if (viewModel == null)
             {
                 return NotFound();
             }
 
-            return View(usuario);
+            return View(viewModel);
         }
 
         private string ObterBiografiaDoUsuario(int user)
