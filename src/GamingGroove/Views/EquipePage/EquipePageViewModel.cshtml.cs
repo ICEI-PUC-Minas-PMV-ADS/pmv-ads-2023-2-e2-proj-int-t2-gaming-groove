@@ -16,24 +16,18 @@ namespace GamingGroove.Views.EquipePage
         }
 
         public IEnumerable<EquipeModel> getEquipes { get; set; }
-
         public UsuarioModel getUsuario { get; set; }
         public IEnumerable<UsuarioEquipeModel> getEquipesUsuario { get; set; }
+        public List<string> NomeDasEquipes { get; set; }
 
-        public void Teste(string user)
+        public void GetEquipesUsuario(int usuario)
         {
-            var IdUsuario = int.Parse(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
-
-            var equipesUsuario = _cc.UsuariosEquipes
-                .Where(ue => ue.usuarioId == IdUsuario)
+            getEquipesUsuario = _cc.UsuariosEquipes
+                .Where(ue => ue.usuarioId == usuario)
                 .Include(ue => ue.equipe)
-                .ToList();
-            
-        }
+                .ToList();        
 
-        internal void OnGet(string user)
-        {
-            throw new NotImplementedException();
+            NomeDasEquipes = getEquipesUsuario.Select(ue => ue.equipe.nomeEquipe).ToList();
         }
     }
 }
