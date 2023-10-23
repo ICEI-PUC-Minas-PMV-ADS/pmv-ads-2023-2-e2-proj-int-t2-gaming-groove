@@ -46,19 +46,13 @@
         <div class="container text-center">
            <div class="row align-items-start">
               <div class="col">
-                @foreach (var item in Model.getEquipes)
+                @foreach (var item in Model.getEquipesUsuario)
                 {
-                    <td>@item.equipeId</td>
+                    <td>@item.equipe.nomeEquipe</td>
                 }
             </div>
            </div>
         </div>
-
-
-           
-
-          
-                                            
 
 
 

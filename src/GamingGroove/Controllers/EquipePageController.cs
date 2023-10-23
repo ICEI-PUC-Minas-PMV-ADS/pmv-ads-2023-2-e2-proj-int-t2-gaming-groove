@@ -1,6 +1,9 @@
-﻿using GamingGroove.Data;
+﻿using System.Security.Claims;
+using GamingGroove.Data;
 using GamingGroove.Views.EquipePage;
+using GamingGroove.Views.PerfilPage;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace GamingGroove.Controllers
 {
@@ -12,11 +15,18 @@ namespace GamingGroove.Controllers
         {
             _cc = cc;
         }
-        public IActionResult Index(string user)
+        public IActionResult Index()
         {
             var viewModel = new EquipePageViewModel(_cc);
-            viewModel.Teste(user);
+            int usuario = int.Parse(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            viewModel.GetEquipesUsuario(usuario);
+            if (viewModel == null)
+            {
+                return NotFound();
+            }
+
             return View(viewModel);
         }
     }
+
 }
