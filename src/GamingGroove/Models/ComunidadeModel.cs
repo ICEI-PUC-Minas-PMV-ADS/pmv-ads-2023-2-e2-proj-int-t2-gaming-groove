@@ -34,6 +34,7 @@ namespace GamingGroove.Models
 
         public ICollection<PublicacaoModel>? ComunidadePublicacao { get; set; }
 
+
         public ICollection<UsuarioComunidadeModel>? usuarioComunidade { get; set; }
     }
 }

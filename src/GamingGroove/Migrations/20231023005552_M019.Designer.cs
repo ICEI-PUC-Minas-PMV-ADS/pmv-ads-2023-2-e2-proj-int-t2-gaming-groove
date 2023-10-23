@@ -3,6 +3,7 @@ using System;
 using GamingGroove.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GamingGroove.Migrations
 {
     [DbContext(typeof(GamingGrooveDbContext))]
-    partial class GamingGrooveDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231023005552_M019")]
+    partial class M019
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -267,56 +270,6 @@ namespace GamingGroove.Migrations
                     b.ToTable("Publicacoes");
                 });
 
-            modelBuilder.Entity("GamingGroove.Models.UsuarioComunidadeModel", b =>
-                {
-                    b.Property<int>("usuarioId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("comunidadeId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("cargoComunidade")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("dataVinculoComunidade")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<int>("usuarioComunidadeId")
-                        .HasColumnType("int");
-
-                    b.HasKey("usuarioId", "comunidadeId");
-
-                    b.HasIndex("comunidadeId");
-
-                    b.ToTable("UsuariosComunidades");
-                });
-
-            modelBuilder.Entity("GamingGroove.Models.UsuarioEquipeModel", b =>
-                {
-                    b.Property<int>("usuarioId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("equipeId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("cargoEquipe")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("dataVinculoEquipe")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<int>("usuarioEquipeId")
-                        .HasColumnType("int");
-
-                    b.HasKey("usuarioId", "equipeId");
-
-                    b.HasIndex("equipeId");
-
-                    b.ToTable("UsuariosEquipes");
-                });
-
             modelBuilder.Entity("GamingGroove.Models.UsuarioModel", b =>
                 {
                     b.Property<int>("usuarioId")
@@ -501,44 +454,6 @@ namespace GamingGroove.Migrations
                     b.Navigation("usuario");
                 });
 
-            modelBuilder.Entity("GamingGroove.Models.UsuarioComunidadeModel", b =>
-                {
-                    b.HasOne("GamingGroove.Models.ComunidadeModel", "comunidade")
-                        .WithMany("usuarioComunidade")
-                        .HasForeignKey("comunidadeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("GamingGroove.Models.UsuarioModel", "usuario")
-                        .WithMany("usuarioComunidade")
-                        .HasForeignKey("usuarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("comunidade");
-
-                    b.Navigation("usuario");
-                });
-
-            modelBuilder.Entity("GamingGroove.Models.UsuarioEquipeModel", b =>
-                {
-                    b.HasOne("GamingGroove.Models.EquipeModel", "equipe")
-                        .WithMany("usuarioEquipe")
-                        .HasForeignKey("equipeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("GamingGroove.Models.UsuarioModel", "usuario")
-                        .WithMany("usuarioEquipe")
-                        .HasForeignKey("usuarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("equipe");
-
-                    b.Navigation("usuario");
-                });
-
             modelBuilder.Entity("GamingGroove.Models.AmizadeModel", b =>
                 {
                     b.Navigation("chatAmizade");
@@ -549,15 +464,11 @@ namespace GamingGroove.Migrations
                     b.Navigation("ComunidadeDenuncia");
 
                     b.Navigation("ComunidadePublicacao");
-
-                    b.Navigation("usuarioComunidade");
                 });
 
             modelBuilder.Entity("GamingGroove.Models.EquipeModel", b =>
                 {
                     b.Navigation("chatEquipe");
-
-                    b.Navigation("usuarioEquipe");
                 });
 
             modelBuilder.Entity("GamingGroove.Models.PublicacaoModel", b =>
@@ -581,11 +492,7 @@ namespace GamingGroove.Migrations
 
                     b.Navigation("usuarioComentario");
 
-                    b.Navigation("usuarioComunidade");
-
                     b.Navigation("usuarioCurtida");
-
-                    b.Navigation("usuarioEquipe");
 
                     b.Navigation("usuarioPublicacao");
                 });

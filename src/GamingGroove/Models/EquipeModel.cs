@@ -29,7 +29,6 @@ namespace GamingGroove.Models
         public ICollection<ChatModel>? chatEquipe { get; set; }
 
         public ICollection<UsuarioEquipeModel>? usuarioEquipe { get; set; }
-
     }
 }
 
