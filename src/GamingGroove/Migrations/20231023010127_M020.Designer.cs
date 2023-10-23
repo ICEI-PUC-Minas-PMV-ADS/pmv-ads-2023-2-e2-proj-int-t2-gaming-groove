@@ -3,6 +3,7 @@ using System;
 using GamingGroove.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GamingGroove.Migrations
 {
     [DbContext(typeof(GamingGrooveDbContext))]
-    partial class GamingGrooveDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231023010127_M020")]
+    partial class M020
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

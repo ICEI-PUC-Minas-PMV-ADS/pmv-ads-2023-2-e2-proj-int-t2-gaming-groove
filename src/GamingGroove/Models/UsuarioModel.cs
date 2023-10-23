@@ -70,6 +70,5 @@ namespace GamingGroove.Models
         public ICollection<UsuarioComunidadeModel>? usuarioComunidade { get; set; }
 
         public ICollection<UsuarioEquipeModel>? usuarioEquipe { get; set; }
-
     }
 }

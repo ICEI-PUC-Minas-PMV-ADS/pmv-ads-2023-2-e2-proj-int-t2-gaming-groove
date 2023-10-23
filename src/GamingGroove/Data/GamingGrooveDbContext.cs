@@ -20,10 +20,9 @@ namespace GamingGroove.Data
         public DbSet<EquipeModel> Equipes { get; set; }
         public DbSet<PublicacaoModel> Publicacoes { get; set; }
         public DbSet<UsuarioModel> Usuarios { get; set; }
-        
+
         public DbSet<UsuarioComunidadeModel> UsuariosComunidades { get; set; }
         public DbSet<UsuarioEquipeModel> UsuariosEquipes { get; set; }
-
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -62,6 +61,34 @@ namespace GamingGroove.Data
                 .WithMany(u => u.denunciadoDenuncia)
                 .HasForeignKey(a => a.denunciadoId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+
+            modelBuilder.Entity<UsuarioComunidadeModel>()
+                .HasKey(pc => new { pc.usuarioId, pc.comunidadeId });
+
+            modelBuilder.Entity<UsuarioComunidadeModel>()
+                .HasOne(pc => pc.usuario)
+                .WithMany(p => p.usuarioComunidade)
+                .HasForeignKey(pc => pc.usuarioId);
+
+            modelBuilder.Entity<UsuarioComunidadeModel>()
+                .HasOne(pc => pc.comunidade)
+                .WithMany(c => c.usuarioComunidade)
+                .HasForeignKey(pc => pc.comunidadeId);                
+
+
+            modelBuilder.Entity<UsuarioEquipeModel>()
+                .HasKey(pc => new { pc.usuarioId, pc.equipeId });
+
+            modelBuilder.Entity<UsuarioEquipeModel>()
+                .HasOne(pc => pc.usuario)
+                .WithMany(p => p.usuarioEquipe)
+                .HasForeignKey(pc => pc.usuarioId);
+
+            modelBuilder.Entity<UsuarioEquipeModel>()
+                .HasOne(pc => pc.equipe)
+                .WithMany(c => c.usuarioEquipe)
+                .HasForeignKey(pc => pc.equipeId);                   
         }
         
     }
