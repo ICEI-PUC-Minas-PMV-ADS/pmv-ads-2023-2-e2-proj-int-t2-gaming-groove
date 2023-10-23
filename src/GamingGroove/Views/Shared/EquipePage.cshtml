@@ -1,4 +1,4 @@
-﻿@model GamingGroove.Models.EquipeModel
+﻿@model GamingGroove.Views.EquipePage.EquipePageViewModel
 @using System.Security.Claims
 
 <!DOCTYPE html>
@@ -46,8 +46,11 @@
         <div class="container text-center">
            <div class="row align-items-start">
               <div class="col">
-                Teste
-              </div>
+                @foreach (var item in Model.getEquipes)
+                {
+                    <td>@item.equipeId</td>
+                }
+            </div>
            </div>
         </div>
 
