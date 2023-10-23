@@ -18,7 +18,7 @@ namespace GamingGroove.Views.EquipePage
         public IEnumerable<EquipeModel> getEquipes { get; set; }
         public UsuarioModel getUsuario { get; set; }
         public IEnumerable<UsuarioEquipeModel> getEquipesUsuario { get; set; }
-        public List<string> NomeDasEquipes { get; set; }
+        public List<string> InfoEquipes { get; set; }
 
         public void GetEquipesUsuario(int usuario)
         {
@@ -27,7 +27,9 @@ namespace GamingGroove.Views.EquipePage
                 .Include(ue => ue.equipe)
                 .ToList();        
 
-            NomeDasEquipes = getEquipesUsuario.Select(ue => ue.equipe.nomeEquipe).ToList();
+            InfoEquipes = getEquipesUsuario.Select(ue => ue.equipe.nomeEquipe).ToList();
+            InfoEquipes = getEquipesUsuario.Select(ue => ue.equipe.jogoEquipe.ToString()).ToList();
+            InfoEquipes = getEquipesUsuario.Select(ue => ue.equipe.descricaoEquipe).ToList();
         }
     }
 }
