@@ -5,6 +5,7 @@
 
 body {
     background: #110B31;
+    height: 100vh;
 }
 
 header {
@@ -121,7 +122,8 @@ main {
 
 .cover-pic {
     background-size: cover;
-    height: 150px;
+    background-position: center 40%;
+    height: 220px;
     width: 100%;
     border-radius: 5px;
     display: flex;
@@ -560,3 +562,8 @@ h3 {
     box-shadow: #B100FF 0px 0px 12px;
 }
 
+footer {
+    color: white;
+    text-align: center;
+    margin-top: 190px;
+}
