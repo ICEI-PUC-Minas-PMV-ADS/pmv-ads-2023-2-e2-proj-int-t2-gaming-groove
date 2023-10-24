@@ -5,6 +5,7 @@
 
 body {
     background: #110B31;
+    height: 100vh;
 }
 
 header {
@@ -120,9 +121,9 @@ main {
 }
 
 .cover-pic {
-    background: url("/images/backgrounds/space-cover.jpg") center center;
     background-size: cover;
-    height: 150px;
+    background-position: center 40%;
+    height: 220px;
     width: 100%;
     border-radius: 5px;
     display: flex;
@@ -146,7 +147,9 @@ main {
 
 .profile-pic {
     height: 130px;
+    width: 130px;
     border-radius: 4px;
+    object-fit: cover;
 }
 
 .user-add-friend-container {
@@ -214,6 +217,21 @@ main {
     border: solid white 1px;
     border-radius: 4px;
     color: #00F0FF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.report-icon {
+    height: 20px;
+}
+
+.report-user-button:hover {
+    transition: 1s;
+    background-color: #00F0FF;
+    .report-icon {
+        filter: brightness(0);
+    }
 }
 
 .profile-informations {
@@ -227,7 +245,7 @@ main {
 
 .profile-first-container {
     height: 80%;
-    width: 77%;
+    width: 73%;
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -235,7 +253,7 @@ main {
 
 .profile-second-container {
     height: 80%;
-    width: 23%;
+    width: 27%;
     display: flex;
 }
 
@@ -255,13 +273,6 @@ h3 {
     font-family: Gamer;
     font-size: 32px;
     color: #ffffff;
-}
-
-.communities-list {
-    height: 92%;
-    width: 84%;
-    background-color: #111738;
-    border-radius: 6px;
 }
 
 .inside-first-container {
@@ -299,11 +310,29 @@ h3 {
     width: 100%;
     background-color: #111738;
     border-radius: 6px;
+    overflow: auto;
+}
+
+::-webkit-scrollbar {
+    width: 9px;
+    background-color: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #2b356c;
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #E3A5FF;
+    border-radius: 6px;
 }
 
 .bio-text {
-    font-size: 16px;
-    padding : 30px;
+    width: 270px;
+    font-size: 14px;
+    padding-inline : 26px;
+    padding-block: 24px;
     text-align: justify;
     color: white;
 }
@@ -311,32 +340,31 @@ h3 {
 .favorite-games-container {
     height: 100%;
     width: 100%;
-    color: #C0FBFF;
+    color: #00F0FF;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 30px;
+    justify-content: baseline;
+    padding-block: 20px;
+    gap: 20px;
 }
 
 .favorite-games-items {
+    width: 220px;
     display: flex;
     flex-direction: row;
     align-items: center; 
-    gap: 20px;
-    font-family: Play;
-    font-size: 18px;
-    padding-left: 28px;
-    background-color: #2b356c;
+    gap: 15px;
+    font-size: 15px;
+    padding-left: 12px;
+    padding-right: 15px;
     padding-block: 10px;
     margin-inline: 20px;
     border-radius: 6px;
-    box-shadow: rgb(0, 0, 0) 3px 3px 8px;  
 }
 
 .favorite-games-items:hover {
-    transition: 0.4s;
-    background-color: #1b2143;
-    box-shadow: rgb(0, 0, 0) 2px 2px 3px inset;  
+    transition: 0.5s;
+    background-color: #2b356c;
     color: #00F0FF;
     .gameIcon-container {
         border: solid 2px #00F0FF;
@@ -352,9 +380,203 @@ h3 {
     justify-content: center;
     align-items: center;
     border-radius: 50%; 
+    overflow: hidden;
+    border: white 1px solid;
 }
 
 .gameIcon-container img {
-    height: 40px;
-    width: 40px;
+    height: 35px;
+    width: 35px;
+}
+
+.user-teams-list {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    margin-inline: 20px;
+    gap: 15px;
+}
+
+.user-teams-items {
+    width: 220px;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 10px;
+    padding-block: 10px;
+    border-radius: 8px;
+    gap: 20px;
+}
+
+.user-teams-items:hover {
+    transition: 0.5s;
+    background-color: #2b356c;
+    cursor: pointer;
+    .team-icon {
+        border: solid 2px #00F0FF;
+        box-shadow: #00F0FF 0px 0px 10px;
+    }
+}
+
+.team-icon {
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.team-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.team-name {
+
+}
+
+.team-game {
+    color: #00F0FF;
+    font-size: 12px;
+}
+
+.user-communities-list {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-inline: 20px;
+    padding-top: 20px;
+    justify-content: baseline;
+    gap: 20px;
+}
+
+.user-communities-items {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    background: none;
+    align-items: center;
+    padding-inline: 10px;
+    padding-block: 10px;
+    border-radius: 8px;
+    border: none;
+    gap: 20px;
+    border: 1px solid #0277F9;
+    box-shadow: #0277F9 0px 0px 6px;
+}
+
+.user-communities-items:hover {
+    transition: 0.5s;
+    border: 1px solid #E3A5FF;
+    box-shadow: #B100FF 0px 0px 6px;
+    cursor: pointer;
+    .community-games-background {
+        outline: 1px solid #E3A5FF;
+        box-shadow: #B100FF 0px 0px 10px;
+    }
+}
+
+.user-communities-items:not(:hover) {
+    transition: 0.8s;
+}
+
+.user-communities-items.ativo {   
+}
+
+
+.community-header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.community-icon {
+    height: 65px;
+    width: 65px;
+    border-radius: 50%;
+    background-color: white;
+    object-fit: cover;
+    border: #ffffff 2px solid;
+}
+
+.community-info {
+    display: flex;
+    flex-direction: column;
+    padding-top: 9px;
+}
+
+.community-members {
+    font-size: 13px;
+    color: #00F0FF;
+}
+
+.hidden {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 2px;
+    gap: 30px;
+    display: none;
+}
+
+.community-games-container {
+    width: 160px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+    background-color: #000000;
+    border-radius: 50px;
+}
+
+.community-games-background {
+    height: 36px;
+    width: 36px;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    gap: 10px;
+    outline: solid 1px #0277F9;
+    box-shadow: #0277F9 0px 0px 10px;
+    overflow: hidden;
+}
+
+.community-games-background img {
+    height: 30px;
+    width: 30px;
+}
+
+.visit-button {
+    font-family: PlayMeGames;
+    color: #ffffff;
+    border-radius: 6px;
+    height: 35px;
+    width: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 2px;
+    box-shadow: #B100FF 0px 0px 12px;
+}
+
+.visit-button:hover {
+    transition: 0.5s;
+    color: #000000;
+    background-color: #E3A5FF;
+    box-shadow: none;
+}
+
+.visit-button:not(:hover) {
+    transition: 0.5s;
+}
+
+footer {
+    color: white;
+    text-align: center;
+    margin-top: 190px;
 }

@@ -43,19 +43,19 @@
 
     <main> 
         <div class="main-container">
-            <div class="cover-pic">
+            <div class="cover-pic" style="background-image: url('data:image/png;base64,@Convert.ToBase64String(Model.getUsuario.capaPerfil)');">
                 <div class="cover-first-container">
-                    <img class="profile-pic" src="~/images/Karthus_17.jpg" alt="">
+                    <img class="profile-pic" src="data:image/png;base64,@Convert.ToBase64String(Model.getUsuario.iconePerfil)" alt="Imagem de Perfil" />
                     <div class="user-add-friend-container">
                         <div class="user-border">
                             <div class="username">@Model.getUsuario.nomeUsuario</div>
                         </div>
-                        <button class="add-friend-button"><img class="addUser-icon" src="~/images/icons/add-user.svg" alt=""></button>
+                        <button class="add-friend-button"><img class="addUser-icon" src="~/images/icons/add-user.svg"></button>
                     </div>
                 </div>
                 <div class="cover-second-container">
                     <button class="edit-profile-button">Editar Perfil</button>
-                    <button class="report-user-button">R</button>
+                    <button class="report-user-button"><img class="report-icon" src="~/images/icons/report-icon.svg"></button>
                 </div>
             </div>
             <div class="profile-informations">
@@ -100,10 +100,18 @@
                         <div class="column">
                             <h3>EQUIPES</h3>
                             <div class="inside-column">
-                                @foreach (var item in Model.getEquipes)
-                                {
-                                    <td>@item.equipeId</td>
-                                }
+                                <div class="user-teams-list">
+                                    @foreach (var item in Model.getEquipes)
+                                    {
+                                        <div class="user-teams-items">
+                                            <div class="team-icon"></div>
+                                            <div class="team-info">
+                                                <div class="team-name">@item.equipe.nomeEquipe</div>                                
+                                                <div class="team-game">@EnumHelper.GetDisplayName(@item.equipe.jogoEquipe)</div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -117,13 +125,55 @@
                 <div class="profile-second-container">
                     <div class="column">
                         <h3>COMUNIDADES</h3>
-                        <div class="inside-column"></div>
+                        <div class="inside-column">
+                                <div class="user-communities-list">
+                                    @foreach (var item in Model.getComunidades)
+                                    
+                                    {
+                                        int _comunidadeId = item.comunidadeId;
+                                        int numberOfMembers = Model.GetNumberOfMembersInCommunity(_comunidadeId);
+                                        <button class="user-communities-items">
+                                            <div class="community-header">
+                                                @if (item.comunidade.iconeComunidade != null)
+                                                {
+                                                    <img class="community-icon" src="data:image/png;base64,@Convert.ToBase64String(item.comunidade.iconeComunidade)" alt="Imagem de Perfil" />
+                                                }
+                                                else
+                                                {
+                                                    <div>Sem imagem</div>
+                                                }               
+                                                <div class="community-info">
+                                                    <div class="community-name">@item.comunidade.nomeComunidade</div>
+                                                    <div class="community-members">Membros: @numberOfMembers</div>                                        
+                                                </div>
+                                            </div>
+                                            <div class="hidden" id="communityHidden">
+                                                <div class="community-games-container">
+                                                    <div class="community-games-background">
+                                                        <img src="~/images/icons/jogos/@(item.comunidade.primeiroJogo).svg" title="@(EnumHelper.GetDisplayName(item.comunidade.primeiroJogo))">
+                                                    </div>
+                                                    <div class="community-games-background">
+                                                        <img src="~/images/icons/jogos/@(item.comunidade.segundoJogo).svg" title="@(EnumHelper.GetDisplayName(item.comunidade.segundoJogo))">
+                                                    </div>
+                                                    <div class="community-games-background">
+                                                        <img src="~/images/icons/jogos/@(item.comunidade.terceiroJogo).svg" title="@(EnumHelper.GetDisplayName(item.comunidade.terceiroJogo))">
+                                                    </div>                                                                                   
+                                                </div> 
+                                                <div class="visit-button"><div>Visitar</div></div>                                                         
+                                            </div>
+                                        </button>
+                                    }
+                                </div>                            
+                        </div>
                     </div>
                 </div>     
             </div>
            
         </div>
     </main>
+    <footer>
+        <div>© 2023 - GamingGroove - Privacy</div>
+    </footer>
 
     <div class="container">
         <main role="main" class="pb-3">
@@ -134,6 +184,7 @@
     
 
     <script src="~/js/Menu.js"></script>
+    <script src="~/js/PerfilPage.js"></script>
     <script src="~/js/JogosFavoritos.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

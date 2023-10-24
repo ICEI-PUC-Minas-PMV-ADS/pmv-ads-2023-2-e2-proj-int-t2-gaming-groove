@@ -18,23 +18,17 @@
             @Html.DisplayFor(model => model.nomeComunidade)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.iconeComunidade)
+            @Html.DisplayNameFor(model => model.primeiroJogo)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.iconeComunidade)
+            @Html.DisplayFor(model => model.primeiroJogo)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.capaComunidade)
-        </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.capaComunidade)
+            @Html.DisplayFor(model => model.segundoJogo)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.jogosRelacionados)
-        </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.jogosRelacionados)
-        </dd>
+            @Html.DisplayFor(model => model.terceiroJogo)
+        </dd>                
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.descricaoComunidade)
         </dt>
@@ -48,7 +42,7 @@
             @Html.DisplayFor(model => model.dataCriacaoComunidade)
         </dd>
     </dl>
-    
+     
     <form asp-action="Delete">
         <input type="hidden" asp-for="comunidadeId" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |

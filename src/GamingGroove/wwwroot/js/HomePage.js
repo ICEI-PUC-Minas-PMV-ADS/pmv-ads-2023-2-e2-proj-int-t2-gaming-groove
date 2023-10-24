@@ -3,7 +3,6 @@ const signupButton = document.getElementById("signup");
 const loginCard = document.getElementById("login-card");
 const signupCard = document.getElementById("signup-card");
 
-// Adicione eventos de clique aos botões
 loginButton.addEventListener("click", function () {
     loginCard.style.display = "block";
     signupCard.style.display = "none";

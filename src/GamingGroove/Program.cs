@@ -16,6 +16,11 @@ namespace GamingGroove
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+            builder.Services.Configure<IISServerOptions>(options =>
+            {
+                options.AllowSynchronousIO = true;
+            });            
+
             builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 
             builder.Services.AddDbContext<GamingGrooveDbContext>(

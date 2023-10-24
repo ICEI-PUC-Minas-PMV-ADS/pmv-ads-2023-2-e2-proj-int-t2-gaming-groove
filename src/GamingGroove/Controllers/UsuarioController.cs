@@ -101,7 +101,7 @@ namespace GamingGroove.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("usuarioId,nomeUsuario,nomeCompleto,dataNascimento,email,senha,iconePerfil,capaPerfil,fotosGaleria,primeiroJogo,segundoJogo,terceiroJogo,biografia,registrationDate,tipoUsuario")] UsuarioModel usuarioModel)
+        public async Task<IActionResult> Edit(int id, UsuarioModel usuarioModel, IFormFile? iconePerfilArquivo, IFormFile? capaPerfilArquivo)
         {
             if (id != usuarioModel.usuarioId)
             {
@@ -113,11 +113,37 @@ namespace GamingGroove.Controllers
                 try
                 {
                     var existingUser = await _context.Usuarios.FindAsync(id);
-                    
+
                     if (existingUser == null)
                     {
                         return NotFound();
                     }
+
+                    if (iconePerfilArquivo != null && iconePerfilArquivo.Length > 0)
+                    {
+                        using (var memoryStream = new MemoryStream())
+                        {
+                            await iconePerfilArquivo.CopyToAsync(memoryStream);
+                            usuarioModel.iconePerfil = memoryStream.ToArray();
+                        }
+                    }
+                    else
+                    {
+                        usuarioModel.iconePerfil = existingUser.iconePerfil;
+                    }
+
+                    if (capaPerfilArquivo != null && capaPerfilArquivo.Length > 0)
+                    {
+                        using (var memoryStream = new MemoryStream())
+                        {
+                            await capaPerfilArquivo.CopyToAsync(memoryStream);
+                            usuarioModel.capaPerfil = memoryStream.ToArray();
+                        }   
+                    }      
+                    else
+                    {
+                        usuarioModel.iconePerfil = existingUser.iconePerfil;
+                    }                          
 
                     if (usuarioModel.senha != existingUser.senha)
                     {
@@ -129,7 +155,7 @@ namespace GamingGroove.Controllers
                     }
 
                     usuarioModel.dataRegistro = existingUser.dataRegistro;
-              
+
                     _context.Entry(existingUser).CurrentValues.SetValues(usuarioModel);
                     await _context.SaveChangesAsync();
                 }
@@ -148,7 +174,6 @@ namespace GamingGroove.Controllers
             }
             return View(usuarioModel);
         }
-
         // GET: Usuario/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {

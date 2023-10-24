@@ -76,10 +76,28 @@
                 <text>@item.senha.Substring(0, 10)</text>
             </td>            
             <td>
-                @Html.DisplayFor(modelItem => item.iconePerfil)
+                @{
+                    if (item.iconePerfil != null && item.iconePerfil.Length > 10)
+                    {
+                        <text>@item.iconePerfil.ToString().Substring(0, 10)</text>
+                    }
+                    else
+                    {
+                        @item.iconePerfil
+                    }
+                }
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.capaPerfil)
+                @{
+                    if (item.capaPerfil != null && item.capaPerfil.Length > 10)
+                    {
+                        <text>@item.capaPerfil.ToString().Substring(0, 10)</text>
+                    }
+                    else
+                    {
+                        @item.capaPerfil
+                    }
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.fotosGaleria)
