@@ -44,7 +44,8 @@ namespace GamingGroove.Views.PerfilPage
                 InfoComunidades = getComunidades.Select(ue => ue.comunidade.nomeComunidade).ToList();         
                 InfoComunidades = getComunidades.Select(ue => ue.comunidade.primeiroJogo.ToString()).ToList();
                 InfoComunidades = getComunidades.Select(ue => ue.comunidade.segundoJogo.ToString()).ToList();     
-                InfoComunidades = getComunidades.Select(ue => ue.comunidade.terceiroJogo.ToString()).ToList();                 
+                InfoComunidades = getComunidades.Select(ue => ue.comunidade.terceiroJogo.ToString()).ToList();    
+          
             }
         }
     }

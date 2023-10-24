@@ -120,7 +120,6 @@ main {
 }
 
 .cover-pic {
-    background: url("/images/backgrounds/space-cover.jpg") center center;
     background-size: cover;
     height: 150px;
     width: 100%;
@@ -146,7 +145,9 @@ main {
 
 .profile-pic {
     height: 130px;
+    width: 130px;
     border-radius: 4px;
+    object-fit: cover;
 }
 
 .user-add-friend-container {

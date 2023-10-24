@@ -43,9 +43,9 @@
 
     <main> 
         <div class="main-container">
-            <div class="cover-pic">
+            <div class="cover-pic" style="background-image: url('data:image/png;base64,@Convert.ToBase64String(Model.getUsuario.capaPerfil)');">
                 <div class="cover-first-container">
-                    <img class="profile-pic" src="~/images/Karthus_17.jpg" alt="">
+                    <img class="profile-pic" src="data:image/png;base64,@Convert.ToBase64String(Model.getUsuario.iconePerfil)" alt="Imagem de Perfil" />
                     <div class="user-add-friend-container">
                         <div class="user-border">
                             <div class="username">@Model.getUsuario.nomeUsuario</div>
@@ -118,7 +118,7 @@
                     <div class="inside-second-container">
                         <div class="column">
                             <h3>GALERIA</h3>
-                            <div class="inside-column">@Model.getUsuario.iconePerfil</div>
+                            <div class="inside-column"></div>
                         </div>                        
                     </div>            
                 </div>
