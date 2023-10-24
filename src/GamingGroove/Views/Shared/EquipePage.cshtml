@@ -52,6 +52,13 @@
                     <td>@item.equipe.jogoEquipe</td>
                     <td>@item.equipe.descricaoEquipe</td>
                 }
+                <br>
+                <br>
+                <br>
+                @foreach (var item in Model.getEquipes)
+                {
+                    <td>@item.nomeEquipe</td>
+                }
             </div>
            </div>
         </div>
