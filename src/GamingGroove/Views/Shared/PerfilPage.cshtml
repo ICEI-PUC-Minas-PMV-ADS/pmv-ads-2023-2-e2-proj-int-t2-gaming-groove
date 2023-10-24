@@ -131,7 +131,15 @@
                                     {
                                         <button class="user-communities-items">
                                             <div class="community-header">
-                                                <div class="community-icon"></div>
+                                                @if (item.comunidade.iconeComunidade != null)
+                                                {
+                                                    <img class="community-icon" src="data:image/png;base64,@Convert.ToBase64String(item.comunidade.iconeComunidade)" alt="Imagem de Perfil" />
+                                                }
+                                                else
+                                                {
+                                                    <div>Erro</div>
+                                                }
+                  
                                                 <div class="community-info">
                                                     <div class="community-name">@item.comunidade.nomeComunidade</div>
                                                     <div class="community-members">Membros:</div>                                        

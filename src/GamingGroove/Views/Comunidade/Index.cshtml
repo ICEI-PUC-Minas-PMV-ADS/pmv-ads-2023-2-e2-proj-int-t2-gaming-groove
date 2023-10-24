@@ -25,6 +25,12 @@
                 @Html.DisplayNameFor(model => model.primeiroJogo)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.segundoJogo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.terceiroJogo)
+            </th>                        
+            <th>
                 @Html.DisplayNameFor(model => model.descricaoComunidade)
             </th>
             <th>
@@ -40,10 +46,28 @@
                 @Html.DisplayFor(modelItem => item.nomeComunidade)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.iconeComunidade)
+                @{
+                    if (item.iconeComunidade != null && item.iconeComunidade.Length > 10)
+                    {
+                        <text>@item.iconeComunidade.ToString().Substring(0, 10)</text>
+                    }
+                    else
+                    {
+                        @item.iconeComunidade
+                    }
+                }
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.capaComunidade)
+                @{
+                    if (item.capaComunidade != null && item.capaComunidade.Length > 10)
+                    {
+                        <text>@item.capaComunidade.ToString().Substring(0, 10)</text>
+                    }
+                    else
+                    {
+                        @item.capaComunidade
+                    }
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.primeiroJogo)

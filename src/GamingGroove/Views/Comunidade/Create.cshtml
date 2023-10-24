@@ -10,21 +10,21 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="nomeComunidade" class="control-label"></label>
                 <input asp-for="nomeComunidade" class="form-control" />
                 <span asp-validation-for="nomeComunidade" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group" enctype="multipart/form-data">
                 <label asp-for="iconeComunidade" class="control-label"></label>
-                <input asp-for="iconeComunidade" class="form-control" />
+                <input asp-for="iconeComunidade" class="form-control" type="file" name="iconeComunidadeArquivo"/>
                 <span asp-validation-for="iconeComunidade" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group" enctype="multipart/form-data">
                 <label asp-for="capaComunidade" class="control-label"></label>
-                <input asp-for="capaComunidade" class="form-control" />
+                <input asp-for="capaComunidade" class="form-control" type="file" name="capaComunidadeArquivo"/>
                 <span asp-validation-for="capaComunidade" class="text-danger"></span>
             </div>
             <div class="form-group">
