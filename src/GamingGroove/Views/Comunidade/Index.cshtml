@@ -22,7 +22,7 @@
                 @Html.DisplayNameFor(model => model.capaComunidade)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.jogosRelacionados)
+                @Html.DisplayNameFor(model => model.primeiroJogo)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.descricaoComunidade)
@@ -46,8 +46,14 @@
                 @Html.DisplayFor(modelItem => item.capaComunidade)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.jogosRelacionados)
+                @Html.DisplayFor(modelItem => item.primeiroJogo)
             </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.segundoJogo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.terceiroJogo)
+            </td>                        
             <td>
                 @Html.DisplayFor(modelItem => item.descricaoComunidade)
             </td>

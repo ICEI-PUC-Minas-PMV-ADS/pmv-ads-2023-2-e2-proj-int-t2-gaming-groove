@@ -100,10 +100,18 @@
                         <div class="column">
                             <h3>EQUIPES</h3>
                             <div class="inside-column">
-                                @foreach (var item in Model.getEquipes)
-                                {
-                                    <td>@item.equipeId</td>
-                                }
+                                <div class="user-teams-list">
+                                    @foreach (var item in Model.getEquipes)
+                                    {
+                                        <div class="user-teams-items">
+                                            <div class="team-icon"></div>
+                                            <div class="team-info">
+                                                <div class="team-name">@item.equipe.nomeEquipe</div>                                
+                                                <div class="team-game">@EnumHelper.GetDisplayName(@item.equipe.jogoEquipe)</div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -117,7 +125,36 @@
                 <div class="profile-second-container">
                     <div class="column">
                         <h3>COMUNIDADES</h3>
-                        <div class="inside-column"></div>
+                        <div class="inside-column">
+                                <div class="user-communities-list">
+                                    @foreach (var item in Model.getComunidades)
+                                    {
+                                        <button class="user-communities-items" id="communityButton">
+                                            <div class="community-header">
+                                                <div class="community-icon"></div>
+                                                <div class="community-info">
+                                                    <div class="community-name">@item.comunidade.nomeComunidade</div>
+                                                    <div class="community-members">Membros:</div>                                        
+                                                </div>
+                                            </div>
+                                            <div class="hidden" id="communityHidden">
+                                                <div class="community-games-container">
+                                                    <div class="community-games-background">
+                                                        <img src="~/images/icons/jogos/@(item.comunidade.primeiroJogo).svg" alt="">
+                                                    </div>
+                                                    <div class="community-games-background">
+                                                        <img src="~/images/icons/jogos/@(item.comunidade.segundoJogo).svg" alt="">
+                                                    </div>
+                                                    <div class="community-games-background">
+                                                        <img src="~/images/icons/jogos/@(item.comunidade.terceiroJogo).svg" alt="">
+                                                    </div>                                                                                   
+                                                </div> 
+                                                <div class="visit-button"><div>Visitar</div></div>                                                         
+                                            </div>
+                                        </button>
+                                    }
+                                </div>                            
+                        </div>
                     </div>
                 </div>     
             </div>
@@ -134,6 +171,7 @@
     
 
     <script src="~/js/Menu.js"></script>
+    <script src="~/js/PerfilPage.js"></script>
     <script src="~/js/JogosFavoritos.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

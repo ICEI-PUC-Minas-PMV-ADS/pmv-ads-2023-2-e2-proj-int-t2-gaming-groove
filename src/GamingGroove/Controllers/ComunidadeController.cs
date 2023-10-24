@@ -56,7 +56,7 @@ namespace GamingGroove.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("comunidadeId,nomeComunidade,iconeComunidade,capaComunidade,jogosRelacionados,descricaoComunidade,dataCriacaoComunidade")] ComunidadeModel comunidadeModel)
+        public async Task<IActionResult> Create([Bind("comunidadeId,nomeComunidade,iconeComunidade,capaComunidade,primeiroJogo,segundoJogo,terceiroJogo,descricaoComunidade,dataCriacaoComunidade")] ComunidadeModel comunidadeModel)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +88,7 @@ namespace GamingGroove.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("comunidadeId,nomeComunidade,iconeComunidade,capaComunidade,jogosRelacionados,descricaoComunidade,dataCriacaoComunidade")] ComunidadeModel comunidadeModel)
+        public async Task<IActionResult> Edit(int id, [Bind("comunidadeId,nomeComunidade,iconeComunidade,capaComunidade,primeiroJogo,segundoJogo,terceiroJogo,descricaoComunidade,dataCriacaoComunidade")] ComunidadeModel comunidadeModel)
         {
             if (id != comunidadeModel.comunidadeId)
             {

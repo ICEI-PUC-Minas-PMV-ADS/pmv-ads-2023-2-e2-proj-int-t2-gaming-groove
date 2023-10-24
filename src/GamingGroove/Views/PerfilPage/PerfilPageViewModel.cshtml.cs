@@ -18,6 +18,8 @@ namespace GamingGroove.Views.PerfilPage
         public UsuarioModel getUsuario { get; set; }
         public IEnumerable<UsuarioEquipeModel> getEquipes { get; set; }
         public IEnumerable<UsuarioComunidadeModel> getComunidades { get; set; }
+        public List<string> InfoEquipes { get; set; }
+        public List<string> InfoComunidades { get; set; }
 
         public void OnGet(string user)
         {
@@ -28,12 +30,21 @@ namespace GamingGroove.Views.PerfilPage
                 getEquipes = _cc.UsuariosEquipes
                     .Where(ue => ue.usuarioId == getUsuario.usuarioId)
                     .Include(ue => ue.equipe)
-                    .ToList();
+                    .ToList();  
 
                 getComunidades = _cc.UsuariosComunidades
                     .Where(uc => uc.usuarioId == getUsuario.usuarioId)
                     .Include(uc => uc.comunidade)
                     .ToList();
+                     
+
+                InfoEquipes = getEquipes.Select(ue => ue.equipe.nomeEquipe).ToList();         
+                InfoEquipes = getEquipes.Select(ue => ue.equipe.jogoEquipe.ToString()).ToList();         
+
+                InfoComunidades = getComunidades.Select(ue => ue.comunidade.nomeComunidade).ToList();         
+                InfoComunidades = getComunidades.Select(ue => ue.comunidade.primeiroJogo.ToString()).ToList();
+                InfoComunidades = getComunidades.Select(ue => ue.comunidade.segundoJogo.ToString()).ToList();     
+                InfoComunidades = getComunidades.Select(ue => ue.comunidade.terceiroJogo.ToString()).ToList();                 
             }
         }
     }

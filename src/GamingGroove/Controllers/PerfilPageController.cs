@@ -29,11 +29,5 @@ namespace GamingGroove
 
             return View(viewModel);
         }
-
-        private string ObterBiografiaDoUsuario(int user)
-        {
-            var usuario = _contexto.Usuarios.FirstOrDefault(u => u.usuarioId == user);
-            return usuario != null ? usuario.biografia : string.Empty;
-        }
     }
 }

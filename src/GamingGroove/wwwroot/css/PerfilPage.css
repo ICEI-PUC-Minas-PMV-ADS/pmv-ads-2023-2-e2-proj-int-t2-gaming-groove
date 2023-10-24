@@ -227,7 +227,7 @@ main {
 
 .profile-first-container {
     height: 80%;
-    width: 77%;
+    width: 73%;
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -235,7 +235,7 @@ main {
 
 .profile-second-container {
     height: 80%;
-    width: 23%;
+    width: 27%;
     display: flex;
 }
 
@@ -255,13 +255,6 @@ h3 {
     font-family: Gamer;
     font-size: 32px;
     color: #ffffff;
-}
-
-.communities-list {
-    height: 92%;
-    width: 84%;
-    background-color: #111738;
-    border-radius: 6px;
 }
 
 .inside-first-container {
@@ -299,11 +292,29 @@ h3 {
     width: 100%;
     background-color: #111738;
     border-radius: 6px;
+    overflow: auto;
+}
+
+::-webkit-scrollbar {
+    width: 9px;
+    background-color: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #2b356c;
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #E3A5FF;
+    border-radius: 6px;
 }
 
 .bio-text {
-    font-size: 16px;
-    padding : 30px;
+    width: 270px;
+    font-size: 14px;
+    padding-inline : 26px;
+    padding-block: 24px;
     text-align: justify;
     color: white;
 }
@@ -314,29 +325,29 @@ h3 {
     color: #C0FBFF;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 30px;
+    justify-content: baseline;
+    padding-block: 20px;
+    gap: 20px;
 }
 
 .favorite-games-items {
+    width: 220px;
     display: flex;
     flex-direction: row;
     align-items: center; 
-    gap: 20px;
+    gap: 15px;
     font-family: Play;
-    font-size: 18px;
-    padding-left: 28px;
-    background-color: #2b356c;
+    font-size: 15px;
+    padding-left: 12px;
+    padding-right: 15px;
     padding-block: 10px;
     margin-inline: 20px;
     border-radius: 6px;
-    box-shadow: rgb(0, 0, 0) 3px 3px 8px;  
 }
 
 .favorite-games-items:hover {
-    transition: 0.4s;
-    background-color: #1b2143;
-    box-shadow: rgb(0, 0, 0) 2px 2px 3px inset;  
+    transition: 0.5s;
+    background-color: #2b356c;
     color: #00F0FF;
     .gameIcon-container {
         border: solid 2px #00F0FF;
@@ -352,9 +363,181 @@ h3 {
     justify-content: center;
     align-items: center;
     border-radius: 50%; 
+    overflow: hidden;
+    border: white 1px solid;
 }
 
 .gameIcon-container img {
-    height: 40px;
-    width: 40px;
+    height: 35px;
+    width: 35px;
 }
+
+.user-teams-list {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    margin-inline: 20px;
+    gap: 15px;
+}
+
+.user-teams-items {
+    width: 220px;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 10px;
+    padding-block: 10px;
+    border-radius: 8px;
+    gap: 20px;
+}
+
+.user-teams-items:hover {
+    transition: 0.5s;
+    background-color: #2b356c;
+    cursor: pointer;
+    .team-icon {
+        border: solid 2px #00F0FF;
+        box-shadow: #00F0FF 0px 0px 10px;
+    }
+}
+
+.team-icon {
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.team-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.team-name {
+
+}
+
+.team-game {
+    color: #00F0FF;
+    font-size: 12px;
+}
+
+.user-communities-list {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-inline: 20px;
+    padding-top: 20px;
+    justify-content: baseline;
+    gap: 20px;
+}
+
+.user-communities-items {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    background-color: #2b356c;
+    align-items: center;
+    padding-inline: 10px;
+    padding-block: 10px;
+    border-radius: 8px;
+    border: none;
+    gap: 20px;
+    box-shadow: black 3px 3px 4px;
+}
+
+.user-communities-items:hover {
+    transition: 0.5s;
+    background-color: #2b356c;
+    cursor: pointer;
+}
+
+.community-header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.community-icon {
+    height: 65px;
+    width: 65px;
+    border-radius: 8px;
+    background-color: white;
+}
+
+.community-info {
+    display: flex;
+    flex-direction: column;
+    padding-right: 22px;
+    padding-top: 9px;
+}
+
+.community-name {
+
+}
+
+.community-members {
+    font-size: 13px;
+    color: #00F0FF;
+}
+
+.hidden {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 2px;
+    gap: 30px;
+    display: none;
+}
+
+.community-games-container {
+    width: 160px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+    background-color: #111738;
+    border-radius: 50px;
+}
+
+.community-games-background {
+    height: 36px;
+    width: 36px;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    gap: 10px;
+    border: solid 1px white;
+    overflow: hidden;
+}
+
+.community-games-background img {
+    height: 30px;
+    width: 30px;
+}
+
+.visit-button {
+    font-family: PlayMeGames;
+    color: #E3A5FF;
+    border: 2px solid #E3A5FF;
+    border-radius: 6px;
+    height: 35px;
+    width: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 2px;
+}
+
+.visit-button:hover {
+    color: #2b356c;
+    background-color: #E3A5FF;
+    box-shadow: #B100FF 0px 0px 12px;
+}
+
