@@ -18,8 +18,8 @@ namespace GamingGroove.Views.PerfilPage
         public UsuarioModel getUsuario { get; set; }
         public IEnumerable<UsuarioEquipeModel> getEquipes { get; set; }
         public IEnumerable<UsuarioComunidadeModel> getComunidades { get; set; }
-        public List<string> InfoEquipes { get; set; }
-        public List<string> InfoComunidades { get; set; }
+        public List<string> infoEquipes { get; set; }
+        public List<string> infoComunidades { get; set; }
 
         public void OnGet(string user)
         {
@@ -38,15 +38,19 @@ namespace GamingGroove.Views.PerfilPage
                     .ToList();
                      
 
-                InfoEquipes = getEquipes.Select(ue => ue.equipe.nomeEquipe).ToList();         
-                InfoEquipes = getEquipes.Select(ue => ue.equipe.jogoEquipe.ToString()).ToList();         
+                infoEquipes = getEquipes.Select(ue => ue.equipe.nomeEquipe).ToList();         
+                infoEquipes = getEquipes.Select(ue => ue.equipe.jogoEquipe.ToString()).ToList();         
 
-                InfoComunidades = getComunidades.Select(ue => ue.comunidade.nomeComunidade).ToList();         
-                InfoComunidades = getComunidades.Select(ue => ue.comunidade.primeiroJogo.ToString()).ToList();
-                InfoComunidades = getComunidades.Select(ue => ue.comunidade.segundoJogo.ToString()).ToList();     
-                InfoComunidades = getComunidades.Select(ue => ue.comunidade.terceiroJogo.ToString()).ToList();    
-          
+                infoComunidades = getComunidades.Select(ue => ue.comunidade.primeiroJogo.ToString()).ToList();
+                infoComunidades = getComunidades.Select(ue => ue.comunidade.segundoJogo.ToString()).ToList();     
+                infoComunidades = getComunidades.Select(ue => ue.comunidade.terceiroJogo.ToString()).ToList();    
+
             }
+        }
+        public int GetNumberOfMembersInCommunity( int _comunidadeId)
+        {
+            return _cc.UsuariosComunidades
+                .Count(uc => uc.comunidadeId == _comunidadeId);
         }
     }
 }

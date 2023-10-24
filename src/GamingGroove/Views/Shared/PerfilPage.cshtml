@@ -128,7 +128,10 @@
                         <div class="inside-column">
                                 <div class="user-communities-list">
                                     @foreach (var item in Model.getComunidades)
+                                    
                                     {
+                                        int _comunidadeId = item.comunidadeId;
+                                        int numberOfMembers = Model.GetNumberOfMembersInCommunity(_comunidadeId);
                                         <button class="user-communities-items">
                                             <div class="community-header">
                                                 @if (item.comunidade.iconeComunidade != null)
@@ -137,12 +140,11 @@
                                                 }
                                                 else
                                                 {
-                                                    <div>Erro</div>
-                                                }
-                  
+                                                    <div>Sem imagem</div>
+                                                }               
                                                 <div class="community-info">
                                                     <div class="community-name">@item.comunidade.nomeComunidade</div>
-                                                    <div class="community-members">Membros:</div>                                        
+                                                    <div class="community-members">Membros: @numberOfMembers</div>                                        
                                                 </div>
                                             </div>
                                             <div class="hidden" id="communityHidden">

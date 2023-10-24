@@ -462,16 +462,26 @@ h3 {
     border-radius: 8px;
     border: none;
     gap: 20px;
+    border: 1px solid #0277F9;
+    box-shadow: #0277F9 0px 0px 6px;
 }
 
 .user-communities-items:hover {
     transition: 0.5s;
-    background-color: #2b356c;
+    border: 1px solid #E3A5FF;
+    box-shadow: #B100FF 0px 0px 6px;
     cursor: pointer;
+    .community-games-background {
+        outline: 1px solid #E3A5FF;
+        box-shadow: #B100FF 0px 0px 10px;
+    }
+}
+
+.user-communities-items:not(:hover) {
+    transition: 0.8s;
 }
 
 .user-communities-items.ativo {   
-    background-color: #2b356c;
 }
 
 
@@ -480,24 +490,23 @@ h3 {
     flex-direction: row;
     width: 100%;
     justify-content: space-between;
+    padding-left: 10px;
 }
 
 .community-icon {
     height: 65px;
     width: 65px;
-    border-radius: 8px;
+    border-radius: 50%;
     background-color: white;
+    object-fit: cover;
+    border: #ffffff 2px solid;
 }
 
 .community-info {
     display: flex;
     flex-direction: column;
-    padding-right: 22px;
+    padding-right: 25%;
     padding-top: 9px;
-}
-
-.community-name {
-
 }
 
 .community-members {
@@ -521,7 +530,7 @@ h3 {
     flex-direction: row;
     justify-content: space-between;
     gap: 10px;
-    background-color: #111738;
+    background-color: #000000;
     border-radius: 50px;
 }
 
@@ -534,7 +543,8 @@ h3 {
     justify-content: center;
     border-radius: 50%;
     gap: 10px;
-    border: solid 1px white;
+    outline: solid 1px #0277F9;
+    box-shadow: #0277F9 0px 0px 10px;
     overflow: hidden;
 }
 
@@ -545,8 +555,7 @@ h3 {
 
 .visit-button {
     font-family: PlayMeGames;
-    color: #E3A5FF;
-    border: 2px solid #E3A5FF;
+    color: #ffffff;
     border-radius: 6px;
     height: 35px;
     width: 120px;
@@ -554,12 +563,18 @@ h3 {
     justify-content: center;
     align-items: center;
     letter-spacing: 2px;
+    box-shadow: #B100FF 0px 0px 12px;
 }
 
 .visit-button:hover {
-    color: #2b356c;
+    transition: 0.5s;
+    color: #000000;
     background-color: #E3A5FF;
-    box-shadow: #B100FF 0px 0px 12px;
+    box-shadow: none;
+}
+
+.visit-button:not(:hover) {
+    transition: 0.5s;
 }
 
 footer {

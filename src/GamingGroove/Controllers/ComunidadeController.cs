@@ -210,5 +210,8 @@ namespace GamingGroove.Controllers
         {
           return (_context.Comunidades?.Any(e => e.comunidadeId == id)).GetValueOrDefault();
         }
+
+        
+
     }
 }
