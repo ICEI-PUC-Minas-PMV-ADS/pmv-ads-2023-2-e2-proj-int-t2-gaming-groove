@@ -1,13 +1,11 @@
 ﻿using System.Security.Claims;
 using GamingGroove.Data;
 using GamingGroove.Views.EquipePage;
-using GamingGroove.Views.PerfilPage;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace GamingGroove.Controllers
 {
-    public class EquipePageController : Controller
+    public class EquipePageController : BaseController
     {
         private readonly GamingGrooveDbContext _cc;
 

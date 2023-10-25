@@ -1,0 +1,91 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    height: 100vh;
+    background: url(/images/backgrounds/homepage-background.png);
+    background-size: cover;
+    backdrop-filter: brightness(0.8);
+}
+
+.main-container {
+    height: 80%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center; 
+    gap: 8vh;
+}
+
+.brand-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.logo {
+    height: 140px;
+}
+
+.error-message-container {
+    width: 530px;
+    border: solid 2px #AFD3FF;
+    border-radius: 12px;
+    box-shadow: #0277F9 0px 0px 12px;
+    background: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 30px;
+}
+
+.error-message-title {
+    font-family: Play;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.error-message-container img {
+    height: 80px;
+}
+
+.error-message-text {
+    margin-top: 20px;
+    font-family: Play;
+    font-size: 18px;
+}
+
+.redirect-button {
+    height: 50px;
+    width: 160px;
+    background: none;
+    box-shadow: #CF18EB 0px 0px 20px;
+    border-radius: 8px;
+    color: white;
+    border: none;
+    letter-spacing: 2px;
+    font-family: PlayMeGames;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.redirect-button:hover {
+    background: #AFD3FF;
+    color: black;
+    box-shadow: #0277F9 0px 0px 20px 4px;
+    transition: 0.8s;
+  }
+
+  a {
+    text-decoration: none;
+  }

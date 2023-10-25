@@ -1,4 +1,92 @@
+@model GamingGroove.Models.UsuarioModel
+
 @{
-    ViewData["Title"] = "HomePage";
-    Layout = "HomePage";
+    Layout = null;
 }
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css" />
+    <link rel="stylesheet" href="~/css/HomePage.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/fonts.css" asp-append-version="true" />
+</head>
+<body>
+    <main class="main-container">
+        <div class="brand-container">
+            <img class="logo" src="~/images/logos/gaminggroove-logo.png" alt="Logo da Gaming Groove">
+            <h2 class="slogan">Lorem ipsum dolor sit amet, consecteur adipiscing elit.</h2>
+        </div>
+        <div class="forms-container">
+            <div class="controls-container">
+                <div class="controls">
+                    <button id="login">Entrar</button>
+                    <button id="signup">Cadastrar</button>
+                </div>
+                <input class="checkbox" id="reg-log" type="checkbox" name="reg-log"/>
+                <label for="reg-log"></label>
+            </div>
+            <div class="cards" id="card-front">
+                <form class="card-front" id="login-card" asp-controller="Login" asp-action="Login">
+                    <label class="access-title">Acesse sua conta</label>
+                    <div class="login-alert">@ViewBag.Message</div>
+                    <div class="form-group">
+                        <img src="~/images/icons/homepage/user.svg" alt="">
+                        <input asp-for="nomeUsuario" type="text" class="form-box" placeholder="Nome de Usuario">
+                    </div>
+                    <div class="form-group">
+                        <img src="~/images/icons/homepage/lock-key.svg" alt="">
+                        <input asp-for="senha" type="password" class="form-box" placeholder="Senha">
+                    </div>
+                    <button type="submit" form="login-card">Entrar</button>
+                    <div class="forgot-password"><a href="">Esqueceu sua senha?</a></div>
+                </form>
+            </div>
+            
+            <div class="cards" id="card-back">
+                <form class="card-back" id="signup-card" asp-controller="Usuario" asp-action="Create">
+                    <label class="access-title">Crie uma conta</label>
+                    <div class="form-group">
+                        <img src="~/images/icons/homepage/user.svg" alt="">
+                        <input asp-for="nomeUsuario" class="form-box" placeholder="Nome de Usuario">
+                        <span asp-validation-for="nomeUsuario" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <img src="~/images/icons/homepage/identification-card.svg" alt="">
+                        <input asp-for="nomeCompleto" class="form-box" placeholder="Nome Completo">
+                        <span asp-validation-for="nomeCompleto" class="text-danger"></span>
+                    </div>                    
+                    <div class="form-group">
+                        <img src="~/images/icons/homepage/calendar-blank.svg" alt="">
+                        <input asp-for="dataNascimento" class="form-box" placeholder="Data de Nascimento" value="Data de Nascimento">
+                        <span asp-validation-for="dataNascimento" class="text-danger"></span>
+                    </div>              
+                    <div class="form-group">
+                        <img src="~/images/icons/homepage/at.svg" alt="">
+                        <input asp-for="email" class="form-box" placeholder="E-mail">
+                        <span asp-validation-for="email" class="text-danger"></span>
+                    </div>                                  
+                    <div class="form-group">
+                        <img src="~/images/icons/homepage/lock-key.svg" alt="">
+                        <input asp-for="senha" class="form-box" placeholder="Senha">
+                        <span asp-validation-for="senha" class="text-danger"></span>
+                    </div>              
+                    <button type="submit" form="signup-card">Criar conta</button>
+                </form>
+            </div>
+            
+        </div>
+    </main>
+    <footer>
+        <div>© 2023 - GamingGroove - Privacy</div>
+    </footer>
+
+    <script src="~/js/HomePage.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

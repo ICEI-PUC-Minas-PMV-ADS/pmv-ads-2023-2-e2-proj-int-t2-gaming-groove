@@ -3,113 +3,8 @@
     margin: 0;
 }
 
-body {
-    background: #110B31;
-    height: 100vh;
-}
-
-header {
-    height: 100px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding-inline: 2%;
-}
-
-.logo {
-    height: 60px;
-}
-
-.navbar {
-    width: 480px;
-    height: 48px;
-    border: solid #AFD3FF 2px;
-    border-radius: 30px;
-    box-shadow: #0277F9 0 0 20px 9px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 100px;
-    margin-top: 40px;
-}
-
-.navbar img {
-    height: 28px;
-}
-
-.menu-icon {
-    height: 60px;
-    width: 60px;
-    background: url(/images/Karthus_17.jpg) center center;
-    background-size: cover;
-    border: solid 2px #E3A5FF;
-    box-shadow: #B100FF 0 0 10px 3px;
-    border-radius: 50%;
-}
-
-.menu-icon:hover {
-    transition: 1s;
-    border: solid 2px #AFD3FF;
-    box-shadow: #0277F9 0 0 10px 3px;
-}
-
-.menu-icon:not(:hover) {
-    transition: 1s;
-    border: solid 2px #E3A5FF;
-    box-shadow: #B100FF 0 0 10px 3px;
-}
-
-.list-menu {
-    position: absolute;
-    top: 90px;
-    right: 85px;
-    height: 70px;
-    width: 150px;
-    background-color: #111738;
-    border: solid 2px #E3A5FF;
-    box-shadow: #B100FF 0 0 10px 3px;
-    border-top-right-radius: 4px;
-    border-top-left-radius: 12px;
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    display: none;
-}
-
-.list {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    gap: 10px;
-    padding-top: 4px;
-}
-
-.list a {
-    text-align: center;
-    font-family: Play;
-    width: 100%;
-    border: none;
-    background: none;
-    color: white;
-    letter-spacing: 1px;
-    text-decoration: none;
-}
-
-.list a:hover {
-    transition: 0.4s;
-    color: #00F0FF;
-    background-color: #232B58;
-}
-
 main {
+    margin-top: 20px;
     display: flex;
     justify-content: center;
 }
@@ -573,8 +468,3 @@ h3 {
     transition: 0.5s;
 }
 
-footer {
-    color: white;
-    text-align: center;
-    margin-top: 190px;
-}

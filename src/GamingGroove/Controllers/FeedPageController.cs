@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using GamingGroove.Data;
-using GamingGroove.Models; 
+﻿using Microsoft.AspNetCore.Mvc;
+using GamingGroove.Controllers;
 
 namespace GamingGroove
 {
-    public class FeedPageController : Controller
+    public class FeedPageController : BaseController
     {
         public IActionResult Index()
         {
