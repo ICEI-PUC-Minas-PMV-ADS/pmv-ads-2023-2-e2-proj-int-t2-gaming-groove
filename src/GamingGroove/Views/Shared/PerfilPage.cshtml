@@ -45,19 +45,18 @@
         <div class="main-container">
             
             @{
-                var background = "data:image/png;base64,@Convert.ToBase64String(Model.getUsuario.iconePerfil)";
-                
+                var background = "";
             }
             @if (Model.getUsuario.iconePerfil != null)
             {
-                background = "data:image/png;base64,@Convert.ToBase64String(Model.getUsuario.iconePerfil)";
+                background = "url('data:image/png;base64," + Convert.ToBase64String(Model.getUsuario.capaPerfil) + "') no-repeat center center / cover";
             }
             else
             {
-                background = "background-color: #c6c6c6;";
+                background = "#c6c6c6;";
             }
             
-            <div class="cover-pic" style="@background">   
+            <div class="cover-pic" style="background: @background;">   
                 <div class="cover-first-container">
                     @if (Model.getUsuario.iconePerfil != null)
                     {
