@@ -528,7 +528,7 @@ h3 {
     flex-direction: row;
     justify-content: space-between;
     gap: 10px;
-    background-color: #000000;
+    background-color: black;
     border-radius: 50px;
 }
 
