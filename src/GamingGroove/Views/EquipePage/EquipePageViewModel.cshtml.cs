@@ -19,7 +19,6 @@ namespace GamingGroove.Views.EquipePage
         public UsuarioModel getUsuario { get; set; }
         public IEnumerable<UsuarioEquipeModel> getEquipesUsuario { get; set; }
         public List<string> InfoEquipes { get; set; }
-
         public List<string> InfoEquipes2 { get; set; }
 
         public void GetEquipesUsuario(int usuario)
