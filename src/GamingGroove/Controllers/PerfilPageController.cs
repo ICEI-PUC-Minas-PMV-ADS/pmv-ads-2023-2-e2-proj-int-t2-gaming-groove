@@ -1,15 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using GamingGroove.Data;
-using GamingGroove.Models;
 using GamingGroove.Views.PerfilPage;
-namespace GamingGroove
+
+namespace GamingGroove.Controllers
 {
-    public class PerfilPageController : Controller
+    public class PerfilPageController : BaseController
     {
         private readonly GamingGrooveDbContext _contexto;
 

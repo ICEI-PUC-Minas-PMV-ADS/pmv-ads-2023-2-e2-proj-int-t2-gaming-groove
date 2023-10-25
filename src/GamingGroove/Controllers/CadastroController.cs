@@ -1,17 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using GamingGroove.Data;
 using GamingGroove.Models;
-using System.Security.Claims;
-using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 
-namespace GamingGroove
+namespace GamingGroove.Controllers
 {
+    [AllowAnonymous]
     public class CadastroController : Controller
     {
         private readonly GamingGrooveDbContext _context;

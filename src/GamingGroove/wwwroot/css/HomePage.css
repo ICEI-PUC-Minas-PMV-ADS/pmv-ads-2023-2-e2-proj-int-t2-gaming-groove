@@ -1,24 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
-
-@font-face {
-    font-family: 'Gamer';
-    src: url(/fonts/Gamer.ttf)
-}
-
-@font-face {
-    font-family: 'PlayMeGames';
-    src: url(/fonts/PlayMeGames.otf)
-}
-
 * {
     padding: 0;
     margin: 0;
-}
-
-.nav-bar-nav {
-  height: 30px;
-  width: 100%;
-  background-color: pink;
 }
 
 body {
@@ -204,7 +186,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   color: black;
   box-shadow: #0277F9 0px 0px 20px 4px;
   transition: 0.8s;
-
 }
 
 .forgot-password {
