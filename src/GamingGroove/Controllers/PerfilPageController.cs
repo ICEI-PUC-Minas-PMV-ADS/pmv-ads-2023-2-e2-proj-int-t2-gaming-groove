@@ -3,6 +3,7 @@ using GamingGroove.Data;
 using Microsoft.EntityFrameworkCore;
 using GamingGroove.Views.PerfilPage;
 using GamingGroove.Models;
+using System.Security.Claims;
 
 namespace GamingGroove.Controllers
 {
@@ -30,17 +31,24 @@ namespace GamingGroove.Controllers
 
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _contexto.Usuarios == null)
+            if (User.FindFirst(ClaimTypes.NameIdentifier)?.Value == id.ToString())
             {
-                return NotFound();
-            }
+                if (id == null || _contexto.Usuarios == null)
+                {
+                    return NotFound();
+                }
 
-            var usuarioModel = await _contexto.Usuarios.FindAsync(id);
-            if (usuarioModel == null)
-            {
-                return NotFound();
+                var usuarioModel = await _contexto.Usuarios.FindAsync(id);
+                if (usuarioModel == null)
+                {
+                    return NotFound();
+                }
+                return View(usuarioModel);                    
             }
-            return View(usuarioModel);
+            else
+            {
+                return RedirectToAction("Index", "AcessoNegadoPage");
+            }  
         }
 
 
@@ -52,27 +60,26 @@ namespace GamingGroove.Controllers
             {
                 return NotFound();
             }
-
             if (ModelState.IsValid)
             {
                 try
                 {
-                    var existingCommunity = await _contexto.Usuarios.FindAsync(id);
+                    var existingUser = await _contexto.Usuarios.FindAsync(id);
 
-                    if (existingCommunity != null)
+                    if (existingUser != null)
                     {
-                        existingCommunity.nomeUsuario = usuarioModel.nomeUsuario;
-                        existingCommunity.primeiroJogo = usuarioModel.primeiroJogo;
-                        existingCommunity.segundoJogo = usuarioModel.segundoJogo;
-                        existingCommunity.terceiroJogo = usuarioModel.terceiroJogo;
-                        existingCommunity.biografia = usuarioModel.biografia;
+
+                        existingUser.primeiroJogo = usuarioModel.primeiroJogo;
+                        existingUser.segundoJogo = usuarioModel.segundoJogo;
+                        existingUser.terceiroJogo = usuarioModel.terceiroJogo;
+                        existingUser.biografia = usuarioModel.biografia;
 
                         if (iconePerfilArquivo != null && iconePerfilArquivo.Length > 0)
                         {
                             using (var memoryStream = new MemoryStream())
                             {
                                 await iconePerfilArquivo.CopyToAsync(memoryStream);
-                                existingCommunity.iconePerfil = memoryStream.ToArray();
+                                existingUser.iconePerfil = memoryStream.ToArray();
                             }
                         }
 
@@ -81,11 +88,17 @@ namespace GamingGroove.Controllers
                             using (var memoryStream = new MemoryStream())
                             {
                                 await capaPerfilArquivo.CopyToAsync(memoryStream);
-                                existingCommunity.capaPerfil = memoryStream.ToArray();
+                                existingUser.capaPerfil = memoryStream.ToArray();
                             }
                         }
 
-                        _contexto.Entry(existingCommunity).State = EntityState.Modified;
+                        usuarioModel.nomeUsuario = existingUser.nomeUsuario;
+                        usuarioModel.nomeCompleto = existingUser.nomeCompleto;
+                        usuarioModel.dataNascimento = existingUser.dataNascimento;
+                        usuarioModel.email = existingUser.email;
+                        usuarioModel.senha = existingUser.senha;
+
+                        _contexto.Entry(existingUser).State = EntityState.Modified;
                         await _contexto.SaveChangesAsync();
                     }
                     else
@@ -106,7 +119,10 @@ namespace GamingGroove.Controllers
                 }
                 return RedirectToAction("Index", "PerfilPage", new { user = usuarioModel.nomeUsuario });
             }
-            return View(usuarioModel);
+            else
+            {
+        }
+        return View(usuarioModel);
         }
 
         private bool UsuarioModelExists(int id)
