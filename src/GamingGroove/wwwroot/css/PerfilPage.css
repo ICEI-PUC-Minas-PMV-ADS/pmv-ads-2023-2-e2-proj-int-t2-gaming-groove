@@ -1,18 +1,15 @@
-* {
-    padding: 0;
-    margin: 0;
-}
+
 
 main {
-    margin-top: 20px;
     display: flex;
     justify-content: center;
 }
 
 .main-container {
     width: 70vw;
-    margin-top: 5vh;
-    height: 78vh;
+    margin-top: 4vh;
+    height: 52vh;
+    margin-bottom: 5vh;
 }
 
 .cover-pic {
@@ -136,30 +133,12 @@ main {
     gap: 12px;
 }
 
-.profile-first-container {
-    height: 80%;
-    width: 73%;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.profile-second-container {
-    height: 80%;
-    width: 27%;
-    display: flex;
-}
-
-.communities-column {
+.profile-container {
     height: 100%;
     width: 100%;
-    background-color: #232B58;
-    border-radius: 4px;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    padding-block: 20px;
+    flex-direction: row;
+    gap: 12px;
 }
 
 h3 {
@@ -168,23 +147,7 @@ h3 {
     color: #ffffff;
 }
 
-.inside-first-container {
-    height: 60%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 12px;
-}
 
-.inside-second-container {
-    height: 40%;
-    background-color: #232B58;
-    border-radius: 4px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-}
 
 .column {
     height: 100%;
@@ -222,7 +185,6 @@ h3 {
 }
 
 .bio-text {
-    width: 270px;
     font-size: 14px;
     padding-inline : 26px;
     padding-block: 24px;
@@ -237,19 +199,19 @@ h3 {
     display: flex;
     flex-direction: column;
     justify-content: baseline;
+    align-items: center;
     padding-block: 20px;
     gap: 20px;
 }
 
 .favorite-games-items {
-    width: 220px;
+    width: 80%;
     display: flex;
     flex-direction: row;
     align-items: center; 
     gap: 15px;
     font-size: 15px;
-    padding-left: 12px;
-    padding-right: 15px;
+    padding-inline: 10px;
     padding-block: 10px;
     margin-inline: 20px;
     border-radius: 6px;
@@ -267,7 +229,7 @@ h3 {
 
 .gameIcon-container {
     height: 50px;
-    width: 50px;
+    min-width: 50px;
     background-color: #000000;
     display: flex;
     justify-content: center;
@@ -286,13 +248,13 @@ h3 {
     height: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
     padding-top: 20px;
-    margin-inline: 20px;
     gap: 15px;
 }
 
 .user-teams-items {
-    width: 220px;
+    width: 90%;
     color: white;
     display: flex;
     align-items: center;
@@ -301,6 +263,58 @@ h3 {
     padding-block: 10px;
     border-radius: 8px;
     gap: 20px;
+}
+
+@media (max-width: 1550px) {
+    .profile-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        align-items: center;
+        padding-bottom: 20px;
+        padding-inline: 10px;
+    }
+    .column {
+        height: 50vh;
+    }
+}
+
+@media (max-width: 950px) {
+    .profile-container {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+    .column {
+        height: 60vh;
+    }
+    .favorite-games-container {
+        flex-direction: row;
+    }
+    .favorite-games-items {
+        justify-content: center;
+    }
+    .game-name {
+        display: none;
+    }
+    .user-teams-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        align-items: center;
+        padding-bottom: 20px;
+        padding-inline: 10px;
+    }
+   .user-teams-items {
+        width: 100%; /* Ocupa toda a largura da coluna */
+        color: white;
+        display: flex;
+        align-items: center;
+        padding-left: 20px;
+        padding-right: 10px;
+        padding-block: 10px;
+        border-radius: 8px;
+    }
 }
 
 .user-teams-items:hover {
@@ -314,6 +328,8 @@ h3 {
 }
 
 .team-icon {
+    min-width: 50px;
+    min-height: 50px;
     height: 45px;
     width: 45px;
     border-radius: 50%;
@@ -323,10 +339,6 @@ h3 {
 .team-info {
     display: flex;
     flex-direction: column;
-}
-
-.team-name {
-
 }
 
 .team-game {

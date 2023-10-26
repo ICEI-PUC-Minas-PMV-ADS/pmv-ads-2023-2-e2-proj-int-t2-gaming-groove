@@ -19,7 +19,7 @@ namespace GamingGroove.Views.ComunidadePage
         public IEnumerable<EquipeModel> getEquipes { get; set; }
         public IEnumerable<UsuarioEquipeModel> getEquipesUsuario { get; set; }
         
-        public void GetEquipesUsuario(int usuario)
+        public void GetComunidadesUsuario(int usuario)
         {
             
         }

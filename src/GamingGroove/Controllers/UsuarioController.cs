@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using GamingGroove.Data;
 using GamingGroove.Models;
+using GamingGroove.Views.PerfilPage;
 
 namespace GamingGroove.Controllers
 {
@@ -51,18 +52,18 @@ namespace GamingGroove.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("usuarioId,nomeUsuario,nomeCompleto,dataNascimento,email,senha,iconePerfil,capaPerfil,fotosGaleria,primeiroJogo,segundoJogo,terceiroJogo,biografia,registrationDate,tipoUsuario")] UsuarioModel usuarioModel)
+        public async Task<IActionResult> Create([Bind("usuarioId,nomeUsuario,nomeCompleto,dataNascimento,email,senha,iconePerfil,capaPerfil,fotosGaleria,primeiroJogo,segundoJogo,terceiroJogo,biografia,registrationDate,tipoUsuario")] PerfilPageViewModel usuarioModel)
         {
             
             if (ModelState.IsValid)
             {
-                usuarioModel.senha = BCrypt.Net.BCrypt.HashPassword(usuarioModel.senha);
+                usuarioModel.getUsuario.senha = BCrypt.Net.BCrypt.HashPassword(usuarioModel.getUsuario.senha);
                 
-                if (usuarioModel.primeiroJogo != null && usuarioModel.segundoJogo != null && usuarioModel.terceiroJogo != null)
+                if (usuarioModel.getUsuario.primeiroJogo != null && usuarioModel.getUsuario.segundoJogo != null && usuarioModel.getUsuario.terceiroJogo != null)
                 {
-                    if (usuarioModel.primeiroJogo == usuarioModel.segundoJogo || 
-                        usuarioModel.primeiroJogo == usuarioModel.terceiroJogo || 
-                        usuarioModel.segundoJogo == usuarioModel.terceiroJogo)
+                    if (usuarioModel.getUsuario.primeiroJogo == usuarioModel.getUsuario.segundoJogo || 
+                        usuarioModel.getUsuario.primeiroJogo == usuarioModel.getUsuario.terceiroJogo || 
+                        usuarioModel.getUsuario.segundoJogo == usuarioModel.getUsuario.terceiroJogo)
                     {
                         ModelState.AddModelError("", "Escolha três jogos diferentes.");
                         return View(usuarioModel);
