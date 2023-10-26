@@ -1,4 +1,3 @@
-
 * {
     padding: 0;
     margin: 0;
@@ -23,8 +22,9 @@ header {
 }
 
 .navbar {
-    width: 480px;
+    width: 500px;
     height: 48px;
+    min-width: 300px;
     border: solid #AFD3FF 2px;
     border-radius: 30px;
     box-shadow: #0277F9 0 0 20px 9px;
@@ -108,4 +108,11 @@ header {
     transition: 0.4s;
     color: #00F0FF;
     background-color: #232B58;
+}
+
+@media (max-width: 950px) {
+    .navbar {
+        width: 40vw;
+        gap: 6.5vw;
+    }
 }
