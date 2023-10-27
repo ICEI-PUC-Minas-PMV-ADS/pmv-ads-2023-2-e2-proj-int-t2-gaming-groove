@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using GamingGroove.Data;
 using GamingGroove.Views.ComunidadePage;
+using System.Security.Claims;
 
 namespace GamingGroove.Controllers
 {
@@ -15,9 +16,15 @@ namespace GamingGroove.Controllers
 
         public IActionResult Index()
         {
-            
+            var viewModel = new ComunidadePageViewModel(_contexto);
+            int usuario = int.Parse(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            viewModel.GetComunidadesUsuario(usuario);
+            if (viewModel == null)
+            {
+                return NotFound();
+            }
 
-            return View();
+            return View(viewModel);
         }
             
     }

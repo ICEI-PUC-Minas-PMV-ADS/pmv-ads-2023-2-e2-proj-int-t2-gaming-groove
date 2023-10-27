@@ -25,7 +25,6 @@ namespace GamingGroove.Controllers
 
             return View(viewModel);
         }
-
     }
 
 }
