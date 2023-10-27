@@ -90,13 +90,37 @@ namespace GamingGroove.Controllers
         {
             if (ModelState.IsValid)
             {
-                usuarioModel.senha = BCrypt.Net.BCrypt.HashPassword(usuarioModel.senha);
+                usuarioModel.senha = BCrypt.Net.BCrypt.HashPassword(usuarioModel.senha);                       
                 _context.Add(usuarioModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index", "HomePage");
             }
 
             return View("Index", usuarioModel);
+        }
+
+                
+        [HttpGet]
+        public IActionResult GetIconeUsuario()
+        {           
+            var UsuarioID = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var user = _context.Usuarios.FirstOrDefault(u => u.usuarioId == int.Parse(UsuarioID));
+            string IconePadrao = "images/icons/empty-icon.png";
+
+            var cacheProfile = new CacheProfile
+            {
+                NoStore = true,   
+                Duration = 0  
+            };
+
+            Response.Headers.Add("Cache-Control", "no-store, max-age=0");
+
+            if (user != null && user.iconePerfil != null)
+            {
+                return File(user.iconePerfil, "image/png");
+            }
+
+            return File(IconePadrao, "image/png");
         }
     }
 }

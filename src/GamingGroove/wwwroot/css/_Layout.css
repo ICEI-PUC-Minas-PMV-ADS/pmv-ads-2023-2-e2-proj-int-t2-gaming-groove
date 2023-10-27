@@ -44,11 +44,16 @@ header {
 .menu-icon {
     height: 60px;
     width: 60px;
-    background: url(/images/Karthus_17.jpg) center center;
-    background-size: cover;
     border: solid 2px #E3A5FF;
     box-shadow: #B100FF 0 0 10px 3px;
     border-radius: 50%;
+    overflow: hidden;
+}
+
+.menu-icon img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
 
 .menu-icon:hover {

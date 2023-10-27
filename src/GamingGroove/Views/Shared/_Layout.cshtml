@@ -21,7 +21,11 @@
         </nav>
         @if (User.Identity.IsAuthenticated)
         {
-            <button id="menu-icon" class="menu-icon" onclick="openMenu()"></button>
+            
+            var profileImage = Url.Action("GetIconeUsuario", "Login");
+
+
+            <button id="menu-icon" class="menu-icon" onclick="openMenu()"><img src="@profileImage" alt=""></button>
             <nav id="listMenu" class="list-menu">
                 <div class="list">
                     <a href="~/PerfilPage/@User.FindFirst(ClaimTypes.Name)?.Value">Perfil</a>
