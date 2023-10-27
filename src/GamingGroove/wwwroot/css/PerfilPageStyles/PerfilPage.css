@@ -41,6 +41,10 @@ main {
     object-fit: cover;
 }
 
+.username {
+    color: #00F0FF;
+}
+
 .user-add-friend-container {
     height: 100%;
     display: flex;

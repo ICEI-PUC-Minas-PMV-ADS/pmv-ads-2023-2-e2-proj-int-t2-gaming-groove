@@ -78,6 +78,14 @@ namespace GamingGroove.Controllers
                         existingUser.terceiroJogo = usuarioModel.terceiroJogo;
                         existingUser.biografia = usuarioModel.biografia;
 
+                        if (existingUser.primeiroJogo == existingUser.segundoJogo
+                        || existingUser.primeiroJogo == existingUser.terceiroJogo
+                        ||existingUser.segundoJogo == existingUser.terceiroJogo)
+                        {
+                            ViewBag.Message = "* Selecione apenas jogos diferentes.";
+                            return View(usuarioModel);
+                        }
+
                         if (iconePerfilArquivo != null && iconePerfilArquivo.Length > 0)
                         {
                             using (var memoryStream = new MemoryStream())

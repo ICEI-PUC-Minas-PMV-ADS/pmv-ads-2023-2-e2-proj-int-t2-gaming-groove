@@ -11,36 +11,30 @@
     <input type="hidden" asp-for="usuarioId" />
     <div class="edit-container">
         <div class="accountInformations">
-            <div>Dados da conta</div>
+            <div class="accountInformations-label">Dados da conta</div>
             <div class="userData-input">
                 <label asp-for="nomeUsuario"></label>
-                <input asp-for="nomeUsuario"/>
-                <span asp-validation-for="nomeUsuario" class="text-danger"></span>
+                <input asp-for="nomeUsuario" readonly/>
             </div>
             <div class="userData-input">
                 <label asp-for="nomeCompleto"></label>
-                <input asp-for="nomeCompleto"/>
-                <span asp-validation-for="nomeCompleto" class="text-danger"></span>
+                <input asp-for="nomeCompleto" readonly/>
             </div>
             <div class="userData-input">
                 <label asp-for="dataNascimento"></label>
-                <input asp-for="dataNascimento"/>
-                <span asp-validation-for="dataNascimento" class="text-danger"></span>
+                <input asp-for="dataNascimento" readonly/>
             </div>
             <div class="userData-input">
                 <label asp-for="email"></label>
-                <input asp-for="email"/>
-                <span asp-validation-for="email"></span>
+                <input asp-for="email" readonly/>
             </div>
-            <div class="userData-input">
+            <div class="userData-input" style="display: none;">
                 <label asp-for="senha"></label>
-                <input asp-for="senha"/>
-                <span asp-validation-for="senha" class="text-danger"></span>
+                <input asp-for="senha" readonly/>
             </div>
         </div>
         
         <div class="editProfile-container">
-            <div class="title">Personalize seu perfil</div>
             <div class="firstSection-container">
 
                 @{
@@ -60,54 +54,57 @@
                         <img class="profilePic" src="~/images/icons/user-icon.png" alt="Imagem de Perfil Padrão" style= "background-color: white;" />
                     }
                 </div>   
-
-                <div class="images-inputs">
-                    <div class="profileIcon-input-container">
-                        <label class="profileIcon-input-title">Escolha uma imagem de perfil:</label>
-                        <div class="profileIcon-input">
-                            <input asp-for="iconePerfil" class="form-control" type="file" name="iconePerfilArquivo"/>
-                            <span asp-validation-for="iconePerfil" class="text-danger"></span>
-                        </div>                        
-                    </div>
-                    <div class="profileCover-input-container">
-                        <label class="profileCover-input-title">Escolha uma imagem de capa:</label>
-                        <div class="profileCover-input">
-                            <input asp-for="capaPerfil" class="form-control" type="file" name="capaPerfilArquivo"/>
-                            <span asp-validation-for="capaPerfil" class="text-danger"></span>
-                        </div>                        
-                    </div>
-                </div>
             </div>
             <div class="secondSection-container">
                 <div class="favGames-container">
-                    <div>Selecione seus três jogos favoritos:</div>
+                    <div class="imageInput-container">
+                        <div class="profileIcon-input-container">
+                            <div class="profileImage-input">
+                                <label class="imageInput" for="profileIcon-input"><img class="uploadIcon" src="~/images/icons/upload-icon.svg" alt="">Ícone de perfil</label>
+                                <input asp-for="iconePerfil" id="profileIcon-input" name="profileIcon-input" type="file" name="iconePerfilArquivo"/>
+                                <span asp-validation-for="iconePerfil" class="text-danger"></span>
+                            </div>                        
+                        </div>
+                        <div class="profileCover-input-container">
+                            <div class="profileImage-input">
+                                <label class="imageInput" for="profileCover-input"><img  class="uploadIcon" src="~/images/icons/upload-icon.svg" alt="">Imagem de capa</label>
+                                <input asp-for="capaPerfil" id="profileCover-input" name="profileCover-input" type="file" name="capaPerfilArquivo"/>
+                                <span asp-validation-for="capaPerfil" class="text-danger"></span>
+                            </div>                        
+                        </div>
+                    </div>
+                    <div class="favGames-label-container">
+                        <div class="favGames-label">Selecione seus três jogos favoritos:</div>
+                        <div class="favGames-alert">@ViewBag.Message</div>
+                    </div>
+                    
                     <div class="form-group">
                         <select asp-for="primeiroJogo" class="form-control" asp-items="Html.GetEnumSelectList<JogosEnum>()"></select>
-                        <span asp-validation-for="primeiroJogo" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <select asp-for="segundoJogo" class="form-control" asp-items="Html.GetEnumSelectList<JogosEnum>()"></select>
-                        <span asp-validation-for="segundoJogo" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <select asp-for="terceiroJogo" class="form-control" asp-items="Html.GetEnumSelectList<JogosEnum>()"></select>
-                        <span asp-validation-for="terceiroJogo" class="text-danger"></span>
                     </div>   
                 </div>
                 <div class="biography">
+                    <div>Fale um pouco sobre você:</div>
                     <div class="form-group">
-                        <div>Escreva sua biografia:</div>
-                        <input asp-for="biografia" class="form-control" />
+                        <textarea asp-for="biografia" class="form-control bio-text" rows="10"></textarea>
                         <span asp-validation-for="biografia" class="text-danger"></span>
                     </div>
                 </div>
             </div>
+            <div class="buttons-container">
+                <button class="submit-button" href="~/PerfilPage/@User.FindFirst(System.Security.Claims.ClaimTypes.Name)?.Value">Cancelar</button>
+                <button class="submit-button" type="submit">Salvar alterações</button>
+            </div>
         </div>
     </div>
 
-    <div class="submit-button">
-        <input type="submit" value="Save"/>
-    </div>
+
+    
 
 </form>
 

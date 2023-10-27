@@ -4,12 +4,12 @@
 }
 
 .main-container {
-    height: 60vh;
-    margin-top: 7vh;
+    margin-top: 10vh;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    font-family: Play;
 }
 
 .edit-container {
@@ -22,8 +22,10 @@
 
 .accountInformations {
     width: 20vw;
+    min-width: 250px;
     background-color: #222B58;
-    border: solid 2px #E087FF;
+    border: solid 1px #AFD3FF;
+    box-shadow: #0277F9 0px 0px 8px;
     border-radius: 6px;
     display: flex;
     flex-direction: column;
@@ -31,6 +33,13 @@
     align-items: center;
     padding: 20px 0px 40px 0px;
     gap: 1vh;
+    cursor:default;
+}
+
+.accountInformations-label {
+    font-family: Play;
+    text-transform: uppercase;
+    margin-bottom: 2vh;
 }
 
 .userData-input {
@@ -43,12 +52,18 @@
     color: rgb(165, 165, 165);
     height: 30px;
     width: 200px;
-    border: white 1px solid;
-    background-color: #111738;
+    border: rgb(208, 208, 208) 1px solid;
+    background-color: #23273c;
     border-radius: 4px;
     font-family: 'Black Ops One';
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     padding-inline: 10px;
+    cursor:default;
+}
+
+.userData-input label {
+    font-family: Play;
+    font-size: 12px;
 }
 
 .editProfile-container {
@@ -57,15 +72,9 @@
     flex-direction: column;
     align-items: center;
     background-color: #222B58;
-    border: solid 2px #E087FF;
+    border: solid 1px #AFD3FF;
+    box-shadow: #0277F9 0px 0px 8px;
     border-radius: 6px;
-}
-
-.title {
-    font-family: Gamer;
-    text-transform: uppercase;
-    font-size: 30px;
-    margin-bottom: 2vh;
 }
 
 .firstSection-container {
@@ -79,7 +88,7 @@
 
 .cover-preview  {
     height: 16vh;
-    width: 50vw;
+    width: 40vw;
     background-color: red;
     border-radius: 6px;
     display: flex;
@@ -87,6 +96,7 @@
     justify-content: baseline;
     padding: 10px;
     min-height: 130px;
+    min-width: 320px;
 }
 
 .profilePic {
@@ -99,4 +109,192 @@
 .secondSection-container {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    gap: 5vw;
+}
+
+.favGames-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;   
+    gap: 2vh;
+}
+
+.profileImage-input input[type="file"]{
+    display: none;
+}
+
+.imageInput-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.imageInput {
+    height: 40px;
+    width: 150px;
+    color: #E3A5FF;
+    background-color: #111738;
+    border-radius: 4px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: baseline;
+    padding-left: 10px;
+    gap: 10px;
+}
+
+.uploadIcon {
+    height: 20px;
+}
+
+.imageInput:hover {
+    transition: 0.7s;
+    color: black;
+    font-weight: bold;
+    background-color: #AFD3FF;
+    .uploadIcon {
+        filter: brightness(0);
+    }
+}
+
+.imageInput:not(:hover) {
+    transition: 0.7s;
+}
+
+.favGames-container select{
+    font-size: 12px;
+    color: #E3A5FF;
+    background-color: #111738;
+    border: none;
+}
+
+.favGames-container select:hover {
+    transition: 0.7s;
+    color: black;
+    font-weight: bold;
+    background-color: #AFD3FF;
+    .uploadIcon {
+        filter: brightness(0);
+    }
+}
+
+.favGames-container select:not(:hover) {
+    transition: 0.7s;
+}
+
+.form-control option {
+    color: rgb(255, 255, 255);
+    background-color: #111738;
+}
+
+.form-control:focus {
+    background-color: #111738;
+    color: white;
+}
+
+.favGames-alert {
+    color: red;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.biography {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.bio-text {
+    font-family: Arial;
+    letter-spacing: 1px;
+    font-size: 12px;
+    color: #E3A5FF;
+    background-color: #111738;
+    height: 30vh;
+    width: 20vw;
+    resize: none;
+    border: 2px solid #111738;
+    border-radius: 8px;
+    min-width: 190px;
+    text-align: justify;
+}
+
+.bio-text:focus {
+    color: white;
+    background-color: #111738;
+    border: 2px solid #111738;
+}
+
+::-webkit-scrollbar {
+    width: 9px;
+    background-color: #111738;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #2b356c;
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #E3A5FF;
+    border-radius: 6px;
+}
+
+.buttons-container {
+    display: flex;
+    flex-direction: row;
+    gap: 5vw;
+}
+
+.submit-button {
+    font-family: Play;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding-inline: 20px;
+    padding-block: 15px;
+    color: white;
+    background-color: #110B31;
+    border: none;
+    border-radius: 6px;
+    margin-top: 50px;
+}
+
+.submit-button:hover {
+    font-weight: bold;
+    background: #AFD3FF;
+    color: black;
+    box-shadow: none;
+    transition: 0.7s;
+}
+
+.submit-button:not(:hover) {
+    transition: 0.7s;
+}
+
+@media  (max-width: 1550px)
+{
+    .edit-container {
+        flex-direction: column-reverse;
+        gap: 10vh;
+    }
+}
+
+@media  (max-width: 900px)
+{
+    .secondSection-container {
+        flex-direction: column;
+    }
+    .imageInput-container {
+        justify-content: center;
+        align-items: center;
+    }
+    .biography {
+        justify-content: center;
+        align-items: center;
+    }
+    .bio-text{
+        width: 60vw;
+    }
 }
