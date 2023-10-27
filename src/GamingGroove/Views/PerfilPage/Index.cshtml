@@ -90,8 +90,15 @@
                         <div class="user-teams-list">
                             @foreach (var item in Model.getEquipes)
                             {
-                                <div class="user-teams-items">
-                                    <div class="team-icon"></div>
+                                <div class="user-teams-items">                
+                                    @if (item.equipe.iconeEquipe != null)
+                                    {
+                                        <img class="team-icon" src="data:image/png;base64,@Convert.ToBase64String(item.equipe.iconeEquipe)" alt="Imagem de Perfil" />
+                                    }
+                                    else
+                                    {
+                                        <img class="team-icon" src="~/images/icons/community-icon.png" alt="Imagem de Perfil" />
+                                    }  
                                     <div class="team-info">
                                         <div class="team-name">@item.equipe.nomeEquipe</div>                                
                                         <div class="team-game">@EnumHelper.GetDisplayName(@item.equipe.jogoEquipe)</div>

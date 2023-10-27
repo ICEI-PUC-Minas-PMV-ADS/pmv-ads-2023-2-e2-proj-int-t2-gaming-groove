@@ -51,10 +51,19 @@ namespace GamingGroove.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("equipeId,nomeEquipe,iconeEquipe,descricaoEquipe,jogoEquipe,dataCriacaoEquipe")] EquipeModel equipeModel)
+        public async Task<IActionResult> Create([Bind("equipeId,nomeEquipe,iconeEquipe,descricaoEquipe,jogoEquipe,dataCriacaoEquipe")] EquipeModel equipeModel, IFormFile? iconeEquipeArquivo)
         {
             if (ModelState.IsValid)
             {
+                if (iconeEquipeArquivo != null && iconeEquipeArquivo.Length > 0)
+                {
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        await iconeEquipeArquivo.CopyToAsync(memoryStream);
+                        equipeModel.iconeEquipe = memoryStream.ToArray();
+                    }
+                }
+                       
                 _context.Add(equipeModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -83,7 +92,7 @@ namespace GamingGroove.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("equipeId,nomeEquipe,iconeEquipe,descricaoEquipe,jogoEquipe,dataCriacaoEquipe")] EquipeModel equipeModel)
+        public async Task<IActionResult> Edit(int id, [Bind("equipeId,nomeEquipe,descricaoEquipe,jogoEquipe,dataCriacaoEquipe")] EquipeModel equipeModel, IFormFile? iconeEquipeArquivo)
         {
             if (id != equipeModel.equipeId)
             {
@@ -94,8 +103,34 @@ namespace GamingGroove.Controllers
             {
                 try
                 {
-                    _context.Update(equipeModel);
-                    await _context.SaveChangesAsync();
+                    // Busque a equipe existente no banco de dados
+                    var existingTeam = await _context.Equipes.FindAsync(id);
+
+                    if (existingTeam != null)
+                    {
+                        // Atualize as propriedades da equipe existente com base no modelo recebido
+                        existingTeam.nomeEquipe = equipeModel.nomeEquipe;
+                        existingTeam.descricaoEquipe = equipeModel.descricaoEquipe;
+                        existingTeam.jogoEquipe = equipeModel.jogoEquipe;
+                        existingTeam.dataCriacaoEquipe = equipeModel.dataCriacaoEquipe;
+
+                        // Verifique se um novo ícone de equipe foi fornecido
+                        if (iconeEquipeArquivo != null && iconeEquipeArquivo.Length > 0)
+                        {
+                            using (var memoryStream = new MemoryStream())
+                            {
+                                await iconeEquipeArquivo.CopyToAsync(memoryStream);
+                                existingTeam.iconeEquipe = memoryStream.ToArray();
+                            }
+                        }
+
+                        _context.Entry(existingTeam).State = EntityState.Modified;
+                        await _context.SaveChangesAsync();
+                    }
+                    else
+                    {
+                        return NotFound(); // Equipe não encontrada no banco de dados
+                    }
                 }
                 catch (DbUpdateConcurrencyException)
                 {
