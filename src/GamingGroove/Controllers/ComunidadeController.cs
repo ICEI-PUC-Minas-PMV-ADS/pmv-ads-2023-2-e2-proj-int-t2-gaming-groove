@@ -56,12 +56,12 @@ namespace GamingGroove.Controllers
             if (ModelState.IsValid)
             {
                 if (iconeComunidadeArquivo != null && iconeComunidadeArquivo.Length > 0)
+                {
+                    using (var memoryStream = new MemoryStream())
                     {
-                        using (var memoryStream = new MemoryStream())
-                        {
-                            await iconeComunidadeArquivo.CopyToAsync(memoryStream);
-                            comunidadeModel.iconeComunidade = memoryStream.ToArray();
-                        }
+                        await iconeComunidadeArquivo.CopyToAsync(memoryStream);
+                        comunidadeModel.iconeComunidade = memoryStream.ToArray();
+                    }
                 }
 
                 if (capaComunidadeArquivo != null && capaComunidadeArquivo.Length > 0)

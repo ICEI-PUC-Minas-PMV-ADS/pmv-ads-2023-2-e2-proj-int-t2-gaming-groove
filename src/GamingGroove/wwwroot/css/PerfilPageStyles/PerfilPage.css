@@ -296,6 +296,7 @@ h3 {
     width: 45px;
     border-radius: 50%;
     background-color: white;
+    border: solid white 2px;
 }
 
 .team-info {
@@ -360,8 +361,8 @@ h3 {
 }
 
 .community-icon {
-    height: 65px;
-    width: 65px;
+    height: 45px;
+    width: 45px;
     border-radius: 50%;
     background-color: white;
     object-fit: cover;
