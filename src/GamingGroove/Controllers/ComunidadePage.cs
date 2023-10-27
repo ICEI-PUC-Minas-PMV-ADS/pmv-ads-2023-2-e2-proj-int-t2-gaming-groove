@@ -15,14 +15,9 @@ namespace GamingGroove.Controllers
 
         public IActionResult Index()
         {
-            var viewModel = new ComunidadePageViewModel(_contexto);
-            viewModel.OnGet(user);
-            if (viewModel == null)
-            {
-                return NotFound();
-            }
+            
 
-            return View(viewModel);
+            return View();
         }
             
     }
