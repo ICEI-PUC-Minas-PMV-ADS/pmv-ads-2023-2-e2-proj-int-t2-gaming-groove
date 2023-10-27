@@ -4,75 +4,110 @@
     ViewData["Title"] = "Edit";
 }
 
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="usuarioId" />
-            <div class="form-group">
-                <label asp-for="nomeUsuario" class="control-label"></label>
-                <input asp-for="nomeUsuario" class="form-control" />
+<link rel="stylesheet" href="~/css/PerfilPageStyles/PerfilPageEdit.css" asp-append-version="true" />
+
+<form class="main-container" asp-controller="PerfilPage" asp-action="Edit" enctype="multipart/form-data">
+    
+    <input type="hidden" asp-for="usuarioId" />
+    <div class="edit-container">
+        <div class="accountInformations">
+            <div>Dados da conta</div>
+            <div class="userData-input">
+                <label asp-for="nomeUsuario"></label>
+                <input asp-for="nomeUsuario"/>
                 <span asp-validation-for="nomeUsuario" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="nomeCompleto" class="control-label"></label>
-                <input asp-for="nomeCompleto" class="form-control" />
+            <div class="userData-input">
+                <label asp-for="nomeCompleto"></label>
+                <input asp-for="nomeCompleto"/>
                 <span asp-validation-for="nomeCompleto" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="dataNascimento" class="control-label"></label>
-                <input asp-for="dataNascimento" class="form-control" />
+            <div class="userData-input">
+                <label asp-for="dataNascimento"></label>
+                <input asp-for="dataNascimento"/>
                 <span asp-validation-for="dataNascimento" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="email" class="control-label"></label>
-                <input asp-for="email" class="form-control" />
-                <span asp-validation-for="email" class="text-danger"></span>
+            <div class="userData-input">
+                <label asp-for="email"></label>
+                <input asp-for="email"/>
+                <span asp-validation-for="email"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="senha" class="control-label"></label>
-                <input asp-for="senha" class="form-control" />
+            <div class="userData-input">
+                <label asp-for="senha"></label>
+                <input asp-for="senha"/>
                 <span asp-validation-for="senha" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="iconePerfil" class="control-label"></label>
-                <input asp-for="iconePerfil" class="form-control" type="file" name="iconePerfilArquivo"/>
-                <span asp-validation-for="iconePerfil" class="text-danger"></span>
+        </div>
+        
+        <div class="editProfile-container">
+            <div class="title">Personalize seu perfil</div>
+            <div class="firstSection-container">
+
+                @{
+                    var background = "#c6c6c6;";
+                }
+                @if (Model.capaPerfil != null)
+                {
+                    background = "url('data:image/png;base64," + Convert.ToBase64String(Model.capaPerfil) + "') no-repeat center center / cover";
+                }
+                <div class="cover-preview" style="background: @background;">
+                    @if (Model.iconePerfil != null)
+                    {
+                        <img class="profilePic" src="data:image/png;base64,@Convert.ToBase64String(Model.iconePerfil)" alt="Imagem de Perfil" />
+                    }
+                    else
+                    {
+                        <img class="profilePic" src="~/images/icons/user-icon.png" alt="Imagem de Perfil Padrão" style= "background-color: white;" />
+                    }
+                </div>   
+
+                <div class="images-inputs">
+                    <div class="profileIcon-input-container">
+                        <label class="profileIcon-input-title">Escolha uma imagem de perfil:</label>
+                        <div class="profileIcon-input">
+                            <input asp-for="iconePerfil" class="form-control" type="file" name="iconePerfilArquivo"/>
+                            <span asp-validation-for="iconePerfil" class="text-danger"></span>
+                        </div>                        
+                    </div>
+                    <div class="profileCover-input-container">
+                        <label class="profileCover-input-title">Escolha uma imagem de capa:</label>
+                        <div class="profileCover-input">
+                            <input asp-for="capaPerfil" class="form-control" type="file" name="capaPerfilArquivo"/>
+                            <span asp-validation-for="capaPerfil" class="text-danger"></span>
+                        </div>                        
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="capaPerfil" class="control-label"></label>
-                <input asp-for="capaPerfil" class="form-control" type="file" name="capaPerfilArquivo"/>
-                <span asp-validation-for="capaPerfil" class="text-danger"></span>
+            <div class="secondSection-container">
+                <div class="favGames-container">
+                    <div>Selecione seus três jogos favoritos:</div>
+                    <div class="form-group">
+                        <select asp-for="primeiroJogo" class="form-control" asp-items="Html.GetEnumSelectList<JogosEnum>()"></select>
+                        <span asp-validation-for="primeiroJogo" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <select asp-for="segundoJogo" class="form-control" asp-items="Html.GetEnumSelectList<JogosEnum>()"></select>
+                        <span asp-validation-for="segundoJogo" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <select asp-for="terceiroJogo" class="form-control" asp-items="Html.GetEnumSelectList<JogosEnum>()"></select>
+                        <span asp-validation-for="terceiroJogo" class="text-danger"></span>
+                    </div>   
+                </div>
+                <div class="biography">
+                    <div class="form-group">
+                        <div>Escreva sua biografia:</div>
+                        <input asp-for="biografia" class="form-control" />
+                        <span asp-validation-for="biografia" class="text-danger"></span>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="fotosGaleria" class="control-label"></label>
-                <input asp-for="fotosGaleria" class="form-control" />
-                <span asp-validation-for="fotosGaleria" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="primeiroJogo" class="control-label"></label>
-                <select asp-for="primeiroJogo" class="form-control" asp-items="Html.GetEnumSelectList<JogosEnum>()"></select>
-                <span asp-validation-for="primeiroJogo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="segundoJogo" class="control-label"></label>
-                <select asp-for="segundoJogo" class="form-control" asp-items="Html.GetEnumSelectList<JogosEnum>()"></select>
-                <span asp-validation-for="segundoJogo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="terceiroJogo" class="control-label"></label>
-                <select asp-for="terceiroJogo" class="form-control" asp-items="Html.GetEnumSelectList<JogosEnum>()"></select>
-                <span asp-validation-for="terceiroJogo" class="text-danger"></span>
-            </div>     
-            <div class="form-group">
-                <label asp-for="biografia" class="control-label"></label>
-                <input asp-for="biografia" class="form-control" />
-                <span asp-validation-for="biografia" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
-</div>
+
+    <div class="submit-button">
+        <input type="submit" value="Save"/>
+    </div>
+
+</form>
 
