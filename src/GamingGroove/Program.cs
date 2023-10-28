@@ -1,9 +1,11 @@
 using System.Globalization;
+using GamingGroove.Controllers;
 using GamingGroove.Data;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.AspNetCore.Http; // Adicionar para SameSiteMode
+using Microsoft.AspNetCore.SignalR; // Adicionar para o SignalR
 
 namespace GamingGroove
 {
@@ -35,12 +37,12 @@ namespace GamingGroove
 
             builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options => {
-
-                    // options.AccessDeniedPath = "/Shared/AccessDenied";
-                    // options.LoginPath = "/Usuarios/Login/";
                     options.AccessDeniedPath = "/AcessoNegadoPage";
                     options.LoginPath = "/AcessoNegadoPage";
                 });
+
+            // 1. Adicionar suporte ao SignalR
+            builder.Services.AddSignalR();
 
             var app = builder.Build();
 
@@ -58,6 +60,9 @@ namespace GamingGroove
             app.UseAuthentication();
             app.UseAuthorization();
 
+            // 2. Adicionar o mapeamento para o hub do chat
+            app.MapHub<ChatHub>("/chatHub");
+
             app.MapControllerRoute(
                 name: "home",
                 pattern: "{controller=HomePage}/{action=Index}/{id?}");
@@ -66,6 +71,7 @@ namespace GamingGroove
                 name: "perfil",
                 pattern: "PerfilPage/{user}",
                 defaults: new { controller = "PerfilPage", action = "Index" });
+
             app.MapControllerRoute(
                 name: "comunidades",
                 pattern: "ComunidadePage/{user}",
@@ -76,6 +82,3 @@ namespace GamingGroove
         }
     }
 }
-
-
-
