@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat em Tempo Real</title>
+</head>
+<body>
+
+<div id="chat-box" style="width: 400px; height: 400px; border: 1px solid black; overflow-y: scroll;"></div>
+<input type="text" id="message" placeholder="Digite sua mensagem">
+<button onclick="sendMessage()">Enviar</button>
+<a href="http://localhost:5065/FeedPage" class="btn btn-primary">Redirecionar</a>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    const socket = io();
+
+    function sendMessage() {
+        const message = document.getElementById('message').value;
+        socket.emit('sendMessage', message);
+
+        // Limpar o input
+        document.getElementById('message').value = '';
+    }
+
+    socket.on('receiveMessage', (message) => {
+        const chatBox = document.getElementById('chat-box');
+        const messageElement = document.createElement('p');
+        messageElement.innerText = message;
+        chatBox.appendChild(messageElement);
+
+        // Scroll para a última mensagem
+        chatBox.scrollTop = chatBox.scrollHeight;
+    });
+</script>
+
+</body>
+</html>
