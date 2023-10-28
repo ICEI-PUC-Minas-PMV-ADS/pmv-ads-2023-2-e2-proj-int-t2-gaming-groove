@@ -72,7 +72,6 @@ namespace GamingGroove
                 pattern: "PerfilPage/{user}",
                 defaults: new { controller = "PerfilPage", action = "Index" });
                 
-
             app.MapControllerRoute(
                 name: "comunidades",
                 pattern: "ComunidadePage/{community}",
