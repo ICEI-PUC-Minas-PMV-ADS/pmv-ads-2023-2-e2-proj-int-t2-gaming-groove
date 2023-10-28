@@ -8,3 +8,4 @@ menuIcon.addEventListener("click", function() {
         listMenu.style.display = 'block';
     }
 });
+

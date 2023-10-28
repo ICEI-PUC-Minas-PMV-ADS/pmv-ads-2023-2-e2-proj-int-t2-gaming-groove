@@ -14,14 +14,27 @@
     <header>      
         <a href="~/FeedPage"><img class="logo" src="~/images/logos/gg-logo.png" alt=""></a>
         <nav class="navbar">
-            <a href="~/FeedPage"><img src="~/images/icons/feed-icon.svg" alt=""></a>
-            <a href="~/ComunidadePage"><img src="~/images/icons/communities-icon.svg" alt=""></a>
-            <a href="~/ExplorarPage"><img src="~/images/icons/explore-icon.svg" alt=""></a>
-            <a href="~/EquipePage"><img src="~/images/icons/teams-icon.svg" alt=""></a>
+            <a href="~/FeedPage" class="iconBackground1">
+                <img class="icon" id="icon1" src="~/images/icons/feed-icon.svg" alt="">
+            </a>
+            <a href="~/ComunidadePage" class="iconBackground2">
+                <img class="icon" id="icon2" src="~/images/icons/communities-icon.svg" alt="">
+            </a>
+            <a href="~/ExplorarPage" class="iconBackground3">
+                <img class="icon" id="icon3" src="~/images/icons/explore-icon.svg" alt="">
+            </a>
+            <a href="~/EquipePage" class="iconBackground4">
+                <img class="icon" id="icon4" src="~/images/icons/teams-icon.svg" alt="">
+            </a>
+                        
         </nav>
         @if (User.Identity.IsAuthenticated)
         {
-            <button id="menu-icon" class="menu-icon" onclick="openMenu()"></button>
+            
+            var profileImage = Url.Action("GetIconeUsuario", "Login");
+
+
+            <button id="menu-icon" class="menu-icon" onclick="openMenu()"><img src="@profileImage" alt=""></button>
             <nav id="listMenu" class="list-menu">
                 <div class="list">
                     <a href="~/PerfilPage/@User.FindFirst(ClaimTypes.Name)?.Value">Perfil</a>
@@ -38,11 +51,10 @@
 
     </header>
 
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+
 
     <script src="~/js/Menu.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

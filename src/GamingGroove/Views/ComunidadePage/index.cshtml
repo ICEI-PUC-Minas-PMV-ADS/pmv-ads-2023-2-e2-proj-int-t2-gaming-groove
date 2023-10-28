@@ -8,225 +8,106 @@
 <title>Comunidades</title>
 <link rel="stylesheet" href="~/css/ComunidadePage.css" asp-append-version="true" />
 
-<div class="containerPrincial">
-        <div class="containerEsquerdo">
 
-            <div class="divTopo">
-                
-                <div class="engrenagemdivtopo">
-                    <img src="..." class="img-thumbnail" alt="...">
-                    <svg id="engrenagem" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear" viewBox="0 0 16 16">
-                    <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
-                    <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/>
-                    </svg>
-                                        
-                </div>  
+<div class="main-container">
 
-                
-
-                <div class="nomeComunidade">
-                    blblalba
-                </div>
-
-                <div class="mebros"> 
-                    <div>1231</div>
-
-                    <button id="entrarComunidade">Entrar</button>
-                </div>
-
-                
-
-            </div>
-
-            <div class="divCentral">
-                <h5>Biografia</h5>
-                <div class= "bkDivCentral">
-                    <textarea id="texto" placeholder="Digite seu texto aqui"></textarea>
-                    
-                </div>
-                <button class="btnSalvar">Salvar</button>
-            </div>
-                
-            <div class="divInferior">
-                <h5>Jogos Relacionados</h5>
-                    
-            </div>
-
-
-        </div>
-
-
-        <div class="containerCentral">
-            4
-        </div>
-
-
-        <div class="containerDireita">
-            <div class="camadaEsquerdaUm">
-                <h5>Comunidades</h5>
-            </div>
-
-            <div class="camadaEsquerdaDois">
-                6
-            </div>
-
-        </div>
-
-    </div>
-
-
-   
-
-    
-    <style>
-		body{
-			margin: 0;
-			padding: 0;
-            
+	<div class="left-container">
+		@{
+        var background = "#c6c6c6;";
+    	}
+		@if (Model.getComunidade.capaComunidade != null)
+		{
+			background = "url('data:image/png;base64," + Convert.ToBase64String(Model.getComunidade.capaComunidade) + "') no-repeat center center / cover";
 		}
+		<div class="communityCover" style="background: @background;">
+			<div class="info-container">
+				@if (Model.getComunidade.iconeComunidade != null)
+				{
+					<img class="communityIcon" src="data:image/png;base64,@Convert.ToBase64String(Model.getComunidade.iconeComunidade)" alt="Imagem de Perfil" />
+				}
+				else
+				{
+					<img class="communityIcon" src="~/images/icons/user-icon.png" alt="Imagem de Perfil Padrão" style= "background-color: white;" />
+				}
+				<div class="communityName" id="communityInfo">@Model.getComunidade.nomeComunidade</div>
+				@{
+					int _comunidadeId = Model.getComunidade.comunidadeId;
+					int numberOfMembers = Model.GetNumberOfMembersInCommunity(_comunidadeId);
+				}
+				<div class="numberOfMembers" id="communityInfo">@numberOfMembers membros</div>
+			</div>
+			<div class="buttons-container">
 
-        .camadaEsquerdaDois{
-            background-color: #111738;
-            height: 92%;
-        }
+					<a asp-action="Edit" asp-route-id="@Model.getComunidade.comunidadeId"><button class="profileButton"><img class="editButton" src="~/images/icons/edit-icon.svg" alt=""></button></a>
 
-        .btnSalvar{
-            width: 50%;
-        }
+					<button class="profileButton"><img class="report-icon" src="~/images/icons/report-icon.svg"></button>
+  
+				<button class="joinButton">Entrar</button>
+			</div>
+		</div>
+		<div class="descriptionBox">
+			<div class="descriptionTitle">Descrição</div>
+			<div class="descriptionText-container">@Model.getComunidade.descricaoComunidade</div>
+		</div>
+		<div class="gamesListBox">
+			<div class="gamesList-title">Jogos relacionados</div>
+			<div class="gamesList">
+				@if (Model.getComunidade.primeiroJogo != null && Model.getComunidade.segundoJogo != null && Model.getComunidade.terceiroJogo != null)
+				{
+					<div class="gamesList-items">
+						<div class="gameIcon-container">
+							<img src="~/images/icons/jogos/@(Model.getComunidade.primeiroJogo).svg" title="@(EnumHelper.GetDisplayName(Model.getComunidade.primeiroJogo))" alt="">
+						</div>                                     
+					</div>
+					<div class="gamesList-items">
+						<div class="gameIcon-container">
+							<img src="~/images/icons/jogos/@(Model.getComunidade.segundoJogo).svg" title="@(EnumHelper.GetDisplayName(Model.getComunidade.segundoJogo))" alt="" >
+						</div>                        
+					</div>
+					<div class="gamesList-items">
+						<div class="gameIcon-container">
+							<img src="~/images/icons/jogos/@(Model.getComunidade.terceiroJogo).svg" title="@(EnumHelper.GetDisplayName(Model.getComunidade.terceiroJogo))" alt="">
+						</div>
+					</div>
+				}           
+			</div>
+		</div>
+	</div>
 
+	<div class="center-container">
 
-        #texto{
-                background-color: transparent;
-                color: white;
-                width: 100%;
-                height: 100%;
-                box-sizing: border-box;
-                max-width: 300px;
-                word-wrap: break-word;
-            
-        }
+	</div>
 
-        .mebros{
-            display: flex;
-            justify-content: space-between ;
-            margin: 5px;
-            
-        }
-        .nomeComunidade{
-            background-color: ##111738;
-        }
-        .engrenagemdivtopo{
-            display: flex;
-            justify-content: space-between ;
-            margin: 5px;
-        }
+	<div class="right-container">
+		<div class="suggestedCommunities">
+			<div class="listTitle">Comunidades sugeridas</div>
+			<div class="communitiesList">
+				@foreach (var item in Model.getTodasComunidades) {
+					
+					int _comunidadeIdCadaComunidade = item.comunidadeId;
+					int numberOfMembersEachCommunity = Model.GetNumberOfMembersInCommunity(_comunidadeIdCadaComunidade);
+					<a href="~/ComunidadePage/@item.nomeComunidade">
+						<div class="communities-items">
+							@if (item.iconeComunidade != null)
+							{
+								<img class="list-communityIcon" src="data:image/png;base64,@Convert.ToBase64String(item.iconeComunidade)" alt="Imagem de Perfil" />
+							}
+							else
+							{
+								<img class="list-communityIcon" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
+							}               
+							<div class="communityInfo-container">
+								<div class="communityName">@item.nomeComunidade</div>                                
+								<div class="list-numberOfMembers">@numberOfMembersEachCommunity membros</div>
+							</div>
+						</div>	
+					</a>				
+				}
+			</div>
+		</div>
+	</div>
 
-        .container{
-            display: flex;
-            margin: 0px;
-        }
-
-        .containerPrincial{
-
-            
-            color: white;
-            display: flex;
-            margin: 10px;
-            padding: 10px;
-            gap: 10px;
-			width: 95vw;
-			justify-content: space-between;
-
-        }
-
-        .containerEsquerdo{
-            height: 70vh;
-            width: 25vw;
-            margin: 5px;
-            padding: 5px;
-            align-items: start;
-                     
-        }
-
-        .divTopo{
-            background-color: #232B58;
-            margin: 10px;
-            height: 15vh;
-            width: 45vh;
-            padding: 5px;
-            border-radius: 10px;
-            background-image: image('img\lux_comunidade.jpg');
-            
-        }
-
-        .divCentral{
-            
-            margin: 10px;
-            height: 25vh;
-            width: 45vh;
-            display: flex;
-            padding: 5px;
-            border-radius: 10px;
-            margin-top: 30px;
-            background-color: #232B58;
-            text-align: center;
-            flex-direction: column;
-            align-items: center;
-        }
-        .bkDivCentral{
-            display: flex;
-            background-color: #111738;
-            margin: 5px;
-            padding: 10px;
-            width: 93%;
-            height: 90%;            
-        }
-
-        .divInferior{
-           
-            margin: 10px;
-            height: 15vh;
-            width: 80%;
-            padding: 5px;
-            border-radius: 10px;
-            margin-top: 30px;
-            margin-left: 38px;
-            background-color: #232B58;
-            text-align: center;
-        }
-
-        .containerCentral{
-           
-            height: 70vh;
-            width: 55vw;
-            margin: 5px;
-            padding: 5px;
-            background-color: #232B58;
-
-        }
-
-        .containerDireita{
-            
-            height: 70vh;
-            width: 10vw;
-            margin: 5px;
-            padding: 5px;
-            background-color: #232B58;
-            align-items: center;
-            text-align: center;
-            
-
-        }
-    </style>
-
-
-
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/ComunidadePage.js" asp-append-version="true"></script>
-    <script src="~/js/Menu.js"></script>
- 
-    
+</div>
 
 
 

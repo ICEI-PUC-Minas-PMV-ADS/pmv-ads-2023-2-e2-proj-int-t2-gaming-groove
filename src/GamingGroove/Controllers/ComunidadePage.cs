@@ -14,18 +14,19 @@ namespace GamingGroove.Controllers
             _contexto = contexto;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string community)
+        {
         {
             var viewModel = new ComunidadePageViewModel(_contexto);
-            int usuario = int.Parse(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
-            viewModel.GetComunidadesUsuario(usuario);
             if (viewModel == null)
             {
                 return NotFound();
             }
+            viewModel.OnGet(community);
 
             return View(viewModel);
         }
             
+        }
     }
-}
+}    

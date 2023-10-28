@@ -41,6 +41,10 @@ main {
     object-fit: cover;
 }
 
+.username {
+    color: #00F0FF;
+}
+
 .user-add-friend-container {
     height: 100%;
     display: flex;
@@ -90,16 +94,7 @@ main {
     height: 16px;
 }
 
-.edit-profile-button {
-    height: 30px;
-    width: 140px;
-    background-color: #121433;
-    border: solid white 1px;
-    border-radius: 4px;
-    color: #00F0FF;
-}
-
-.report-user-button img{
+.profileButton img{
     height: 20px;
 }
 
@@ -111,7 +106,7 @@ main {
     }
 }
 
-.report-user-button {
+.profileButton{
     height: 30px;
     width: 40px;
     background-color: #121433;
@@ -127,7 +122,7 @@ main {
     height: 20px;
 }
 
-.report-user-button:hover {
+.profileButton:hover {
     transition: 1s;
     background-color: #00F0FF;
     .report-icon {
@@ -181,21 +176,6 @@ h3 {
     background-color: #111738;
     border-radius: 6px;
     overflow: auto;
-}
-
-::-webkit-scrollbar {
-    width: 9px;
-    background-color: #000000;
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: #2b356c;
-    border-radius: 6px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background-color: #E3A5FF;
-    border-radius: 6px;
 }
 
 .bio-text {

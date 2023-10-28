@@ -37,11 +37,11 @@
         <div class="cover-second-container">
             @if(User.Identity.Name == Model.getUsuario.nomeUsuario)
             {
-                <a asp-action="Edit" asp-route-id="@Model.getUsuario.usuarioId"><button class="report-user-button"><img class="edit-profile-icon" src="~/images/icons/edit-icon.svg" alt=""></button></a>
+                <a asp-action="Edit" asp-route-id="@Model.getUsuario.usuarioId"><button class="profileButton"><img class="edit-profile-icon" src="~/images/icons/edit-icon.svg" alt=""></button></a>
             }    
             else
             {
-                <button class="report-user-button"><img class="report-icon" src="~/images/icons/report-icon.svg"></button>
+                <button class="profileButton"><img class="report-icon" src="~/images/icons/report-icon.svg"></button>
             }            
         </div>
     </div>
@@ -97,7 +97,7 @@
                                     }
                                     else
                                     {
-                                        <img class="team-icon" src="~/images/icons/community-icon.png" alt="Imagem de Perfil" />
+                                        <img class="team-icon" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
                                     }  
                                     <div class="team-info">
                                         <div class="team-name">@item.equipe.nomeEquipe</div>                                
@@ -124,7 +124,7 @@
                                         }
                                         else
                                         {
-                                            <img class="community-icon" src="~/images/icons/community-icon.png" alt="Imagem de Perfil" />
+                                            <img class="community-icon" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
                                         }               
                                         <div class="community-info">
                                             <div class="community-name">@item.comunidade.nomeComunidade</div>
@@ -152,24 +152,6 @@
                 </div>      
         </div>
     </div>
-</div>
-
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-            
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
 </div>
 
 <script src="~/js/PerfilPage.js"></script>

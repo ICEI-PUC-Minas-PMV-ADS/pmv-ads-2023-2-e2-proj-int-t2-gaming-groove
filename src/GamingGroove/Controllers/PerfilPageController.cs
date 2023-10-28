@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using GamingGroove.Views.PerfilPage;
 using GamingGroove.Models;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication;
 
 namespace GamingGroove.Controllers
 {
@@ -68,11 +69,22 @@ namespace GamingGroove.Controllers
 
                     if (existingUser != null)
                     {
-
+                        existingUser.nomeCompleto = usuarioModel.nomeCompleto;
+                        existingUser.dataNascimento = usuarioModel.dataNascimento;
+                        existingUser.email = usuarioModel.email;
+                        existingUser.senha = usuarioModel.senha;
                         existingUser.primeiroJogo = usuarioModel.primeiroJogo;
                         existingUser.segundoJogo = usuarioModel.segundoJogo;
                         existingUser.terceiroJogo = usuarioModel.terceiroJogo;
                         existingUser.biografia = usuarioModel.biografia;
+
+                        if (existingUser.primeiroJogo == existingUser.segundoJogo
+                        || existingUser.primeiroJogo == existingUser.terceiroJogo
+                        ||existingUser.segundoJogo == existingUser.terceiroJogo)
+                        {
+                            ViewBag.Message = "* Selecione apenas jogos diferentes.";
+                            return View(usuarioModel);
+                        }
 
                         if (iconePerfilArquivo != null && iconePerfilArquivo.Length > 0)
                         {
@@ -91,12 +103,17 @@ namespace GamingGroove.Controllers
                                 existingUser.capaPerfil = memoryStream.ToArray();
                             }
                         }
+                        
+                        if(existingUser.nomeUsuario != usuarioModel.nomeUsuario)
+                        {
+                            existingUser.nomeUsuario = usuarioModel.nomeUsuario;
 
-                        usuarioModel.nomeUsuario = existingUser.nomeUsuario;
-                        usuarioModel.nomeCompleto = existingUser.nomeCompleto;
-                        usuarioModel.dataNascimento = existingUser.dataNascimento;
-                        usuarioModel.email = existingUser.email;
-                        usuarioModel.senha = existingUser.senha;
+                            _contexto.Entry(existingUser).State = EntityState.Modified;
+                            await _contexto.SaveChangesAsync();
+                            await HttpContext.SignOutAsync();
+      
+                            return RedirectToAction("Index", "HomePage");                     
+                        }
 
                         _contexto.Entry(existingUser).State = EntityState.Modified;
                         await _contexto.SaveChangesAsync();
@@ -117,6 +134,7 @@ namespace GamingGroove.Controllers
                         throw;
                     }
                 }
+                
                 return RedirectToAction("Index", "PerfilPage", new { user = usuarioModel.nomeUsuario });
             }
             else
