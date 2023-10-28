@@ -1,3 +1,12 @@
+.iconBackground1 {
+    outline: double 6px #D169FF;
+    background-color: rgb(236, 236, 236);
+}
+
+#icon1 {
+    filter: hue-rotate(100deg) saturate(350%);
+}
+
 main {
     display: flex;
     justify-content: center;

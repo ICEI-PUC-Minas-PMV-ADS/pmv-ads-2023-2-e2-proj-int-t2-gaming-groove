@@ -1,8 +1,10 @@
-.iconBackground3 {
+.iconBackground2 {
     outline: double 6px #D169FF;
     background-color: rgb(236, 236, 236);
 }
 
-#icon3 {
+#icon2 {
     filter: hue-rotate(100deg) saturate(350%);
 }
+
+

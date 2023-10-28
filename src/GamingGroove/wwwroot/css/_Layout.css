@@ -18,6 +18,15 @@ header {
     padding-inline: 2%;
 }
 
+.navbar a:hover {
+    transition: 0.2s;
+    outline: double 6px #D169FF;
+    background-color: rgb(236, 236, 236);
+    .icon {
+        filter: hue-rotate(100deg) saturate(350%);
+    }
+}
+
 .logo {
     height: 60px;
 }
@@ -35,6 +44,59 @@ header {
     align-items: center;
     gap: 100px;
     margin-top: 40px;
+    position: relative; /* Adicione esta linha */
+}
+
+.iconBackground1 {
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    position: absolute;
+    left: 13%; 
+    transform: translateX(-50%); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.iconBackground2 {
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    position: absolute;
+    left: 38%; 
+    transform: translateX(-50%); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.iconBackground3 {
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    position: absolute;
+    left: 63%;
+    transform: translateX(-50%); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.iconBackground4 {
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    position: absolute;
+    left: 88%;
+    transform: translateX(-50%); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.active-icon {
+    background-color: red;
 }
 
 .navbar img {
