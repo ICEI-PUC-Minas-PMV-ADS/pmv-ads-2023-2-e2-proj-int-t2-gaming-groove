@@ -37,11 +37,11 @@
         <div class="cover-second-container">
             @if(User.Identity.Name == Model.getUsuario.nomeUsuario)
             {
-                <a asp-action="Edit" asp-route-id="@Model.getUsuario.usuarioId"><button class="report-user-button"><img class="edit-profile-icon" src="~/images/icons/edit-icon.svg" alt=""></button></a>
+                <a asp-action="Edit" asp-route-id="@Model.getUsuario.usuarioId"><button class="profileButton"><img class="edit-profile-icon" src="~/images/icons/edit-icon.svg" alt=""></button></a>
             }    
             else
             {
-                <button class="report-user-button"><img class="report-icon" src="~/images/icons/report-icon.svg"></button>
+                <button class="profileButton"><img class="report-icon" src="~/images/icons/report-icon.svg"></button>
             }            
         </div>
     </div>

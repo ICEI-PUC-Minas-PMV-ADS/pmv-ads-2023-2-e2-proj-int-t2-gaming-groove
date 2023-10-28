@@ -9,7 +9,105 @@
 <link rel="stylesheet" href="~/css/ComunidadePage.css" asp-append-version="true" />
 
 
+<div class="main-container">
 
+	<div class="left-container">
+		@{
+        var background = "#c6c6c6;";
+    	}
+		@if (Model.getComunidade.capaComunidade != null)
+		{
+			background = "url('data:image/png;base64," + Convert.ToBase64String(Model.getComunidade.capaComunidade) + "') no-repeat center center / cover";
+		}
+		<div class="communityCover" style="background: @background;">
+			<div class="info-container">
+				@if (Model.getComunidade.iconeComunidade != null)
+				{
+					<img class="communityIcon" src="data:image/png;base64,@Convert.ToBase64String(Model.getComunidade.iconeComunidade)" alt="Imagem de Perfil" />
+				}
+				else
+				{
+					<img class="communityIcon" src="~/images/icons/user-icon.png" alt="Imagem de Perfil Padrão" style= "background-color: white;" />
+				}
+				<div class="communityName" id="communityInfo">@Model.getComunidade.nomeComunidade</div>
+				@{
+					int _comunidadeId = Model.getComunidade.comunidadeId;
+					int numberOfMembers = Model.GetNumberOfMembersInCommunity(_comunidadeId);
+				}
+				<div class="numberOfMembers" id="communityInfo">@numberOfMembers membros</div>
+			</div>
+			<div class="buttons-container">
+
+					<a asp-action="Edit" asp-route-id="@Model.getComunidade.comunidadeId"><button class="profileButton"><img class="editButton" src="~/images/icons/edit-icon.svg" alt=""></button></a>
+
+					<button class="profileButton"><img class="report-icon" src="~/images/icons/report-icon.svg"></button>
+  
+				<button class="joinButton">Entrar</button>
+			</div>
+		</div>
+		<div class="descriptionBox">
+			<div class="descriptionTitle">Descrição</div>
+			<div class="descriptionText-container">@Model.getComunidade.descricaoComunidade</div>
+		</div>
+		<div class="gamesListBox">
+			<div class="gamesList-title">Jogos relacionados</div>
+			<div class="gamesList">
+				@if (Model.getComunidade.primeiroJogo != null && Model.getComunidade.segundoJogo != null && Model.getComunidade.terceiroJogo != null)
+				{
+					<div class="gamesList-items">
+						<div class="gameIcon-container">
+							<img src="~/images/icons/jogos/@(Model.getComunidade.primeiroJogo).svg" title="@(EnumHelper.GetDisplayName(Model.getComunidade.primeiroJogo))" alt="">
+						</div>                                     
+					</div>
+					<div class="gamesList-items">
+						<div class="gameIcon-container">
+							<img src="~/images/icons/jogos/@(Model.getComunidade.segundoJogo).svg" title="@(EnumHelper.GetDisplayName(Model.getComunidade.segundoJogo))" alt="" >
+						</div>                        
+					</div>
+					<div class="gamesList-items">
+						<div class="gameIcon-container">
+							<img src="~/images/icons/jogos/@(Model.getComunidade.terceiroJogo).svg" title="@(EnumHelper.GetDisplayName(Model.getComunidade.terceiroJogo))" alt="">
+						</div>
+					</div>
+				}           
+			</div>
+		</div>
+	</div>
+
+	<div class="center-container">
+
+	</div>
+
+	<div class="right-container">
+		<div class="suggestedCommunities">
+			<div class="listTitle">Comunidades sugeridas</div>
+			<div class="communitiesList">
+				@foreach (var item in Model.getTodasComunidades) {
+					
+					int _comunidadeIdCadaComunidade = item.comunidadeId;
+					int numberOfMembersEachCommunity = Model.GetNumberOfMembersInCommunity(_comunidadeIdCadaComunidade);
+					<a href="~/ComunidadePage/@item.nomeComunidade">
+						<div class="communities-items">
+							@if (item.iconeComunidade != null)
+							{
+								<img class="list-communityIcon" src="data:image/png;base64,@Convert.ToBase64String(item.iconeComunidade)" alt="Imagem de Perfil" />
+							}
+							else
+							{
+								<img class="list-communityIcon" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
+							}               
+							<div class="communityInfo-container">
+								<div class="communityName">@item.nomeComunidade</div>                                
+								<div class="list-numberOfMembers">@numberOfMembersEachCommunity membros</div>
+							</div>
+						</div>	
+					</a>				
+				}
+			</div>
+		</div>
+	</div>
+
+</div>
 
 
 
