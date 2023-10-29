@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using GamingGroove.Data;
 using GamingGroove.Models;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -15,27 +16,34 @@ namespace GamingGroove.Views.ComunidadePage
             _cc = cc;
         }
 
+        public UsuarioModel getUsuario { get; set; }
         public ComunidadeModel getComunidade { get; set; }
-        public List<ComunidadeModel> getMembrosComunidade { get; set; }
+        public List<ComunidadeModel> getComunidadesUsuario { get; set; }
         public List<ComunidadeModel> getTodasComunidades { get; set; }
         public IEnumerable<UsuarioComunidadeModel> getComunidades { get; set; }
         public List<string> infoComunidades { get; set; }
+
+        public int IdUsuarioLogado { get; set; }
+
+        public int UsuarioLogado { get; set; }
 
         public void OnGet(string community)
         {
             getComunidade = _cc.Comunidades.FirstOrDefault(u => u.nomeComunidade == community);
 
-            getMembrosComunidade = _cc.Comunidades
-                    .Where(uc => uc.nomeComunidade == getComunidade.nomeComunidade)
-                    .ToList();
-
             getTodasComunidades = _cc.Comunidades.ToList();
-        }            
+        }
 
-        public int GetNumberOfMembersInCommunity( int _comunidadeId)
+        public int GetNumberOfMembersInCommunity(int _comunidadeId)
         {
             return _cc.UsuariosComunidades
                 .Count(uc => uc.comunidadeId == _comunidadeId);
+        }
+
+        public int GetUsuarioLogado (int usuarioLogado)
+        {
+            IdUsuarioLogado = usuarioLogado;
+            return IdUsuarioLogado;
         }
     }
 }

@@ -1,11 +1,13 @@
+using System;
 using System.Globalization;
 using GamingGroove.Controllers;
 using GamingGroove.Data;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http; // Adicionar para SameSiteMode
 using Microsoft.AspNetCore.SignalR; // Adicionar para o SignalR
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Builder;
 
 namespace GamingGroove
 {
@@ -31,7 +33,7 @@ namespace GamingGroove
 
             builder.Services.Configure<CookiePolicyOptions>(options =>
             {
-                options.CheckConsentNeeded = ContextBoundObject => true;
+                options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
@@ -39,7 +41,10 @@ namespace GamingGroove
                 .AddCookie(options => {
                     options.AccessDeniedPath = "/AcessoNegadoPage";
                     options.LoginPath = "/AcessoNegadoPage";
-                });
+            });
+
+            builder.Services.AddDistributedMemoryCache();
+            builder.Services.AddSession();    
 
             // 1. Adicionar suporte ao SignalR
             builder.Services.AddSignalR();
@@ -51,17 +56,20 @@ namespace GamingGroove
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
-            
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
 
-            app.UseAuthentication();
-            app.UseAuthorization();
-
             // 2. Adicionar o mapeamento para o hub do chat
             app.MapHub<ChatHub>("/chatHub");
+
+            // 3. Adicione as configurações de sessão antes de UseAuthentication e UseAuthorization
+            app.UseSession();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.MapControllerRoute(
                 name: "home",
@@ -78,7 +86,6 @@ namespace GamingGroove
                 defaults: new { controller = "ComunidadePage", action = "Index" });
 
             app.Run();
-
         }
     }
 }

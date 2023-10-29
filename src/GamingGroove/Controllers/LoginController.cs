@@ -5,6 +5,8 @@ using GamingGroove.Models;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
+using GamingGroove.Views.PerfilPage;
+using GamingGroove.Views.ComunidadePage;
 
 namespace GamingGroove.Controllers
 {
@@ -37,6 +39,7 @@ namespace GamingGroove.Controllers
                 return View("Index");
             }
 
+            
             bool senhaOK = BCrypt.Net.BCrypt.Verify(usuarioLogin.senha, dados.senha);
 
             if (senhaOK)
@@ -50,7 +53,8 @@ namespace GamingGroove.Controllers
 
                 var usuarioIdentity = new ClaimsIdentity(claims, "login");
                 ClaimsPrincipal principal = new ClaimsPrincipal(usuarioIdentity);
-
+                
+                
                 var props = new AuthenticationProperties
                 {
                     AllowRefresh = true,
@@ -59,6 +63,8 @@ namespace GamingGroove.Controllers
                 };
                 
                 await HttpContext.SignInAsync(principal, props);
+
+                HttpContext.Session.SetInt32("UsuarioId", dados.usuarioId);
                 
                 return RedirectToAction("Index","FeedPage");
 
@@ -122,5 +128,6 @@ namespace GamingGroove.Controllers
 
             return File(IconePadrao, "image/png");
         }
+        
     }
 }
