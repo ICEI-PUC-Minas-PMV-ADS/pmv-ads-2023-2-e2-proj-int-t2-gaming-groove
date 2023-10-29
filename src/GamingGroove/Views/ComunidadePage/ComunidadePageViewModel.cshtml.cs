@@ -25,10 +25,9 @@ namespace GamingGroove.Views.ComunidadePage
 
         public int IdUsuarioLogado { get; set; }
 
-        public int UsuarioLogado { get; set; }
-
         public void OnGet(string community)
         {
+            
             getComunidade = _cc.Comunidades.FirstOrDefault(u => u.nomeComunidade == community);
 
             getTodasComunidades = _cc.Comunidades.ToList();
@@ -40,10 +39,17 @@ namespace GamingGroove.Views.ComunidadePage
                 .Count(uc => uc.comunidadeId == _comunidadeId);
         }
 
-        public int GetUsuarioLogado (int usuarioLogado)
-        {
+        public void GetUsuarioLogado (int usuarioLogado)
+        {            
             IdUsuarioLogado = usuarioLogado;
-            return IdUsuarioLogado;
+
+            getUsuario = _cc.Usuarios.FirstOrDefault(u => u.usuarioId == IdUsuarioLogado);
+                        getComunidades = _cc.UsuariosComunidades
+                .Where(uc => uc.usuarioId != IdUsuarioLogado)
+                .Include(uc => uc.comunidade)
+                .ToList();
+
+            infoComunidades = getComunidades.Select(ue => ue.comunidade.nomeComunidade).ToList();
         }
     }
 }

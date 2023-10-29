@@ -82,22 +82,22 @@
 		<div class="suggestedCommunities">
 			<div class="listTitle">Comunidades sugeridas</div>
 			<div class="communitiesList">
-				@foreach (var item in Model.getTodasComunidades) {
+				@foreach (var item in Model.getComunidades) {
 					
-					int _comunidadeIdCadaComunidade = item.comunidadeId;
+					int _comunidadeIdCadaComunidade = item.comunidade.comunidadeId;
 					int numberOfMembersEachCommunity = Model.GetNumberOfMembersInCommunity(_comunidadeIdCadaComunidade);
-					<a href="~/ComunidadePage/@item.nomeComunidade">
+					<a href="~/ComunidadePage/@item.comunidade.nomeComunidade">
 						<div class="communities-items">
-							@if (item.iconeComunidade != null)
+							@* @if (item.iconeComunidade != null)
 							{
 								<img class="list-communityIcon" src="data:image/png;base64,@Convert.ToBase64String(item.iconeComunidade)" alt="Imagem de Perfil" />
 							}
 							else
 							{
 								<img class="list-communityIcon" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
-							}               
+							}                *@
 							<div class="communityInfo-container">
-								<div class="communityName">@item.nomeComunidade</div>                                
+								<div class="communityName">@item.comunidade.nomeComunidade</div>                                
 								<div class="list-numberOfMembers">@numberOfMembersEachCommunity membros</div>
 							</div>
 						</div>	
