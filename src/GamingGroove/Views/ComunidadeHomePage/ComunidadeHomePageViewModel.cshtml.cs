@@ -7,11 +7,11 @@ using Org.BouncyCastle.Crypto.Modes;
 
 namespace GamingGroove.Views.ComunidadePage
 {
-    public class ComunidadePageViewModel : PageModel
+    public class ComunidadeHomePageViewModel : PageModel
     {
         private readonly GamingGrooveDbContext _cc;
 
-        public ComunidadePageViewModel(GamingGrooveDbContext cc)
+        public ComunidadeHomePageViewModel(GamingGrooveDbContext cc)
         {
             _cc = cc;
         }

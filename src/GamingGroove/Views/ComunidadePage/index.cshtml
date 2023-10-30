@@ -47,7 +47,7 @@
 		</div>
 		<div class="descriptionBox">
 			<div class="descriptionTitle">Descrição</div>
-			<div class="descriptionText-container">@Model.getComunidade.descricaoComunidade <div>@Model.IdUsuarioLogado</div></div>
+			<div class="descriptionText-container">@Model.getComunidade.descricaoComunidade</div>
 		</div>
 		<div class="gamesListBox">
 			<div class="gamesList-title">Jogos relacionados</div>
@@ -88,14 +88,14 @@
 					int numberOfMembersEachCommunity = Model.GetNumberOfMembersInCommunity(_comunidadeIdCadaComunidade);
 					<a href="~/ComunidadePage/@item.comunidade.nomeComunidade">
 						<div class="communities-items">
-							@* @if (item.iconeComunidade != null)
+							@if (item.comunidade.iconeComunidade != null)
 							{
-								<img class="list-communityIcon" src="data:image/png;base64,@Convert.ToBase64String(item.iconeComunidade)" alt="Imagem de Perfil" />
+								<img class="list-communityIcon" src="data:image/png;base64,@Convert.ToBase64String(item.comunidade.iconeComunidade)" alt="Imagem de Perfil" />
 							}
 							else
 							{
 								<img class="list-communityIcon" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
-							}                *@
+							}               
 							<div class="communityInfo-container">
 								<div class="communityName">@item.comunidade.nomeComunidade</div>                                
 								<div class="list-numberOfMembers">@numberOfMembersEachCommunity membros</div>
