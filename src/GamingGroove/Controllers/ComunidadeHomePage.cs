@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using GamingGroove.Data;
-using GamingGroove.Views.ComunidadePage;
+using GamingGroove.Views.ComunidadeHomePage;
 using System.Security.Claims;
 
 namespace GamingGroove.Controllers
@@ -19,7 +19,7 @@ namespace GamingGroove.Controllers
         public IActionResult Index(string community)
         {
             {
-                var viewModel = new ComunidadePageViewModel(_contexto);
+                var viewModel = new ComunidadeHomePageViewModel(_contexto);
                 
 
                 if (viewModel == null)

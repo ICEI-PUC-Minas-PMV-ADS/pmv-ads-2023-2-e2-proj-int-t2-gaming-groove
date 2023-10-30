@@ -1,4 +1,4 @@
-@model GamingGroove.Views.ComunidadePage.ComunidadePageViewModel
+@model GamingGroove.Views.ComunidadeHomePage.ComunidadeHomePageViewModel
 @using System.Security.Claims
 
 @{
@@ -23,68 +23,37 @@
 			<div class="myCommunities-title">Comunidades que faço parte</div>
 			<div class="myCommunities-container">
 			<div class="myCommunities-list">
-				<div class="communityItems">
-					<div class="communityIcon"></div>
-					<div class="myCommunityName">Comunidade_001</div>
-					<div class="communityMembers">120 membros</div>
-				</div>
-				<div class="communityItems">
-					<div class="communityIcon"></div>
-					<div class="communityName">Comunidade_001</div>
-					<div class="communityMembers">120 membros</div>
-				</div>
-				<div class="communityItems">
-					<div class="communityIcon"></div>
-					<div class="communityName">Comunidade_001</div>
-					<div class="communityMembers">120 membros</div>
-				</div>
-				<div class="communityItems">
-					<div class="communityIcon"></div>
-					<div class="communityName">Comunidade_001</div>
-					<div class="communityMembers">120 membros</div>
-				</div>
-				<div class="communityItems">
-					<div class="communityIcon"></div>
-					<div class="communityName">Comunidade_001</div>
-					<div class="communityMembers">120 membros</div>
-				</div>
-				<div class="communityItems">
-					<div class="communityIcon"></div>
-					<div class="communityName">Comunidade_001</div>
-					<div class="communityMembers">120 membros</div>
-				</div>			
-				<div class="communityItems">
-					<div class="communityIcon"></div>
-					<div class="communityName">Comunidade_001</div>
-					<div class="communityMembers">120 membros</div>
-				</div>
-				<div class="communityItems">
-					<div class="communityIcon"></div>
-					<div class="communityName">Comunidade_001</div>
-					<div class="communityMembers">120 membros</div>
-				</div>
+				@foreach(var item in Model.getComunidadesUsuario)
+				{
+					int _comunidadeIdCadaComunidade = item.comunidade.comunidadeId;
+					int numberOfMembersEachCommunity = Model.GetNumberOfMembersInCommunity(_comunidadeIdCadaComunidade);
 
-														
+					<div class="communityItems">
+						<div class="communityIcon"></div>
+						<div class="myCommunityName">@item.comunidade.nomeComunidade</div>
+						<div class="communityMembers">@numberOfMembersEachCommunity membros</div>
+					</div>
+				}											
 			</div>
 			</div>			
 			<div class="myCommunities-title">Comunidades que administro</div>
 			<div class="myCommunities-container">
 			<div class="myCommunities-list">
-				<div class="communityItems">
-					<div class="communityIcon"></div>
-					<div class="communityName">Comunidade_001</div>
-					<div class="communityMembers">120 membros</div>
-				</div>
-				<div class="communityItems">
-					<div class="communityIcon"></div>
-					<div class="communityName">Comunidade_001</div>
-					<div class="communityMembers">120 membros</div>
-				</div>
-				<div class="communityItems">
-					<div class="communityIcon"></div>
-					<div class="communityName">Comunidade_001</div>
-					<div class="communityMembers">120 membros</div>
-				</div>														
+				@foreach(var item in Model.getComunidadesUsuario)
+				{
+					int _comunidadeIdCadaComunidade = item.comunidade.comunidadeId;
+					int numberOfMembersEachCommunity = Model.GetNumberOfMembersInCommunity(_comunidadeIdCadaComunidade);
+
+
+					@if(item.cargoComunidade.ToString() == "ADM")
+					{
+						<div class="communityItems">
+							<div class="communityIcon"></div>
+							<div class="myCommunityName">@item.comunidade.nomeComunidade</div>
+							<div class="communityMembers">@numberOfMembersEachCommunity membros</div>
+						</div>
+					}
+				}														
 			</div>
 			</div>				
 		</div>
@@ -95,7 +64,7 @@
 		<div class="suggestedCommunities">
 			<div class="listTitle">Comunidades sugeridas</div>
 			<div class="communitiesList">
-				@foreach (var item in Model.getComunidades) {
+				@foreach (var item in Model.getComunidadesSugeridas) {
 					
 					int _comunidadeIdCadaComunidade = item.comunidade.comunidadeId;
 					int numberOfMembersEachCommunity = Model.GetNumberOfMembersInCommunity(_comunidadeIdCadaComunidade);
