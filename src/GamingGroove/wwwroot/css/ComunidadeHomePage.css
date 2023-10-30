@@ -72,6 +72,9 @@ a {
     transition: 0.6s;
 }
 
+
+
+
 .center-container {
     height: 86.1vh;
     width: 55vw;
@@ -127,15 +130,23 @@ a {
     flex-direction: column;
     align-items: center;
     padding: 10px;
-    background-color: #7383C5;
+    background-color: #232B58;
     border-radius: 6px; 
+}
+
+.communityItems:hover {
+    transition: 0.7s;
+    background-color: #7383C5;
+}
+
+.communityItems:not(:hover) {
+    transition: 0.7s;
 }
 
 .communityIcon {
     height: 120px;
     width: 120px;
     border-radius: 6px;
-    background-color: white;
     object-fit: cover;
     margin-bottom: 16px;
 }

@@ -28,11 +28,18 @@
 					int _comunidadeIdCadaComunidade = item.comunidade.comunidadeId;
 					int numberOfMembersEachCommunity = Model.GetNumberOfMembersInCommunity(_comunidadeIdCadaComunidade);
 
-					<div class="communityItems">
-						<div class="communityIcon"></div>
+					<a href="~/ComunidadePage/@item.comunidade.nomeComunidade"><div class="communityItems">
+							@if (item.comunidade.iconeComunidade != null)
+							{
+								<img class="communityIcon" src="data:image/png;base64,@Convert.ToBase64String(item.comunidade.iconeComunidade)" alt="Imagem de Perfil" />
+							}
+							else
+							{
+								<img class="communityIcon" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
+							}    
 						<div class="myCommunityName">@item.comunidade.nomeComunidade</div>
 						<div class="communityMembers">@numberOfMembersEachCommunity membros</div>
-					</div>
+					</div></a>
 				}											
 			</div>
 			</div>			
