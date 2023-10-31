@@ -2,24 +2,28 @@ using Microsoft.AspNetCore.Mvc;
 using GamingGroove.Data;
 using GamingGroove.Views.ComunidadePage;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using GamingGroove.Models;
 
 namespace GamingGroove.Controllers
 {
     public class ComunidadePageController : BaseController
     {
-        private readonly GamingGrooveDbContext _contexto;
+        private readonly GamingGrooveDbContext _context;
 
-        public ComunidadePageController(GamingGrooveDbContext contexto)
+        public ComunidadePageController(GamingGrooveDbContext context)
         {
-            _contexto = contexto;
+            _context = context;
         }
 
         public int IdUsuarioLogado {get; set;}
+        public ComunidadeModel Community { get; set; }
 
         public IActionResult Index(string community)
         {
+
             {
-                var viewModel = new ComunidadePageViewModel(_contexto);
+                var viewModel = new ComunidadePageViewModel(_context);
                 
 
                 if (viewModel == null)
@@ -39,6 +43,28 @@ namespace GamingGroove.Controllers
 
                 return View(viewModel);
             }
+        }
+
+        public IActionResult Create()
+        {
+            ViewData["comunidadeId"] = new SelectList(_context.Comunidades, "comunidadeId", "comunidadeId");
+            ViewData["usuarioId"] = new SelectList(_context.Usuarios, "usuarioId", "usuarioId");
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("usuarioComunidadeId,usuarioId,comunidadeId,cargoComunidade,dataVinculoComunidade")] UsuarioComunidadeModel usuarioComunidadeModel, string community)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(usuarioComunidadeModel);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index", "ComunidadeHomePage");
+            }
+            ViewData["comunidadeId"] = new SelectList(_context.Comunidades, "comunidadeId", "comunidadeId", usuarioComunidadeModel.comunidadeId);
+            ViewData["usuarioId"] = new SelectList(_context.Usuarios, "usuarioId", "usuarioId", usuarioComunidadeModel.usuarioId);
+            return View(usuarioComunidadeModel);
         }
     }
 }    

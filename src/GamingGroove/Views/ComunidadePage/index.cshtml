@@ -39,12 +39,30 @@
 					<div class="numberOfMembers" id="communityInfo">@numberOfMembers membros</div>
 				</div>
 				<div class="buttons-container">
+						@{
+							var communityName = Context.Request.RouteValues.ContainsKey("community")
+							? Context.Request.RouteValues["community"].ToString()
+							: string.Empty;
+							var isMember = Model.getComunidadesUsuario.FirstOrDefault(uc => uc.comunidade.nomeComunidade == communityName);
+						}
 
-						<a asp-action="Edit" asp-route-id="@Model.getComunidade.comunidadeId"><button class="profileButton"><img class="editButton" src="~/images/icons/edit-icon.svg" alt=""></button></a>
+						@if (isMember != null && isMember.cargoComunidade.ToString() == "ADM")
+						{
+							<a asp-action="Edit" asp-route-id="@Model.getComunidade.comunidadeId"><img class="editIcon" src="~/images/icons/gear-icon.svg" alt=""></a>
+						}
+						else
+						{
+							<a><img class="reportIcon" src="~/images/icons/report-icon.svg"></a>
+						}
 
-						<button class="profileButton"><img class="report-icon" src="~/images/icons/report-icon.svg"></button>
-	
-					<button class="joinButton">Entrar</button>
+						@if(isMember != null)
+						{
+							<button class="joinQuitButton">Sair</button>
+						}
+						else
+						{
+							<a asp-action="Create">Entrar</a>
+						}
 				</div>
 			</div>
 		</div>
@@ -85,7 +103,7 @@
 		<div class="suggestedCommunities">
 			<div class="listTitle">Comunidades sugeridas</div>
 			<div class="communitiesList">
-				@foreach (var item in Model.getComunidades) {
+				@foreach (var item in Model.getComunidadesSugeridas) {
 					
 					int _comunidadeIdCadaComunidade = item.comunidade.comunidadeId;
 					int numberOfMembersEachCommunity = Model.GetNumberOfMembersInCommunity(_comunidadeIdCadaComunidade);
@@ -111,6 +129,5 @@
 	</div>
 
 </div>
-
 
 

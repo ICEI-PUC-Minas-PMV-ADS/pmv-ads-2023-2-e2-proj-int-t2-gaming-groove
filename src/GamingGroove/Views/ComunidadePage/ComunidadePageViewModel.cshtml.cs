@@ -19,14 +19,14 @@ namespace GamingGroove.Views.ComunidadePage
         public UsuarioModel getUsuario { get; set; }
         public ComunidadeModel getComunidade { get; set; }
         public List<ComunidadeModel> getTodasComunidades { get; set; }
-        public IEnumerable<UsuarioComunidadeModel> getComunidades { get; set; }
+        public IEnumerable<UsuarioComunidadeModel> getComunidadesSugeridas { get; set; }
+        public IEnumerable<UsuarioComunidadeModel> getComunidadesUsuario { get; set; }
         public List<string> infoComunidades { get; set; }
 
         public int IdUsuarioLogado { get; set; }
 
         public void OnGet(string community)
-        {
-            
+        {            
             getComunidade = _cc.Comunidades.FirstOrDefault(u => u.nomeComunidade == community);
 
             getTodasComunidades = _cc.Comunidades.ToList();
@@ -44,11 +44,16 @@ namespace GamingGroove.Views.ComunidadePage
 
             getUsuario = _cc.Usuarios.FirstOrDefault(u => u.usuarioId == IdUsuarioLogado);
 
-            getComunidades = _cc.UsuariosComunidades
+            getComunidadesSugeridas = _cc.UsuariosComunidades
                 .Where(uc => uc.usuarioId != IdUsuarioLogado)
                 .Include(uc => uc.comunidade)
-                .ToList();
-          
+                .ToList();       
+
+            getComunidadesUsuario = _cc.UsuariosComunidades
+                .Where(uc => uc.usuarioId == IdUsuarioLogado)
+                .Include(uc => uc.comunidade)
+                .ToList();                      
         }
+
     }
 }

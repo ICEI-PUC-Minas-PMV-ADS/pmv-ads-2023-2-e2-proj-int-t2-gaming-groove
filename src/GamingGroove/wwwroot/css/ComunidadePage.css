@@ -74,6 +74,7 @@ a {
     border-radius: 6px;
     background-color: white;
     object-fit: cover;
+    border: 1px white solid;
 }
 
 #communityInfo {
@@ -93,38 +94,25 @@ a {
     align-items: end;
 }
 
-.profileButton{
-    height: 30px;
-    width: 40px;
-    background-color: #121433;
-    border: solid white 1px;
-    border-radius: 4px;
-    color: #00F0FF;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.report-icon {
+.reportIcon {
     height: 20px;
 }
 
-.profileButton:hover {
-    transition: 1s;
-    background-color: #00F0FF;
-    .report-icon {
-        filter: brightness(0);
-    }
-    .edit-profile-icon {
-        filter: brightness(0);
-    }
+.reportIcon:hover {
+    transition: 0.7s;
+    filter: brightness(100);
 }
 
-.editButton {
-    height: 21px;
+.editIcon {
+    height: 24px;
 }
 
-.joinButton {
+.editIcon:hover {
+    transition: 0.7s;
+    filter: grayscale(100%) brightness(200%) saturate(0);
+}
+
+.joinQuitButton {
     font-family: PlayMeGames;
     color: #E5ABFF;
     background-color: #0E1A35;
@@ -137,13 +125,13 @@ a {
     border-radius: 3px;
 }
 
-.joinButton:hover {
+.joinQuitButton:hover {
     transition: 0.6s;
     background-color: #E5ABFF;
     color: #0E1A35;
 }
 
-.joinButton:not(:hover) {
+.joinQuitButton:not(:hover) {
     transition: 0.6s;
 }
 

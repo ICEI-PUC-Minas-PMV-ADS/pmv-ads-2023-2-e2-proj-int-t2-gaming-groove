@@ -14,20 +14,47 @@
 	<div class="left-container">
 		<div class="newCommunity-container">
 			<div class="newCommunity-title">Crie uma nova comunidade</div>
-			<button class="newCommunity-button">Criar</button>
+			<a asp-action="Create"><button class="newCommunity-button">Criar</button></a>
 		</div>
 	</div>
 
 	<div class="center-container">
 		<div class="communities-container">
-			<div class="myCommunities-title">Comunidades que faço parte</div>
+			<div class="myCommunities-title">Comunidades que sou membro</div>
 			<div class="myCommunities-container">
 			<div class="myCommunities-list">
 				@foreach(var item in Model.getComunidadesUsuario)
 				{
 					int _comunidadeIdCadaComunidade = item.comunidade.comunidadeId;
 					int numberOfMembersEachCommunity = Model.GetNumberOfMembersInCommunity(_comunidadeIdCadaComunidade);
-
+					@if(item.cargoComunidade.ToString() != "ADM")
+					{
+						<a href="~/ComunidadePage/@item.comunidade.nomeComunidade"><div class="communityItems">
+								@if (item.comunidade.iconeComunidade != null)
+								{
+									<img class="communityIcon" src="data:image/png;base64,@Convert.ToBase64String(item.comunidade.iconeComunidade)" alt="Imagem de Perfil" />
+								}
+								else
+								{
+									<img class="communityIcon" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
+								}    
+							<div class="myCommunityName">@item.comunidade.nomeComunidade</div>
+							<div class="communityMembers">@numberOfMembersEachCommunity membros</div>
+						</div></a>
+					}
+				}											
+			</div>
+			</div>			
+			<div class="myCommunities-title">Comunidades que administro</div>
+			<div class="myCommunities-container">
+			<div class="myCommunities-list">
+				@foreach(var item in Model.getComunidadesUsuario)
+				{
+					int _comunidadeIdCadaComunidade = item.comunidade.comunidadeId;
+					int numberOfMembersEachCommunity = Model.GetNumberOfMembersInCommunity(_comunidadeIdCadaComunidade);
+					
+					@if(item.cargoComunidade.ToString() == "ADM")
+					{
 					<a href="~/ComunidadePage/@item.comunidade.nomeComunidade"><div class="communityItems">
 							@if (item.comunidade.iconeComunidade != null)
 							{
@@ -40,25 +67,6 @@
 						<div class="myCommunityName">@item.comunidade.nomeComunidade</div>
 						<div class="communityMembers">@numberOfMembersEachCommunity membros</div>
 					</div></a>
-				}											
-			</div>
-			</div>			
-			<div class="myCommunities-title">Comunidades que administro</div>
-			<div class="myCommunities-container">
-			<div class="myCommunities-list">
-				@foreach(var item in Model.getComunidadesUsuario)
-				{
-					int _comunidadeIdCadaComunidade = item.comunidade.comunidadeId;
-					int numberOfMembersEachCommunity = Model.GetNumberOfMembersInCommunity(_comunidadeIdCadaComunidade);
-
-
-					@if(item.cargoComunidade.ToString() == "ADM")
-					{
-						<div class="communityItems">
-							<div class="communityIcon"></div>
-							<div class="myCommunityName">@item.comunidade.nomeComunidade</div>
-							<div class="communityMembers">@numberOfMembersEachCommunity membros</div>
-						</div>
 					}
 				}														
 			</div>
