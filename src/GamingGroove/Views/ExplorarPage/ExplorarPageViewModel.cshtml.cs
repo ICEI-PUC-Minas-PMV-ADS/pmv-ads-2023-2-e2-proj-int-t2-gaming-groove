@@ -23,10 +23,19 @@ namespace GamingGroove.Views.ExplorarPage
         public List<string> InfoComunidade { get; set; }
         public List<string> InfoComunidade2 { get; set; }
 
+        public IEnumerable<UsuarioModel> getTodosUsuarios { get; set; }
+        public List<string> InfoTodosUsuarios { get; set; }
+
+
+
+        public List<UsuarioModel> AllUsersInfo { get; set; }
+
+
         public void GetExplorar(int usuario)
         {
 
             getComunidades = _cc.Comunidades.ToList();
+            
             
             getComunidadesUsuario = _cc.UsuariosComunidades
                 .Where(ex => ex.usuarioId == usuario)
@@ -35,8 +44,26 @@ namespace GamingGroove.Views.ExplorarPage
 
             InfoComunidade = getComunidadesUsuario.Select(ex => ex.comunidade.nomeComunidade).ToList();
             
-
+            
+            
             InfoComunidade2 = getComunidades.Select(ex => ex.nomeComunidade).ToList();
+
+
+
+
+            getTodosUsuarios = _cc.Usuarios.ToList();
+            InfoTodosUsuarios = getTodosUsuarios.Select(ue => ue.nomeUsuario).ToList();
+
+
+
+            AllUsersInfo = _cc.Usuarios.Select(u => new UsuarioModel
+                {
+                    nomeUsuario = u.nomeUsuario,
+                    iconePerfil = u.iconePerfil,
+                }).ToList();
+
+
+
         }
 
 
@@ -45,5 +72,5 @@ namespace GamingGroove.Views.ExplorarPage
         //EQUIPES//
 
         
-    }
-}
+        
+}}

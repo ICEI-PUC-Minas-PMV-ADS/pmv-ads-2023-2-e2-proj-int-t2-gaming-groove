@@ -6,3 +6,292 @@
 #icon3 {
     filter: hue-rotate(100deg) saturate(350%);
 }
+
+
+body{
+    margin: 0;
+    padding: 0;
+}        
+.container{
+    margin: 0px;
+    padding: 0px;
+}
+
+
+
+
+.modal-header{
+background-color: #232B58;
+}
+
+.modal-body{
+background-color: #232B58;
+}
+
+.modal-footer{
+background-color: #232B58;
+}
+
+.criarComunidade{
+width: 20px;
+}
+
+
+.containerCard2{
+
+padding: 10px;
+}
+.community-icon{
+text-align: end;
+margin: 5px;
+width: 50px;
+height: 50px;
+
+}
+
+
+.card-textTodosUsuarios{
+display: flex;
+justify-content: center;
+margin: 10px;
+gap: 10px;
+text-align: center;
+border: 1px solid white;
+align-items: center;
+border-radius: 5px;
+}
+
+
+.card-img-comunity{
+width: 10px;
+height: 10px;
+}
+
+.minhasComunidades{
+border: 1px solid white;
+border-radius: 5px;
+}
+
+#minhasComunidades{
+margin-bottom: 15px;
+margin-top: 10px;
+
+}
+
+.internalContainer2{
+width: 100%;
+height: 100%;
+
+}
+
+.card-body{
+
+margin: 0;
+padding: 0;
+transition: background-color 0.3s;
+
+
+
+
+}
+
+.user-card-body: {
+
+width: 100%;
+border: 1px solid white;
+
+ 
+}
+
+.user-icon{
+width: 50px;
+height: 50px;
+}
+
+.cardTodosUsuarios:hover{
+width: 12vw%;
+padding: 5px;
+cursor: pointer;
+transform: scale(1.1);
+
+  
+}
+
+.gridContainerFlow2{
+width: 14vw;
+height: 60vh;
+
+    
+
+}
+
+.NavbarContainer{
+display: flex;
+justify-content: space-between;
+margin: 10px;
+padding: 10px;
+}
+
+
+::-webkit-scrollbar {
+width: 9px;
+background-color: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+background-color: #2b356c;
+border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+background-color: #E3A5FF;
+border-radius: 6px;
+}
+
+
+.ComunidadesUsuario {
+
+overflow: auto; 
+max-height: 70vh;
+border-radius: 5px;
+}
+
+.cardMinhasComunidades:hover{
+border-radius: 5px;
+text-align: center;
+padding: 5px;
+margin: 8px;
+border-radius: 5px;
+cursor: pointer; 
+}
+
+.gridContainerFlow{
+max-height: 62vh;
+width: 100%;
+height: 100%;
+display: flex;
+align-items: start;
+justify-content: space-evenly;
+padding: 10px;
+text-align: center;
+overflow: auto; 
+grid-template-columns: repeat(2, 1fr);
+border-radius: 5px;
+
+
+}
+
+.internalContainer{
+background-color: #111738;
+max-height: 62vh;
+height: 60vh;
+width: 100%;
+border-radius: 5px;
+
+}
+
+.containerCard{
+margin: 10px;
+border-radius: 5px;
+height: 100vh;;
+     
+}
+
+.card{
+width: 18vw;
+height: 11vh;
+background-color: transparent;
+border: 1px solid white;
+border-radius: 5px;
+cursor: pointer;
+transform: scale(1.1); 
+margin: 20px;
+align-items: center;
+
+
+}
+
+.rhCamada1{
+background-color: #232B58;
+height: 100%;
+margin: 10px;
+text-align: center;
+padding: 10px;
+border-radius: 5px;
+
+
+}
+
+.rhCamada2{
+background-color: #111738;
+height: 85%;
+margin: 5px;
+text-align: center;
+border-radius: 5px;
+padding: 10px;
+
+
+}
+
+
+
+.lfCamada1{
+background-color: #232B58;
+height: 100%;
+width: 17vw    ;
+margin: 10px;
+text-align: center;
+padding: 10px;
+border-radius: 5px;
+}
+
+.lfCamada2{
+background-color: #111738;
+height: 92%;
+margin: 5px;
+text-align: center;
+border-radius: 5px;
+overflow-y: auto;
+}
+
+.main-container {
+
+height: 100%;
+width: 95vw;
+padding: 10px;
+margin: 30px;
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+padding-inline: 20px;
+color: white;
+text-align: center;
+border-radius: 5px;
+
+}
+
+.left-container {
+height: 100%;
+width: 16vw;
+height: 75vh;
+
+border-radius: 5px;
+
+}
+
+.center-container {
+height: 100%;
+width: 40vw;
+height: 80vh;
+background-color: #232B58;
+border-radius: 5px;
+}
+
+
+
+.right-container {
+height: 100%;
+width: 16vw;
+height: 75vh;
+border-radius: 5px;
+}

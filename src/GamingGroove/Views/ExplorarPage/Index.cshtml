@@ -4,7 +4,7 @@
 @using System.Security.Claims
 
 @{
-    ViewData["Title"] = "EquipePage";
+    ViewData["Title"] = "Explorar";
 }
 
 <title>Página de Equipes</title>
@@ -21,7 +21,31 @@
             
             <h5>Usuarios</h5>
                 <div class="lfCamada2">
-                   sdsada
+                   <div class="containerCard2">
+            <div class="internalContainer2">
+                <div class="gridContainerFlow2">
+            
+                    @foreach (var item in Model.AllUsersInfo)
+                                    {
+                                        <div class="cardTodosUsuarios">
+                                            
+                                                <div class="user-card-body">
+                                                    <h5 class="card-title"></h5>
+                                                    <p class="card-textTodosUsuarios">
+
+                                                        <img class="user-icon" src="data:image/png;base64,@Convert.ToBase64String(item.iconePerfil)" alt="Imagem de Perfil" />
+                                                        <td>@item.nomeUsuario</td>
+                                                        
+                                                    </p>
+                                                    
+                                                </div>
+                                        </div>
+                                
+                                    }
+                </div>            
+            </div>                
+            
+        </div>
                 </div>
         </div>
 
@@ -32,34 +56,67 @@
 
     <div class="center-container">
         <div class="TituloComunidades">
-                <h3 class="textoCentral">Comunidades</h3>
-            </div>
+            <h3 class="textoCentral">Comunidades</h3>
+        </div>
         <div class="NavbarContainer">
             <form class="d-flex" role="search">
                 <input class="form-control me-2" id="searchInput" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
 
-            <button class="btn btn-primary" id="criarComunidade">Criar Comunidade</button> 
+            
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h1 class="modal-title fs-5" id="staticBackdropLabel">Comunidade</h1>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+
+						
+					</div>
+					<div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Criar</button>
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Sair</button>
+						
+					</div>
+				</div>
+			</div>
+		</div>            
+                
+
+
+
+
+
          </div> 
         <div class="containerCard">
             <div class="internalContainer">
                 <div class="gridContainerFlow">
-            
+                    
                     @foreach (var item in Model.getComunidades)
-                                    {
-                                        <div class="card">
-                                            <img src="..." class="card-img">
-                                                <div class="card-body">
-                                                    <h5 class="card-title"></h5>
-                                                    <p class="card-text">
-                                                        <td>@item.nomeComunidade</td>
-                                                    </p>
-                                                    <a href="#" class="btn btn-primary">Visualizar</a>
-                                                </div>
-                                            </div>
+                        {
+                            <div class="card">
+                                            
+                                <div class="card-body">
+                                    <h5 class="card-title"></h5>
+                                    <p class="card-text">
+                                        @if (item.iconeComunidade != null)
+                                        {
+                                                <img class="community-icon" src="data:image/png;base64,@Convert.ToBase64String(item.iconeComunidade)" alt="Imagem de Perfil" />
+                                            }
+                                                else
+                                            {
+                                                <img class="community-icon" src="~/images/icons/community-icon.png" alt="Imagem de Perfil" />
+                                        }  
+                                        <td>@item.nomeComunidade</td>
+                                    </p>             
+                                </div>
+                            </div>
                                 
-                                    }
+                        }
+                                  
                 </div>            
             </div>                
             
@@ -72,14 +129,22 @@
         
 
         <div class="rhCamada1">
-            <h5>Minhas Comunidades</h5>
+            <h5 id="minhasComunidades">Minhas Comunidades</h5>
             <div class="rhCamada2">
                 <div class="minhasComunidades">
                     <div class="ComunidadesUsuario">
                         @foreach (var item in Model.getComunidadesUsuario)
                             {
                                 <div class="cardMinhasComunidades">
-                                    <img src="..." class="card-img">
+                                    @if (item.comunidade.iconeComunidade != null)
+                                        {
+                                                <img class="community-icon" src="data:image/png;base64,@Convert.ToBase64String(item.comunidade.iconeComunidade)" alt="Imagem de Perfil" />
+                                            }
+                                                else
+                                            {
+                                                <img class="community-icon" src="~/images/icons/community-icon.png" alt="Imagem de Perfil" />
+                                        }  
+                                      
                                     <td>@item.comunidade.nomeComunidade</td>
 
                                 </div>
@@ -103,9 +168,115 @@
     .container{
         margin: 0px;
         padding: 0px;
-        
     }
 
+
+
+
+.modal-header{
+    background-color: #232B58;
+}
+
+.modal-body{
+    background-color: #232B58;
+}
+
+.modal-footer{
+    background-color: #232B58;
+}
+
+.criarComunidade{
+    width: 20px;
+}
+
+
+.containerCard2{
+    
+    padding: 10px;
+}
+.community-icon{
+    text-align: end;
+    margin: 5px;
+    width: 50px;
+    height: 50px;
+    
+}
+
+
+.card-textTodosUsuarios{
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    gap: 10px;
+    text-align: center;
+    border: 1px solid white;
+    align-items: center;
+    border-radius: 5px;
+}
+
+
+.card-img-comunity{
+    width: 10px;
+    height: 10px;
+}
+
+.minhasComunidades{
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+#minhasComunidades{
+    margin-bottom: 15px;
+    margin-top: 10px;
+    
+}
+
+.internalContainer2{
+    width: 100%;
+    height: 100%;
+    
+}
+
+.card-body{
+    
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s;
+    
+    
+    
+    
+}
+
+.user-card-body: {
+    
+    width: 100%;
+    border: 1px solid white;
+    
+     
+}
+
+.user-icon{
+    width: 50px;
+    height: 50px;
+}
+
+.cardTodosUsuarios:hover{
+    width: 12vw%;
+    padding: 5px;
+    cursor: pointer;
+    transform: scale(1.1);
+    
+      
+}
+
+.gridContainerFlow2{
+    width: 14vw;
+    height: 60vh;
+    
+        
+    
+}
 
 .NavbarContainer{
     display: flex;
@@ -132,42 +303,42 @@
 
 
 .ComunidadesUsuario {
-
+    
     overflow: auto; 
     max-height: 70vh;
     border-radius: 5px;
 }
 
-.cardMinhasComunidades{
-    border: 1px solid white;
+.cardMinhasComunidades:hover{
+    border-radius: 5px;
     text-align: center;
     padding: 5px;
     margin: 8px;
     border-radius: 5px;
-    
+    cursor: pointer; 
 }
 
 .gridContainerFlow{
     max-height: 62vh;
     width: 100%;
+    height: 100%;
     display: flex;
-    gap: 10px;
-    align-items: center;
-    margin-left: 10px;
+    align-items: start;
+    justify-content: space-evenly;
+    padding: 10px;
+    text-align: center;
     overflow: auto; 
-    display: grid;
     grid-template-columns: repeat(2, 1fr);
     border-radius: 5px;
+    
+    
 }
 
 .internalContainer{
     background-color: #111738;
     max-height: 62vh;
-    width: 95%;
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    margin-left: 10px;
+    height: 60vh;
+    width: 100%;
     border-radius: 5px;
     
 }
@@ -175,15 +346,22 @@
 .containerCard{
     margin: 10px;
     border-radius: 5px;
-       
+    height: 100vh;;
+         
 }
 
 .card{
-    width: 15vw;
-    height: 25vh;
+    width: 18vw;
+    height: 11vh;
     background-color: transparent;
     border: 1px solid white;
     border-radius: 5px;
+    cursor: pointer;
+    transform: scale(1.1); 
+    margin: 20px;
+    align-items: center;
+    
+    
 }
 
 .rhCamada1{
@@ -193,14 +371,19 @@
     text-align: center;
     padding: 10px;
     border-radius: 5px;
+    
+    
 }
 
 .rhCamada2{
     background-color: #111738;
-    height: 92%;
+    height: 85%;
     margin: 5px;
     text-align: center;
     border-radius: 5px;
+    padding: 10px;
+    
+    
 }
 
 
@@ -208,6 +391,7 @@
 .lfCamada1{
     background-color: #232B58;
     height: 100%;
+    width: 17vw    ;
     margin: 10px;
     text-align: center;
     padding: 10px;
@@ -220,6 +404,7 @@
     margin: 5px;
     text-align: center;
     border-radius: 5px;
+    overflow-y: auto;
 }
 
 .main-container {
@@ -232,7 +417,6 @@
     flex-direction: row;
     justify-content: space-between;
     padding-inline: 20px;
-    border: 1px solid white;
     color: white;
     text-align: center;
     border-radius: 5px;
@@ -243,7 +427,7 @@
     height: 100%;
     width: 16vw;
     height: 75vh;
-    border: 1px solid white;
+    
     border-radius: 5px;
     
 }
@@ -252,7 +436,6 @@
     height: 100%;
     width: 40vw;
     height: 80vh;
-    border: 1px solid white;
     background-color: #232B58;
     border-radius: 5px;
 }
@@ -263,7 +446,6 @@
     height: 100%;
     width: 16vw;
     height: 75vh;
-    border: 1px solid white;
     border-radius: 5px;
 }
 </style>
@@ -275,3 +457,5 @@
  
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
 <script src="~/js/ExplorarPage.js"></script>
+
+
