@@ -46,13 +46,18 @@ namespace GamingGroove.Controllers
             ViewData["usuarioId"] = new SelectList(_context.Usuarios, "usuarioId", "usuarioId");
             return View();
         }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("usuarioComunidadeId,usuarioId,comunidadeId,cargoComunidade,dataVinculoComunidade")] UsuarioComunidadeModel usuarioComunidadeModel)
+        public async Task<IActionResult> Create([Bind("usuarioId,comunidadeId,cargoComunidade,dataVinculoComunidade")] UsuarioComunidadeModel usuarioComunidadeModel)
         {
             if (ModelState.IsValid)
             {
+                var ultimoUsuarioComunidadeId = _context.UsuariosComunidades
+                    .OrderByDescending(uc => uc.usuarioComunidadeId)
+                    .FirstOrDefault()?.usuarioComunidadeId ?? 0;
+
+                usuarioComunidadeModel.usuarioComunidadeId = ultimoUsuarioComunidadeId + 1;
+
                 _context.Add(usuarioComunidadeModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -123,7 +128,7 @@ namespace GamingGroove.Controllers
             var usuarioComunidadeModel = await _context.UsuariosComunidades
                 .Include(t => t.comunidade)
                 .Include(t => t.usuario)
-                .FirstOrDefaultAsync(m => m.usuarioId == id);
+                .FirstOrDefaultAsync(m => m.usuarioComunidadeId == id);
             if (usuarioComunidadeModel == null)
             {
                 return NotFound();
