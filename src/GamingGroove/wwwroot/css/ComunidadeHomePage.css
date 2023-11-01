@@ -1,0 +1,241 @@
+.iconBackground2 {
+    outline: double 6px #D169FF;
+    background-color: rgb(236, 236, 236);
+}
+
+#icon2 {
+    filter: hue-rotate(100deg) saturate(350%);
+}
+
+a {
+    text-decoration: none;
+}
+
+.main-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-inline: 1vw;
+}
+
+.left-container {
+    height: 100%;
+    width: 27vw;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    gap: 2vh;
+}
+
+.newCommunity-container {
+    height: 170px;
+    width: 15vw;
+    min-width: 205px;
+    border-radius: 6px;
+    border: 2px solid #E3A5FF;
+    margin-top: 5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    font-family: PlayMeGames;
+    box-shadow: #D169FF 0px 0px 8px;
+}
+
+.newCommunity-title {
+    font-size: 26px;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.newCommunity-button {
+    padding-inline: 35px;
+    padding-block: 2px;
+    border-radius: 4px;
+    background-color: transparent;
+    border: 2px solid #E087FF;
+    box-shadow: #D169FF 0px 0px 8px;
+    letter-spacing: 1px;
+}
+
+.newCommunity-button:hover {
+    transition: 0.6s;
+    color: black;
+    background-color: #E087FF;
+    box-shadow: none;
+}
+
+.newCommunity-button:not(:hover) {
+    transition: 0.6s;
+}
+
+
+
+
+.center-container {
+    height: 86.1vh;
+    width: 55vw;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+    align-items: center;
+    padding: 30px;
+}
+
+.communities-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.myCommunities-title {
+    text-transform: uppercase;
+    margin-top: 40px;
+    font-family: Gamer;
+    font-size: 30px;
+}
+
+.myCommunities-container {
+    padding: 10px;
+    border-radius: 4px;
+    height: 28vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border: solid 1px #0163D4;
+    box-shadow: #0163D4 0px 0px 8px;
+}
+
+.myCommunities-list {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    align-items: baseline;
+    gap: 20px;
+    overflow: auto;
+}
+
+.communityItems {
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    background-color: #232B58;
+    border-radius: 6px; 
+}
+
+.communityItems:hover {
+    transition: 0.7s;
+    background-color: #7383C5;
+}
+
+.communityItems:not(:hover) {
+    transition: 0.7s;
+}
+
+.communityIcon {
+    height: 120px;
+    width: 120px;
+    border-radius: 6px;
+    object-fit: cover;
+    margin-bottom: 16px;
+}
+
+.myCommunityName {
+    font-size: 14px;
+}
+
+.communityMembers {
+    color: #00F0FF;
+    font-size: 12px;
+}
+
+.right-container {
+    height: 100%;
+    width: 20vw;
+    display: flex;
+    justify-content: end; 
+}
+
+.suggestedCommunities {
+    background-color: #232B58;
+    height: 60vh;
+    width: 290px;
+    margin-top: 5vh;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+}
+
+.listTitle {
+    font-family: Gamer;
+    font-size: 28px;
+    text-transform: uppercase;
+    width: 270px;
+    text-align: center;
+}
+
+.communitiesList {
+    background-color: #111738;
+    height: 90%;
+    width: 100%;
+    padding-inline: 15px;
+    padding-block: 10px;
+    overflow: auto;
+}
+
+.communities-items {
+    height: 60px;
+    width: 100%;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-inline: 10px;
+    padding-block: 35px;
+    gap: 10px;
+    font-family: Play;
+    cursor: pointer;
+}
+
+.communities-items:hover {
+    transition: 0.8s;
+    background-color: #232B58;
+    .list-communityIcon {
+        border: #00F0FF solid 1px;
+        box-shadow: #00F0FF 0px 0px 8px;
+    }
+}
+
+.communities-items:not(:hover){
+    transition: 0.8s;   
+}
+
+.list-communityIcon {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.communityName {
+    font-size: 14px;
+}
+
+.list-numberOfMembers {
+    color: #00F0FF;
+    font-size: 12px;
+}

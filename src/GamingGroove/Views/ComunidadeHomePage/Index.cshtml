@@ -1,0 +1,110 @@
+@model GamingGroove.Views.ComunidadeHomePage.ComunidadeHomePageViewModel
+@using System.Security.Claims
+
+@{
+	ViewData["Title"] = "ComunidadeHomePage";
+}
+
+<title>Comunidades</title>
+<link rel="stylesheet" href="~/css/ComunidadeHomePage.css" asp-append-version="true" />
+
+
+<div class="main-container">
+
+	<div class="left-container">
+		<div class="newCommunity-container">
+			<div class="newCommunity-title">Crie uma nova comunidade</div>
+			<a asp-action="Create"><button class="newCommunity-button">Criar</button></a>
+		</div>
+	</div>
+
+	<div class="center-container">
+		<div class="communities-container">
+			<div class="myCommunities-title">Comunidades que sou membro</div>
+			<div class="myCommunities-container">
+			<div class="myCommunities-list">
+				@foreach(var item in Model.getComunidadesUsuario)
+				{
+					int _comunidadeIdCadaComunidade = item.comunidade.comunidadeId;
+					int numberOfMembersEachCommunity = Model.GetNumberOfMembersInCommunity(_comunidadeIdCadaComunidade);
+					@if(item.cargoComunidade.ToString() != "ADM")
+					{
+						<a href="~/ComunidadePage/@item.comunidade.nomeComunidade"><div class="communityItems">
+								@if (item.comunidade.iconeComunidade != null)
+								{
+									<img class="communityIcon" src="data:image/png;base64,@Convert.ToBase64String(item.comunidade.iconeComunidade)" alt="Imagem de Perfil" />
+								}
+								else
+								{
+									<img class="communityIcon" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
+								}    
+							<div class="myCommunityName">@item.comunidade.nomeComunidade</div>
+							<div class="communityMembers">@numberOfMembersEachCommunity membros</div>
+						</div></a>
+					}
+				}											
+			</div>
+			</div>			
+			<div class="myCommunities-title">Comunidades que administro</div>
+			<div class="myCommunities-container">
+			<div class="myCommunities-list">
+				@foreach(var item in Model.getComunidadesUsuario)
+				{
+					int _comunidadeIdCadaComunidade = item.comunidade.comunidadeId;
+					int numberOfMembersEachCommunity = Model.GetNumberOfMembersInCommunity(_comunidadeIdCadaComunidade);
+					
+					@if(item.cargoComunidade.ToString() == "ADM")
+					{
+					<a href="~/ComunidadePage/@item.comunidade.nomeComunidade"><div class="communityItems">
+							@if (item.comunidade.iconeComunidade != null)
+							{
+								<img class="communityIcon" src="data:image/png;base64,@Convert.ToBase64String(item.comunidade.iconeComunidade)" alt="Imagem de Perfil" />
+							}
+							else
+							{
+								<img class="communityIcon" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
+							}    
+						<div class="myCommunityName">@item.comunidade.nomeComunidade</div>
+						<div class="communityMembers">@numberOfMembersEachCommunity membros</div>
+					</div></a>
+					}
+				}														
+			</div>
+			</div>				
+		</div>
+
+	</div>
+
+	<div class="right-container">
+		<div class="suggestedCommunities">
+			<div class="listTitle">Comunidades sugeridas</div>
+			<div class="communitiesList">
+				@foreach (var item in Model.getComunidadesSugeridas) {
+					
+					int _comunidadeIdCadaComunidade = item.comunidade.comunidadeId;
+					int numberOfMembersEachCommunity = Model.GetNumberOfMembersInCommunity(_comunidadeIdCadaComunidade);
+					<a href="~/ComunidadePage/@item.comunidade.nomeComunidade">
+						<div class="communities-items">
+							@if (item.comunidade.iconeComunidade != null)
+							{
+								<img class="list-communityIcon" src="data:image/png;base64,@Convert.ToBase64String(item.comunidade.iconeComunidade)" alt="Imagem de Perfil" />
+							}
+							else
+							{
+								<img class="list-communityIcon" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
+							}               
+							<div class="communityInfo-container">
+								<div class="communityName">@item.comunidade.nomeComunidade</div>                                
+								<div class="list-numberOfMembers">@numberOfMembersEachCommunity membros</div>
+							</div>
+						</div>	
+					</a>				
+				}
+			</div>
+		</div>		
+	</div>
+
+</div>
+
+
+

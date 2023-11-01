@@ -49,7 +49,7 @@ namespace GamingGroove.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("usuarioComunidadeId,usuarioId,comunidadeId,cargo,dataVinculoComunidade")] UsuarioComunidadeModel usuarioComunidadeModel)
+        public async Task<IActionResult> Create([Bind("usuarioComunidadeId,usuarioId,comunidadeId,cargoComunidade,dataVinculoComunidade")] UsuarioComunidadeModel usuarioComunidadeModel)
         {
             if (ModelState.IsValid)
             {
@@ -81,7 +81,7 @@ namespace GamingGroove.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("usuarioComunidadeId,usuarioId,comunidadeId,cargo,dataVinculoComunidade")] UsuarioComunidadeModel usuarioComunidadeModel)
+        public async Task<IActionResult> Edit(int id, [Bind("usuarioComunidadeId,usuarioId,comunidadeId,cargoComunidade,dataVinculoComunidade")] UsuarioComunidadeModel usuarioComunidadeModel)
         {
             if (id != usuarioComunidadeModel.usuarioId)
             {

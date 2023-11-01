@@ -52,5 +52,6 @@ namespace GamingGroove.Views.PerfilPage
             return _cc.UsuariosComunidades
                 .Count(uc => uc.comunidadeId == _comunidadeId);
         }
+        
     }
 }

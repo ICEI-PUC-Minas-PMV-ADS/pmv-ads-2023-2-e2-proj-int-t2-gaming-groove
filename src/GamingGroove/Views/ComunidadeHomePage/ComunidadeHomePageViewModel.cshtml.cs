@@ -5,13 +5,13 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Org.BouncyCastle.Crypto.Modes;
 
-namespace GamingGroove.Views.ComunidadePage
+namespace GamingGroove.Views.ComunidadeHomePage
 {
-    public class ComunidadePageViewModel : PageModel
+    public class ComunidadeHomePageViewModel : PageModel
     {
         private readonly GamingGrooveDbContext _cc;
 
-        public ComunidadePageViewModel(GamingGrooveDbContext cc)
+        public ComunidadeHomePageViewModel(GamingGrooveDbContext cc)
         {
             _cc = cc;
         }
@@ -26,7 +26,8 @@ namespace GamingGroove.Views.ComunidadePage
         public int IdUsuarioLogado { get; set; }
 
         public void OnGet(string community)
-        {            
+        {
+            
             getComunidade = _cc.Comunidades.FirstOrDefault(u => u.nomeComunidade == community);
 
             getTodasComunidades = _cc.Comunidades.ToList();
@@ -47,13 +48,13 @@ namespace GamingGroove.Views.ComunidadePage
             getComunidadesSugeridas = _cc.UsuariosComunidades
                 .Where(uc => uc.usuarioId != IdUsuarioLogado)
                 .Include(uc => uc.comunidade)
-                .ToList();       
+                .ToList();
 
             getComunidadesUsuario = _cc.UsuariosComunidades
                 .Where(uc => uc.usuarioId == IdUsuarioLogado)
                 .Include(uc => uc.comunidade)
-                .ToList();                      
+                .ToList();                
+          
         }
-
     }
 }

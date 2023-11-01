@@ -20,29 +20,50 @@
 			background = "url('data:image/png;base64," + Convert.ToBase64String(Model.getComunidade.capaComunidade) + "') no-repeat center center / cover";
 		}
 		<div class="communityCover" style="background: @background;">
-			<div class="info-container">
-				@if (Model.getComunidade.iconeComunidade != null)
-				{
-					<img class="communityIcon" src="data:image/png;base64,@Convert.ToBase64String(Model.getComunidade.iconeComunidade)" alt="Imagem de Perfil" />
-				}
-				else
-				{
-					<img class="communityIcon" src="~/images/icons/user-icon.png" alt="Imagem de Perfil Padrão" style= "background-color: white;" />
-				}
-				<div class="communityName" id="communityInfo">@Model.getComunidade.nomeComunidade</div>
-				@{
-					int _comunidadeId = Model.getComunidade.comunidadeId;
-					int numberOfMembers = Model.GetNumberOfMembersInCommunity(_comunidadeId);
-				}
-				<div class="numberOfMembers" id="communityInfo">@numberOfMembers membros</div>
-			</div>
-			<div class="buttons-container">
+			<div class="communityCover-filter"></div>
+			<div class="positioningTool">
+				<div class="info-container">
+					@if (Model.getComunidade.iconeComunidade != null)
+					{
+						<img class="communityIcon" src="data:image/png;base64,@Convert.ToBase64String(Model.getComunidade.iconeComunidade)" alt="Imagem de Perfil" />
+					}
+					else
+					{
+						<img class="communityIcon" src="~/images/icons/user-icon.png" alt="Imagem de Perfil Padrão" style= "background-color: white;" />
+					}
+					<div class="communityName" id="communityInfo">@Model.getComunidade.nomeComunidade</div>
+					@{
+						int _comunidadeId = Model.getComunidade.comunidadeId;
+						int numberOfMembers = Model.GetNumberOfMembersInCommunity(_comunidadeId);
+					}
+					<div class="numberOfMembers" id="communityInfo">@numberOfMembers membros</div>
+				</div>
+				<div class="buttons-container">
+						@{
+							var communityName = Context.Request.RouteValues.ContainsKey("community")
+							? Context.Request.RouteValues["community"].ToString()
+							: string.Empty;
+							var isMember = Model.getComunidadesUsuario.FirstOrDefault(uc => uc.comunidade.nomeComunidade == communityName);
+						}
 
-					<a asp-action="Edit" asp-route-id="@Model.getComunidade.comunidadeId"><button class="profileButton"><img class="editButton" src="~/images/icons/edit-icon.svg" alt=""></button></a>
+						@if (isMember != null && isMember.cargoComunidade.ToString() == "ADM")
+						{
+							<a asp-action="Edit" asp-route-id="@Model.getComunidade.comunidadeId"><img class="editIcon" src="~/images/icons/gear-icon.svg" alt=""></a>
+						}
+						else
+						{
+							<a><img class="reportIcon" src="~/images/icons/report-icon.svg"></a>
+						}
 
-					<button class="profileButton"><img class="report-icon" src="~/images/icons/report-icon.svg"></button>
-  
-				<button class="joinButton">Entrar</button>
+						@if(isMember != null)
+						{
+							<button class="joinQuitButton">Sair</button>
+						}
+						else
+						{
+							<a asp-action="Create">Entrar</a>
+						}
+				</div>
 			</div>
 		</div>
 		<div class="descriptionBox">
@@ -82,22 +103,22 @@
 		<div class="suggestedCommunities">
 			<div class="listTitle">Comunidades sugeridas</div>
 			<div class="communitiesList">
-				@foreach (var item in Model.getTodasComunidades) {
+				@foreach (var item in Model.getComunidadesSugeridas) {
 					
-					int _comunidadeIdCadaComunidade = item.comunidadeId;
+					int _comunidadeIdCadaComunidade = item.comunidade.comunidadeId;
 					int numberOfMembersEachCommunity = Model.GetNumberOfMembersInCommunity(_comunidadeIdCadaComunidade);
-					<a href="~/ComunidadePage/@item.nomeComunidade">
+					<a href="~/ComunidadePage/@item.comunidade.nomeComunidade">
 						<div class="communities-items">
-							@if (item.iconeComunidade != null)
+							@if (item.comunidade.iconeComunidade != null)
 							{
-								<img class="list-communityIcon" src="data:image/png;base64,@Convert.ToBase64String(item.iconeComunidade)" alt="Imagem de Perfil" />
+								<img class="list-communityIcon" src="data:image/png;base64,@Convert.ToBase64String(item.comunidade.iconeComunidade)" alt="Imagem de Perfil" />
 							}
 							else
 							{
 								<img class="list-communityIcon" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
 							}               
 							<div class="communityInfo-container">
-								<div class="communityName">@item.nomeComunidade</div>                                
+								<div class="communityName">@item.comunidade.nomeComunidade</div>                                
 								<div class="list-numberOfMembers">@numberOfMembersEachCommunity membros</div>
 							</div>
 						</div>	
@@ -108,6 +129,5 @@
 	</div>
 
 </div>
-
 
 

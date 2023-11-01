@@ -4,6 +4,10 @@
     color: white;
 }
 
+a {
+    text-decoration: none;
+}
+
 main {
     margin-top: 2vh;
     height: 87.8vh
