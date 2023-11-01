@@ -65,8 +65,8 @@ namespace GamingGroove.Controllers
                         await capaComunidadeArquivo.CopyToAsync(memoryStream);
                         comunidadeModel.capaComunidade = memoryStream.ToArray();
                     }   
-                }      
-                       
+                }                      
+
                 _context.Add(comunidadeModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index", "ComunidadePage", new { community = comunidadeModel.nomeComunidade });
