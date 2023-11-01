@@ -28,12 +28,7 @@ namespace GamingGroove.Controllers
                 }
 
                 var usuarioId = HttpContext.Session.GetInt32("UsuarioId");
-                
-                if (usuarioId.HasValue)
-                {
-                   usuarioId = usuarioId.Value;
-                }
-                                viewModel.OnGet(community);
+                viewModel.OnGet(community);
                 viewModel.GetUsuarioLogado(usuarioId);
 
                 
