@@ -14,7 +14,7 @@ namespace GamingGroove.Controllers
             _context = context;
         }
 
-        public int IdUsuarioLogado {get; set;}
+
 
         public IActionResult Index(string community)
         {
@@ -31,11 +31,11 @@ namespace GamingGroove.Controllers
                 
                 if (usuarioId.HasValue)
                 {
-                    IdUsuarioLogado = usuarioId.Value;
+                   usuarioId = usuarioId.Value;
                 }
-                
-                viewModel.GetUsuarioLogado(IdUsuarioLogado);
-                viewModel.OnGet(community);
+                                viewModel.OnGet(community);
+                viewModel.GetUsuarioLogado(usuarioId);
+
                 
 
                 return View(viewModel);

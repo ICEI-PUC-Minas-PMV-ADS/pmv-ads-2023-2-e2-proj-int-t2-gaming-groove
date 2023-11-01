@@ -23,7 +23,7 @@ namespace GamingGroove.Views.ComunidadeHomePage
         public IEnumerable<UsuarioComunidadeModel> getComunidadesUsuario { get; set; }
         public List<string> infoComunidades { get; set; }
 
-        public int IdUsuarioLogado { get; set; }
+        public int? IdUsuarioLogado { get; set; }
 
         public void OnGet(string community)
         {
@@ -39,7 +39,7 @@ namespace GamingGroove.Views.ComunidadeHomePage
                 .Count(uc => uc.comunidadeId == _comunidadeId);
         }
 
-        public void GetUsuarioLogado (int usuarioLogado)
+        public void GetUsuarioLogado (int? usuarioLogado)
         {            
             IdUsuarioLogado = usuarioLogado;
 
@@ -53,8 +53,7 @@ namespace GamingGroove.Views.ComunidadeHomePage
             getComunidadesUsuario = _cc.UsuariosComunidades
                 .Where(uc => uc.usuarioId == IdUsuarioLogado)
                 .Include(uc => uc.comunidade)
-                .ToList();                
-          
+                .ToList();                        
         }
     }
 }
