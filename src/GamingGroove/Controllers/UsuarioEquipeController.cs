@@ -49,10 +49,17 @@ namespace GamingGroove.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("usuarioEquipeId,usuarioId,equipeId,cargo,dataVinculoEquipe")] UsuarioEquipeModel usuarioEquipeModel)
+        public async Task<IActionResult> Create([Bind("usuarioEquipeId,usuarioId,equipeId,cargoEquipe,dataVinculoEquipe")] UsuarioEquipeModel usuarioEquipeModel)
         {
             if (ModelState.IsValid)
             {
+
+                var ultimoRegistroEquipeId = _context.UsuariosEquipes
+                    .OrderByDescending(uc => uc.usuarioEquipeId)
+                    .FirstOrDefault()?.usuarioEquipeId ?? 0;
+
+                usuarioEquipeModel.usuarioEquipeId = ultimoRegistroEquipeId + 1;   
+
                 _context.Add(usuarioEquipeModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -69,7 +76,8 @@ namespace GamingGroove.Controllers
                 return NotFound();
             }
 
-            var usuarioEquipeModel = await _context.UsuariosEquipes.FindAsync(id);
+            var usuarioEquipeModel = await _context.UsuariosEquipes
+                .FirstOrDefaultAsync(uc => uc.usuarioEquipeId == id);
             if (usuarioEquipeModel == null)
             {
                 return NotFound();
@@ -81,9 +89,9 @@ namespace GamingGroove.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("usuarioEquipeId,usuarioId,equipeId,cargo,dataVinculoEquipe")] UsuarioEquipeModel usuarioEquipeModel)
+        public async Task<IActionResult> Edit(int id, [Bind("usuarioEquipeId,usuarioId,equipeId,cargoEquipe,dataVinculoEquipe")] UsuarioEquipeModel usuarioEquipeModel)
         {
-            if (id != usuarioEquipeModel.usuarioId)
+            if (id != usuarioEquipeModel.usuarioEquipeId)
             {
                 return NotFound();
             }
@@ -92,12 +100,21 @@ namespace GamingGroove.Controllers
             {
                 try
                 {
-                    _context.Update(usuarioEquipeModel);
-                    await _context.SaveChangesAsync();
+                    var existingUsuarioEquipe = await _context.UsuariosEquipes.FirstOrDefaultAsync(uc => uc.usuarioEquipeId == id);
+
+                    if (existingUsuarioEquipe != null)
+                    {
+                        existingUsuarioEquipe.usuarioId = usuarioEquipeModel.usuarioId;
+                        existingUsuarioEquipe.equipeId = usuarioEquipeModel.equipeId;
+                        existingUsuarioEquipe.cargoEquipe = usuarioEquipeModel.cargoEquipe;
+                        
+                        _context.Update(existingUsuarioEquipe);
+                        await _context.SaveChangesAsync();
+                    }
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UsuarioEquipeModelExists(usuarioEquipeModel.usuarioId))
+                    if (!UsuarioEquipeModelExists(usuarioEquipeModel.usuarioEquipeId))
                     {
                         return NotFound();
                     }
@@ -123,7 +140,7 @@ namespace GamingGroove.Controllers
             var usuarioEquipeModel = await _context.UsuariosEquipes
                 .Include(t => t.equipe)
                 .Include(t => t.usuario)
-                .FirstOrDefaultAsync(m => m.usuarioId == id);
+                .FirstOrDefaultAsync(m => m.usuarioEquipeId == id);
             if (usuarioEquipeModel == null)
             {
                 return NotFound();
@@ -140,7 +157,8 @@ namespace GamingGroove.Controllers
             {
                 return Problem("Entity set 'GamingGrooveDbContext.UsuariosEquipes'  is null.");
             }
-            var usuarioEquipeModel = await _context.UsuariosEquipes.FindAsync(id);
+            var usuarioEquipeModel = await _context.UsuariosEquipes
+                .FirstOrDefaultAsync(uc => uc.usuarioEquipeId == id);
             if (usuarioEquipeModel != null)
             {
                 _context.UsuariosEquipes.Remove(usuarioEquipeModel);
@@ -152,7 +170,7 @@ namespace GamingGroove.Controllers
 
         private bool UsuarioEquipeModelExists(int id)
         {
-          return (_context.UsuariosEquipes?.Any(e => e.usuarioId == id)).GetValueOrDefault();
+          return (_context.UsuariosEquipes?.Any(e => e.usuarioEquipeId == id)).GetValueOrDefault();
         }
     }
 }
