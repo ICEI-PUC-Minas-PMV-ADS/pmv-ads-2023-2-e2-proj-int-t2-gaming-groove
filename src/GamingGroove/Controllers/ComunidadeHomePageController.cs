@@ -14,7 +14,7 @@ namespace GamingGroove.Controllers
             _context = context;
         }
 
-        public int IdUsuarioLogado {get; set;}
+
 
         public IActionResult Index(string community)
         {
@@ -28,14 +28,9 @@ namespace GamingGroove.Controllers
                 }
 
                 var usuarioId = HttpContext.Session.GetInt32("UsuarioId");
-                
-                if (usuarioId.HasValue)
-                {
-                    IdUsuarioLogado = usuarioId.Value;
-                }
-                
-                viewModel.GetUsuarioLogado(IdUsuarioLogado);
                 viewModel.OnGet(community);
+                viewModel.GetUsuarioLogado(usuarioId);
+
                 
 
                 return View(viewModel);
@@ -70,8 +65,8 @@ namespace GamingGroove.Controllers
                         await capaComunidadeArquivo.CopyToAsync(memoryStream);
                         comunidadeModel.capaComunidade = memoryStream.ToArray();
                     }   
-                }      
-                       
+                }                      
+
                 _context.Add(comunidadeModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index", "ComunidadePage", new { community = comunidadeModel.nomeComunidade });

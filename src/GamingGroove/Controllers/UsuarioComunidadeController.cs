@@ -46,13 +46,18 @@ namespace GamingGroove.Controllers
             ViewData["usuarioId"] = new SelectList(_context.Usuarios, "usuarioId", "usuarioId");
             return View();
         }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("usuarioComunidadeId,usuarioId,comunidadeId,cargoComunidade,dataVinculoComunidade")] UsuarioComunidadeModel usuarioComunidadeModel)
+        public async Task<IActionResult> Create([Bind("usuarioId,comunidadeId,cargoComunidade,dataVinculoComunidade")] UsuarioComunidadeModel usuarioComunidadeModel)
         {
             if (ModelState.IsValid)
             {
+                var ultimoUsuarioComunidadeId = _context.UsuariosComunidades
+                    .OrderByDescending(uc => uc.usuarioComunidadeId)
+                    .FirstOrDefault()?.usuarioComunidadeId ?? 0;
+
+                usuarioComunidadeModel.usuarioComunidadeId = ultimoUsuarioComunidadeId + 1;
+
                 _context.Add(usuarioComunidadeModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -68,8 +73,8 @@ namespace GamingGroove.Controllers
             {
                 return NotFound();
             }
-
-            var usuarioComunidadeModel = await _context.UsuariosComunidades.FindAsync(id);
+            var usuarioComunidadeModel = await _context.UsuariosComunidades
+                .FirstOrDefaultAsync(uc => uc.usuarioComunidadeId == id);
             if (usuarioComunidadeModel == null)
             {
                 return NotFound();
@@ -83,7 +88,7 @@ namespace GamingGroove.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("usuarioComunidadeId,usuarioId,comunidadeId,cargoComunidade,dataVinculoComunidade")] UsuarioComunidadeModel usuarioComunidadeModel)
         {
-            if (id != usuarioComunidadeModel.usuarioId)
+            if (id != usuarioComunidadeModel.usuarioComunidadeId)
             {
                 return NotFound();
             }
@@ -92,12 +97,21 @@ namespace GamingGroove.Controllers
             {
                 try
                 {
-                    _context.Update(usuarioComunidadeModel);
-                    await _context.SaveChangesAsync();
+                    var existingUsuarioComunidade = await _context.UsuariosComunidades.FirstOrDefaultAsync(uc => uc.usuarioComunidadeId == id);
+
+                    if (existingUsuarioComunidade != null)
+                    {
+                        existingUsuarioComunidade.usuarioId = usuarioComunidadeModel.usuarioId;
+                        existingUsuarioComunidade.comunidadeId = usuarioComunidadeModel.comunidadeId;
+                        existingUsuarioComunidade.cargoComunidade = usuarioComunidadeModel.cargoComunidade;
+                        
+                        _context.Update(existingUsuarioComunidade);
+                        await _context.SaveChangesAsync();
+                    }
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UsuarioComunidadeModelExists(usuarioComunidadeModel.usuarioId))
+                    if (!UsuarioComunidadeModelExists(usuarioComunidadeModel.usuarioComunidadeId))
                     {
                         return NotFound();
                     }
@@ -106,12 +120,14 @@ namespace GamingGroove.Controllers
                         throw;
                     }
                 }
+
                 return RedirectToAction(nameof(Index));
             }
             ViewData["comunidadeId"] = new SelectList(_context.Comunidades, "comunidadeId", "comunidadeId", usuarioComunidadeModel.comunidadeId);
             ViewData["usuarioId"] = new SelectList(_context.Usuarios, "usuarioId", "usuarioId", usuarioComunidadeModel.usuarioId);
             return View(usuarioComunidadeModel);
         }
+
 
         public async Task<IActionResult> Delete(int? id)
         {
@@ -123,7 +139,7 @@ namespace GamingGroove.Controllers
             var usuarioComunidadeModel = await _context.UsuariosComunidades
                 .Include(t => t.comunidade)
                 .Include(t => t.usuario)
-                .FirstOrDefaultAsync(m => m.usuarioId == id);
+                .FirstOrDefaultAsync(m => m.usuarioComunidadeId == id);
             if (usuarioComunidadeModel == null)
             {
                 return NotFound();
@@ -140,7 +156,8 @@ namespace GamingGroove.Controllers
             {
                 return Problem("Entity set 'GamingGrooveDbContext.UsuariosComunidades'  is null.");
             }
-            var usuarioComunidadeModel = await _context.UsuariosComunidades.FindAsync(id);
+            var usuarioComunidadeModel = await _context.UsuariosComunidades
+                .FirstOrDefaultAsync(uc => uc.usuarioComunidadeId == id);
             if (usuarioComunidadeModel != null)
             {
                 _context.UsuariosComunidades.Remove(usuarioComunidadeModel);
@@ -152,7 +169,7 @@ namespace GamingGroove.Controllers
 
         private bool UsuarioComunidadeModelExists(int id)
         {
-          return (_context.UsuariosComunidades?.Any(e => e.usuarioId == id)).GetValueOrDefault();
+          return (_context.UsuariosComunidades?.Any(e => e.usuarioComunidadeId == id)).GetValueOrDefault();
         }
     }
 }
