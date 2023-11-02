@@ -15,22 +15,29 @@ namespace GamingGroove.Views.Shared
         }
 
         public UsuarioModel getUsuario { get; set; }
+        public UsuarioModel getUsuarioPublicacao { get; set; }
         public IEnumerable<UsuarioModel> getTodosUsuarios { get; set; }
         public int? IdUsuarioLogado { get; set; }
 
 
         public ComunidadeModel getComunidade { get; set; }
         public IEnumerable<ComunidadeModel> getComunidades { get; set; }
-        public List<ComunidadeModel> getTodasComunidades { get; set; }
+        public ComunidadeModel getComunidadePublicacao { get; set; }
+        public IEnumerable<ComunidadeModel> getTodasComunidades { get; set; }
         public IEnumerable<UsuarioComunidadeModel> getComunidadesSugeridas { get; set; }
         public IEnumerable<UsuarioComunidadeModel> getComunidadesUsuario { get; set; }
         public List<int> infoComunidades { get; set; }
+
+        public IEnumerable<PublicacaoModel> getPublicacoes { get; set; }
         
 
         public IEnumerable<EquipeModel> getEquipes { get; set; }
         public IEnumerable<UsuarioEquipeModel> getEquipesUsuario { get; set; }
         
+        
+        public IEnumerable<CurtidaModel> getTodasCurtidas { get; set; }
 
+        public IEnumerable<ComentarioModel> getTodosComentarios { get; set; }
         
 
         //PerfilPage
@@ -59,11 +66,19 @@ namespace GamingGroove.Views.Shared
         {            
             IdUsuarioLogado = usuarioLogado;
 
-            getComunidade = _cc.Comunidades.FirstOrDefault(u => u.nomeComunidade == community);
+            getTodosUsuarios = _cc.Usuarios.ToList();
 
             getTodasComunidades = _cc.Comunidades.ToList();
 
+            getTodasCurtidas = _cc.Curtidas.ToList();
+
+            getTodosComentarios = _cc.Comentarios.ToList();
+
+
+            getComunidade = _cc.Comunidades.FirstOrDefault(u => u.nomeComunidade == community);
+
             getUsuario = _cc.Usuarios.FirstOrDefault(u => u.usuarioId == IdUsuarioLogado);
+
 
             getComunidadesUsuario = _cc.UsuariosComunidades
                 .Where(uc => uc.usuarioId == IdUsuarioLogado)
@@ -76,6 +91,14 @@ namespace GamingGroove.Views.Shared
                 .Where(uc => uc.usuarioId != IdUsuarioLogado && !infoComunidades.Contains(uc.comunidadeId))
                 .Include(uc => uc.comunidade)
                 .ToList();   
+
+
+            if(getComunidade != null)
+            {
+                getPublicacoes = _cc.Publicacoes
+                    .Where(uc => uc.comunidadeId == getComunidade.comunidadeId)
+                    .ToList(); 
+            }                           
         }
 
         public int GetNumberOfMembersInCommunity(int _comunidadeId)
@@ -83,8 +106,6 @@ namespace GamingGroove.Views.Shared
             return _cc.UsuariosComunidades
                 .Count(uc => uc.comunidadeId == _comunidadeId);
         }
-
-
 
         // ExplorarPage
         public void OnGetExplorarPage(int usuario)
@@ -107,7 +128,7 @@ namespace GamingGroove.Views.Shared
         }
     
 
-
+        // EquipePage
         public void OnGetEquipePage(int usuario)
         {
             getEquipes = _cc.Equipes.ToList();

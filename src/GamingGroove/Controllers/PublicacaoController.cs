@@ -55,10 +55,19 @@ namespace GamingGroove.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("publicacaoId,usuarioId,comunidadeId,textoPublicacao,midiaPublicacao,dataPublicacao")] PublicacaoModel publicacaoModel)
+        public async Task<IActionResult> Create([Bind("publicacaoId,usuarioId,comunidadeId,textoPublicacao,midiaPublicacao,dataPublicacao")] PublicacaoModel publicacaoModel, IFormFile? midiaPublicacaoArquivo)
         {
             if (ModelState.IsValid)
             {
+                if (midiaPublicacaoArquivo != null && midiaPublicacaoArquivo.Length > 0)
+                {
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        await midiaPublicacaoArquivo.CopyToAsync(memoryStream);
+                        publicacaoModel.midiaPublicacao = memoryStream.ToArray();
+                    }
+                }   
+
                 _context.Add(publicacaoModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
