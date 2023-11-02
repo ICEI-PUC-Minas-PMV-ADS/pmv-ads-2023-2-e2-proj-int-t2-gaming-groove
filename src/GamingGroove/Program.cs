@@ -26,10 +26,17 @@ namespace GamingGroove
 
             builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 
+            #if DEBUG
+            builder.Services.AddDbContext<GamingGrooveDbContext>(
+                options => options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnectionLocal"),
+                new MySqlServerVersion(new Version(8, 0, 34))) 
+            );
+            #else
             builder.Services.AddDbContext<GamingGrooveDbContext>(
                 options => options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
                 new MySqlServerVersion(new Version(8, 0, 34))) 
             );
+            #endif
 
             builder.Services.Configure<CookiePolicyOptions>(options =>
             {
