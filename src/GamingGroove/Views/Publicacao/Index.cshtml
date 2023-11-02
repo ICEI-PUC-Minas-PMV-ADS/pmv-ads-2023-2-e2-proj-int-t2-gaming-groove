@@ -43,7 +43,16 @@
                 @Html.DisplayFor(modelItem => item.textoPublicacao)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.midiaPublicacao)
+                @{
+                    if (item.midiaPublicacao != null && item.midiaPublicacao.Length > 10)
+                    {
+                        <text>@item.midiaPublicacao.ToString().Substring(0, 10)</text>
+                    }
+                    else
+                    {
+                        @item.midiaPublicacao
+                    }
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.dataPublicacao)

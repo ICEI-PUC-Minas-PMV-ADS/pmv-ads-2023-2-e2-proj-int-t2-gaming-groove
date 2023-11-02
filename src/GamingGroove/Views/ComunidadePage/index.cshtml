@@ -1,4 +1,4 @@
-@model GamingGroove.Views.ComunidadePage.ComunidadePageViewModel
+@model GamingGroove.Views.Shared.ViewModel
 @using System.Security.Claims
 
 @{
@@ -96,6 +96,51 @@
 	</div>
 
 	<div class="center-container">
+
+		@foreach(var item in Model.getPublicacoes)
+		{
+
+			Model.getUsuarioPublicacao = Model.getTodosUsuarios.FirstOrDefault(up => up.usuarioId == item.usuarioId);
+			Model.getComunidadePublicacao = Model.getTodasComunidades.FirstOrDefault(cp => cp.comunidadeId == item.comunidadeId);
+			int getCurtidasPublicacao = Model.getTodasCurtidas.Count(cp => cp.publicacaoId == item.publicacaoId);
+			int getComentariosPublicacao = Model.getTodosComentarios.Count(cp => cp.publicacaoId == item.publicacaoId);
+
+			<div class="post-container">
+				<div class="postHeader">
+					<a href="~/PerfilPage/@Model.getUsuarioPublicacao.nomeUsuario"><div class="user-container">
+						@if(Model.getUsuarioPublicacao.iconePerfil != null)
+						{
+							<img class="userIcon" src="data:image/png;base64,@Convert.ToBase64String(Model.getUsuarioPublicacao.iconePerfil)" alt="Imagem de Perfil do Usuário" />
+						}
+						else
+						{
+							<img class="userIcon" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
+						}
+						
+						<div class="userName">@Model.getUsuarioPublicacao.nomeUsuario</div>
+					</div></a>
+					<a href="~/ComunidadePage/@Model.getComunidadePublicacao.nomeComunidade"><img class="post-communityIcon" src="data:image/png;base64,@Convert.ToBase64String(Model.getComunidadePublicacao.iconeComunidade)" alt="Imagem de ícone da Comunidade"></a>
+				</div>
+				<div class="postContent">
+					<div class="postText">@item.textoPublicacao</div>
+					@if(item.midiaPublicacao != null)
+					{
+						<img class="postImage" src="data:image/png;base64,@Convert.ToBase64String(item.midiaPublicacao)" alt="">
+					}					
+				</div>
+				<div class="postNumbers">
+					<div class="postLikes">@getCurtidasPublicacao curtidas</div>
+					<div class="postComments">@getComentariosPublicacao comentários</div>
+				</div>
+				<div class="postButtons">
+					<div class="interactionButtons-container">
+						<img class="postLikes-button" src="~/images/icons/like-icon.svg" alt="">
+						<img class="postComments-button" src="~/images/icons/comment-icon.svg" alt="">			
+					</div>
+					<img class="reportButton" src="~/images/icons/report-icon.svg" alt="">
+				</div>
+			</div>
+		}
 
 	</div>
 

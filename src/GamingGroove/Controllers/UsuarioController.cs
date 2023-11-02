@@ -2,8 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using GamingGroove.Data;
 using GamingGroove.Models;
-using GamingGroove.Views.PerfilPage;
 using System.Security.Claims;
+using GamingGroove.Views.Shared;
 
 namespace GamingGroove.Controllers
 {
@@ -53,7 +53,7 @@ namespace GamingGroove.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("usuarioId,nomeUsuario,nomeCompleto,dataNascimento,email,senha,iconePerfil,capaPerfil,fotosGaleria,primeiroJogo,segundoJogo,terceiroJogo,biografia,registrationDate,tipoUsuario")] PerfilPageViewModel usuarioModel)
+        public async Task<IActionResult> Create([Bind("usuarioId,nomeUsuario,nomeCompleto,dataNascimento,email,senha,iconePerfil,capaPerfil,fotosGaleria,primeiroJogo,segundoJogo,terceiroJogo,biografia,registrationDate,tipoUsuario")] ViewModel usuarioModel)
         {
             
             if (ModelState.IsValid)

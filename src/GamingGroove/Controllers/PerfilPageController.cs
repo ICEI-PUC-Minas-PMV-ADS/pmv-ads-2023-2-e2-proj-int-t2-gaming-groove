@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 using GamingGroove.Data;
 using Microsoft.EntityFrameworkCore;
-using GamingGroove.Views.PerfilPage;
 using GamingGroove.Models;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
+using GamingGroove.Views.Shared;
 
 namespace GamingGroove.Controllers
 {
@@ -19,8 +19,8 @@ namespace GamingGroove.Controllers
 
         public IActionResult Index(string user)
         {
-            var viewModel = new PerfilPageViewModel(_contexto);
-            viewModel.OnGet(user);
+            var viewModel = new ViewModel(_contexto);
+            viewModel.OnGetPerfilPage(user);
             if (viewModel == null)
             {
                 return NotFound();

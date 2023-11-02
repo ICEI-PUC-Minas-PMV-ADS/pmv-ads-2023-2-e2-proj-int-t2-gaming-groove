@@ -1,6 +1,6 @@
 ﻿using System.Security.Claims;
 using GamingGroove.Data;
-using GamingGroove.Views.EquipePage;
+using GamingGroove.Views.Shared;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GamingGroove.Controllers
@@ -15,9 +15,9 @@ namespace GamingGroove.Controllers
         }
         public IActionResult Index()
         {
-            var viewModel = new EquipePageViewModel(_cc);
+            var viewModel = new ViewModel(_cc);
             int usuario = int.Parse(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
-            viewModel.GetEquipesUsuario(usuario);
+            viewModel.OnGetEquipePage(usuario);
             if (viewModel == null)
             {
                 return NotFound();

@@ -1,4 +1,4 @@
-@model GamingGroove.Views.PerfilPage.PerfilPageViewModel
+@model GamingGroove.Views.Shared.ViewModel
 @using System.Security.Claims
 
 @{
@@ -88,7 +88,7 @@
                     <h3>EQUIPES</h3>
                     <div class="inside-column">
                         <div class="user-teams-list">
-                            @foreach (var item in Model.getEquipes)
+                            @foreach (var item in Model.getEquipesUsuario)
                             {
                                 <div class="user-teams-items">                
                                     @if (item.equipe.iconeEquipe != null)
@@ -112,7 +112,7 @@
                     <h3>COMUNIDADES</h3>
                     <div class="inside-column">
                         <div class="user-communities-list">
-                            @foreach (var item in Model.getComunidades)
+                            @foreach (var item in Model.getComunidadesUsuario)
                             {
                                 int _comunidadeId = item.comunidadeId;
                                 int numberOfMembers = Model.GetNumberOfMembersInCommunity(_comunidadeId);
