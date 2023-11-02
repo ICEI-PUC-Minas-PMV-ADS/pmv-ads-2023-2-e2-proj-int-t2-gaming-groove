@@ -1,4 +1,4 @@
-@model GamingGroove.Views.ExplorarPage.ExplorarPageViewModel
+@model GamingGroove.Views.Shared.ViewModel
 
 
 @using System.Security.Claims
@@ -25,7 +25,7 @@
             <div class="internalContainer2">
                 <div class="gridContainerFlow2">
             
-                    @foreach (var item in Model.AllUsersInfo)
+                    @foreach (var item in Model.getTodosUsuarios)
                                     {
                                         <div class="cardTodosUsuarios">
                                             
@@ -62,7 +62,7 @@
 
     <div class="center-container">
         <div class="TituloComunidades">
-            <h3 class="textoCentral">Comunidades</h3>
+            <h3 class="textoCentral">Descubra comunidades</h3>
         </div>
         <div class="NavbarContainer">
             <form class="d-flex" role="search">
@@ -101,22 +101,22 @@
             <div class="internalContainer">
                 <div class="gridContainerFlow">
                     
-                    @foreach (var item in Model.getComunidades)
+                    @foreach (var item in Model.getComunidadesSugeridas)
                         {
                             <div class="card">
                                             
                                 <div class="card-body">
                                     <h5 class="card-title"></h5>
                                     <p class="card-text">
-                                        @if (item.iconeComunidade != null)
+                                        @if (item.comunidade.iconeComunidade != null)
                                         {
-                                                <img class="community-icon" src="data:image/png;base64,@Convert.ToBase64String(item.iconeComunidade)" alt="Imagem de Perfil" />
+                                                <img class="community-icon" src="data:image/png;base64,@Convert.ToBase64String(item.comunidade.iconeComunidade)" alt="Imagem de Perfil" />
                                             }
                                                 else
                                             {
                                                 <img class="community-icon" src="~/images/icons/community-icon.png" alt="Imagem de Perfil" />
                                         }  
-                                        <td>@item.nomeComunidade</td>
+                                        <td>@item.comunidade.nomeComunidade</td>
                                     </p>             
                                 </div>
                             </div>

@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using GamingGroove.Data;
-using GamingGroove.Views.ComunidadeHomePage;
 using GamingGroove.Models;
+using GamingGroove.Views.Shared;
 
 namespace GamingGroove.Controllers
 {
@@ -19,7 +19,7 @@ namespace GamingGroove.Controllers
         public IActionResult Index(string community)
         {
             {
-                var viewModel = new ComunidadeHomePageViewModel(_context);
+                var viewModel = new ViewModel(_context);
                 
 
                 if (viewModel == null)
@@ -28,9 +28,7 @@ namespace GamingGroove.Controllers
                 }
 
                 var usuarioId = HttpContext.Session.GetInt32("UsuarioId");
-                viewModel.OnGet(community);
-                viewModel.GetUsuarioLogado(usuarioId);
-
+                viewModel.OnGetComunidadePages(community, usuarioId);
                 
 
                 return View(viewModel);

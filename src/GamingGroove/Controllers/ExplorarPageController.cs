@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using GamingGroove.Data;
-using GamingGroove.Views.ExplorarPage;
 using System.Security.Claims;
+using GamingGroove.Views.Shared;
 
 namespace GamingGroove.Controllers
 {
@@ -16,9 +16,9 @@ namespace GamingGroove.Controllers
 
         public IActionResult Index()
         {
-            var viewModel = new ExplorarPageViewModel(_contexto);
+            var viewModel = new ViewModel(_contexto);
             int usuario = int.Parse(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
-            viewModel.GetExplorar(usuario);
+            viewModel.OnGetExplorarPage(usuario);
             if (viewModel == null)
             {
                 return NotFound();

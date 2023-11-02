@@ -5,8 +5,6 @@ using GamingGroove.Models;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
-using GamingGroove.Views.PerfilPage;
-using GamingGroove.Views.ComunidadePage;
 
 namespace GamingGroove.Controllers
 {
