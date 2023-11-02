@@ -8,43 +8,84 @@
 <title>Página de Equipes</title>
 <link rel="stylesheet" href="~/css/EquipePage.css" asp-append-version="true" />
 
-<div class="container text-center">
-    <div class="row align-items-start">
-        <div class="my-4 search-bar">
-            <form action="#" method="get" class="d-flex justify-content-center">
-                <input type="text" id="searchInput" class="form-control" placeholder="Digite para buscar...">
-                <button type="submit" class="btn btn-primary ml-2">
-                    <i class="icon-uniF002"></i>
-                </button>
-            </form>
+<div class="main-container">
+    <div class="left-container">
+        <div class="lfCamada1">
+
+            <h5>Minhas Equipes</h5>
+            <div class="lfCamada2">
+                
+                        @foreach (var item in Model.getEquipesUsuario)
+                        {
+                    <div class="myTeams">
+                            @if (item.equipe.iconeEquipe != null)
+                            {
+                                <img class="team-icon2" src="data:image/png;base64,@Convert.ToBase64String(item.equipe.iconeEquipe)" alt="Imagem de Perfil" />
+                            }
+                            else
+                            {
+                                <img class="team-icon2" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
+                            }
+
+                            
+                                <td>@item.equipe.nomeEquipe</td> 
+                    </div>
+
+
+                            
+                        }
+                
+
+             </div>
         </div>
     </div>
 
-    <div class="container-custom">
-        <div class="column-custom">
+        
+    
+
+    <div class="center-container">
+        <div class="search-bar">
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" id="searchInput" type="search" placeholder="Search" aria-label="Search">
+                <button class="botao"  type="submit"><img class="imagem" src="~/images/icons/search-icon.svg" /></button>
+            </form>
+            </div>
+    
+
+        <div class="container-card">
             @foreach (var item in Model.getEquipes)
             {
-                <div class="card-custom mb-3">
-                    <div class="row no-gutters">
-                        <div class="col-md-4">
-                            <img src="./images/icons/crash.jpg" class="card-img" alt="@item.nomeEquipe">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body-custom">
-                                <h5 class="card-title">@item.nomeEquipe</h5>
-                                <p class="card-subtitle mb-2 text-muted">@item.jogoEquipe</p>
-                                <p class="card-text">@item.descricaoEquipe</p>
-                            </div>
-                        </div>
+                <div class="card">
+                    @if (item.iconeEquipe != null)
+                    {
+                        <img class="team-icon" src="data:image/png;base64,@Convert.ToBase64String(item.iconeEquipe)" />
+                    }
+                    else
+                    {
+                        <img class="team-icon" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
+                    }
+                    <div class="container-info">
+                       <h5>@item.nomeEquipe</h5>
+               
+                        <p class="card-title">@item.jogoEquipe</p>
+
                     </div>
                 </div>
             }
+    </div>
+    </div>
+
+        <div class="right-container">
+            <div class="rhCamada1">
+                <div class="rhCamada2">
+                    
+                </div>
+            </div>
+
+
         </div>
     </div>
 
-    
-        </div>
-   
 
 
 
