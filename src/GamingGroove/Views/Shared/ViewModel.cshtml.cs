@@ -16,6 +16,7 @@ namespace GamingGroove.Views.Shared
 
         public UsuarioModel getUsuario { get; set; }
         public UsuarioModel getUsuarioPublicacao { get; set; }
+        public UsuarioModel getUsuarioComentario { get; set; }
         public IEnumerable<UsuarioModel> getTodosUsuarios { get; set; }
         public int? IdUsuarioLogado { get; set; }
 
@@ -38,6 +39,7 @@ namespace GamingGroove.Views.Shared
         public IEnumerable<CurtidaModel> getTodasCurtidas { get; set; }
 
         public IEnumerable<ComentarioModel> getTodosComentarios { get; set; }
+        public IEnumerable<ComentarioModel> getComentariosPublicacao { get; set; }
         
 
         //PerfilPage

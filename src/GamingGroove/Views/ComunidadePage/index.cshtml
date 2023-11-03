@@ -135,7 +135,7 @@
 				<div class="postButtons">
 					<div class="interactionButtons-container">
 						<img class="postLikes-button" src="~/images/icons/like-icon.svg" alt="">
-						<img class="postComments-button" src="~/images/icons/comment-icon.svg" alt="">			
+						<img type="button" class="postComments-button" data-bs-toggle="modal" data-bs-target="#usuarioModal-@item.usuarioId" src="~/images/icons/comment-icon.svg" alt="">			
 					</div>
 					<img class="reportButton" src="~/images/icons/report-icon.svg" alt="">
 				</div>
@@ -175,4 +175,56 @@
 
 </div>
 
+
+@foreach (var item in Model.getPublicacoes)
+{
+	Model.getUsuarioPublicacao = Model.getTodosUsuarios.FirstOrDefault(up => up.usuarioId == item.usuarioId);
+	Model.getComentariosPublicacao = Model.getTodosComentarios.Where(c => c.publicacaoId == item.publicacaoId).ToList();
+
+	
+	
+    <div class="modal fade" id="usuarioModal-@item.usuarioId" tabindex="-1" aria-labelledby="usuarioModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="commentsHeader">
+					<a href="~/PerfilPage/@Model.getUsuarioPublicacao.nomeUsuario">
+					@if(Model.getUsuarioPublicacao.iconePerfil != null)
+					{
+						<img class="userIcon-post" src="data:image/png;base64,@Convert.ToBase64String(Model.getUsuarioPublicacao.iconePerfil)" alt="Imagem de Perfil do Usuário" />
+					}
+					else
+					{
+						<img class="userIcon-post" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
+					}
+					</a>
+                    <div class="modal-title" id="usuarioModalLabel">COMENTÁRIOS<div>Publicação de @Model.getUsuarioPublicacao.nomeUsuario</div></div>
+                    <button type="button" class="closeButton" data-bs-dismiss="modal" aria-label="Fechar">X</button>
+                </div>
+                <div class="commentsList">
+                    @foreach(var comentario in Model.getComentariosPublicacao)
+					{
+						Model.getUsuarioComentario = Model.getTodosUsuarios.FirstOrDefault(up => up.usuarioId == comentario.usuarioId);
+						<div class="comment-container">
+							<div class="commentHeader">
+								<a href="~/PerfilPage/@Model.getUsuarioComentario.nomeUsuario"><div class="commentUser">
+									@if(Model.getUsuarioComentario.iconePerfil != null)
+									{
+										<img class="userIcon-comment" src="data:image/png;base64,@Convert.ToBase64String(Model.getUsuarioComentario.iconePerfil)" alt="Imagem de Perfil do Usuário" />
+									}
+									else
+									{
+										<img class="userIcon-comment" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
+									}
+									<div class="userName-comment">@Model.getUsuarioComentario.nomeUsuario</div>
+								</div></a>
+								<div class="commentDateTime">@comentario.dataComentario</div>
+							</div>
+							<div class="commentContent">@comentario.textoComentario</div>
+						</div>
+					}
+                </div>
+            </div>
+        </div>
+    </div>
+}
 
