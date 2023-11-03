@@ -197,7 +197,7 @@
 						<img class="userIcon-post" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
 					}
 					</a>
-                    <div class="modal-title" id="usuarioModalLabel">COMENTÁRIOS<div>Publicação de @Model.getUsuarioPublicacao.nomeUsuario</div></div>
+                    <div class="modal-title" id="usuarioModalLabel">COMENTÁRIOS<div>Publicação de <span>@Model.getUsuarioPublicacao.nomeUsuario</span></div></div>
                     <button type="button" class="closeButton" data-bs-dismiss="modal" aria-label="Fechar">X</button>
                 </div>
                 <div class="commentsList">
@@ -223,6 +223,10 @@
 						</div>
 					}
                 </div>
+				<form class="userComment-form" action="">
+					<input class="userComment-input" type="text">
+					<button class="sendComment-button">Enviar</button>
+				</form>
             </div>
         </div>
     </div>

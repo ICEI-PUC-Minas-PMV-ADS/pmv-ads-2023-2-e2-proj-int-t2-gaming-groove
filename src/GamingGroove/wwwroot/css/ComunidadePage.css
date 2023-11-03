@@ -487,7 +487,6 @@ a {
     border: 1px solid #E5ABFF;
     box-shadow: #D169FF 0px 0px 6px;
     border-radius: 8px;
-    width: 80vw !important;
 }
 
 .commentsHeader {
@@ -495,6 +494,7 @@ a {
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
+    text-align: center;
 }
 
 .userIcon-post {
@@ -510,18 +510,12 @@ a {
     box-shadow: #00F0FF 0px 0px 6px;
 }
 
-.commentDateTime {
-    color: rgb(178, 178, 178);
-    font-size: 12px;
-    font-style: italic;
-}
-
 .modal-title {
     margin-top: 10px;
     letter-spacing: 1px;
 }
 
-.userName-post {
+.modal-title span {
     color: #00F0FF;
 }
 
@@ -605,7 +599,57 @@ a {
     color: #ffffff;
 }
 
+.commentDateTime {
+    color: rgb(178, 178, 178);
+    font-size: 12px;
+    font-style: italic;
+}
+
 .commentContent {
     text-align: justify;
 }
 
+.userComment-form {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 10px;
+    padding-inline: 10px;
+}
+
+.userComment-input {
+    border: none;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    padding-block: 5px;
+    padding-inline: 8px;
+    color: black;
+    width: 100%;
+}
+
+.userComment-input:focus {
+    outline: none;
+}
+
+.sendComment-button {
+    font-family: PlayMeGames;
+    padding-inline: 40px;
+    padding-block: 5px;
+    border: none;
+    background-color: #000000;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    color: #E5ABFF;
+}
+
+.sendComment-button:hover {
+    transition: 0.6s;
+    background-color: #AFD3FF;
+    color: black;
+}
+
+.sendComment-button:not(:hover) {
+    transition: 0.6s;
+}
