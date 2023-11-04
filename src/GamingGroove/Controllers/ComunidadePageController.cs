@@ -56,8 +56,6 @@ namespace GamingGroove.Controllers
                 dataPublicacao = DateTime.Now
             };
 
-
-
             if (ModelState.IsValid)
             {
                 if (midiaPublicacaoArquivo != null && midiaPublicacaoArquivo.Length > 0)
@@ -68,7 +66,6 @@ namespace GamingGroove.Controllers
                         publicacaoModel.midiaPublicacao = memoryStream.ToArray();
                     }
                 }
-
                 _context.Add(publicacaoModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index", new { community = TempData["CommunityValue"] });

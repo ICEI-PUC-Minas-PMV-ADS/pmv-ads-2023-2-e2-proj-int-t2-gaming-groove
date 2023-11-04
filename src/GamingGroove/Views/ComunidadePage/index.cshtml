@@ -101,7 +101,7 @@
 			<button type="button" class="createPost" data-bs-toggle="modal" data-bs-target="#createPost-modal">+ Publicar</button>			
 		}
 		<div class="post-container">
-			@foreach(var item in Model.getPublicacoes)
+			@foreach(var item in Model.getPublicacoes.Reverse())
 			{
 
 				Model.getUsuarioPublicacao = Model.getTodosUsuarios.FirstOrDefault(up => up.usuarioId == item.usuarioId);
@@ -138,7 +138,7 @@
 					<div class="postButtons">
 						<div class="interactionButtons-container">
 							<img class="postLikes-button" src="~/images/icons/like-icon.svg" alt="">
-							<img type="button" class="postComments-button" data-bs-toggle="modal" data-bs-target="#usuarioModal-@item.usuarioId" src="~/images/icons/comment-icon.svg" alt="">			
+							<img type="button" class="postComments-button" data-bs-toggle="modal" data-bs-target="#publicacaoModal-@item.publicacaoId" src="~/images/icons/comment-icon.svg" alt="">			
 						</div>
 						<img class="reportButton" src="~/images/icons/report-icon.svg" alt="">
 					</div>
@@ -185,8 +185,8 @@
 {
 	Model.getUsuarioPublicacao = Model.getTodosUsuarios.FirstOrDefault(up => up.usuarioId == item.usuarioId);
 	Model.getComentariosPublicacao = Model.getTodosComentarios.Where(c => c.publicacaoId == item.publicacaoId).ToList();
-
-    <div class="modal fade" id="usuarioModal-@item.usuarioId" tabindex="-1" aria-labelledby="usuarioModalLabel" aria-hidden="true">
+	
+    <div class="modal fade" id="publicacaoModal-@item.publicacaoId" tabindex="-1" aria-labelledby="publicacaoModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="commentsHeader">
