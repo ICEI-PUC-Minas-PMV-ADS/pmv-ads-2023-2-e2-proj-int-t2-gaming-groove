@@ -44,27 +44,39 @@ namespace GamingGroove.Controllers
             }
         }
 
-        public async Task<IActionResult> CriarPublicacao(int? IdUsuario, int IdPublicacao, string TextoComentario, DateTime DataComentario)
+        public async Task<IActionResult> CriarPublicacao(int? IdUsuario, int IdComunidade, string TextoPublicacao, DateTime DataComentario, IFormFile? midiaPublicacaoArquivo)
         {
             IdUsuario = HttpContext.Session.GetInt32("UsuarioId");
 
-            ComentarioModel comentarioModel = new ()
+            PublicacaoModel publicacaoModel = new ()
             {
                 usuarioId = (int)IdUsuario,
-                publicacaoId = IdPublicacao,
-                textoComentario = TextoComentario,
-                dataComentario = DateTime.Now
+                comunidadeId = IdComunidade,
+                textoPublicacao = TextoPublicacao,
+                dataPublicacao = DateTime.Now
             };
+
+
 
             if (ModelState.IsValid)
             {
-                _context.Add(comentarioModel);
+                if (midiaPublicacaoArquivo != null && midiaPublicacaoArquivo.Length > 0)
+                {
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        await midiaPublicacaoArquivo.CopyToAsync(memoryStream);
+                        publicacaoModel.midiaPublicacao = memoryStream.ToArray();
+                    }
+                }
+
+                _context.Add(publicacaoModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index", new { community = TempData["CommunityValue"] });
             }
 
             return RedirectToAction("Index", new { community = TempData["CommunityValue"] });
         }        
+
 
         public async Task<IActionResult> Comentar(int? IdUsuario, int IdPublicacao, string TextoComentario, DateTime DataComentario)
         {
