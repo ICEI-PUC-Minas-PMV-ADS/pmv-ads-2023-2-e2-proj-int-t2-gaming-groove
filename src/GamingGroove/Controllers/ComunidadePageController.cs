@@ -44,35 +44,27 @@ namespace GamingGroove.Controllers
             }
         }
 
-        public IActionResult Create()
+        public async Task<IActionResult> CriarPublicacao(int? IdUsuario, int IdPublicacao, string TextoComentario, DateTime DataComentario)
         {
-            ViewData["comunidadeId"] = new SelectList(_context.Comunidades, "comunidadeId", "comunidadeId");
-            ViewData["usuarioId"] = new SelectList(_context.Usuarios, "usuarioId", "usuarioId");
-            return View();
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("usuarioId,comunidadeId,cargoComunidade,dataVinculoComunidade")] UsuarioComunidadeModel usuarioComunidadeModel)
-        {
+            IdUsuario = HttpContext.Session.GetInt32("UsuarioId");
+
+            ComentarioModel comentarioModel = new ()
+            {
+                usuarioId = (int)IdUsuario,
+                publicacaoId = IdPublicacao,
+                textoComentario = TextoComentario,
+                dataComentario = DateTime.Now
+            };
+
             if (ModelState.IsValid)
             {
-                var ultimoUsuarioComunidadeId = _context.UsuariosComunidades
-                    .OrderByDescending(uc => uc.usuarioComunidadeId)
-                    .FirstOrDefault()?.usuarioComunidadeId ?? 0;
-
-                usuarioComunidadeModel.usuarioComunidadeId = ultimoUsuarioComunidadeId + 1;
-
-                var comunidade = _context.Comunidades.FirstOrDefault(c => c.comunidadeId == usuarioComunidadeModel.comunidadeId);
-
-                _context.Add(usuarioComunidadeModel);
+                _context.Add(comentarioModel);
                 await _context.SaveChangesAsync();
-
-                return RedirectToAction("Index", "ComunidadePage", new { community = comunidade.nomeComunidade });
+                return RedirectToAction("Index", new { community = TempData["CommunityValue"] });
             }
-            ViewData["comunidadeId"] = new SelectList(_context.Comunidades, "comunidadeId", "comunidadeId", usuarioComunidadeModel.comunidadeId);
-            ViewData["usuarioId"] = new SelectList(_context.Usuarios, "usuarioId", "usuarioId", usuarioComunidadeModel.usuarioId);
-            return View(usuarioComunidadeModel);
-        }
+
+            return RedirectToAction("Index", new { community = TempData["CommunityValue"] });
+        }        
 
         public async Task<IActionResult> Comentar(int? IdUsuario, int IdPublicacao, string TextoComentario, DateTime DataComentario)
         {

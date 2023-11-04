@@ -8,6 +8,12 @@
 <title>Comunidades</title>
 <link rel="stylesheet" href="~/css/ComunidadePage.css" asp-append-version="true" />
 
+@{
+	var communityName = Context.Request.RouteValues.ContainsKey("community")
+	? Context.Request.RouteValues["community"].ToString()
+	: string.Empty;
+	var isMember = Model.getComunidadesUsuario.FirstOrDefault(uc => uc.comunidade.nomeComunidade == communityName);
+}
 
 <div class="main-container">
 
@@ -39,12 +45,6 @@
 					<div class="numberOfMembers" id="communityInfo">@numberOfMembers membros</div>
 				</div>
 				<div class="buttons-container">
-						@{
-							var communityName = Context.Request.RouteValues.ContainsKey("community")
-							? Context.Request.RouteValues["community"].ToString()
-							: string.Empty;
-							var isMember = Model.getComunidadesUsuario.FirstOrDefault(uc => uc.comunidade.nomeComunidade == communityName);
-						}
 
 						@if (isMember != null && isMember.cargoComunidade.ToString() == "ADM")
 						{
@@ -61,7 +61,7 @@
 						}
 						else
 						{
-							<a class="joinQuitButton" asp-action="Create">Entrar</a>
+							<a class="joinQuitButton">Entrar</a>
 						}
 				</div>
 			</div>
@@ -96,51 +96,56 @@
 	</div>
 
 	<div class="center-container">
-
-		@foreach(var item in Model.getPublicacoes)
+		@if(isMember != null)
 		{
-
-			Model.getUsuarioPublicacao = Model.getTodosUsuarios.FirstOrDefault(up => up.usuarioId == item.usuarioId);
-			Model.getComunidadePublicacao = Model.getTodasComunidades.FirstOrDefault(cp => cp.comunidadeId == item.comunidadeId);
-			int getCurtidasPublicacao = Model.getTodasCurtidas.Count(cp => cp.publicacaoId == item.publicacaoId);
-			int getComentariosPublicacao = Model.getTodosComentarios.Count(cp => cp.publicacaoId == item.publicacaoId);
-
-			<div class="post-container">
-				<div class="postHeader">
-					<a href="~/PerfilPage/@Model.getUsuarioPublicacao.nomeUsuario"><div class="user-container">
-						@if(Model.getUsuarioPublicacao.iconePerfil != null)
-						{
-							<img class="userIcon" src="data:image/png;base64,@Convert.ToBase64String(Model.getUsuarioPublicacao.iconePerfil)" alt="Imagem de Perfil do Usuário" />
-						}
-						else
-						{
-							<img class="userIcon" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
-						}
-						
-						<div class="userName">@Model.getUsuarioPublicacao.nomeUsuario</div>
-					</div></a>
-					<a href="~/ComunidadePage/@Model.getComunidadePublicacao.nomeComunidade"><img class="post-communityIcon" src="data:image/png;base64,@Convert.ToBase64String(Model.getComunidadePublicacao.iconeComunidade)" alt="Imagem de ícone da Comunidade"></a>
-				</div>
-				<div class="postContent">
-					<div class="postText">@item.textoPublicacao</div>
-					@if(item.midiaPublicacao != null)
-					{
-						<img class="postImage" src="data:image/png;base64,@Convert.ToBase64String(item.midiaPublicacao)" alt="">
-					}					
-				</div>
-				<div class="postNumbers">
-					<div class="postLikes">@getCurtidasPublicacao curtidas</div>
-					<div class="postComments">@getComentariosPublicacao comentários</div>
-				</div>
-				<div class="postButtons">
-					<div class="interactionButtons-container">
-						<img class="postLikes-button" src="~/images/icons/like-icon.svg" alt="">
-						<img type="button" class="postComments-button" data-bs-toggle="modal" data-bs-target="#usuarioModal-@item.usuarioId" src="~/images/icons/comment-icon.svg" alt="">			
-					</div>
-					<img class="reportButton" src="~/images/icons/report-icon.svg" alt="">
-				</div>
-			</div>
+			<button type="button" class="createPost" data-bs-toggle="modal" data-bs-target="#createPost-modal">+ Publicar</button>			
 		}
+		<div class="post-container">
+			@foreach(var item in Model.getPublicacoes)
+			{
+
+				Model.getUsuarioPublicacao = Model.getTodosUsuarios.FirstOrDefault(up => up.usuarioId == item.usuarioId);
+				Model.getComunidadePublicacao = Model.getTodasComunidades.FirstOrDefault(cp => cp.comunidadeId == item.comunidadeId);
+				int getCurtidasPublicacao = Model.getTodasCurtidas.Count(cp => cp.publicacaoId == item.publicacaoId);
+				int getComentariosPublicacao = Model.getTodosComentarios.Count(cp => cp.publicacaoId == item.publicacaoId);
+				<div class="post">
+					<div class="postHeader">
+						<a href="~/PerfilPage/@Model.getUsuarioPublicacao.nomeUsuario"><div class="user-container">
+							@if(Model.getUsuarioPublicacao.iconePerfil != null)
+							{
+								<img class="userIcon" src="data:image/png;base64,@Convert.ToBase64String(Model.getUsuarioPublicacao.iconePerfil)" alt="Imagem de Perfil do Usuário" />
+							}
+							else
+							{
+								<img class="userIcon" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
+							}
+							
+							<div class="userName">@Model.getUsuarioPublicacao.nomeUsuario</div>
+						</div></a>
+						<a href="~/ComunidadePage/@Model.getComunidadePublicacao.nomeComunidade"><img class="post-communityIcon" src="data:image/png;base64,@Convert.ToBase64String(Model.getComunidadePublicacao.iconeComunidade)" alt="Imagem de ícone da Comunidade"></a>
+					</div>
+					<div class="postContent">
+						<div class="postText">@item.textoPublicacao</div>
+						@if(item.midiaPublicacao != null)
+						{
+							<img class="postImage" src="data:image/png;base64,@Convert.ToBase64String(item.midiaPublicacao)" alt="">
+						}					
+					</div>
+					<div class="postNumbers">
+						<div class="postLikes">@getCurtidasPublicacao curtidas</div>
+						<div class="postComments">@getComentariosPublicacao comentários</div>
+					</div>
+					<div class="postButtons">
+						<div class="interactionButtons-container">
+							<img class="postLikes-button" src="~/images/icons/like-icon.svg" alt="">
+							<img type="button" class="postComments-button" data-bs-toggle="modal" data-bs-target="#usuarioModal-@item.usuarioId" src="~/images/icons/comment-icon.svg" alt="">			
+						</div>
+						<img class="reportButton" src="~/images/icons/report-icon.svg" alt="">
+					</div>
+				</div>
+			}
+		</div>
+
 
 	</div>
 
@@ -223,7 +228,7 @@
                 </div>
 				<form class="userComment-form" id="userComment-form" asp-action="Comentar">		
 					<input type="hidden" name="IdPublicacao" value="@item.publicacaoId" />
-					<textarea name="TextoComentario" placeholder="Digite seu comentário"></textarea>
+					<textarea class="userComment-text" name="TextoComentario" placeholder="Digite seu comentário"></textarea>
 					<button type="submit" class="sendComment-button">Comentar</button>
 				</form>
             </div>
@@ -232,3 +237,22 @@
 }
 
 
+<div class="modal fade" id="createPost-modal" tabindex="-1" aria-labelledby="usuarioModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content post" id="postModal-content">
+                <div class="commentsHeader">
+                    <div class="modal-title" id="postModalLabel">Publicar em <span>@Model.getComunidade.nomeComunidade</span></div>
+                    <button type="button" class="closeButton" data-bs-dismiss="modal" aria-label="Fechar">X</button>
+                </div>
+				<form class="createPost-form" id="createPost-form" asp-action="CriarPublicacao">
+					<div class="createPost-inputs">
+						<textarea class="postText-creation" name="TextoPublicacao" placeholder="Digite o conteúdo de sua publicação"></textarea>
+						<div>Se quiser adicionar uma imagem a sua publicação,<br> escolha-a abaixo:</div>
+						<label class="postMedia-input" for="postMedia-input"><img class="uploadIcon" src="~/images/icons/upload-icon.svg" alt="">Selecionar imagem</label>
+						<input id="postMedia-input" type="file" name="midiaPublicacaoArquivo"/>
+					</div>		
+					<button type="submit" class="postButton">Publicar</button>
+				</form>
+            </div>
+        </div>
+    </div>
