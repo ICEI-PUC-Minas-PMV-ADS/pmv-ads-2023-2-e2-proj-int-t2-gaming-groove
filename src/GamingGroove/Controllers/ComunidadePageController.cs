@@ -95,8 +95,5 @@ namespace GamingGroove.Controllers
 
             return RedirectToAction("Index", new { community = TempData["CommunityValue"] });
         }
-
-
-    
     }
 }    
