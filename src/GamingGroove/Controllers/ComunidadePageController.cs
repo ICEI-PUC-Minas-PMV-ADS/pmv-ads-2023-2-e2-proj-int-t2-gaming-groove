@@ -16,8 +16,7 @@ namespace GamingGroove.Controllers
             _context = context;
         }
 
-        public int IdUsuarioLogado {get; set;}
-        public ComunidadeModel Community { get; set; }
+        public int IdUsuarioLogado { get; set; }
 
         public IActionResult Index(string community)
         {
@@ -74,5 +73,30 @@ namespace GamingGroove.Controllers
             ViewData["usuarioId"] = new SelectList(_context.Usuarios, "usuarioId", "usuarioId", usuarioComunidadeModel.usuarioId);
             return View(usuarioComunidadeModel);
         }
+
+        public async Task<IActionResult> Comentar(int? IdUsuario, int IdPublicacao, string TextoComentario, DateTime DataComentario)
+        {
+            IdUsuario = HttpContext.Session.GetInt32("UsuarioId");
+
+            ComentarioModel comentarioModel = new ()
+            {
+                usuarioId = (int)IdUsuario,
+                publicacaoId = IdPublicacao,
+                textoComentario = TextoComentario,
+                dataComentario = DateTime.Now
+            };
+
+            if (ModelState.IsValid)
+            {
+                _context.Add(comentarioModel);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index", new { community = TempData["CommunityValue"] });
+            }
+
+            return RedirectToAction("Index", new { community = TempData["CommunityValue"] });
+        }
+
+
+    
     }
 }    

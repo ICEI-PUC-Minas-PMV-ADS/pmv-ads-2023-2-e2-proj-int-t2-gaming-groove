@@ -181,8 +181,6 @@
 	Model.getUsuarioPublicacao = Model.getTodosUsuarios.FirstOrDefault(up => up.usuarioId == item.usuarioId);
 	Model.getComentariosPublicacao = Model.getTodosComentarios.Where(c => c.publicacaoId == item.publicacaoId).ToList();
 
-	
-	
     <div class="modal fade" id="usuarioModal-@item.usuarioId" tabindex="-1" aria-labelledby="usuarioModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -223,12 +221,15 @@
 						</div>
 					}
                 </div>
-				<form class="userComment-form" action="">
-					<input class="userComment-input" type="text">
-					<button class="sendComment-button">Enviar</button>
+				<form class="userComment-form" id="userComment-form" asp-action="Comentar">		
+					<input type="hidden" name="IdPublicacao" value="@item.publicacaoId" />
+					<textarea name="TextoComentario" placeholder="Digite seu comentário"></textarea>
+					<button type="submit" class="sendComment-button">Comentar</button>
 				</form>
             </div>
         </div>
     </div>
 }
 
+
+<script src="~/js/site.js"></script>

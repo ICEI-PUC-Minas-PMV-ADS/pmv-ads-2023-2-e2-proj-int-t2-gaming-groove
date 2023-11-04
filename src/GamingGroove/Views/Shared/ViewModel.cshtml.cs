@@ -1,7 +1,9 @@
 using GamingGroove.Data;
 using GamingGroove.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace GamingGroove.Views.Shared
 {
@@ -30,6 +32,8 @@ namespace GamingGroove.Views.Shared
         public List<int> infoComunidades { get; set; }
 
         public IEnumerable<PublicacaoModel> getPublicacoes { get; set; }
+        public IEnumerable<PublicacaoModel> getTodasPublicacoes { get; set; }
+        public PublicacaoModel getPublicacaoComentario { get; set; }
         
 
         public IEnumerable<EquipeModel> getEquipes { get; set; }
@@ -75,6 +79,8 @@ namespace GamingGroove.Views.Shared
             getTodasCurtidas = _cc.Curtidas.ToList();
 
             getTodosComentarios = _cc.Comentarios.ToList();
+
+            getTodasPublicacoes = _cc.Publicacoes.ToList();
 
 
             getComunidade = _cc.Comunidades.FirstOrDefault(u => u.nomeComunidade == community);
@@ -140,5 +146,9 @@ namespace GamingGroove.Views.Shared
                 .Include(ue => ue.equipe)
                 .ToList();       
         }
+
+
     }
 }
+
+

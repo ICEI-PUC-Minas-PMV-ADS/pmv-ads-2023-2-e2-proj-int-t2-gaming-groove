@@ -1,4 +1,25 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿document.addEventListener("DOMContentLoaded", function () {
+    const comentarioForm = document.getElementById("userComment-form");
 
-// Write your JavaScript code.
+    comentarioForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const formData = new FormData(comentarioForm);
+
+        fetch("/ComunidadePage/Comentar", {
+            method: "POST",
+            body: formData,
+        })
+        .then((response) => {
+            if (response.ok) {
+            } else {
+                throw new Error("Erro ao comentar.");
+            }
+        })
+        .then((data) => {
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+    });
+});
