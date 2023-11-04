@@ -12,11 +12,10 @@
         })
         .then((response) => {
             if (response.ok) {
+                
             } else {
                 throw new Error("Erro ao comentar.");
             }
-        })
-        .then((data) => {
         })
         .catch((error) => {
             console.error(error);
