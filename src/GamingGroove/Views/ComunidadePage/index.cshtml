@@ -104,9 +104,12 @@
 			<button type="button" class="createPost" data-bs-toggle="modal" data-bs-target="#createPost-modal">+ Publicar</button>			
 		}
 		<div class="post-container">
+			@if(Model.getPublicacoes.Count() == 0)
+			{
+				<div class="noPosts">Ainda não foram feitas publicações nesta comunidade.</div>
+			}
 			@foreach(var item in Model.getPublicacoes.Reverse())
 			{
-
 				Model.getUsuarioPublicacao = Model.getTodosUsuarios.FirstOrDefault(up => up.usuarioId == item.usuarioId);
 				Model.getComunidadePublicacao = Model.getTodasComunidades.FirstOrDefault(cp => cp.comunidadeId == item.comunidadeId);
 				int getCurtidasPublicacao = Model.getTodasCurtidas.Count(cp => cp.publicacaoId == item.publicacaoId);

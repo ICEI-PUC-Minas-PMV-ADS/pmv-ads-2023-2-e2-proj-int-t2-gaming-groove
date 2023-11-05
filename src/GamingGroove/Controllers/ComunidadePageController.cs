@@ -75,7 +75,6 @@ namespace GamingGroove.Controllers
             return RedirectToAction("Index", new { community = TempData["CommunityValue"] });
         }        
 
-
         public async Task<IActionResult> Comentar(int? IdUsuario, int IdPublicacao, string TextoComentario, DateTime DataComentario)
         {
             IdUsuario = HttpContext.Session.GetInt32("UsuarioId");
