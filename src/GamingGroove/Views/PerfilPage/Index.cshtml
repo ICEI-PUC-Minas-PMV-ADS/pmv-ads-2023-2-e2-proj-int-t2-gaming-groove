@@ -38,14 +38,22 @@
                     }
                     else 
                     {
-                        if(Model.amizadeExistente != null)
+
+                        @if(Model.amizadeExistente != null)
                         {
-                            <button class="removeFriend-button"><img class="removeUser-icon" src="~/images/icons/checkCircle-icon.svg" title="Desfazer amizade"></button>
+                            <form asp-action="DesfazerAmizade">
+                                <input type="hidden" name="IdUsuarioPagina" value="@Model.getUsuario.usuarioId">
+                                <button class="removeFriend-button"><img class="removeUser-icon" src="~/images/icons/checkCircle-icon.svg" title="Desfazer amizade"></button>
+                            </form>
                         }
                         else
                         {
-                            <button class="addFriend-button"><img class="addUser-icon" src="~/images/icons/add-user.svg" title="Adicionar amigo"></button>
+                            <form asp-action="FazerAmizade">
+                                <input type="hidden" name="IdUsuarioPagina" value="@Model.getUsuario.usuarioId">
+                                <button type="submit" class="addFriend-button"><img class="addUser-icon" src="~/images/icons/add-user.svg" title="Adicionar amigo"></button>
+                            </form>
                         }
+                     
                     }
                 </div>
         </div>
