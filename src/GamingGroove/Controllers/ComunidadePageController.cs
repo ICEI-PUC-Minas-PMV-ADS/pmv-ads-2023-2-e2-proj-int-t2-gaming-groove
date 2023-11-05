@@ -4,6 +4,7 @@ using GamingGroove.Views.Shared;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using GamingGroove.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace GamingGroove.Controllers
 {
@@ -124,5 +125,19 @@ namespace GamingGroove.Controllers
 
             return RedirectToAction("Index", new { community = TempData["CommunityValue"] });
         }        
+
+
+        public async Task<IActionResult> DeixarComunidade(int? IdUsuario, int IdComunidade)
+        {
+            IdUsuario = HttpContext.Session.GetInt32("UsuarioId");
+
+            var usuarioComunidadeModel = await _context.UsuariosComunidades
+                .FirstOrDefaultAsync(uc => uc.usuarioId == IdUsuario && uc.comunidadeId == IdComunidade);
+
+            _context.UsuariosComunidades.Remove(usuarioComunidadeModel);     
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index", new { community = TempData["CommunityValue"] });            
+        }
     }
 }    

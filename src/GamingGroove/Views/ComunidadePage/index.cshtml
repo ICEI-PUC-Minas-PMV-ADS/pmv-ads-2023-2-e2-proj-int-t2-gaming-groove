@@ -54,7 +54,10 @@
 
 						@if(isMember != null)
 						{
-							<button class="joinQuitButton">Sair</button>
+							<form class="joinCommunity-form" id="joinCommunity-form" asp-action="DeixarComunidade">		
+								<input type="hidden" name="IdComunidade" value="@Model.getComunidade.comunidadeId" />
+								<button type="submit" class="joinQuitButton">Sair</button>
+							</form>
 						}
 						else
 						{
