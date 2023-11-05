@@ -52,12 +52,16 @@
 							<a><img class="reportIcon" src="~/images/icons/report-icon.svg"></a>
 						}
 
-						@if(isMember != null)
+						@if(isMember != null && isMember.cargoComunidade.ToString() == "Membro")
 						{
 							<form class="joinCommunity-form" id="joinCommunity-form" asp-action="DeixarComunidade">		
 								<input type="hidden" name="IdComunidade" value="@Model.getComunidade.comunidadeId" />
 								<button type="submit" class="joinQuitButton">Sair</button>
 							</form>
+						}
+						@if(isMember != null && isMember.cargoComunidade.ToString() == "ADM")
+						{
+							<button class="joinQuitButton" data-bs-toggle="modal" data-bs-target="#deleteCommunity-modal">Apagar comunidade</button>
 						}
 						else
 						{
@@ -187,6 +191,8 @@
 </div>
 
 
+
+@* Modal publicações *@
 @foreach (var item in Model.getPublicacoes)
 {
 	Model.getUsuarioPublicacao = Model.getTodosUsuarios.FirstOrDefault(up => up.usuarioId == item.usuarioId);
@@ -242,7 +248,7 @@
     </div>
 }
 
-
+@* Modal comentários *@
 <div class="modal fade" id="createPost-modal" tabindex="-1" aria-labelledby="usuarioModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content post" id="postModal-content">
@@ -259,6 +265,22 @@
 						<input id="postMedia-input" name="midiaPublicacaoArquivo" type="file"/>
 					</div>		
 					<button type="submit" class="postButton">Publicar</button>
+				</form>
+            </div>
+        </div>
+    </div>
+
+<div class="modal fade" id="deleteCommunity-modal" tabindex="-1" aria-labelledby="usuarioModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content post" id="postModal-content">
+                <div class="commentsHeader">
+                    <div class="modal-title" id="deleteModalLabel">Todos os dados referentes a está comunidade serão perdidos e não poderão ser recuperados.<br>Deseja realmente apagar a comunidade <span>@Model.getComunidade.nomeComunidade</span>?
+					</div>
+                    <button type="button" class="closeButton" data-bs-dismiss="modal" aria-label="Fechar">X</button>
+                </div>
+				<form class="joinCommunity-form" id="joinCommunity-form" asp-action="ApagarComunidade">		
+					<input type="hidden" name="IdComunidade" value="@Model.getComunidade.comunidadeId" />
+					<button type="submit" class="joinQuitButton" data-bs-toggle="modal">Apagar</button>
 				</form>
             </div>
         </div>

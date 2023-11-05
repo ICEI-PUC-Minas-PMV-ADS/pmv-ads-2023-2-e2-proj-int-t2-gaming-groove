@@ -138,5 +138,18 @@ namespace GamingGroove.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction("Index", new { community = TempData["CommunityValue"] });            
         }
+
+        public async Task<IActionResult> ApagarComunidade(int? IdUsuario, int IdComunidade)
+        {
+            IdUsuario = HttpContext.Session.GetInt32("UsuarioId");
+
+            var comunidadeModel = await _context.Comunidades
+                .FirstOrDefaultAsync(uc => uc.comunidadeId == IdComunidade);
+
+            _context.Comunidades.Remove(comunidadeModel);     
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index", "ComunidadeHomePage");           
+        }        
     }
 }    
