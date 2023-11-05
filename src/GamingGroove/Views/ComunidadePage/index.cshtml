@@ -58,7 +58,10 @@
 						}
 						else
 						{
-							<a class="joinQuitButton">Entrar</a>
+							<form class="joinCommunity-form" id="joinCommunity-form" asp-action="IngressarComunidade">		
+								<input type="hidden" name="IdComunidade" value="@Model.getComunidade.comunidadeId" />
+								<button type="submit" class="joinQuitButton">Entrar</button>
+							</form>
 						}
 				</div>
 			</div>

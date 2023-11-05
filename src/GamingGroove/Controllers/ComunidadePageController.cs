@@ -96,5 +96,33 @@ namespace GamingGroove.Controllers
 
             return RedirectToAction("Index", new { community = TempData["CommunityValue"] });
         }
+
+        public async Task<IActionResult> IngressarComunidade(int? IdUsuario, int IdComunidade)
+        {
+            IdUsuario = HttpContext.Session.GetInt32("UsuarioId");
+
+            UsuarioComunidadeModel usuarioComunidadeModel = new ()
+            {
+                usuarioId = (int)IdUsuario,
+                comunidadeId = IdComunidade,
+                cargoComunidade = CargosEnum.Membro,
+                dataVinculoComunidade = DateTime.Now
+            };
+
+            if (ModelState.IsValid)
+            {
+                var ultimoUsuarioComunidadeId = _context.UsuariosComunidades
+                    .OrderByDescending(uc => uc.usuarioComunidadeId)
+                    .FirstOrDefault()?.usuarioComunidadeId ?? 0;
+
+                usuarioComunidadeModel.usuarioComunidadeId = ultimoUsuarioComunidadeId + 1;
+
+                _context.Add(usuarioComunidadeModel);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index", new { community = TempData["CommunityValue"] });
+            }
+
+            return RedirectToAction("Index", new { community = TempData["CommunityValue"] });
+        }        
     }
 }    
