@@ -38,6 +38,7 @@ a {
     justify-content: space-between;
     align-items: center;
     padding: 15px;
+    box-shadow: black 2px 2px 6px;
 }
 
 .listTitle {
@@ -116,28 +117,6 @@ a {
     padding-top: 10px;
 }
 
-.createPost {
-    font-family: Play;
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    border: #E5ABFF 2px solid;
-    padding-right: 15px;
-    padding-left: 8px;
-    background: none;
-    border-radius: 4px;
-    margin-right: 37px;
-    letter-spacing: 1px;
-    color: #E5ABFF;
-}
-
-.createPost:hover {
-    transition: 0.6s;
-    background-color: #E5ABFF;
-    color: black;
-    font-weight: bold;
-}
-
 .post-container {
     overflow: auto;
     display: flex;
@@ -150,7 +129,7 @@ a {
 .post {
     width: 93%;
     background-color: #232B58;
-    box-shadow: black 0px 4px 4px;
+    box-shadow: black 2px 2px 6px;
     padding: 20px;
     border-radius: 6px;
     display: flex;
@@ -292,6 +271,89 @@ a {
     transition: 0.7s;
     filter: grayscale(100%) brightness(200%);
 }
+
+
+
+
+
+.right-container {
+    height: 100%;
+    width: 20vw;
+    display: flex;
+    justify-content: end; 
+}
+
+.suggestedTeams {
+    background-color: #232B58;
+    height: 60vh;
+    width: 290px;
+    margin-top: 5vh;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    box-shadow: black 2px 2px 6px;
+}
+
+.teamsListTitle {
+    font-family: Gamer;
+    font-size: 28px;
+    text-transform: uppercase;
+    width: 270px;
+    text-align: center;
+}
+
+.teamsList {
+    background-color: #111738;
+    height: 90%;
+    width: 100%;
+    padding-inline: 15px;
+    padding-block: 10px;
+    overflow: auto;
+}
+
+.teamsItems {
+    height: 60px;
+    width: 100%;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-inline: 10px;
+    padding-block: 35px;
+    gap: 10px;
+    font-family: Play;
+    cursor: pointer;
+}
+
+.teamsItems:hover {
+    transition: 0.8s;
+    background-color: #232B58;
+    .list-communityIcon {
+        border: #00F0FF solid 1px;
+        box-shadow: #00F0FF 0px 0px 8px;
+    }
+}
+
+.teamsItems:not(:hover){
+    transition: 0.8s;   
+}
+
+.list-teamIcon {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.teamName {
+    font-size: 14px;
+}
+
+
+
 
 
 
