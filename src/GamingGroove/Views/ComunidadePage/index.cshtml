@@ -9,10 +9,7 @@
 <link rel="stylesheet" href="~/css/ComunidadePage.css" asp-append-version="true" />
 
 @{
-	var communityName = Context.Request.RouteValues.ContainsKey("community")
-	? Context.Request.RouteValues["community"].ToString()
-	: string.Empty;
-	var isMember = Model.getComunidadesUsuario.FirstOrDefault(uc => uc.comunidade.nomeComunidade == communityName);
+	var isMember = Model.getComunidadesUsuario.FirstOrDefault(uc => uc.comunidade.nomeComunidade == @Model.getComunidade.nomeComunidade);
 }
 
 <div class="main-container">
