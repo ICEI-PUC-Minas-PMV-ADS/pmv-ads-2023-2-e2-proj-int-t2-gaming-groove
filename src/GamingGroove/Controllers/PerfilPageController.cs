@@ -17,10 +17,19 @@ namespace GamingGroove.Controllers
             _contexto = contexto;
         }
 
+        public int IdUsuarioLogado { get; set; }
         public IActionResult Index(string user)
         {
             var viewModel = new ViewModel(_contexto);
-            viewModel.OnGetPerfilPage(user);
+        
+            var usuarioId = HttpContext.Session.GetInt32("UsuarioId");
+            
+            if (usuarioId.HasValue)
+            {
+                IdUsuarioLogado = usuarioId.Value;
+            }
+
+            viewModel.OnGetPerfilPage(user, IdUsuarioLogado);
             if (viewModel == null)
             {
                 return NotFound();

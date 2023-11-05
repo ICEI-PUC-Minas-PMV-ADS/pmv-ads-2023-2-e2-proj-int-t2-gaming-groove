@@ -47,11 +47,18 @@ namespace GamingGroove.Views.Shared
 
         public IEnumerable<ComentarioModel> getTodosComentarios { get; set; }
         public IEnumerable<ComentarioModel> getComentariosPublicacao { get; set; }
+
+        public IEnumerable<AmizadeModel> getTodasAmizades { get; set; }
+        public AmizadeModel amizadeExistente { get; set; }
         
 
         //PerfilPage
-        public void OnGetPerfilPage(string user)
+        public void OnGetPerfilPage(string user, int? usuarioLogado)
         {
+            IdUsuarioLogado = usuarioLogado;
+
+            getTodasAmizades = _cc.Amizades.ToList();
+
             getUsuario = _cc.Usuarios.FirstOrDefault(u => u.nomeUsuario == user);
 
             if (getUsuario != null)
@@ -65,6 +72,12 @@ namespace GamingGroove.Views.Shared
                     .Where(uc => uc.usuarioId == getUsuario.usuarioId)
                     .Include(uc => uc.comunidade)
                     .ToList();
+
+            amizadeExistente = _cc.Amizades
+                .Where(a => 
+                    (a.solicitante.usuarioId == getUsuario.usuarioId && a.receptor.usuarioId == IdUsuarioLogado) ||
+                    (a.solicitante.usuarioId == IdUsuarioLogado && a.receptor.usuarioId == getUsuario.usuarioId))
+                .FirstOrDefault();                
             }
         }
      
