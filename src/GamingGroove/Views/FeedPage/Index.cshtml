@@ -14,26 +14,33 @@
 		<div class="suggestedCommunities">
 			<div class="listTitle">Minhas comunidades</div>
 			<div class="communitiesList">
-				@foreach (var item in Model.getComunidadesUsuario) {
-					
-					int _comunidadeIdCadaComunidade = item.comunidade.comunidadeId;
-					int numberOfMembersEachCommunity = Model.GetNumberOfMembersInCommunity(_comunidadeIdCadaComunidade);
-					<a href="~/ComunidadePage/@item.comunidade.nomeComunidade">
-						<div class="communities-items">
-							@if (item.comunidade.iconeComunidade != null)
-							{
-								<img class="list-communityIcon" src="data:image/png;base64,@Convert.ToBase64String(item.comunidade.iconeComunidade)" alt="Imagem de Perfil" />
-							}
-							else
-							{
-								<img class="list-communityIcon" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
-							}               
-							<div class="communityInfo-container">
-								<div class="communityName">@item.comunidade.nomeComunidade</div>                                
-								<div class="list-numberOfMembers">@numberOfMembersEachCommunity membros</div>
-							</div>
-						</div>	
-					</a>				
+				@if(Model.getComunidadesUsuario == null)
+				{
+					<div>Você ainda não faz parte de comunidades.</div>
+				}
+				else
+				{
+					@foreach (var item in Model.getComunidadesUsuario) {
+						
+						int _comunidadeIdCadaComunidade = item.comunidade.comunidadeId;
+						int numberOfMembersEachCommunity = Model.GetNumberOfMembersInCommunity(_comunidadeIdCadaComunidade);
+						<a href="~/ComunidadePage/@item.comunidade.nomeComunidade">
+							<div class="communities-items">
+								@if (item.comunidade.iconeComunidade != null)
+								{
+									<img class="list-communityIcon" src="data:image/png;base64,@Convert.ToBase64String(item.comunidade.iconeComunidade)" alt="Imagem de Perfil" />
+								}
+								else
+								{
+									<img class="list-communityIcon" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
+								}               
+								<div class="communityInfo-container">
+									<div class="communityName">@item.comunidade.nomeComunidade</div>                                
+									<div class="list-numberOfMembers">@numberOfMembersEachCommunity membros</div>
+								</div>
+							</div>	
+						</a>
+					}				
 				}
 			</div>
 		</div>		
@@ -43,9 +50,9 @@
 		<div class="post-container">
 			@if(Model.getFeedPublicacoes.Count() == 0)
 			{
-				<div class="noPosts">Ainda não foram feitas publicações nesta comunidade.</div>
+				<div class="noPosts">Você ainda não tem publicações para ver aqui :(</div>
 			}
-			@foreach(var item in Model.getFeedPublicacoes.Reverse())
+			@foreach(var item in Model.getFeedPublicacoes.Reverse().Take(50))
 			{
 				Model.getUsuarioPublicacao = Model.getTodosUsuarios.FirstOrDefault(up => up.usuarioId == item.usuarioId);
 				Model.getComunidadePublicacao = Model.getTodasComunidades.FirstOrDefault(cp => cp.comunidadeId == item.comunidadeId);
@@ -65,7 +72,15 @@
 							
 							<div class="userName">@Model.getUsuarioPublicacao.nomeUsuario</div>
 						</div></a>
-						<a href="~/ComunidadePage/@Model.getComunidadePublicacao.nomeComunidade"><img class="post-communityIcon" src="data:image/png;base64,@Convert.ToBase64String(Model.getComunidadePublicacao.iconeComunidade)" alt="Imagem de ícone da Comunidade" title="@Model.getComunidadePublicacao.nomeComunidade"></a>
+						@if(Model.getComunidadePublicacao.iconeComunidade != null)
+						{
+							<a href="~/ComunidadePage/@Model.getComunidadePublicacao.nomeComunidade"><img class="post-communityIcon" src="data:image/png;base64,@Convert.ToBase64String(Model.getComunidadePublicacao.iconeComunidade)" alt="Imagem de ícone da Comunidade" title="@Model.getComunidadePublicacao.nomeComunidade"></a>
+						}
+						else
+						{
+							<a href="~/ComunidadePage/@Model.getComunidadePublicacao.nomeComunidade"><img class="post-communityIcon" src="~/images/icons/empty-icon.png" alt="Imagem de ícone da Comunidade" title="@Model.getComunidadePublicacao.nomeComunidade"></a>
+						}
+						
 					</div>
 					<div class="postContent">
 						<div class="postText">@item.textoPublicacao</div>
@@ -96,22 +111,22 @@
 	</div>
 
 	<div class="right-container">
-		<div class="suggestedCommunities">
-			<div class="listTitle">Minhas equipes</div>
-			<div class="communitiesList">
+		<div class="suggestedTeams">
+			<div class="teamsListTitle">Minhas equipes</div>
+			<div class="teamsList">
 				@foreach (var item in Model.getEquipesUsuario) {
 					<a href="~/ComunidadePage/@item.equipe.nomeEquipe">
-						<div class="communities-items">
+						<div class="teamsItems">
 							@if (item.equipe.iconeEquipe != null)
 							{
-								<img class="list-communityIcon" src="data:image/png;base64,@Convert.ToBase64String(item.equipe.iconeEquipe)" alt="Imagem de Perfil" />
+								<img class="list-teamIcon" src="data:image/png;base64,@Convert.ToBase64String(item.equipe.iconeEquipe)" alt="Imagem de Perfil" />
 							}
 							else
 							{
-								<img class="list-communityIcon" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
+								<img class="list-teamIcon" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
 							}               
 							<div class="communityInfo-container">
-								<div class="communityName">@item.equipe.nomeEquipe</div>                                
+								<div class="teamName">@item.equipe.nomeEquipe</div>                                
 							</div>
 						</div>	
 					</a>				

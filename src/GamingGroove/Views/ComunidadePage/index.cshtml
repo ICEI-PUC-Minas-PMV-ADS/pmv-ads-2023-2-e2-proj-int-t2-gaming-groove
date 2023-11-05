@@ -59,7 +59,7 @@
 								<button type="submit" class="joinQuitButton">Sair</button>
 							</form>
 						}
-						@if(isMember != null && isMember.cargoComunidade.ToString() == "ADM")
+						else if(isMember != null && isMember.cargoComunidade.ToString() == "ADM")
 						{
 							<button class="joinQuitButton" data-bs-toggle="modal" data-bs-target="#deleteCommunity-modal">Apagar comunidade</button>
 						}
@@ -112,7 +112,7 @@
 			{
 				<div class="noPosts">Ainda não foram feitas publicações nesta comunidade.</div>
 			}
-			@foreach(var item in Model.getPublicacoes.Reverse())
+			@foreach(var item in Model.getPublicacoes.Reverse().Take(50))
 			{
 				Model.getUsuarioPublicacao = Model.getTodosUsuarios.FirstOrDefault(up => up.usuarioId == item.usuarioId);
 				Model.getComunidadePublicacao = Model.getTodasComunidades.FirstOrDefault(cp => cp.comunidadeId == item.comunidadeId);
@@ -132,7 +132,15 @@
 							
 							<div class="userName">@Model.getUsuarioPublicacao.nomeUsuario</div>
 						</div></a>
-						<a href="~/ComunidadePage/@Model.getComunidadePublicacao.nomeComunidade"><img class="post-communityIcon" src="data:image/png;base64,@Convert.ToBase64String(Model.getComunidadePublicacao.iconeComunidade)" alt="Imagem de ícone da Comunidade"></a>
+						@if(Model.getComunidadePublicacao.iconeComunidade != null)
+						{
+							<a href="~/ComunidadePage/@Model.getComunidadePublicacao.nomeComunidade"><img class="post-communityIcon" src="data:image/png;base64,@Convert.ToBase64String(Model.getComunidadePublicacao.iconeComunidade)" alt="Imagem de ícone da Comunidade"></a>
+						}
+						else
+						{
+							<a href="~/ComunidadePage/@Model.getComunidadePublicacao.nomeComunidade"><img class="post-communityIcon" src="~/images/icons/empty-icon.png" alt="Imagem de ícone da Comunidade"></a>
+						}
+						
 					</div>
 					<div class="postContent">
 						<div class="postText">@item.textoPublicacao</div>

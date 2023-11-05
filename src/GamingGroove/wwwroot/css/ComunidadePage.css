@@ -36,10 +36,11 @@ a {
     flex-direction: row;
     justify-content: space-between;
     padding: 10px;
-    border: solid 1px white;
+    border: solid 1px rgb(84, 84, 84);
     border-radius: 4px;  
     position: relative;
     overflow: hidden;
+    box-shadow: black 2px 2px 6px;
 }
 
 .communityCover-filter {
@@ -150,6 +151,7 @@ a {
     justify-content: space-between;
     align-items: center;
     border-radius: 6px;
+    box-shadow: black 2px 2px 6px;
 }
 
 .descriptionTitle {
@@ -171,7 +173,7 @@ a {
 }
 
 .gamesListBox {
-    height: 15vh;
+    height: 160px;
     width: 74%;
     background-color: #232B58;
     display: flex;
@@ -181,6 +183,7 @@ a {
     padding-inline: 15px;
     padding-bottom: 15px;
     border-radius: 4px;
+    box-shadow: black 2px 2px 6px;
 }
 
 .gamesList {
@@ -281,6 +284,7 @@ a {
     align-items: center;
     gap: 30px;
     width: 100%;
+    padding: 10px;
 }
 
 .post {
@@ -295,6 +299,7 @@ a {
     align-items: center;
     gap: 15px;
     font-family: Play;
+    box-shadow: black 2px 2px 6px;
 }
 
 .postHeader {
@@ -450,6 +455,7 @@ a {
     justify-content: space-between;
     align-items: center;
     padding: 15px;
+    box-shadow: black 4px 4px 4px;
 }
 
 .listTitle {
