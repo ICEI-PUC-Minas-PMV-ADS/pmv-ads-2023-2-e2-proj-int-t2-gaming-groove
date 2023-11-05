@@ -24,5 +24,5 @@ public enum JogosEnum
     DeadByDaylight,
     
     [Display(Name = "Call of Duty: Warzone")]
-    CallOfDutyWarzone
+    CallOfDutyWarzone,
 }
