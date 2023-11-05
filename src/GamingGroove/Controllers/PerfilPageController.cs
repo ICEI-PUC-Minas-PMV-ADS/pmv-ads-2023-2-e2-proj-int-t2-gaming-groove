@@ -10,21 +10,31 @@ namespace GamingGroove.Controllers
 {
     public class PerfilPageController : BaseController
     {
-        private readonly GamingGrooveDbContext _contexto;
+        private readonly GamingGrooveDbContext _context;
 
-        public PerfilPageController(GamingGrooveDbContext contexto)
+        public PerfilPageController(GamingGrooveDbContext context)
         {
-            _contexto = contexto;
+            _context = context;
         }
 
+        public int IdUsuarioLogado { get; set; }
         public IActionResult Index(string user)
         {
-            var viewModel = new ViewModel(_contexto);
-            viewModel.OnGetPerfilPage(user);
+            var viewModel = new ViewModel(_context);
+        
+            var usuarioId = HttpContext.Session.GetInt32("UsuarioId");
+            
+            if (usuarioId.HasValue)
+            {
+                IdUsuarioLogado = usuarioId.Value;
+            }
+
+            viewModel.OnGetPerfilPage(user, IdUsuarioLogado);
             if (viewModel == null)
             {
                 return NotFound();
             }
+            TempData["UserValue"] = user;
 
             return View(viewModel);
         }
@@ -34,12 +44,12 @@ namespace GamingGroove.Controllers
         {
             if (User.FindFirst(ClaimTypes.NameIdentifier)?.Value == id.ToString())
             {
-                if (id == null || _contexto.Usuarios == null)
+                if (id == null || _context.Usuarios == null)
                 {
                     return NotFound();
                 }
 
-                var usuarioModel = await _contexto.Usuarios.FindAsync(id);
+                var usuarioModel = await _context.Usuarios.FindAsync(id);
                 if (usuarioModel == null)
                 {
                     return NotFound();
@@ -65,7 +75,7 @@ namespace GamingGroove.Controllers
             {
                 try
                 {
-                    var existingUser = await _contexto.Usuarios.FindAsync(id);
+                    var existingUser = await _context.Usuarios.FindAsync(id);
 
                     if (existingUser != null)
                     {
@@ -108,15 +118,15 @@ namespace GamingGroove.Controllers
                         {
                             existingUser.nomeUsuario = usuarioModel.nomeUsuario;
 
-                            _contexto.Entry(existingUser).State = EntityState.Modified;
-                            await _contexto.SaveChangesAsync();
+                            _context.Entry(existingUser).State = EntityState.Modified;
+                            await _context.SaveChangesAsync();
                             await HttpContext.SignOutAsync();
       
                             return RedirectToAction("Index", "HomePage");                     
                         }
 
-                        _contexto.Entry(existingUser).State = EntityState.Modified;
-                        await _contexto.SaveChangesAsync();
+                        _context.Entry(existingUser).State = EntityState.Modified;
+                        await _context.SaveChangesAsync();
                     }
                     else
                     {
@@ -145,7 +155,51 @@ namespace GamingGroove.Controllers
 
         private bool UsuarioModelExists(int id)
         {
-          return (_contexto.Usuarios?.Any(e => e.usuarioId == id)).GetValueOrDefault();
+          return (_context.Usuarios?.Any(e => e.usuarioId == id)).GetValueOrDefault();
+        }
+
+
+        public async Task<IActionResult> FazerAmizade(int? IdUsuario, int IdUsuarioPagina)
+        {
+            IdUsuario = HttpContext.Session.GetInt32("UsuarioId");
+
+
+                AmizadeModel amizadeModel = new ()
+                {
+                    solicitanteId = (int)IdUsuario,
+                    receptorId = IdUsuarioPagina,
+                    estadoAmizade = EstadoAmizade.Aceita,
+                    dataAmizade = DateTime.Now
+                };
+
+            if (ModelState.IsValid)
+            {
+                _context.Add(amizadeModel);     
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index", "PerfilPage", new { user = TempData["UserValue"] });
+            }
+
+            return RedirectToAction("Index", "PerfilPage", new { user = TempData["UserValue"] });
+        }
+
+        public async Task<IActionResult> DesfazerAmizade(int? IdUsuario, int IdUsuarioPagina)
+        {
+            IdUsuario = HttpContext.Session.GetInt32("UsuarioId");
+
+            var existingAmizade = await _context.Amizades
+                .FirstOrDefaultAsync(c => c.solicitanteId == IdUsuario && c.receptorId == IdUsuarioPagina
+                || c.solicitanteId == IdUsuarioPagina && c.receptorId == IdUsuario);
+
+
+            if (existingAmizade != null)
+            {
+                _context.Amizades.Remove(existingAmizade);     
+                await _context.SaveChangesAsync();
+                
+                return RedirectToAction("Index", "PerfilPage", new { user = TempData["UserValue"] });
+            }
+            
+            return RedirectToAction("Index", "PerfilPage", new { user = TempData["UserValue"] });
         }
     }
 }

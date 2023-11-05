@@ -66,7 +66,7 @@ main {
     align-items: center;
 }
 
-.add-friend-button {
+.addFriend-button {
     height: 30px;
     width: 40px;
     background-color: #121433;
@@ -78,7 +78,7 @@ main {
     align-items: center;
 }
 
-.add-friend-button:hover {
+.addFriend-button:hover {
     transition: 1s;
     background-color: #00F0FF;
     .addUser-icon {
@@ -86,7 +86,35 @@ main {
     }
 }
 
-.add-friend-button:not(:hover) {
+.addFriend-button:not(:hover) {
+    transition: 1s;
+}
+
+.removeUser-icon {
+    height: 22px;
+    filter: brightness(0);
+}
+
+.removeFriend-button {
+    height: 30px;
+    width: 40px;
+    background-color: #72ffa3;
+    border: solid white 1px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.removeFriend-button:hover {
+    transition: 1s;
+    background-color: rgb(187, 39, 10);
+    .removeUser-icon {
+        filter: brightness(200%) grayscale(100%);
+    }
+}
+
+.removeFriend-button:not(:hover) {
     transition: 1s;
 }
 

@@ -91,52 +91,63 @@ namespace GamingGroove.Controllers
 
             if (ModelState.IsValid)
             {
-
-                if (iconeComunidadeArquivo != null && iconeComunidadeArquivo.Length > 0)
+                try
                 {
-                    using (var memoryStream = new MemoryStream())
+                    if (iconeComunidadeArquivo != null && iconeComunidadeArquivo.Length > 0)
                     {
-                        await iconeComunidadeArquivo.CopyToAsync(memoryStream);
-                        comunidadeModel.iconeComunidade = memoryStream.ToArray();
-                    }
-                }       
+                        using (var memoryStream = new MemoryStream())
+                        {
+                            await iconeComunidadeArquivo.CopyToAsync(memoryStream);
+                            comunidadeModel.iconeComunidade = memoryStream.ToArray();
+                        }
+                    }       
 
-                if (capaComunidadeArquivo != null && capaComunidadeArquivo.Length > 0)
-                {
-                    using (var memoryStream = new MemoryStream())
+                    if (capaComunidadeArquivo != null && capaComunidadeArquivo.Length > 0)
                     {
-                        await capaComunidadeArquivo.CopyToAsync(memoryStream);
-                        comunidadeModel.capaComunidade = memoryStream.ToArray();
-                    }
-                }        
+                        using (var memoryStream = new MemoryStream())
+                        {
+                            await capaComunidadeArquivo.CopyToAsync(memoryStream);
+                            comunidadeModel.capaComunidade = memoryStream.ToArray();
+                        }
+                    }        
 
-                _context.Add(comunidadeModel);
-                await _context.SaveChangesAsync();
-
-                
-                if (IdUsuario.HasValue)
-                {
-                    UsuarioComunidadeModel usuarioComunidadeModel = new ()
-                    {
-                        usuarioId = IdUsuario.Value,
-                        comunidadeId = comunidadeModel.comunidadeId, 
-                        cargoComunidade = CargosEnum.ADM,
-                        dataVinculoComunidade = DateTime.Now
-                    };
-
-                    var ultimoUsuarioComunidadeId = _context.UsuariosComunidades
-                        .OrderByDescending(uc => uc.usuarioComunidadeId)
-                        .FirstOrDefault()?.usuarioComunidadeId ?? 0;
-
-                    usuarioComunidadeModel.usuarioComunidadeId = ultimoUsuarioComunidadeId + 1;       
-
-                    _context.Add(usuarioComunidadeModel);
+                    _context.Add(comunidadeModel);
                     await _context.SaveChangesAsync();
-                    return RedirectToAction("Index", "ComunidadePage", new { community = comunidadeModel.nomeComunidade });    
+
+                    
+                    if (IdUsuario.HasValue)
+                    {
+                        UsuarioComunidadeModel usuarioComunidadeModel = new ()
+                        {
+                            usuarioId = IdUsuario.Value,
+                            comunidadeId = comunidadeModel.comunidadeId, 
+                            cargoComunidade = CargosEnum.ADM,
+                            dataVinculoComunidade = DateTime.Now
+                        };
+
+                        var ultimoUsuarioComunidadeId = _context.UsuariosComunidades
+                            .OrderByDescending(uc => uc.usuarioComunidadeId)
+                            .FirstOrDefault()?.usuarioComunidadeId ?? 0;
+
+                        usuarioComunidadeModel.usuarioComunidadeId = ultimoUsuarioComunidadeId + 1;       
+
+                        _context.Add(usuarioComunidadeModel);
+                        await _context.SaveChangesAsync();
+                        return RedirectToAction("Index", "ComunidadePage", new { community = comunidadeModel.nomeComunidade });    
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TempData["ErrorMessage"] = "Ocorreu um erro ao criar a comunidade: " + ex.Message;
                 }
             }
+            else
+            {
+                TempData["ErrorMessage"] = "*Preencha todos os campos adequadamente.";
+            }
 
-            return RedirectToAction("Index", "ComunidadePage", new { community = comunidadeModel.nomeComunidade });
+
+            return View("Create");
         }        
     }
 }    

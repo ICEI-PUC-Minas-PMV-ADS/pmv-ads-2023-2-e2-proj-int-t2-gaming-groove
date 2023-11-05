@@ -27,12 +27,35 @@
             {
                 <img class="profile-pic" src="~/images/icons/user-icon.png" alt="Imagem de Perfil Padrão" style= "background-color: white;" />
             }
-            <div class="user-add-friend-container">
-                <div class="user-border">
-                    <div class="username">@Model.getUsuario.nomeUsuario</div>
+
+                <div class="user-add-friend-container">
+                    <div class="user-border">
+                        <div class="username">@Model.getUsuario.nomeUsuario</div>
+                    </div>
+                    @if(User.Identity.Name == Model.getUsuario.nomeUsuario)
+                    {
+
+                    }
+                    else 
+                    {
+
+                        @if(Model.amizadeExistente != null)
+                        {
+                            <form asp-action="DesfazerAmizade">
+                                <input type="hidden" name="IdUsuarioPagina" value="@Model.getUsuario.usuarioId">
+                                <button class="removeFriend-button"><img class="removeUser-icon" src="~/images/icons/checkCircle-icon.svg" title="Desfazer amizade"></button>
+                            </form>
+                        }
+                        else
+                        {
+                            <form asp-action="FazerAmizade">
+                                <input type="hidden" name="IdUsuarioPagina" value="@Model.getUsuario.usuarioId">
+                                <button type="submit" class="addFriend-button"><img class="addUser-icon" src="~/images/icons/add-user.svg" title="Adicionar amigo"></button>
+                            </form>
+                        }
+                     
+                    }
                 </div>
-                <button class="add-friend-button"><img class="addUser-icon" src="~/images/icons/add-user.svg"></button>
-            </div>
         </div>
         <div class="cover-second-container">
             @if(User.Identity.Name == Model.getUsuario.nomeUsuario)

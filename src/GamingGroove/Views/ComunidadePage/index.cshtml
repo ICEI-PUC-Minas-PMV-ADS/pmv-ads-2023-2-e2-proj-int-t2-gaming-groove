@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="~/css/ComunidadePage.css" asp-append-version="true" />
 
 @{
-	var isMember = Model.getComunidadesUsuario.FirstOrDefault(uc => uc.comunidade.nomeComunidade == @Model.getComunidade.nomeComunidade);
+	var isMember = Model.getComunidadesUsuario.FirstOrDefault(uc => uc.comunidade.nomeComunidade == Model.getComunidade.nomeComunidade);
 }
 
 <div class="main-container">
