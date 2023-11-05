@@ -71,5 +71,72 @@ namespace GamingGroove.Controllers
             }
             return View("comunidadeModel");
         }        
+
+        public async Task<IActionResult> CriarComunidade(int? IdUsuario, string NomeComunidade, JogosEnum? PrimeiroJogo,
+        JogosEnum? SegundoJogo, JogosEnum? TerceiroJogo, string DescricaoComunidade, DateTime dataCriacaoComunidade,
+        IFormFile? iconeComunidadeArquivo, IFormFile? capaComunidadeArquivo)
+        {
+            IdUsuario = HttpContext.Session.GetInt32("UsuarioId");
+
+            ComunidadeModel comunidadeModel = new ()
+            {
+                nomeComunidade = NomeComunidade,
+                primeiroJogo = PrimeiroJogo,
+                segundoJogo = SegundoJogo,
+                terceiroJogo = TerceiroJogo,
+                descricaoComunidade = DescricaoComunidade,
+                dataCriacaoComunidade = DateTime.Now
+            };
+
+
+            if (ModelState.IsValid)
+            {
+
+                if (iconeComunidadeArquivo != null && iconeComunidadeArquivo.Length > 0)
+                {
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        await iconeComunidadeArquivo.CopyToAsync(memoryStream);
+                        comunidadeModel.iconeComunidade = memoryStream.ToArray();
+                    }
+                }       
+
+                if (capaComunidadeArquivo != null && capaComunidadeArquivo.Length > 0)
+                {
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        await capaComunidadeArquivo.CopyToAsync(memoryStream);
+                        comunidadeModel.capaComunidade = memoryStream.ToArray();
+                    }
+                }        
+
+                _context.Add(comunidadeModel);
+                await _context.SaveChangesAsync();
+
+                
+                if (IdUsuario.HasValue)
+                {
+                    UsuarioComunidadeModel usuarioComunidadeModel = new ()
+                    {
+                        usuarioId = IdUsuario.Value,
+                        comunidadeId = comunidadeModel.comunidadeId, 
+                        cargoComunidade = CargosEnum.ADM,
+                        dataVinculoComunidade = DateTime.Now
+                    };
+
+                    var ultimoUsuarioComunidadeId = _context.UsuariosComunidades
+                        .OrderByDescending(uc => uc.usuarioComunidadeId)
+                        .FirstOrDefault()?.usuarioComunidadeId ?? 0;
+
+                    usuarioComunidadeModel.usuarioComunidadeId = ultimoUsuarioComunidadeId + 1;       
+
+                    _context.Add(usuarioComunidadeModel);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction("Index", "ComunidadePage", new { community = comunidadeModel.nomeComunidade });    
+                }
+            }
+
+            return RedirectToAction("Index", "ComunidadePage", new { community = comunidadeModel.nomeComunidade });
+        }        
     }
 }    

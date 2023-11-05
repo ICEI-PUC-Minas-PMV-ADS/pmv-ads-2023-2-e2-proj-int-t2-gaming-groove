@@ -1,7 +1,10 @@
+using System.Linq;
 using GamingGroove.Data;
 using GamingGroove.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace GamingGroove.Views.Shared
 {
@@ -16,12 +19,14 @@ namespace GamingGroove.Views.Shared
 
         public UsuarioModel getUsuario { get; set; }
         public UsuarioModel getUsuarioPublicacao { get; set; }
+        public UsuarioModel getUsuarioComentario { get; set; }
         public IEnumerable<UsuarioModel> getTodosUsuarios { get; set; }
         public int? IdUsuarioLogado { get; set; }
 
 
         public ComunidadeModel getComunidade { get; set; }
         public IEnumerable<ComunidadeModel> getComunidades { get; set; }
+        public List<int> getComunidadesIds { get; set; }
         public ComunidadeModel getComunidadePublicacao { get; set; }
         public IEnumerable<ComunidadeModel> getTodasComunidades { get; set; }
         public IEnumerable<UsuarioComunidadeModel> getComunidadesSugeridas { get; set; }
@@ -29,6 +34,9 @@ namespace GamingGroove.Views.Shared
         public List<int> infoComunidades { get; set; }
 
         public IEnumerable<PublicacaoModel> getPublicacoes { get; set; }
+        public IEnumerable<PublicacaoModel> getFeedPublicacoes { get; set; }
+        public IEnumerable<PublicacaoModel> getTodasPublicacoes { get; set; }
+        public PublicacaoModel getPublicacaoComentario { get; set; }
         
 
         public IEnumerable<EquipeModel> getEquipes { get; set; }
@@ -38,6 +46,7 @@ namespace GamingGroove.Views.Shared
         public IEnumerable<CurtidaModel> getTodasCurtidas { get; set; }
 
         public IEnumerable<ComentarioModel> getTodosComentarios { get; set; }
+        public IEnumerable<ComentarioModel> getComentariosPublicacao { get; set; }
         
 
         //PerfilPage
@@ -58,8 +67,40 @@ namespace GamingGroove.Views.Shared
                     .ToList();
             }
         }
+     
+        public void OnGetFeedPage(int? usuarioLogado)
+        {
+            IdUsuarioLogado = usuarioLogado;
+            
+            getTodosUsuarios = _cc.Usuarios.ToList();
 
+            getTodasComunidades = _cc.Comunidades.ToList();
 
+            getTodasCurtidas = _cc.Curtidas.ToList();
+
+            getTodosComentarios = _cc.Comentarios.ToList();
+
+            getTodasPublicacoes = _cc.Publicacoes.ToList();
+
+            getEquipes = _cc.Equipes.ToList();
+
+            getComunidadesUsuario = _cc.UsuariosComunidades
+                .Where(uc => uc.usuarioId == IdUsuarioLogado)
+                .Include(uc => uc.comunidade)
+                .ToList();
+
+            getComunidadesIds = getComunidadesUsuario.Select(uc => uc.comunidadeId).ToList();
+
+            getFeedPublicacoes = _cc.Publicacoes
+                .Where(p => getComunidadesIds.Contains(p.comunidadeId))
+                .ToList();
+            
+            getEquipesUsuario = _cc.UsuariosEquipes
+                .Where(ue => ue.usuarioId == IdUsuarioLogado)
+                .Include(ue => ue.equipe)
+                .ToList();                     
+
+        }
 
         // ComunidadeHomePage + ComunidadePage 
         public void OnGetComunidadePages(string community, int? usuarioLogado)
@@ -73,6 +114,8 @@ namespace GamingGroove.Views.Shared
             getTodasCurtidas = _cc.Curtidas.ToList();
 
             getTodosComentarios = _cc.Comentarios.ToList();
+
+            getTodasPublicacoes = _cc.Publicacoes.ToList();
 
 
             getComunidade = _cc.Comunidades.FirstOrDefault(u => u.nomeComunidade == community);
@@ -90,7 +133,9 @@ namespace GamingGroove.Views.Shared
             getComunidadesSugeridas = _cc.UsuariosComunidades
                 .Where(uc => uc.usuarioId != IdUsuarioLogado && !infoComunidades.Contains(uc.comunidadeId))
                 .Include(uc => uc.comunidade)
-                .ToList();   
+                .GroupBy(uc => uc.comunidadeId)
+                .Select(group => group.First())
+                .ToList();
 
 
             if(getComunidade != null)
@@ -98,7 +143,9 @@ namespace GamingGroove.Views.Shared
                 getPublicacoes = _cc.Publicacoes
                     .Where(uc => uc.comunidadeId == getComunidade.comunidadeId)
                     .ToList(); 
-            }                           
+            }         
+
+                             
         }
 
         public int GetNumberOfMembersInCommunity(int _comunidadeId)
@@ -138,5 +185,9 @@ namespace GamingGroove.Views.Shared
                 .Include(ue => ue.equipe)
                 .ToList();       
         }
+
+
     }
 }
+
+

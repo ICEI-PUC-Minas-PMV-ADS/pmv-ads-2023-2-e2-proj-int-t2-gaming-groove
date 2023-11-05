@@ -7,241 +7,482 @@
     filter: hue-rotate(100deg) saturate(350%);
 }
 
-main {
-    display: flex;
-    justify-content: center;
+a {
+    text-decoration: none;
 }
 
 .main-container {
-    width: 70vw;
-    margin-top: 5vh;
-    height: 78vh;
-}
-
-.cover-pic {
-    background: url("/images/backgrounds/space-cover.jpg") center center;
-    background-size: cover;
-    height: 150px;
+    height: 100%;
     width: 100%;
-    border-radius: 5px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    padding-inline: 1vw;
+}
+
+.left-container {
+    height: 100%;
+    width: 20vw;
+    display: flex;
+    justify-content: baseline; 
+}
+
+.suggestedCommunities {
+    background-color: #232B58;
+    height: 60vh;
+    width: 290px;
+    margin-top: 5vh;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    padding-inline: 12px;
+    padding: 15px;
+}
+
+.listTitle {
+    font-family: Gamer;
+    font-size: 28px;
+    text-transform: uppercase;
+    width: 270px;
+    text-align: center;
+}
+
+.communitiesList {
+    background-color: #111738;
+    height: 90%;
+    width: 100%;
+    padding-inline: 15px;
+    padding-block: 10px;
+    overflow: auto;
+}
+
+.communities-items {
+    height: 60px;
+    width: 100%;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-inline: 10px;
+    padding-block: 35px;
+    gap: 10px;
+    font-family: Play;
+    cursor: pointer;
+}
+
+.communities-items:hover {
+    transition: 0.8s;
+    background-color: #232B58;
+    .list-communityIcon {
+        border: #00F0FF solid 1px;
+        box-shadow: #00F0FF 0px 0px 8px;
+    }
+}
+
+.communities-items:not(:hover){
+    transition: 0.8s;   
+}
+
+.list-communityIcon {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.communityName {
+    font-size: 14px;
+}
+
+.list-numberOfMembers {
+    color: #00F0FF;
+    font-size: 12px;
+}
+
+
+
+
+.center-container {
+    height: 87.7vh;
+    width: 37vw;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    gap: 20px;
+    padding-top: 10px;
+}
+
+.createPost {
+    font-family: Play;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    border: #E5ABFF 2px solid;
+    padding-right: 15px;
+    padding-left: 8px;
+    background: none;
+    border-radius: 4px;
+    margin-right: 37px;
+    letter-spacing: 1px;
+    color: #E5ABFF;
+}
+
+.createPost:hover {
+    transition: 0.6s;
+    background-color: #E5ABFF;
+    color: black;
+    font-weight: bold;
+}
+
+.post-container {
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+}
+
+.post {
+    width: 93%;
+    background-color: #232B58;
+    box-shadow: black 0px 4px 4px;
+    padding: 20px;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
     font-family: Play;
 }
 
-.cover-first-container, .cover-second-container {
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: end;
-    gap: 1vw;   
-    padding-bottom: 8px;
-}
-
-.profile-pic {
-    height: 130px;
-    border-radius: 4px;
-}
-
-.user-add-friend-container {
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: end;
-    gap: 1vw;
-}
-
-.user-border {
-    height: 30px;
-    width: 200px;
-    background-color: #121433;
-    border: solid white 1px;
-    border-radius: 4px;
-    color: #00F0FF;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.add-friend-button {
-    height: 30px;
-    width: 40px;
-    background-color: #121433;
-    border: solid white 1px;
-    border-radius: 4px;
-    color: #00F0FF;
-}
-
-.edit-profile-button {
-    height: 30px;
-    width: 140px;
-    background-color: #121433;
-    border: solid white 1px;
-    border-radius: 4px;
-    color: #00F0FF;
-}
-
-.report-user-button {
-    height: 30px;
-    width: 40px;
-    background-color: #121433;
-    border: solid white 1px;
-    border-radius: 4px;
-    color: #00F0FF;
-}
-
-.profile-informations {
-    margin-top: 10px;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    gap: 12px;
-}
-
-.profile-first-container {
-    height: 80%;
-    width: 77%;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.profile-second-container {
-    height: 80%;
-    width: 23%;
-    display: flex;
-}
-
-.communities-column {
-    height: 100%;
-    width: 100%;
-    background-color: #232B58;
-    border-radius: 4px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    padding-block: 20px;
-}
-
-h3 {
-    font-family: Gamer;
-    font-size: 32px;
-    color: white;
-}
-
-.communities-list {
-    height: 92%;
-    width: 84%;
-    background-color: #111738;
-    border-radius: 6px;
-}
-
-.inside-first-container {
-    height: 60%;
+.postHeader {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    gap: 12px;
-}
-
-.inside-second-container {
-    height: 40%;
-    background-color: #232B58;
-    border-radius: 4px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.column {
-    height: 100%;
     width: 100%;
-    background-color: #232B58;
-    border-radius: 4px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     align-items: center;
-    padding: 10px 20px 20px 20px;
 }
 
-.column div {
-    height: 100%;
-    width: 100%;
-    background-color: #111738;
-    border-radius: 6px;
-}
-
-footer {
-    color: white;
-}
-
-#textoPublicacao {
-    width: 400px;
-    height: 150px;
-    white-space: pre-line;
-    overflow-y: auto;
-}
-
-.row {
+.user-container {
     display: flex;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
-    text-align: center;
+    justify-content: start;
+    gap: 15px;
+    border-radius: 40px;
+    color: #ffffff;
 }
 
-.col-md-4 {
-    width: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+.user-container:hover {
+    transition: 0.4s;
+    padding: 0px 30px 0px 0px;
+    background-color: #364286;
+    .userName {
+        color: #00F0FF; 
+    } 
 }
 
-.container {
-    display: flex;
-    justify-content: center;
-    margin: 20px,20px,20px,20px;
-    padding: 10px;
-    text-align: center;
-    
-}
-
-.colunaEsquerda {
-    display: flex;
-    height: 70vh;
-    width: 200px;
-    border: 1px solid white;
-    color: white;
-}
-
-.colunaCentral {
-    display: flex;
-    height: 70vh;
-    width: 500px;
-    border: 1px solid white;
-    justify-content: center;
-    margin: 10px;
-    padding: 5px;
-    
-}
-
-.colunaDireita {
-    display: flex;
-    height: 70vh;
-    width: 200px;
-    border: 1px solid white;
-    color: white;
-}
-#botaoPublicar {
-    width: 100px;
+.userIcon {
     height: 50px;
+    width: 50px;
+    background-color: white;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.userName {
+    letter-spacing: 1px;
+}
+
+.post-communityIcon {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: white;
+    object-fit: cover;
+}
+
+.post-communityIcon:hover {
+    transition: 0.4s;
+    height: 45px;
+    width: 45px;
+    border: 1px solid white;
+}
+
+.postContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.postText {
+    color: white;
+    text-align: justify;
+}
+
+.postImage {
+    height: 40vh;
+    width: 100%;
+    background-color: white;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.postNumbers {
+    font-size: 13px;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: baseline;
+    width: 100%;
+    gap: 20px;
+}
+
+.postButtons {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.postLikes-hidden {
+    background: none;
+    border: none;
+}
+
+.interactionButtons-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+}
+
+.interactionButtons-container img {
+    height: 30px;
+    filter: grayscale(100%) brightness(200%);
+}
+
+.interactionButtons-container img:hover {
+    transition: 0.7s;
+    filter: none;
+} 
+
+.interactionButtons-container img:not(:hover) {
+    transition: 0.7s;
+}
+
+.reportButton {
+    height: 25px;
+    cursor: pointer;
+}
+
+.reportButton:hover {
+    transition: 0.7s;
+    filter: grayscale(100%) brightness(200%);
+}
+
+
+
+
+
+.modal-dialog {
+    display: flex;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #232B58;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    border: 1px solid #E5ABFF;
+    box-shadow: #D169FF 0px 0px 6px;
+    border-radius: 8px;
+}
+
+.commentsHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    text-align: center;
+}
+
+.userIcon-post {
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    background-color: white;
+    object-fit: cover;
+}
+
+.userIcon-post:hover {
+    border: 1px solid #00F0FF;
+    box-shadow: #00F0FF 0px 0px 6px;
+}
+
+.modal-title {
+    margin-top: 10px;
+    letter-spacing: 1px;
+}
+
+.modal-title span {
+    color: #00F0FF;
+}
+
+.closeButton {
+    font-family: Play;
+    height: 40px;
+    width: 40px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.closeButton:hover {
+    transition: 0.6s;
+    color: #00F0FF;
+}
+
+.commentsList {
+    background-color: #111738;
+    width: 95%;
+    height: 50vh;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    overflow: auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.comment-container {
+    background-color: #414A77;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+    align-items: baseline;
+    width: 95%;
+    border-radius: 6px;
+    gap: 10px;
+}
+
+.commentHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.commentUser {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    gap: 15px;
+    border-radius: 20px;
+}
+
+.commentUser:hover {
+    transition: 0.6s;
+    padding: 0px 30px 0px 0px;
+    background-color: #5965a0;
+    .userName-comment {
+        color: #00F0FF; 
+    } 
+}
+
+.userIcon-comment {
+    height: 40px;
+    width: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+    background-color: white;
+
+}
+.userName-comment {
+    color: #ffffff;
+}
+
+.commentDateTime {
+    color: rgb(178, 178, 178);
+    font-size: 12px;
+    font-style: italic;
+}
+
+.commentContent {
+    text-align: justify;
+}
+
+.userComment-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    padding-inline: 10px;
+    gap: 10px;
+}
+
+.userComment-text {
+    border: none;
+    border-radius: 6px;
+    padding-block: 5px;
+    padding-inline: 8px;
+    width: 100%;
+    height: 10vh;
+    font-family: Arial;
+    letter-spacing: 1px;
+    font-size: 14px;
+    color: #E3A5FF;
+    background-color: #111738;
+    resize: none;
+    border: 2px solid #111738;
+    text-align: justify;
+}
+
+.userComment-input:focus {
+    outline: none;
+}
+
+.sendComment-button {
+    font-family: PlayMeGames;
+    padding-inline: 40px;
+    padding-block: 5px;
+    border: none;
+    background-color: #000000;
+    border-radius: 6px;
+    color: #E5ABFF;
+    letter-spacing: 1px;
+}
+
+.sendComment-button:hover {
+    transition: 0.6s;
+    background-color: #AFD3FF;
+    color: black;
+}
+
+.sendComment-button:not(:hover) {
+    transition: 0.6s;
 }
