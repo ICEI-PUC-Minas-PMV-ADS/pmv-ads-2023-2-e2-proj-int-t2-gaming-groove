@@ -392,6 +392,11 @@ a {
     align-items: center;
 }
 
+.postLikes-hidden {
+    background: none;
+    border: none;
+}
+
 .interactionButtons-container {
     width: 100%;
     display: flex;

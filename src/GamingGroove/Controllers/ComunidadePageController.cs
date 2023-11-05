@@ -150,6 +150,35 @@ namespace GamingGroove.Controllers
 
             await _context.SaveChangesAsync();
             return RedirectToAction("Index", "ComunidadeHomePage");           
-        }        
+        }    
+
+        public async Task<IActionResult> CurtirPublicacao(int? IdUsuario, int IdPublicacao)
+        {
+            IdUsuario = HttpContext.Session.GetInt32("UsuarioId");
+
+            var existingCurtida = await _context.Curtidas
+                .FirstOrDefaultAsync(c => c.usuarioId == IdUsuario && c.publicacaoId == IdPublicacao);
+
+            if (existingCurtida == null)
+            {
+                CurtidaModel curtidaModel = new ()
+                {
+                    usuarioId = (int)IdUsuario,
+                    publicacaoId = IdPublicacao,
+                    dataCurtida = DateTime.Now
+                };
+
+                if (ModelState.IsValid)
+                {
+                    _context.Add(curtidaModel);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction("Index", new { community = TempData["CommunityValue"] });
+                }
+            }
+            _context.Curtidas.Remove(existingCurtida);     
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index", new { community = TempData["CommunityValue"] });     
+        }            
     }
 }    

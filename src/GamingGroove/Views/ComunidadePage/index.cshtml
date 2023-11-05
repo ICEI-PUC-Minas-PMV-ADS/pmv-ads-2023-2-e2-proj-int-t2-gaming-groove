@@ -147,7 +147,10 @@
 					</div>
 					<div class="postButtons">
 						<div class="interactionButtons-container">
-							<img class="postLikes-button" src="~/images/icons/like-icon.svg" alt="">
+							<form asp-action="CurtirPublicacao">		
+								<input type="hidden" name="IdPublicacao" value="@item.publicacaoId" />
+								<button class="postLikes-hidden" type="submit"><img class="postLikes-button" src="~/images/icons/like-icon.svg" alt=""></button>
+							</form>			
 							<img type="button" class="postComments-button" data-bs-toggle="modal" data-bs-target="#publicacaoModal-@item.publicacaoId" src="~/images/icons/comment-icon.svg" alt="">			
 						</div>
 						<img class="reportButton" src="~/images/icons/report-icon.svg" alt="">
@@ -274,7 +277,7 @@
         <div class="modal-dialog">
             <div class="modal-content post" id="postModal-content">
                 <div class="commentsHeader">
-                    <div class="modal-title" id="deleteModalLabel">Todos os dados referentes a está comunidade serão perdidos e não poderão ser recuperados.<br>Deseja realmente apagar a comunidade <span>@Model.getComunidade.nomeComunidade</span>?
+                    <div class="modal-title" id="deleteModalLabel">Todos os dados referentes a esta comunidade serão perdidos e não poderão ser recuperados.<br>Deseja realmente apagar a comunidade <span>@Model.getComunidade.nomeComunidade</span>?
 					</div>
                     <button type="button" class="closeButton" data-bs-dismiss="modal" aria-label="Fechar">X</button>
                 </div>
