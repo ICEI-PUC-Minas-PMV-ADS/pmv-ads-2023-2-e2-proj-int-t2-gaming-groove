@@ -90,7 +90,7 @@ namespace GamingGroove.Controllers
             }
 
             return RedirectToAction("Index", new { community = TempData["CommunityValue"] });
-        }
+        }  
 
         public async Task<IActionResult> IngressarComunidade(int? IdUsuario, int IdComunidade)
         {
