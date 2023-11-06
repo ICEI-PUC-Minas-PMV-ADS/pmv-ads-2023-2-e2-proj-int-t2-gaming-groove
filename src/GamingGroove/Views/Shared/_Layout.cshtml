@@ -130,18 +130,18 @@
     });
 
     const friendsListItems = document.querySelectorAll(".friendsList-items");
-const friendsListInput = document.getElementById("friendsList-input");
+    const friendsListInput = document.getElementById("friendsList-input");
 
-friendsListInput.addEventListener("input", () => {
-    const searchValue = friendsListInput.value.toLowerCase();
+    friendsListInput.addEventListener("input", () => {
+        const searchValue = friendsListInput.value.toLowerCase();
 
-    friendsListItems.forEach(item => {
-        const username = item.getAttribute("data-username").toLowerCase();
-        if (username.includes(searchValue)) {
-            item.style.display = "flex"; // Mostra o elemento
-        } else {
-            item.style.display = "none"; // Oculta o elemento
-        }
+        friendsListItems.forEach(item => {
+            const username = item.getAttribute("data-username").toLowerCase();
+            if (username.includes(searchValue)) {
+                item.style.display = "flex";
+            } else {
+                item.style.display = "none";
+            }
+        });
     });
-});
 </script>
