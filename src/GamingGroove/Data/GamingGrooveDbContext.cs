@@ -29,38 +29,32 @@ namespace GamingGroove.Data
             modelBuilder.Entity<AmizadeModel>()
                 .HasOne(a => a.solicitante)
                 .WithMany(u => u.solicitanteAmizade)
-                .HasForeignKey(a => a.solicitanteId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .HasForeignKey(a => a.solicitanteId);
 
             modelBuilder.Entity<AmizadeModel>()
                 .HasOne(a => a.receptor)
                 .WithMany(u => u.receptorAmizade)
-                .HasForeignKey(a => a.receptorId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .HasForeignKey(a => a.receptorId);
 
             modelBuilder.Entity<CurtidaModel>()
                 .HasOne(a => a.usuario)
                 .WithMany(u => u.usuarioCurtida)
-                .HasForeignKey(a => a.usuarioId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .HasForeignKey(a => a.usuarioId);
 
             modelBuilder.Entity<CurtidaModel>()
                 .HasOne(a => a.publicacao)
                 .WithMany(u => u.publicacaoCurtida)
-                .HasForeignKey(a => a.publicacaoId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .HasForeignKey(a => a.publicacaoId);
 
             modelBuilder.Entity<DenunciaModel>()
                 .HasOne(a => a.denunciante)
                 .WithMany(u => u.denuncianteDenuncia)
-                .HasForeignKey(a => a.denuncianteId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .HasForeignKey(a => a.denuncianteId);
 
             modelBuilder.Entity<DenunciaModel>()
                 .HasOne(a => a.denunciado)
                 .WithMany(u => u.denunciadoDenuncia)
-                .HasForeignKey(a => a.denunciadoId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .HasForeignKey(a => a.denunciadoId);
 
 
             modelBuilder.Entity<UsuarioComunidadeModel>()
