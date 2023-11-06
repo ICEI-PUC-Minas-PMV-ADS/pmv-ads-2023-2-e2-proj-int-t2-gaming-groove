@@ -19,10 +19,11 @@ namespace GamingGroove
 
         public IActionResult Index()
         {
-            int? usuarioLogado = HttpContext.Session.GetInt32("UsuarioId");
-
+            var IdUsuarioLogado = HttpContext.Session.GetInt32("UsuarioId");
             var viewModel = new ViewModel(_context);
-            viewModel.OnGetFeedPage(usuarioLogado);
+
+            viewModel.OnGetListaDeAmigos(IdUsuarioLogado);
+            viewModel.OnGetFeedPage(IdUsuarioLogado);
             if (viewModel == null)
             {
                 return NotFound();

@@ -18,9 +18,11 @@ namespace GamingGroove.Views.Shared
         }
 
         public UsuarioModel getUsuario { get; set; }
+        public UsuarioModel getUsuarioAmizade { get; set; }
         public UsuarioModel getUsuarioPublicacao { get; set; }
         public UsuarioModel getUsuarioComentario { get; set; }
         public IEnumerable<UsuarioModel> getTodosUsuarios { get; set; }
+        public IEnumerable<UsuarioModel> getTodosUsuariosAmigos { get; set; }
         public int? IdUsuarioLogado { get; set; }
 
 
@@ -49,8 +51,26 @@ namespace GamingGroove.Views.Shared
         public IEnumerable<ComentarioModel> getComentariosPublicacao { get; set; }
 
         public IEnumerable<AmizadeModel> getTodasAmizades { get; set; }
+        public IEnumerable<AmizadeModel> getAmizadesUsuario { get; set; }
         public AmizadeModel amizadeExistente { get; set; }
         
+        
+
+        public void OnGetListaDeAmigos(int? usuarioLogado)
+        {
+            getTodasAmizades = _cc.Amizades.ToList();
+
+            IdUsuarioLogado = usuarioLogado;
+
+            getAmizadesUsuario = _cc.Amizades
+                .Where(uc => uc.solicitanteId == IdUsuarioLogado || uc.receptorId == IdUsuarioLogado)
+                .ToList(); 
+                    
+            var amizadeUserIds = getAmizadesUsuario.SelectMany(amizade => new[] { amizade.solicitanteId, amizade.receptorId }).Distinct();
+
+            getTodosUsuariosAmigos = _cc.Usuarios.Where(usuario => amizadeUserIds.Contains(usuario.usuarioId)).ToList();
+
+        }
 
         //PerfilPage
         public void OnGetPerfilPage(string user, int? usuarioLogado)
@@ -72,12 +92,6 @@ namespace GamingGroove.Views.Shared
                     .Where(uc => uc.usuarioId == getUsuario.usuarioId)
                     .Include(uc => uc.comunidade)
                     .ToList();
-
-            amizadeExistente = _cc.Amizades
-                .Where(a => 
-                    (a.solicitante.usuarioId == getUsuario.usuarioId && a.receptor.usuarioId == IdUsuarioLogado) ||
-                    (a.solicitante.usuarioId == IdUsuarioLogado && a.receptor.usuarioId == getUsuario.usuarioId))
-                .FirstOrDefault();                
             }
         }
      
@@ -168,7 +182,7 @@ namespace GamingGroove.Views.Shared
         }
 
         // ExplorarPage
-        public void OnGetExplorarPage(int usuario)
+        public void OnGetExplorarPage(int? usuario)
         {                      
             getTodosUsuarios = _cc.Usuarios.ToList();
 
@@ -189,7 +203,7 @@ namespace GamingGroove.Views.Shared
     
 
         // EquipePage
-        public void OnGetEquipePage(int usuario)
+        public void OnGetEquipePage(int? usuario)
         {
             getEquipes = _cc.Equipes.ToList();
             

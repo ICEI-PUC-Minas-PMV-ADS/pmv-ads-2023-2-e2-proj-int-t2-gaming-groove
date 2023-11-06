@@ -55,6 +55,48 @@
         @RenderBody()
     </main>
 
+    <footer class="friendsList-container">
+        <div class="friendsListButton" id="friendsListButton"><img class="friendsListButton-icon" id="friendsListButtonIcon" src="~/images/icons/friendsList-icon.svg" alt=""><div id="friendsListButtonTitle">Lista de Amigos</div></div>
+        <div class="friendsListItems-container"></div>
+        <div class="friendsList" id="friendsList">
+            <form class="friendsList-form" role="search">
+                <input id="friendsList-input" class="friendsList-input" type="search" placeholder="Buscar" aria-label="Search">
+            </form>
+            <div class="friendsListItems">
+
+                @if(Model.getAmizadesUsuario != null)
+                {
+
+                    @foreach(var amizade in Model.getTodosUsuariosAmigos)
+                    {  
+                        @if(amizade.nomeUsuario == User.Identity.Name){
+
+                        }
+                        else
+                        {   
+                            
+                            <a href="~/PerfilPage/@amizade.nomeUsuario"><div class="friendsList-items" data-username="@amizade.nomeUsuario" id="friendsList-items">
+                                @if(amizade.iconePerfil != null)
+                                {
+                                    <img class="friendIcon" id="friendIcon" src="data:image/png;base64,@Convert.ToBase64String(amizade.iconePerfil)" alt="">
+                                }
+                                else
+                                {
+                                    <img class="friendIcon" id="friendIcon" src="~/images/icons/empty-icon.png" alt="">
+                                }
+                                
+                                <div class="friendUsername" id="friendUsername">@amizade.nomeUsuario</div>
+                            </div></a>
+                            <div class="divLine"></div>
+                        }
+                    }
+                }
+                else {
+                    <div>Você ainda não adicionou nenhum amigo :(</div>
+                }
+            </div>
+        </div>
+    </footer>
 
     <script src="~/js/Menu.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
@@ -65,3 +107,41 @@
 </html>
 
 
+<script>
+    const friendsListButton = document.getElementById("friendsListButton");
+    const friendsList = document.getElementById("friendsList");
+    const friendsListButtonTitle = document.getElementById("friendsListButtonTitle");
+    const friendsListButtonIcon = document.getElementById("friendsListButtonIcon");
+
+    friendsListButton.addEventListener("click", () => {
+    if (friendsList.style.display === "flex") {
+        friendsList.style.display = "none";
+        friendsListButton.style.backgroundColor = "#222B58";
+        friendsListButtonTitle.style.color = "white";
+        friendsListButtonTitle.style.fontWeight = "normal";
+        friendsListButtonIcon.style.filter = "none"
+    } else {
+        friendsList.style.display = "flex";
+        friendsListButton.style.backgroundColor = "#E3A5FF";
+        friendsListButtonTitle.style.color = "black";
+        friendsListButtonTitle.style.fontWeight = "bold";
+        friendsListButtonIcon.style.filter = "brightness(0%)"
+    }
+    });
+
+    const friendsListItems = document.querySelectorAll(".friendsList-items");
+const friendsListInput = document.getElementById("friendsList-input");
+
+friendsListInput.addEventListener("input", () => {
+    const searchValue = friendsListInput.value.toLowerCase();
+
+    friendsListItems.forEach(item => {
+        const username = item.getAttribute("data-username").toLowerCase();
+        if (username.includes(searchValue)) {
+            item.style.display = "flex"; // Mostra o elemento
+        } else {
+            item.style.display = "none"; // Oculta o elemento
+        }
+    });
+});
+</script>

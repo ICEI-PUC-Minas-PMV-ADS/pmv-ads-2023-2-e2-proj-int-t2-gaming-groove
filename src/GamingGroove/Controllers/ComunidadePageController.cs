@@ -17,8 +17,6 @@ namespace GamingGroove.Controllers
             _context = context;
         }
 
-        public int IdUsuarioLogado { get; set; }
-
         public IActionResult Index(string community)
         {
             {
@@ -30,13 +28,10 @@ namespace GamingGroove.Controllers
                     return NotFound();
                 }
 
-                var usuarioId = HttpContext.Session.GetInt32("UsuarioId");
+                var IdUsuarioLogado = HttpContext.Session.GetInt32("UsuarioId");
                 
-                if (usuarioId.HasValue)
-                {
-                    IdUsuarioLogado = usuarioId.Value;
-                }
 
+                viewModel.OnGetListaDeAmigos(IdUsuarioLogado);
                 viewModel.OnGetComunidadePages(community, IdUsuarioLogado);
 
                 TempData["CommunityValue"] = community;
