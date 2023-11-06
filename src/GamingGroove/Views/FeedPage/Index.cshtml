@@ -52,7 +52,7 @@
 			{
 				<div class="noPosts">Você ainda não tem publicações para ver aqui :(</div>
 			}
-			@foreach(var item in Model.getFeedPublicacoes.Reverse().Take(50))
+			@foreach(var item in Model.getFeedPublicacoes.OrderByDescending(p => p.dataPublicacao).Take(50))
 			{
 				Model.getUsuarioPublicacao = Model.getTodosUsuarios.FirstOrDefault(up => up.usuarioId == item.usuarioId);
 				Model.getComunidadePublicacao = Model.getTodasComunidades.FirstOrDefault(cp => cp.comunidadeId == item.comunidadeId);

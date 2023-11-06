@@ -70,7 +70,6 @@ namespace GamingGroove.Data
                 .WithMany(c => c.usuarioComunidade)
                 .HasForeignKey(pc => pc.comunidadeId);                
 
-
             modelBuilder.Entity<UsuarioEquipeModel>()
                 .HasKey(pc => new { pc.usuarioId, pc.equipeId });
 
@@ -83,7 +82,6 @@ namespace GamingGroove.Data
                 .HasOne(pc => pc.equipe)
                 .WithMany(c => c.usuarioEquipe)
                 .HasForeignKey(pc => pc.equipeId);                   
-        }
-        
+        }        
     }
 }
