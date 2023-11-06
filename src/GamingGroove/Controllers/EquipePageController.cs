@@ -16,8 +16,10 @@ namespace GamingGroove.Controllers
         public IActionResult Index()
         {
             var viewModel = new ViewModel(_cc);
-            int usuario = int.Parse(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
-            viewModel.OnGetEquipePage(usuario);
+            var IdUsuarioLogado = HttpContext.Session.GetInt32("UsuarioId");
+
+            viewModel.OnGetListaDeAmigos(IdUsuarioLogado);
+            viewModel.OnGetEquipePage(IdUsuarioLogado);
             if (viewModel == null)
             {
                 return NotFound();

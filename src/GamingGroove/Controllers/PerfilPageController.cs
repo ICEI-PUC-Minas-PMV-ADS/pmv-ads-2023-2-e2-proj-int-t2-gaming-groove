@@ -18,6 +18,7 @@ namespace GamingGroove.Controllers
         }
 
         public int IdUsuarioLogado { get; set; }
+        
         public IActionResult Index(string user)
         {
             var viewModel = new ViewModel(_context);
@@ -29,7 +30,9 @@ namespace GamingGroove.Controllers
                 IdUsuarioLogado = usuarioId.Value;
             }
 
+            viewModel.OnGetListaDeAmigos(IdUsuarioLogado);
             viewModel.OnGetPerfilPage(user, IdUsuarioLogado);
+            
             if (viewModel == null)
             {
                 return NotFound();

@@ -14,8 +14,6 @@ namespace GamingGroove.Controllers
             _context = context;
         }
 
-
-
         public IActionResult Index(string community)
         {
             {
@@ -27,14 +25,15 @@ namespace GamingGroove.Controllers
                     return NotFound();
                 }
 
-                var usuarioId = HttpContext.Session.GetInt32("UsuarioId");
-                viewModel.OnGetComunidadePages(community, usuarioId);
+                var IdUsuario = HttpContext.Session.GetInt32("UsuarioId");
+
+                viewModel.OnGetListaDeAmigos(IdUsuario);
+                viewModel.OnGetComunidadePages(community, IdUsuario);
                 
 
                 return View(viewModel);
             }
-        }
-        
+        }   
 
         public IActionResult Create()
         {
