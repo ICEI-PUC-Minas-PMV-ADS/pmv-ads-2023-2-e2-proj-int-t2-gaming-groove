@@ -195,7 +195,7 @@ header {
 
 ::-webkit-scrollbar {
     width: 10px;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -219,16 +219,12 @@ header {
     bottom: 0;
     right: 0;
     margin-right: 20px;
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
-    overflow: hidden;
     font-family: Play;
 }
 
 .friendsListButton {
-    background-color: #222B58;
+    background-color: #110B31;
     width: 100%;
-    color: white; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -236,6 +232,9 @@ header {
     gap: 20px;
     letter-spacing: 1px;
     cursor: pointer;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border: 2px solid #E3A5FF;
 }
 
 .friendsListButton-icon {
@@ -246,13 +245,14 @@ header {
     display: none;
     height: 60vh;
     width: 100%;
-    background-color: #222B58;
+    background-color: #110B31;
     flex-direction: column;
     justify-content: baseline;
     align-items: baseline;
     padding: 8px;
-    border-left: 2px solid #7383C5;
-    border-right: 2px solid #7383C5;
+    border-left: 1px solid #E3A5FF;
+    border-right: 1px solid #E3A5FF;
+    border-bottom: 1px solid #E3A5FF;
 }
 
 .friendsListItems {
@@ -278,7 +278,7 @@ header {
     height: 25px;
     width: 90%;
     background-color: black;
-    border: 1px solid #00F0FF;
+    outline: 2px solid #00F0FF;
     padding-left: 18px;
     padding-block: 12px;
 }
@@ -319,7 +319,6 @@ header {
 
 .friendsList-items:hover {
     transition: 1s;
-    background-color: #7383C5;
     .friendIcon {
         border: 1px solid #00F0FF;
         box-shadow: #00F0FF 0px 0px 4px;

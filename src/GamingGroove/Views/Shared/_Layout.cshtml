@@ -69,18 +69,11 @@
 
                     @foreach(var amizade in Model.getTodosUsuariosAmigos)
                     {  
-                        @if(amizade.nomeUsuario == User.Identity.Name){
-
-                        }
+                        @if(amizade.nomeUsuario == User.Identity.Name){}
                         else
-                        { 
-                              var background = "#c6c6c6;";
+                        {   
                             
-                            @if (amizade.capaPerfil != null)
-                            {
-                                background = "url('data:image/png;base64," + Convert.ToBase64String(amizade.capaPerfil) + "') no-repeat center center / cover";
-                            }
-                            <a href="~/PerfilPage/@amizade.nomeUsuario"><div class="friendsList-items" data-username="@amizade.nomeUsuario" id="friendsList-items" style="background: @background">
+                            <a href="~/PerfilPage/@amizade.nomeUsuario"><div class="friendsList-items" data-username="@amizade.nomeUsuario" id="friendsList-items">
                                 @if(amizade.iconePerfil != null)
                                 {
                                     <img class="friendIcon" id="friendIcon" src="data:image/png;base64,@Convert.ToBase64String(amizade.iconePerfil)" alt="">
@@ -121,7 +114,7 @@
     friendsListButton.addEventListener("click", () => {
     if (friendsList.style.display === "flex") {
         friendsList.style.display = "none";
-        friendsListButton.style.backgroundColor = "#222B58";
+        friendsListButton.style.backgroundColor = "#110B31";
         friendsListButtonTitle.style.color = "white";
         friendsListButtonTitle.style.fontWeight = "normal";
         friendsListButtonIcon.style.filter = "none"
