@@ -33,7 +33,7 @@ namespace GamingGroove
             );
             #else
             builder.Services.AddDbContext<GamingGrooveDbContext>(
-                options => options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
+                options => options.UseMySql(builder.Configuration.GetConnectionString("AzureConnection"),
                 new MySqlServerVersion(new Version(8, 0, 34))) 
             );
             #endif
