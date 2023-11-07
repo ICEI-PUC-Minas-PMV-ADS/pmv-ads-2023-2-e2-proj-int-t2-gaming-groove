@@ -309,12 +309,12 @@ header {
     flex-direction: row;
     align-items: center;
     justify-content: baseline;
-    padding-left: 15px;
+    padding-left: 10px;
     gap: 15px;
     width: 220px;
     padding-block: 8px;
     border-radius: 4px;
-    margin-left: 10px;
+    margin-left: 6px;
 }
 
 .friendsList-items:hover {
@@ -344,8 +344,8 @@ header {
 }
 
 .friendIcon {
-    height: 40px;
-    width: 40px;
+    height: 50px;
+    width: 50px;
     object-fit: cover;
     border-radius: 4px;
     background-color: white;
