@@ -26,16 +26,16 @@ Os resultados dos testes de usabilidade estão sendo registrados por meio das ta
 **Parâmetro 003 – Editar perfil**
 | **Usuário** 	| **Avaliação** | 
 | --- 	| --- |
-| Amanda Oliveira	| |
-| Thiago Nunes     | |
-| Roberto Tanaka    	| | 
+| Amanda Oliveira	| Muito Fácil |
+| Thiago Nunes     | Muito Fácil |
+| Roberto Tanaka    	| Fácil  | 
 
 **Parâmetro 004 – Adicionar e remover amigos**
 | **Usuário** 	| **Avaliação** | 
 | --- 	| --- |
-| Amanda Oliveira	| |
-| Thiago Nunes     | |
-| Roberto Tanaka    	| | 
+| Amanda Oliveira	| Muito Fácil |
+| Thiago Nunes     |  Fácil |
+| Roberto Tanaka    	| Fácil | 
 
 **Parâmetro 005 – Utilizar o sistema de chat**
 | **Usuário** 	| **Avaliação** | 
@@ -47,16 +47,16 @@ Os resultados dos testes de usabilidade estão sendo registrados por meio das ta
 **Parâmetro 006 – Criar uma nova comunidade**
 | **Usuário** 	| **Avaliação** | 
 | --- 	| --- |
-| Amanda Oliveira	| |
-| Thiago Nunes     | |
-| Roberto Tanaka    	| | 
+| Amanda Oliveira	| Muito Fácil  |
+| Thiago Nunes     | Muito Fácil  |
+| Roberto Tanaka    	| Fácil | 
 
 **Parâmetro 007 – Ingressar na comunidade e interagir com publicações**
 | **Usuário** 	| **Avaliação** | 
 | --- 	| --- |
-| Amanda Oliveira	| |
-| Thiago Nunes     | |
-| Roberto Tanaka    	| | 
+| Amanda Oliveira	| Fácil  |
+| Thiago Nunes     | Muito Fácil |
+| Roberto Tanaka    	| Fácil | 
 
 **Parâmetro 008 – Criar e ingressar equipes**
 | **Usuário** 	| **Avaliação** | 
@@ -82,9 +82,9 @@ Os resultados dos testes de usabilidade estão sendo registrados por meio das ta
 **Parâmetro 011 – Navegar no menu explorar**
 | **Usuário** 	| **Avaliação** | 
 | --- 	| --- |
-| Amanda Oliveira	| |
-| Thiago Nunes     | |
-| Roberto Tanaka    	| | 
+| Amanda Oliveira	|Fácil|
+| Thiago Nunes     |Fácil |
+| Roberto Tanaka    	| Fácil | 
 
 **Parâmetro 012 – Denunciar usuários, comunidades e publicações**
 | **Usuário** 	| **Avaliação** | 
