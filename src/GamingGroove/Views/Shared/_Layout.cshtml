@@ -69,9 +69,7 @@
 
                     @foreach(var amizade in Model.getTodosUsuariosAmigos)
                     {  
-                        @if(amizade.nomeUsuario == User.Identity.Name){
-
-                        }
+                        @if(amizade.nomeUsuario == User.Identity.Name){}
                         else
                         {   
                             
@@ -116,7 +114,7 @@
     friendsListButton.addEventListener("click", () => {
     if (friendsList.style.display === "flex") {
         friendsList.style.display = "none";
-        friendsListButton.style.backgroundColor = "#222B58";
+        friendsListButton.style.backgroundColor = "#110B31";
         friendsListButtonTitle.style.color = "white";
         friendsListButtonTitle.style.fontWeight = "normal";
         friendsListButtonIcon.style.filter = "none"

@@ -2,6 +2,9 @@ using System.ComponentModel.DataAnnotations;
 
 public enum JogosEnum 
 {
+    [Display(Name = "Nenhum")]
+    Nenhum,
+    
     [Display(Name = "League of Legends")]
     LeagueOfLegends,
     

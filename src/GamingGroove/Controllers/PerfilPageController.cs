@@ -204,5 +204,49 @@ namespace GamingGroove.Controllers
             
             return RedirectToAction("Index", "PerfilPage", new { user = TempData["UserValue"] });
         }
+
+        public async Task<IActionResult> EditarPerfil(int? IdUsuario, string NomeUsuario, string NomeCompleto, DateTime DataNascimento, string Email,
+        string Senha, JogosEnum PrimeiroJogo, JogosEnum SegundoJogo, JogosEnum TerceiroJogo, string Biografia, IFormFile IconePerfilArquivo, IFormFile CapaPerfilArquivo)
+        {
+            IdUsuario = HttpContext.Session.GetInt32("UsuarioId");
+
+            var existingUser = await _context.Usuarios.FindAsync(IdUsuario);
+
+            if(existingUser != null)
+            {
+                existingUser.nomeUsuario = NomeUsuario;
+                existingUser.nomeCompleto = NomeCompleto;
+                existingUser.dataNascimento = DataNascimento;
+                existingUser.email = Email;
+                existingUser.senha = Senha;
+                existingUser.primeiroJogo = PrimeiroJogo;
+                existingUser.segundoJogo = SegundoJogo;
+                existingUser.terceiroJogo = TerceiroJogo;
+                existingUser.biografia = Biografia;
+
+                if (IconePerfilArquivo != null && IconePerfilArquivo.Length > 0)
+                {
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        await IconePerfilArquivo.CopyToAsync(memoryStream);
+                        existingUser.iconePerfil = memoryStream.ToArray();
+                    }
+                }
+
+                if (CapaPerfilArquivo != null && CapaPerfilArquivo.Length > 0)
+                {
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        await CapaPerfilArquivo.CopyToAsync(memoryStream);
+                        existingUser.capaPerfil = memoryStream.ToArray();
+                    }
+                }
+
+                 _context.Entry(existingUser).State = EntityState.Modified;
+                await _context.SaveChangesAsync();
+            }
+            
+            return RedirectToAction("Index", "PerfilPage", new { user = existingUser.nomeUsuario });
+        }
     }
 }
