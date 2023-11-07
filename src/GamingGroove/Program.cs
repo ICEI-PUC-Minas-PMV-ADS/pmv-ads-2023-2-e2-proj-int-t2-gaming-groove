@@ -28,7 +28,7 @@ namespace GamingGroove
 
             #if DEBUG
             builder.Services.AddDbContext<GamingGrooveDbContext>(
-                options => options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnectionLocal"),
+                options => options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
                 new MySqlServerVersion(new Version(8, 0, 34))) 
             );
             #else

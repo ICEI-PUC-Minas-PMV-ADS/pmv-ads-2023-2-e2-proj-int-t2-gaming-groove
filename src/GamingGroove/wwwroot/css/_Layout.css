@@ -356,3 +356,20 @@ header {
     width: 100%;
     background: linear-gradient(to right, #222B58,#E3A5FF,#222B58);
 }
+
+.friendsRequest-container {
+    color: rgb(0, 0, 0);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    margin-left: 20px;
+    font-family: Play;
+}
+
+.friendsRequest-button {
+    color: black;
+}
