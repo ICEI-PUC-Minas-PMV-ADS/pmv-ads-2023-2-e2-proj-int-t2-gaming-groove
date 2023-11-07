@@ -94,6 +94,10 @@ namespace GamingGroove.Controllers
         {
             if (ModelState.IsValid)
             {
+                usuarioModel.primeiroJogo = JogosEnum.Nenhum;
+                usuarioModel.segundoJogo = JogosEnum.Nenhum;
+                usuarioModel.terceiroJogo = JogosEnum.Nenhum;
+
                 usuarioModel.senha = BCrypt.Net.BCrypt.HashPassword(usuarioModel.senha);                       
                 _context.Add(usuarioModel);
                 await _context.SaveChangesAsync();

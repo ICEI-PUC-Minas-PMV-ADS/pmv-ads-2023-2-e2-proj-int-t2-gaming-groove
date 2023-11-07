@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using GamingGroove.Data;
 using GamingGroove.Models;
 using GamingGroove.Views.Shared;
+using Google.Protobuf.WellKnownTypes;
+using Microsoft.EntityFrameworkCore;
 
 namespace GamingGroove.Controllers
 {
@@ -77,6 +79,7 @@ namespace GamingGroove.Controllers
         {
             IdUsuario = HttpContext.Session.GetInt32("UsuarioId");
 
+
             ComunidadeModel comunidadeModel = new ()
             {
                 nomeComunidade = NomeComunidade,
@@ -86,6 +89,14 @@ namespace GamingGroove.Controllers
                 descricaoComunidade = DescricaoComunidade,
                 dataCriacaoComunidade = DateTime.Now
             };
+
+            var existingComunidade = await _context.Comunidades.FirstOrDefaultAsync(c => c.nomeComunidade == comunidadeModel.nomeComunidade);
+
+            if(existingComunidade != null)
+            {
+                TempData["ErrorMessage"] = "O nome de usuario fornecido ja existe. Escolha outro e tente novamente.";
+                return RedirectToAction("Index", comunidadeModel);
+            }
 
 
             if (ModelState.IsValid)
@@ -142,11 +153,11 @@ namespace GamingGroove.Controllers
             }
             else
             {
-                TempData["ErrorMessage"] = "*Preencha todos os campos adequadamente.";
+                TempData["ErrorMessage"] = "Todos os campos sao obrigatorios. Tente novamente.";
             }
 
 
-            return View("Create");
+            return RedirectToAction("Index", comunidadeModel);
         }        
     }
 }    

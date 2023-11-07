@@ -18,6 +18,7 @@ namespace GamingGroove.Views.Shared
         }
 
         public UsuarioModel getUsuario { get; set; }
+        public UsuarioModel getEditUsuario { get; set; }
         public UsuarioModel getUsuarioAmizade { get; set; }
         public UsuarioModel getUsuarioPublicacao { get; set; }
         public UsuarioModel getUsuarioComentario { get; set; }
@@ -93,6 +94,12 @@ namespace GamingGroove.Views.Shared
                     .Include(uc => uc.comunidade)
                     .ToList();
             }
+
+            amizadeExistente = _cc.Amizades
+                .Where(a => 
+                    (a.solicitante.usuarioId == getUsuario.usuarioId && a.receptor.usuarioId == IdUsuarioLogado) ||
+                    (a.solicitante.usuarioId == IdUsuarioLogado && a.receptor.usuarioId == getUsuario.usuarioId))
+                .FirstOrDefault();     
         }
      
         public void OnGetFeedPage(int? usuarioLogado)

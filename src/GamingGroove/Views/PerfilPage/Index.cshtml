@@ -60,7 +60,7 @@
         <div class="cover-second-container">
             @if(User.Identity.Name == Model.getUsuario.nomeUsuario)
             {
-                <a asp-action="Edit" asp-route-id="@Model.getUsuario.usuarioId"><button class="profileButton"><img class="edit-profile-icon" src="~/images/icons/edit-icon.svg" alt=""></button></a>
+                <button type="button" class="profileButton" data-bs-toggle="modal" data-bs-target="#deleteCommunity-modal"><img class="edit-profile-icon" src="~/images/icons/edit-icon.svg" alt=""></button>
             }    
             else
             {
@@ -175,6 +175,75 @@
                 </div>      
         </div>
     </div>
+</div>
+
+<div class="modal fade" id="deleteCommunity-modal" tabindex="-1" aria-labelledby="usuarioModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content post" id="postModal-content">
+            <form class="main-container" asp-controller="PerfilPage" asp-action="EditarPerfil" enctype="multipart/form-data">
+                <div class="edit-container">
+                    <div class="userData-input">
+                        <input type="hidden" name="NomeUsuario" value="@Model.getUsuario.nomeUsuario"/>
+                        <input type="hidden" name="NomeCompleto" value="@Model.getUsuario.nomeCompleto" />
+                        <input type="hidden" name="DataNascimento" value="@Model.getUsuario.dataNascimento" />
+                        <input type="hidden" name="Email" value="@Model.getUsuario.email" />
+                        <input type="hidden" name="Senha" value="@Model.getUsuario.senha" />
+                    </div>
+                    <div class="editProfile-container">                    
+                        <div class="secondSection-container">
+                            <div class="favGames-container">
+                                <div class="imageInput-container">
+                                    <div>Selecione suas imagens de perfil:</div>
+                                    <div class="profileIcon-input-container">
+                                        <div class="profileImage-input">
+                                            <label class="imageInput" for="profileIcon-input"><img class="uploadIcon" src="~/images/icons/upload-icon.svg" alt="">Ícone de perfil</label>
+                                            <input id="profileIcon-input" type="file" name="IconePerfilArquivo" value="@Model.getUsuario.iconePerfil"/>
+                                        </div>                        
+                                    </div>
+                                    <div class="profileCover-input-container">
+                                        <div class="profileImage-input">
+                                            <label class="imageInput" for="profileCover-input"><img  class="uploadIcon" src="~/images/icons/upload-icon.svg" alt="">Imagem de capa</label>
+                                            <input id="profileCover-input" type="file" name="CapaPerfilArquivo" value="@Model.getUsuario.capaPerfil"/>
+                                        </div>                        
+                                    </div>
+                                </div>
+                                <div class="favGames-label-container">
+                                    <div class="favGames-label">Selecione seus três jogos favoritos:</div>
+                                    <div class="favGames-alert">@ViewBag.Message</div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <select name="PrimeiroJogo" value="@Model.getUsuario.primeiroJogo" class="form-control" asp-items="Html.GetEnumSelectList<JogosEnum>()">
+                                        <option value="@Model.getUsuario.primeiroJogo">@EnumHelper.GetDisplayName(Model.getUsuario.primeiroJogo)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select name="SegundoJogo" value="@Model.getUsuario.segundoJogo" class="form-control" asp-items="Html.GetEnumSelectList<JogosEnum>()">
+                                        <option value="@Model.getUsuario.segundoJogo">@EnumHelper.GetDisplayName(Model.getUsuario.segundoJogo)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select name="TerceiroJogo" value="@Model.getUsuario.terceiroJogo" class="form-control" asp-items="Html.GetEnumSelectList<JogosEnum>()">
+                                        <option value="@Model.getUsuario.segundoJogo">@EnumHelper.GetDisplayName(Model.getUsuario.segundoJogo)</option>
+                                    </select>
+                                </div>   
+                            </div>
+                            <div class="biographyForm">
+                                <div>Fale um pouco sobre você:</div>
+                                <div class="form-group">
+                                    <textarea type="text" name="Biografia" id="bioText-form" class="form-control bio-text" rows="10" maxlength="534">@Model.getUsuario.biografia</textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="buttons-container">
+                            <button class="submit-button" type="button" class="closeButton" data-bs-dismiss="modal" aria-label="Fechar">Cancelar</button>
+                            <button class="submit-button" type="submit">Salvar alterações</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+		</div>
+	</div>
 </div>
 
 <script src="~/js/PerfilPage.js"></script>

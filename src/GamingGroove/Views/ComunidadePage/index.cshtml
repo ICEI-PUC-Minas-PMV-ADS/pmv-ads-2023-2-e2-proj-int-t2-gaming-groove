@@ -261,38 +261,38 @@
 
 @* Modal comentários *@
 <div class="modal fade" id="createPost-modal" tabindex="-1" aria-labelledby="usuarioModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content post" id="postModal-content">
-                <div class="commentsHeader">
-                    <div class="modal-title" id="postModalLabel">Publicar em <span>@Model.getComunidade.nomeComunidade</span></div>
-                    <button type="button" class="closeButton" data-bs-dismiss="modal" aria-label="Fechar">X</button>
-                </div>
-				<form class="createPost-form" id="createPost-form" asp-action="CriarPublicacao" enctype="multipart/form-data">
-					<div class="createPost-inputs">
-						<input type="hidden" name="IdComunidade" value="@Model.getComunidade.comunidadeId" />
-						<textarea class="postText-creation" name="TextoPublicacao" placeholder="Digite o conteúdo de sua publicação"></textarea>
-						<div>Se quiser adicionar uma imagem a sua publicação,<br> escolha-a abaixo:</div>
-						<label class="postMedia-input" for="postMedia-input"><img class="uploadIcon" src="~/images/icons/upload-icon.svg" alt="">Selecionar imagem</label>
-						<input id="postMedia-input" name="midiaPublicacaoArquivo" type="file"/>
-					</div>		
-					<button type="submit" class="postButton">Publicar</button>
-				</form>
-            </div>
-        </div>
-    </div>
+	<div class="modal-dialog">
+		<div class="modal-content post" id="postModal-content">
+			<div class="commentsHeader">
+				<div class="modal-title" id="postModalLabel">Publicar em <span>@Model.getComunidade.nomeComunidade</span></div>
+				<button type="button" class="closeButton" data-bs-dismiss="modal" aria-label="Fechar">X</button>
+			</div>
+			<form class="createPost-form" id="createPost-form" asp-action="CriarPublicacao" enctype="multipart/form-data">
+				<div class="createPost-inputs">
+					<input type="hidden" name="IdComunidade" value="@Model.getComunidade.comunidadeId" />
+					<textarea class="postText-creation" name="TextoPublicacao" placeholder="Digite o conteúdo de sua publicação"></textarea>
+					<div>Se quiser adicionar uma imagem a sua publicação,<br> escolha-a abaixo:</div>
+					<label class="postMedia-input" for="postMedia-input"><img class="uploadIcon" src="~/images/icons/upload-icon.svg" alt="">Selecionar imagem</label>
+					<input id="postMedia-input" name="midiaPublicacaoArquivo" type="file"/>
+				</div>		
+				<button type="submit" class="postButton">Publicar</button>
+			</form>
+		</div>
+	</div>
+</div>
 
 <div class="modal fade" id="deleteCommunity-modal" tabindex="-1" aria-labelledby="usuarioModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content post" id="postModal-content">
-                <div class="commentsHeader">
-                    <div class="modal-title" id="deleteModalLabel">Todos os dados referentes a esta comunidade serão perdidos e não poderão ser recuperados.<br>Deseja realmente apagar a comunidade <span>@Model.getComunidade.nomeComunidade</span>?
-					</div>
-                    <button type="button" class="closeButton" data-bs-dismiss="modal" aria-label="Fechar">X</button>
-                </div>
-				<form class="joinCommunity-form" id="joinCommunity-form" asp-action="ApagarComunidade">		
-					<input type="hidden" name="IdComunidade" value="@Model.getComunidade.comunidadeId" />
-					<button type="submit" class="joinQuitButton" data-bs-toggle="modal">Apagar</button>
-				</form>
-            </div>
-        </div>
-    </div>
+	<div class="modal-dialog">
+		<div class="modal-content post" id="postModal-content">
+			<div class="commentsHeader">
+				<div class="modal-title" id="deleteModalLabel">Todos os dados referentes a esta comunidade serão perdidos e não poderão ser recuperados.<br>Deseja realmente apagar a comunidade <span>@Model.getComunidade.nomeComunidade</span>?
+				</div>
+				<button type="button" class="closeButton" data-bs-dismiss="modal" aria-label="Fechar">X</button>
+			</div>
+			<form class="joinCommunity-form" id="joinCommunity-form" asp-action="ApagarComunidade">		
+				<input type="hidden" name="IdComunidade" value="@Model.getComunidade.comunidadeId" />
+				<button type="submit" class="joinQuitButton" data-bs-toggle="modal">Apagar</button>
+			</form>
+		</div>
+	</div>
+</div>
