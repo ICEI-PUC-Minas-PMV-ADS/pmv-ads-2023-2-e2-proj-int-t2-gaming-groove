@@ -10,35 +10,43 @@
 
 <div class="main-container">
     <div class="left-container">
-        <div class="lfCamada1">
+        <div class="minhasEquipes">
+            <div class="listTitle">Minhas Equipes</div>
+            <div class="teamsList">
+                @if (Model.getEquipesUsuario == null)
+                {
+                    <div>Você ainda não faz parte de equipes.</div>
+                }
+                else
+                {
+                    @foreach (var item in Model.getEquipesUsuario)
+                    {
 
-            <h5>Minhas Equipes</h5>
-            <div class="lfCamada2">
-                
-                        @foreach (var item in Model.getEquipesUsuario)
-                        {
-                    <div class="myTeams">
-                            @if (item.equipe.iconeEquipe != null)
-                            {
-                                <img class="team-icon2" src="data:image/png;base64,@Convert.ToBase64String(item.equipe.iconeEquipe)" alt="Imagem de Perfil" />
-                            }
-                            else
-                            {
-                                <img class="team-icon2" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
-                            }
-
-                            
-                                <td>@item.equipe.nomeEquipe</td> 
-                    </div>
-
-
-                            
-                        }
-                
-
-             </div>
+                        int _comunidadeIdCadaComunidade = item.equipe.equipeId;
+                        int numberOfMembersEachCommunity = Model.GetNumberOfMembersInCommunity(_comunidadeIdCadaComunidade);
+                        <a href="~/ComunidadePage/@item.equipe.nomeEquipe">
+                            <div class="teams-items">
+                                @if (item.equipe.iconeEquipe != null)
+                                {
+                                    <img class="list-communityIcon" src="data:image/png;base64,@Convert.ToBase64String(item.equipe.iconeEquipe)" alt="Imagem de Perfil" />
+                                }
+                                else
+                                {
+                                    <img class="list-communityIcon" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
+                                }
+                                <div class="communityInfo-container">
+                                    <div class="communityName">@item.equipe.nomeEquipe</div>
+                                    <div class="list-numberOfMembers">@numberOfMembersEachCommunity membros</div>
+                                </div>
+                            </div>
+                        </a>
+                    }
+                }
+            </div>
         </div>
     </div>
+
+   
 
         
     
@@ -55,6 +63,9 @@
         <div class="container-card">
             @foreach (var item in Model.getEquipes)
             {
+                int _comunidadeIdCadaComunidade = item.equipeId;
+
+                int numberOfMembersEachCommunity = Model.GetNumberOfMembersInCommunity(_comunidadeIdCadaComunidade);
                 <div class="card">
                     @if (item.iconeEquipe != null)
                     {
@@ -65,25 +76,27 @@
                         <img class="team-icon" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
                     }
                     <div class="container-info">
-                       <h5>@item.nomeEquipe</h5>
+                       <div class="teamName">@item.nomeEquipe</div>
                
-                        <p class="card-title">@item.jogoEquipe</p>
-
+                        <div class="teamGame">@item.jogoEquipe</div>
                     </div>
-                </div>
+
+                        <div class="listnumberOfMembers">@numberOfMembersEachCommunity membros</div>
+                    </div>
+                
             }
     </div>
     </div>
 
-        <div class="right-container">
-            <div class="rhCamada1">
-                <div class="rhCamada2">
-                    
-                </div>
-            </div>
-
-
+    <div class="right-container">
+        <div class="newCommunity-container">
+            <div class="newCommunity-title">Crie uma nova equipe</div>
+            <a asp-action="Create"><button class="newCommunity-button">Criar</button></a>
         </div>
+    </div>
+
+
+        
     </div>
 
 
