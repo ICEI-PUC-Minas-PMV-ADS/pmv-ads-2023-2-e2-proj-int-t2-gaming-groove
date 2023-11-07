@@ -6,7 +6,6 @@
 }
 
 <link rel="stylesheet" href="~/css/PerfilPageStyles/PerfilPage.css" asp-append-version="true" />
-<link rel="stylesheet" href="~/css/PerfilPageStyles/PerfilPageEdit.css" asp-append-version="true" />
 
 <div class="main-container">
             
@@ -229,12 +228,10 @@
                                     </select>
                                 </div>   
                             </div>
-                            <div class="biography">
+                            <div class="biographyForm">
                                 <div>Fale um pouco sobre você:</div>
                                 <div class="form-group">
-                                    <textarea type="text" name="Biografia" class="form-control bio-text" rows="10">
-                                        @Model.getUsuario.biografia
-                                    </textarea>
+                                    <textarea type="text" name="Biografia" id="bioText-form" class="form-control bio-text" rows="10" maxlength="534">@Model.getUsuario.biografia</textarea>
                                 </div>
                             </div>
                         </div>

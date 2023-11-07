@@ -13,7 +13,7 @@ main {
 .cover-pic {
     height: 220px;
     width: 100%;
-    min-width: 440px;
+    min-width: 400px;
     border-radius: 5px;
     display: flex;
     flex-direction: row;
@@ -184,10 +184,8 @@ h3 {
     color: #ffffff;
 }
 
-
-
 .column {
-    height: 100%;
+    height: 94%;
     width: 100%;
     background-color: #232B58;
     border-radius: 4px;
@@ -357,10 +355,6 @@ h3 {
     transition: 0.8s;
 }
 
-.user-communities-items.ativo {   
-}
-
-
 .community-header {
     display: flex;
     flex-direction: row;
@@ -453,7 +447,241 @@ h3 {
 
 
 
-@media (max-width: 1550px) {
+
+
+.modal-dialog {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+}
+
+.edit-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+}
+
+.editProfile-container {
+    padding: 2vh 3vw 2vh 3vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #222B58;
+    border: solid 1px #AFD3FF;
+    box-shadow: #0277F9 0px 0px 8px;
+    border-radius: 6px;
+}
+
+.firstSection-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 3vw;
+    margin-bottom: 6vh;
+}
+
+.cover-preview  {
+    height: 16vh;
+    width: 40vw;
+    background-color: red;
+    border-radius: 6px;
+    display: flex;
+    align-items: end;
+    justify-content: baseline;
+    padding: 10px;
+    min-height: 130px;
+    min-width: 320px;
+}
+
+.profilePic {
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.secondSection-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5vw;
+}
+
+.favGames-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;   
+    gap: 2vh;
+}
+
+.profileImage-input input[type="file"]{
+    display: none;
+}
+
+.imageInput-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.imageInput {
+    height: 40px;
+    width: 150px;
+    color: #E3A5FF;
+    background-color: #111738;
+    border-radius: 4px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: baseline;
+    padding-left: 10px;
+    gap: 10px;
+}
+
+.uploadIcon {
+    height: 20px;
+}
+
+.imageInput:hover {
+    transition: 0.7s;
+    color: black;
+    font-weight: bold;
+    background-color: #AFD3FF;
+    .uploadIcon {
+        filter: brightness(0);
+    }
+}
+
+.imageInput:not(:hover) {
+    transition: 0.7s;
+}
+
+.favGames-container select{
+    font-size: 12px;
+    color: #E3A5FF;
+    background-color: #111738;
+    border: none;
+}
+
+.favGames-container select:hover {
+    transition: 0.7s;
+    color: black;
+    font-weight: bold;
+    background-color: #AFD3FF;
+    .uploadIcon {
+        filter: brightness(0);
+    }
+}
+
+.favGames-container select:not(:hover) {
+    transition: 0.7s;
+}
+
+.form-control option {
+    color: rgb(255, 255, 255);
+    background-color: #111738;
+}
+
+.form-control:focus {
+    background-color: #111738;
+    color: white;
+}
+
+.favGames-alert {
+    color: red;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.biographyForm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#bioText-form {
+    font-family: Arial;
+    letter-spacing: 1px;
+    font-size: 12px;
+    color: #E3A5FF;
+    background-color: #111738;
+    height: 30vh;
+    width: 20vw;
+    resize: none;
+    border: 2px solid #111738;
+    border-radius: 8px;
+    min-width: 190px;
+    text-align: justify;
+}
+
+.bio-text:focus {
+    color: white;
+    background-color: #111738;
+    border: 2px solid #111738;
+}
+
+::-webkit-scrollbar {
+    width: 9px;
+    background-color: #111738;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #2b356c;
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #E3A5FF;
+    border-radius: 6px;
+}
+
+.buttons-container {
+    display: flex;
+    flex-direction: row;
+    gap: 5vw;
+}
+
+.submit-button {
+    font-family: Play;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding-inline: 20px;
+    padding-block: 15px;
+    color: white;
+    background-color: #110B31;
+    border: none;
+    border-radius: 6px;
+    margin-top: 50px;
+}
+
+.submit-button:hover {
+    font-weight: bold;
+    background: #AFD3FF;
+    color: black;
+    box-shadow: none;
+    transition: 0.7s;
+}
+
+.submit-button:not(:hover) {
+    transition: 0.7s;
+}
+
+@media  (max-width: 1550px)
+{
+    .main-container {
+        height: 90vh;
+    }
     .profile-container {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -468,10 +696,20 @@ h3 {
     }
     .column {
         height: 50vh;
+    }    
+    .edit-container {
+        flex-direction: column-reverse;
+        gap: 10vh;
     }
 }
 
-@media (max-width: 950px) {
+@media  (max-width: 900px)
+{
+    .main-container {
+        width: 100%;
+        padding-inline: 10px;
+        height: 150vh;
+    }
     .profile-container {
         display: flex;
         flex-direction: column;
@@ -516,5 +754,22 @@ h3 {
     .cover-second-container {
         flex-direction: column;
         justify-content: end;
+    }    
+    .editProfile-container {
+        width: 90vw;
+    }
+    .secondSection-container {
+        flex-direction: column;
+    }
+    .imageInput-container {
+        justify-content: center;
+        align-items: center;
+    }
+    .biography {
+        justify-content: center;
+        align-items: center;
+    }
+    #bioText-form{
+        width: 60vw;
     }
 }
