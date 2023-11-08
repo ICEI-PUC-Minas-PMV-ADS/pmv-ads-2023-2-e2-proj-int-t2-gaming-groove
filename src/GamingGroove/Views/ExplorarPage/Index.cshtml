@@ -7,10 +7,15 @@
     ViewData["Title"] = "Explorar";
 }
 
-<title>Explorar</title>
+
+@{
+	string notificacao = "";
+}
+@if(@Model.getTodosUsuariosSolicitacoes.Count() > 0){
+	 notificacao = "(" + Model.getTodosUsuariosSolicitacoes.Count().ToString() + ")";
+}   
+<title>Explorar @notificacao</title>
 <link rel="stylesheet" href="~/css/ExplorarPage.css" asp-append-version="true" />
-
-
 
 
 <div class="main-container">

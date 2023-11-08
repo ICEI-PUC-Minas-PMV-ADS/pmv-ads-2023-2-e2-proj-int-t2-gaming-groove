@@ -5,7 +5,13 @@
 	ViewData["Title"] = "FeedPage";
 }
 
-<title>Feed</title>
+@{
+	string notificacao = "";
+}
+@if(@Model.getTodosUsuariosSolicitacoes.Count() > 0){
+	 notificacao = "(" + Model.getTodosUsuariosSolicitacoes.Count().ToString() + ")";
+}   
+<title>Feed @notificacao</title>
 <link rel="stylesheet" href="~/css/FeedPage.css" asp-append-version="true" />
 
 <div class="main-container">

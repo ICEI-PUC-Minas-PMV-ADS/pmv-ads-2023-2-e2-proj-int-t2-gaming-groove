@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="~/css/_Layout.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/fonts.css" asp-append-version="true" />
 </head>
+
 <body>
     <header>      
         <a href="~/FeedPage"><img class="logo" src="~/images/logos/gg-logo.png" alt=""></a>
@@ -63,8 +64,8 @@
                 <img class="friendsListButton-icon" id="friendsListButtonIcon" src="~/images/icons/friendsList-icon.svg" alt="">
                 <div id="friendsListButtonTitle">Lista de Amigos</div>            
                 @if(@Model.getTodosUsuariosSolicitacoes.Count > 0){
-                    <div id="friendsRequest-alert" style="color: rgb(255, 104, 104); font-size: 20px;">
-                    ( ! )
+                    <div id="friendsRequest-alert">
+                    (@Model.getTodosUsuariosSolicitacoes.Count)
                     </div> 
                 }             
             </div>

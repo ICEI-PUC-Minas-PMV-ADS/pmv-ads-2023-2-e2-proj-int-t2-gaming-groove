@@ -5,7 +5,14 @@
 	ViewData["Title"] = "ComunidadePage";
 }
 
-<title>@Model.getComunidade.nomeComunidade</title>
+
+@{
+	string notificacao = "";
+}
+@if(@Model.getTodosUsuariosSolicitacoes.Count() > 0){
+	 notificacao = "(" + Model.getTodosUsuariosSolicitacoes.Count().ToString() + ")";
+}   
+<title>@Model.getComunidade.nomeComunidade @notificacao</title>
 <link rel="stylesheet" href="~/css/ComunidadePage.css" asp-append-version="true" />
 
 @{
