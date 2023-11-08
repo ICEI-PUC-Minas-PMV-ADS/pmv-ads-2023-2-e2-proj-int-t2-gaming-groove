@@ -166,5 +166,10 @@ namespace GamingGroove.Controllers
         {
           return (_context.Amizades?.Any(e => e.amizadeId == id)).GetValueOrDefault();
         }
+
+
+
+
+
     }
 }

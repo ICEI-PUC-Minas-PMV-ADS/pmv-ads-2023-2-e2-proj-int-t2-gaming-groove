@@ -6,7 +6,7 @@
 }
 
 <title>Comunidades</title>
-<link rel="stylesheet" href="~/css/ComunidadeHomePageStyles/ComunidadeHomePage.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/ComunidadeHomePage.css" asp-append-version="true" />
 
 
 <div class="main-container">
@@ -109,8 +109,8 @@
 
 
 <div class="modal fade" id="createPost-modal" tabindex="-1" aria-labelledby="usuarioModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content post" id="postModal-content">
+	<div class="modal-dialog" id="createCommunity-dialog">
+		<div class="modal-content post" id="createCommunity-modal">
 			<form class="createCommunity-form" asp-controller="ComunidadeHomePage" asp-action="CriarComunidade" enctype="multipart/form-data">
 				<div class="create-container">        
 					<div class="createCommunity-container">

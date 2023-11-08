@@ -529,23 +529,6 @@ a {
 
 
 
-.modal-dialog {
-    display: flex;
-    align-items: center;
-}
-
-.modal-content {
-    background-color: #232B58;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-    border: 1px solid #E5ABFF;
-    box-shadow: #D169FF 0px 0px 6px;
-    border-radius: 8px;
-}
-
 .commentsHeader {
     display: flex;
     flex-direction: row;

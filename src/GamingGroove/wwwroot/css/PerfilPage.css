@@ -95,6 +95,40 @@ main {
     filter: brightness(0);
 }
 
+.pendingFriendRequest-button {
+    height: 30px;
+    width: 40px;
+    background-color: #a6a6a6;
+    border: solid white 1px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pendingFriendRequest-button:hover {
+    transition: 1s;
+    background-color: #72ffa3;
+    .removeUser-icon {
+        filter: brightness(200%) grayscale(100%);
+    }
+}
+
+.pendingFriendRequest-button:not(:hover) {
+    transition: 1s;
+}
+
+.requestedFriendRequest-button {
+    height: 30px;
+    width: 40px;
+    background-color: #a6a6a6;
+    border: solid white 1px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .removeFriend-button {
     height: 30px;
     width: 40px;

@@ -5,7 +5,7 @@
 	ViewData["Title"] = "ComunidadePage";
 }
 
-<title>Comunidades</title>
+<title>@Model.getComunidade.nomeComunidade</title>
 <link rel="stylesheet" href="~/css/ComunidadePage.css" asp-append-version="true" />
 
 @{
@@ -203,15 +203,14 @@
 
 
 
-@* Modal publicações *@
 @foreach (var item in Model.getPublicacoes)
 {
 	Model.getUsuarioPublicacao = Model.getTodosUsuarios.FirstOrDefault(up => up.usuarioId == item.usuarioId);
 	Model.getComentariosPublicacao = Model.getTodosComentarios.Where(c => c.publicacaoId == item.publicacaoId).ToList();
 	
     <div class="modal fade" id="publicacaoModal-@item.publicacaoId" tabindex="-1" aria-labelledby="publicacaoModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
+        <div class="modal-dialog" id="modal-dialog">
+            <div class="modal-content" id="modal-content">
                 <div class="commentsHeader">
 					<a href="~/PerfilPage/@Model.getUsuarioPublicacao.nomeUsuario">
 					@if(Model.getUsuarioPublicacao.iconePerfil != null)
@@ -259,10 +258,10 @@
     </div>
 }
 
-@* Modal comentários *@
+
 <div class="modal fade" id="createPost-modal" tabindex="-1" aria-labelledby="usuarioModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content post" id="postModal-content">
+	<div class="modal-dialog" id="modal-dialog">
+		<div class="modal-content post" id="modal-content">
 			<div class="commentsHeader">
 				<div class="modal-title" id="postModalLabel">Publicar em <span>@Model.getComunidade.nomeComunidade</span></div>
 				<button type="button" class="closeButton" data-bs-dismiss="modal" aria-label="Fechar">X</button>
@@ -281,9 +280,10 @@
 	</div>
 </div>
 
+
 <div class="modal fade" id="deleteCommunity-modal" tabindex="-1" aria-labelledby="usuarioModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content post" id="postModal-content">
+	<div class="modal-dialog" id="modal-dialog">
+		<div class="modal-content post" id="modal-content">
 			<div class="commentsHeader">
 				<div class="modal-title" id="deleteModalLabel">Todos os dados referentes a esta comunidade serão perdidos e não poderão ser recuperados.<br>Deseja realmente apagar a comunidade <span>@Model.getComunidade.nomeComunidade</span>?
 				</div>

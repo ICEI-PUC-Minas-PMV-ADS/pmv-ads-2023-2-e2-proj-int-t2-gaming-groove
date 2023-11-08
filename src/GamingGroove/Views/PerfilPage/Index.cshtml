@@ -5,7 +5,8 @@
     ViewData["Title"] = "PerfilPage";
 }
 
-<link rel="stylesheet" href="~/css/PerfilPageStyles/PerfilPage.css" asp-append-version="true" />
+<title>Perfil de @Model.getUsuario.nomeUsuario</title>
+<link rel="stylesheet" href="~/css/PerfilPage.css" asp-append-version="true" />
 
 <div class="main-container">
             
@@ -38,22 +39,28 @@
                     }
                     else 
                     {
-
-                        @if(Model.amizadeExistente != null)
+                        @if(Model.amizadeExistente != null && Model.amizadeExistente.estadoAmizade == EstadoAmizade.Pendente && Model.amizadeExistente.solicitanteId != Model.IdUsuarioLogado)
+                        {
+                            <button class="requestedFriendRequest-button" title="Você tem uma solicitação pendente deste usuário.">...</button>
+                        }
+                        @if(Model.amizadeExistente != null && Model.amizadeExistente.estadoAmizade == EstadoAmizade.Pendente && Model.amizadeExistente.solicitanteId == Model.IdUsuarioLogado)
+                        {
+                            <button class="requestedFriendRequest-button" title="Você já solicitou amizade a este usuário.">...</button>
+                        }
+                        @if(Model.amizadeExistente != null && Model.amizadeExistente.estadoAmizade == EstadoAmizade.Aceita)
                         {
                             <form asp-action="DesfazerAmizade">
                                 <input type="hidden" name="IdUsuarioPagina" value="@Model.getUsuario.usuarioId">
                                 <button class="removeFriend-button"><img class="removeUser-icon" src="~/images/icons/checkCircle-icon.svg" title="Desfazer amizade"></button>
                             </form>
                         }
-                        else
+                        @if(Model.amizadeExistente == null)
                         {
-                            <form asp-action="FazerAmizade">
+                            <form asp-action="SolicitarAmizade">
                                 <input type="hidden" name="IdUsuarioPagina" value="@Model.getUsuario.usuarioId">
                                 <button type="submit" class="addFriend-button"><img class="addUser-icon" src="~/images/icons/add-user.svg" title="Adicionar amigo"></button>
                             </form>
                         }
-                     
                     }
                 </div>
         </div>
