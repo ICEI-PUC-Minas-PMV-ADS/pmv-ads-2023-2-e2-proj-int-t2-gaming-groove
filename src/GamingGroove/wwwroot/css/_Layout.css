@@ -538,6 +538,8 @@ header {
     }
     header {
         align-items: center;
+        height: 180px;
+        z-index: 2;
     }
     .menu-icon {
         height: 50px;
