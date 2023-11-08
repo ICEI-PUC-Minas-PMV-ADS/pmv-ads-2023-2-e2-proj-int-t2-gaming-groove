@@ -248,7 +248,7 @@ header {
     background-color: #110B31;
     flex-direction: column;
     justify-content: baseline;
-    align-items: baseline;
+    align-items: center;
     padding: 8px;
     border-left: 1px solid #E3A5FF;
     border-right: 1px solid #E3A5FF;
@@ -363,13 +363,167 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    margin-left: 20px;
     font-family: Play;
+    width: 100%;
+    background-color: #00F0FF;
+    border-radius: 4px;
 }
 
 .friendsRequest-button {
     color: black;
+    background: none;
+    border: none;
+    width: 100%;
+}
+
+
+
+
+
+#friendsRequest-dialog {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#friendsRequest-content {
+    background-color: #232B58;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    border: 1px solid #E5ABFF;
+    box-shadow: #D169FF 0px 0px 6px;
+    border-radius: 8px;
+    font-family: Play;
+    width: 40vh;
+}
+
+.friendsRequestModal-title {
+    font-size: 24px;
+}
+
+.friendsRequestModal-container {
+    background-color: #110B31;
+    height: 60vh;
+    width: 100%;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+
+.friendsRequestList {
+    background-color: #110B31;
+    height: 50vh;
+    width: 100%;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    overflow: auto;
+    gap: 25px;
+}
+
+.friendsRequestItems {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #222B58;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.userRequest-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+}
+
+.userRequest-info:hover {
+    transition: 0.6s;
+    background-color: #39458c;
+    padding-right: 30px;
+    border-radius: 30px;
+ 
+    .userIcon-request {
+        transition: 0.6s;
+        border: solid 1px #00F0FF;
+        box-shadow: #00F0FF 0px 0px 4px;
+    }
+    .friendRequest-username {
+        transition: 0.6s;
+        color: #00F0FF;
+    }
+}
+
+.userRequest-info:not(:hover) {
+    transition: 0.6s;
+}
+
+.userIcon-request {
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.friendsRequest-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.friendsRequest-submit {
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    height: 30px;
+    width: 30px;
+}
+
+.friendsRequest-submit:hover {
+    transition: 0.6s;
+    background-color: #39458c;
+    border-radius: 4px;
+}
+
+.checkIcon {
+    height: 20px;
+    width: 20px;
+}
+
+.xIcon {
+    height: 15px;
+    width: 15px;
+}
+
+.friendsRequest-close {
+    font-family: Play;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding-inline: 20px;
+    padding-block: 15px;
+    color: white;
+    background-color: #110B31;
+    border: none;
+    border-radius: 6px;
+}
+
+.friendsRequest-close:hover {
+    font-weight: bold;
+    background: #AFD3FF;
+    color: black;
+    box-shadow: none;
+    transition: 0.7s;
+}
+
+.friendsRequest-close:not(:hover) {
+    transition: 0.7s;
 }

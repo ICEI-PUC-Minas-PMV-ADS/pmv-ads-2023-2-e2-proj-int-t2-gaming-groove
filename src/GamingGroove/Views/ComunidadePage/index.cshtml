@@ -209,8 +209,8 @@
 	Model.getComentariosPublicacao = Model.getTodosComentarios.Where(c => c.publicacaoId == item.publicacaoId).ToList();
 	
     <div class="modal fade" id="publicacaoModal-@item.publicacaoId" tabindex="-1" aria-labelledby="publicacaoModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
+        <div class="modal-dialog" id="modal-dialog">
+            <div class="modal-content" id="modal-content">
                 <div class="commentsHeader">
 					<a href="~/PerfilPage/@Model.getUsuarioPublicacao.nomeUsuario">
 					@if(Model.getUsuarioPublicacao.iconePerfil != null)
@@ -260,8 +260,8 @@
 
 
 <div class="modal fade" id="createPost-modal" tabindex="-1" aria-labelledby="usuarioModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content post" id="postModal-content">
+	<div class="modal-dialog" id="modal-dialog">
+		<div class="modal-content post" id="modal-content">
 			<div class="commentsHeader">
 				<div class="modal-title" id="postModalLabel">Publicar em <span>@Model.getComunidade.nomeComunidade</span></div>
 				<button type="button" class="closeButton" data-bs-dismiss="modal" aria-label="Fechar">X</button>
@@ -282,8 +282,8 @@
 
 
 <div class="modal fade" id="deleteCommunity-modal" tabindex="-1" aria-labelledby="usuarioModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content post" id="postModal-content">
+	<div class="modal-dialog" id="modal-dialog">
+		<div class="modal-content post" id="modal-content">
 			<div class="commentsHeader">
 				<div class="modal-title" id="deleteModalLabel">Todos os dados referentes a esta comunidade serão perdidos e não poderão ser recuperados.<br>Deseja realmente apagar a comunidade <span>@Model.getComunidade.nomeComunidade</span>?
 				</div>

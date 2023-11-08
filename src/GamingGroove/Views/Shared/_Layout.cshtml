@@ -4,6 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
+    <link rel="icon" href="~/images/logos/gg-favicon.png" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css" />
@@ -14,16 +15,16 @@
     <header>      
         <a href="~/FeedPage"><img class="logo" src="~/images/logos/gg-logo.png" alt=""></a>
         <nav class="navbar">
-            <a href="~/FeedPage" class="iconBackground1">
+            <a href="~/FeedPage" class="iconBackground1" title="Feed">
                 <img class="icon" id="icon1" src="~/images/icons/feed-icon.svg" alt="">
             </a>
-            <a href="~/ComunidadeHomePage" class="iconBackground2">
+            <a href="~/ComunidadeHomePage" class="iconBackground2" title="Suas Comunidades">
                 <img class="icon" id="icon2" src="~/images/icons/communities-icon.svg" alt="">
             </a>
-            <a href="~/ExplorarPage" class="iconBackground3">
+            <a href="~/ExplorarPage" class="iconBackground3" title="Explorar">
                 <img class="icon" id="icon3" src="~/images/icons/explore-icon.svg" alt="">
             </a>
-            <a href="~/EquipePage" class="iconBackground4">
+            <a href="~/EquipePage" class="iconBackground4" title="Formador de Equipes">
                 <img class="icon" id="icon4" src="~/images/icons/teams-icon.svg" alt="">
             </a>
                         
@@ -57,13 +58,24 @@
 
 
     <footer>
-        <div class="friendsRequest-container">
-            <button type="button" class="friendsRequest-button" data-bs-toggle="modal" data-bs-target="#friedsRequest-modal">Solicitações de amizade</button>			
-        </div>
         <div class="friendsList-container">
-            <div class="friendsListButton" id="friendsListButton"><img class="friendsListButton-icon" id="friendsListButtonIcon" src="~/images/icons/friendsList-icon.svg" alt=""><div id="friendsListButtonTitle">Lista de Amigos</div></div>
+            <div class="friendsListButton" id="friendsListButton">
+                <img class="friendsListButton-icon" id="friendsListButtonIcon" src="~/images/icons/friendsList-icon.svg" alt="">
+                <div id="friendsListButtonTitle">Lista de Amigos</div>            
+                @if(@Model.getTodosUsuariosSolicitacoes.Count > 0){
+                    <div id="friendsRequest-alert" style="color: rgb(255, 104, 104); font-size: 20px;">
+                    ( ! )
+                    </div> 
+                }             
+            </div>
             <div class="friendsListItems-container"></div>
             <div class="friendsList" id="friendsList">
+                @if(Model.getTodosUsuariosSolicitacoes.Count >= 1)
+                {
+                    <div class="friendsRequest-container">
+                        <button type="button" class="friendsRequest-button" data-bs-toggle="modal" data-bs-target="#friedsRequest-modal">Solicitações de amizade (@Model.getTodosUsuariosSolicitacoes.Count)</button>			
+                    </div>
+                }                
                 <form class="friendsList-form" role="search">
                     <input id="friendsList-input" class="friendsList-input" type="search" placeholder="Buscar" aria-label="Search">
                 </form>
@@ -104,10 +116,47 @@
 
 
 
-<div class="modal fade" id="friedsRequest-modal" tabindex="-1" aria-labelledby="friedsRequestModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content post" id="friedsRequest-content">
-            
+<div class="modal fade" id="friedsRequest-modal" tabindex="-1 aria-hidden="true">
+	<div class="modal-dialog" id="friendsRequest-dialog">
+		<div class="modal-content post" id="friendsRequest-content">
+            <div class="friendsRequestModal-title">Solicitações de amizade:</div>
+            <div class="friendsRequestList">
+                @if(Model.getTodosUsuariosSolicitacoes == null)
+                {
+                    <div>Você não tem solicitações de amizade no momento.</div>
+                }
+                else
+                {
+                    @foreach(var solicitacao in Model.getTodosUsuariosSolicitacoes)
+                    {
+                        <div class="friendsRequestItems">
+                            <a href="~/PerfilPage/@solicitacao.nomeUsuario"><div class="userRequest-info">
+                                @if(solicitacao.iconePerfil != null)
+                                {
+                                    <img class="userIcon-request" src="data:image/png;base64,@Convert.ToBase64String(solicitacao.iconePerfil)" alt="Imagem de Perfil do Usuário" />
+                                }
+                                else
+                                {
+                                    <img class="userIcon-request" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
+                                }
+                                <div class="friendRequest-username">@solicitacao.nomeUsuario</div>
+                            </div></a>
+                            <div class="friendsRequest-buttons">
+                                <form class="friendsRequest-form" asp-controller="PerfilPage" asp-action="AceitarAmizade">
+                                    <input type="hidden" name="SolicitanteId" value="@solicitacao.usuarioId">
+                                    <button class="friendsRequest-submit" type="submit"><img class="checkIcon" src="~/images/icons/check-icon.svg"></button>
+                                </form>   
+                                <form class="friendsRequest-form" asp-controller="PerfilPage" asp-action="RecusarAmizade">
+                                    <input type="hidden" name="SolicitanteId" value="@solicitacao.usuarioId">
+                                    <button class="friendsRequest-submit" type="submit"><img class="xIcon" src="~/images/icons/x-icon.svg"></button>
+                                </form>   
+                            </div>
+                        </div>                                              
+                    }
+                }
+
+            </div>
+            <button type="button" class="friendsRequest-close" data-bs-dismiss="modal" aria-label="Fechar">Fechar</button>
 		</div>
 	</div>
 </div>
@@ -130,6 +179,7 @@
     const friendsList = document.getElementById("friendsList");
     const friendsListButtonTitle = document.getElementById("friendsListButtonTitle");
     const friendsListButtonIcon = document.getElementById("friendsListButtonIcon");
+    const friendsRequestAlert = document.getElementById("friendsRequest-alert");
 
     friendsListButton.addEventListener("click", () => {
     if (friendsList.style.display === "flex") {
@@ -138,12 +188,15 @@
         friendsListButtonTitle.style.color = "white";
         friendsListButtonTitle.style.fontWeight = "normal";
         friendsListButtonIcon.style.filter = "none"
+        friendsRequestAlert.style.display = "flex";
     } else {
         friendsList.style.display = "flex";
         friendsListButton.style.backgroundColor = "#E3A5FF";
         friendsListButtonTitle.style.color = "black";
         friendsListButtonTitle.style.fontWeight = "bold";
         friendsListButtonIcon.style.filter = "brightness(0%)"
+        friendsRequestAlert.style.display = "none";
+
     }
     });
 
