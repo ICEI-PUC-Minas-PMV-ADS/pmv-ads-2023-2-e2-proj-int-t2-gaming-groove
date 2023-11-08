@@ -1,3 +1,10 @@
+*{
+    font-family: Gamer;
+}
+.main-container{
+    
+}
+
 .iconBackground3 {
     outline: double 6px #D169FF;
     background-color: rgb(236, 236, 236);
@@ -15,10 +22,18 @@ body{
 .container{
     margin: 0px;
     padding: 0px;
+    
 }
 
 
-
+.team-icon{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: start;
+    border: 1px solid white;
+    border-radius: 5px; 
+}
 
 .modal-header{
 background-color: #232B58;
@@ -38,28 +53,62 @@ width: 20px;
 
 
 .containerCard2{
-
+width: 100%;
+display: flex;
 padding: 10px;
 }
 .community-icon{
 text-align: end;
+border-radius: 5px;
+width: 75%;
+height: 50%;
 margin: 5px;
-width: 50px;
-height: 50px;
-
 }
 
+.nomedousuario{
+    margin: 10px;
+    
+}
+
+
+.team-icon-comunity{
+    width: 75%;
+    height: 50%;
+    border-radius: 5px;
+    margin: 5px;
+
+}
+.communityItems{
+    width: 100%;
+}
+.user-card-body{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.community-info{
+width: 100%;
+display: grid;
+text-align: center;
+margin: 0;
+padding: 0;
+font-size: 120%;
+
+
+}
 
 .card-textTodosUsuarios{
-display: flex;
-justify-content: center;
-margin: 10px;
-gap: 10px;
-text-align: center;
-border: 1px solid white;
-align-items: center;
-border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
+
+
 
 
 .card-img-comunity{
@@ -68,7 +117,7 @@ height: 10px;
 }
 
 .minhasComunidades{
-border: 1px solid white;
+
 border-radius: 5px;
 }
 
@@ -79,49 +128,71 @@ margin-top: 10px;
 }
 
 .internalContainer2{
-width: 100%;
+width: 100vw;
 height: 100%;
-
+display: flex;
+justify-content: center;
+text-align: center;
 }
 
 .card-body{
-
 margin: 0;
 padding: 0;
 transition: background-color 0.3s;
-
-
-
-
+display: flex;
+flex-direction: column;
+background-color: #2b356c;  
+width: 100%;
+height: 100%    ;
 }
 
-.user-card-body: {
 
-width: 100%;
-border: 1px solid white;
+.card-body:hover{
+    transition: 0.7s;
+    background-color: #D169FF;
+}
 
- 
+.card-body:not(:hover){
+    transition: 0.7S;
 }
 
 .user-icon{
 width: 50px;
 height: 50px;
+display: flex;
+align-items: center;
+border: 1px solid white;
+
 }
 
 .cardTodosUsuarios:hover{
-width: 12vw%;
-padding: 5px;
-cursor: pointer;
-transform: scale(1.1);
+transition: 0.7s;
+background-color: #D169FF;
+}
 
-  
+.cardTodosUsuarios{
+width: 100%;
+height: 70px;
+cursor: pointer;
+background-color: #2b356c;
+display: grid;
+justify-content: start;
+padding: 10px;
+
+
+
 }
 
 .gridContainerFlow2{
-width: 14vw;
+width: 100%;
 height: 60vh;
+display: flex;
+gap: 10px;
+flex-direction: column;
+text-align: center;
 
-    
+
+
 
 }
 
@@ -146,37 +217,50 @@ border-radius: 6px;
 ::-webkit-scrollbar-thumb:hover {
 background-color: #E3A5FF;
 border-radius: 6px;
+
 }
 
 
-.ComunidadesUsuario {
+.ComunidadesUsuario{
 
 overflow: auto; 
 max-height: 70vh;
 border-radius: 5px;
+
 }
 
+.cardMinhasComunidades:not(:hover){
+    transition: 0.7S;
+}
 .cardMinhasComunidades:hover{
+background-color: #D169FF;
+transition: 0.7s;
+
+}
+.cardMinhasComunidades{
 border-radius: 5px;
 text-align: center;
 padding: 5px;
 margin: 8px;
 border-radius: 5px;
-cursor: pointer; 
+cursor: pointer;
+background-color: #2b356c; 
+
 }
 
 .gridContainerFlow{
 max-height: 62vh;
-width: 100%;
+max-width: 40VW;
 height: 100%;
-display: flex;
-align-items: start;
-justify-content: space-evenly;
-padding: 10px;
-text-align: center;
-overflow: auto; 
-grid-template-columns: repeat(2, 1fr);
+overflow-x: hidden;
 border-radius: 5px;
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+justify-content: center;
+padding: 5px;
+
+
+
 
 
 }
@@ -188,25 +272,29 @@ height: 60vh;
 width: 100%;
 border-radius: 5px;
 
+
+
 }
 
 .containerCard{
-margin: 10px;
+display: flex;
 border-radius: 5px;
-height: 100vh;;
+height: 100vh;
+width: 100%;    
+padding: 10px;
+
+
      
 }
 
 .card{
-width: 18vw;
-height: 11vh;
+display: flex;
+width: 100%;
+height: 35%;
 background-color: transparent;
-border: 1px solid white;
 border-radius: 5px;
 cursor: pointer;
-transform: scale(1.1); 
-margin: 20px;
-align-items: center;
+margin-top: 10px;
 
 
 }
@@ -237,8 +325,8 @@ padding: 10px;
 
 .lfCamada1{
 background-color: #232B58;
-height: 100%;
-width: 17vw    ;
+height: 80vh;
+width: 17vw;
 margin: 10px;
 text-align: center;
 padding: 10px;
@@ -247,7 +335,7 @@ border-radius: 5px;
 
 .lfCamada2{
 background-color: #111738;
-height: 92%;
+
 margin: 5px;
 text-align: center;
 border-radius: 5px;
@@ -257,9 +345,7 @@ overflow-y: auto;
 .main-container {
 
 height: 100%;
-width: 95vw;
-padding: 10px;
-margin: 30px;
+width: 95vw;    
 display: flex;
 flex-direction: row;
 justify-content: space-between;
@@ -285,6 +371,8 @@ width: 40vw;
 height: 80vh;
 background-color: #232B58;
 border-radius: 5px;
+
+
 }
 
 
