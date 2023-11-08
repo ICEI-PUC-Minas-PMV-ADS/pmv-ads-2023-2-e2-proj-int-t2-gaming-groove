@@ -27,6 +27,7 @@ a {
     flex-direction: column;
     align-items: baseline;
     gap: 2vh;
+    min-width: 400px;
 }
 
 .communityCover {
@@ -45,7 +46,7 @@ a {
 
 .communityCover-filter {
     content: "";
-    background-color: rgba(0, 0, 0, 0.306); /* Cor de fundo vermelha com 50% de opacidade */
+    background-color: rgba(0, 0, 0, 0.197); /* Cor de fundo vermelha com 50% de opacidade */
     top: 0;
     left: 0;
     width: 100%;
@@ -95,6 +96,10 @@ a {
     align-items: end;
 }
 
+.communityInfoModal-button {
+    display: none;
+}
+
 .reportIcon {
     height: 20px;
 }
@@ -118,12 +123,13 @@ a {
     color: #E5ABFF;
     background-color: #0E1A35;
     border: 1px solid #E5ABFF;
-    padding-inline: 35px;
-    padding-block: 2px;
+    padding-inline: 7px;
+    padding-block: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 3px;
+    border-radius: 6px;
+    letter-spacing: 1px;
 }
 
 .joinQuitButton:hover {
@@ -136,10 +142,28 @@ a {
     transition: 0.6s;
 }
 
+.joinQuitButton img {
+    height: 20px;
+    width: 20px;
+}
+
 #deleteModalLabel {
     margin-left: 32px;
     margin-top: 60px;
     margin-bottom: 30px;
+}
+
+.closeCommunityInfo-button {
+    letter-spacing: 1px;
+    padding-inline: 20px;
+    padding-block: 5px;
+    background-color: black;
+    box-shadow: #D169FF 0px 0px 12px;
+    border-radius: 6px;
+    border: none;
+}
+.modal {
+    margin-top: 10vh;
 }
 
 .descriptionBox {
@@ -193,6 +217,8 @@ a {
     border-radius: 4px;
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 .gamesList-title {
@@ -251,8 +277,14 @@ a {
     display: flex;
     flex-direction: column;
     align-items: end;
+    justify-content: baseline;
     gap: 20px;
     padding-top: 10px;
+    min-width: 400px;
+}
+
+#postModal-content {
+    padding: 20px;
 }
 
 .createPost {
@@ -281,6 +313,7 @@ a {
     overflow: auto;
     display: flex;
     flex-direction: column;
+    justify-content: baseline;
     align-items: center;
     gap: 30px;
     width: 100%;
@@ -373,7 +406,6 @@ a {
 }
 
 .postImage {
-    height: 40vh;
     width: 100%;
     background-color: white;
     border-radius: 4px;
@@ -527,14 +559,22 @@ a {
 
 
 
-
+#modal-content {
+    background-color: #222B58;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    gap: 10px;
+    text-align: center;
+}
 
 .commentsHeader {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
-    text-align: center;
 }
 
 .userIcon-post {
@@ -706,7 +746,7 @@ a {
 
 
 #postModalLabel {
-    margin-left: 32px;
+
 }
 
 .createPost-form {
@@ -743,6 +783,10 @@ a {
 
 .createPost-inputs input[type="file"]{
     display: none;
+}
+
+.addImageText {
+    text-align: justify;
 }
 
 .postMedia-input {
@@ -791,4 +835,154 @@ a {
     font-style: italic;
     font-size: 20px;
     margin-top: 40px;
+}
+
+
+@media (max-width: 1200px) {
+    main {
+        margin-top: 0;
+    }
+    header{
+        position: fixed;
+        width: 100%;
+        height: 100px;
+    }
+    .main-container {
+        flex-direction: column;
+        justify-content: baseline;
+        align-items: center;
+        height: 100vh;
+        width: 100vw;
+        overflow-x: hidden;
+        gap: 10px;
+    }   
+    .left-container {
+        margin-top: 100px;
+        align-items: center;
+        width: 100%;
+        padding-inline: 10px;
+        height: auto;
+    }
+    .communityCover {
+        width: 100%;
+        min-width: 100%;
+        height: 140px;
+        position: static;
+        padding: 6px;
+    }
+    .communityCover-filter {
+        display: none;
+    }
+    .positioningTool {
+        position: static;
+        width: 100%;
+    }
+    .info-container {
+        height: 100%;
+        gap: 2px;
+    }
+    #communityInfo {
+        font-size: 12px;
+        padding-inline: 14px;
+    }
+    .communityIcon {
+        height: 70px;
+        width: 70px;
+    }
+    .descriptionBox {
+        width: 90%;
+        height: 35vh;
+        box-shadow: none;
+        background: none;
+    }
+    #descriptionBox-static {
+        display: none;
+    }
+    #gamesListBox-static {
+        display: none;
+    }
+    .gamesListBox {
+        width: 90%;
+        box-shadow: none;
+        background: none;
+    }
+    .gameIcon-container img {
+        height: 25px;
+        width: 25px;
+    }
+    .communityInfoModal-button {
+        display: flex;
+    }
+    .center-container {
+        height: 100%;
+        width: 100%;
+        position: static;
+        left: none;
+        transform: none;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: start;
+        gap: 20px;
+        padding-top: 10px;
+        padding-inline: 10px;
+        margin-inline: 0;
+        max-width: 550px;
+
+    }
+    .createPost {
+        align-items: center;
+        margin: 0;
+        margin-left: 10px;
+    }
+    .post-container {
+        justify-content: baseline;
+        padding: 0;
+    }
+    .post {
+        width: 99%;
+        padding-inline: 0;
+        padding-block: 20px;
+    }
+    .postContent {
+        padding: 0;
+    }
+    .postHeader {
+        padding-inline: 20px;
+    }
+    .postText {
+        padding-inline: 20px;
+    }
+    .postImage {
+        width: 100%;
+        border-radius: 0;
+    }
+    .postNumbers {
+        padding-inline: 20px;
+    }
+    .postButtons {
+        padding-inline: 20px;
+    }
+
+    .right-container {
+        display: none;
+    }
+    
+    ::-webkit-scrollbar {
+        width: 10px;
+        background-color: rgba(0, 0, 0, 0);
+        display: none;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: #2b356c;
+        border-radius: 6px;
+        display: none;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background-color: #E3A5FF;
+        border-radius: 6px;
+        display: none;
+    }
 }

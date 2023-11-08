@@ -8,6 +8,10 @@ a {
     text-decoration: none;
 }
 
+.modal {
+    margin-top: 10vh;
+}
+
 main {
     margin-top: 2vh;
     height: 87.8vh
@@ -25,6 +29,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding-inline: 2%;
+    background-color: #110B31;
 }
 
 .logo {
@@ -115,7 +120,6 @@ header {
     box-shadow: #B100FF 0 0 10px 3px;
     border-radius: 50%;
     overflow: hidden;
-    min-width: 60px;
 }
 
 .menu-icon img{
@@ -183,14 +187,6 @@ header {
     color: #00F0FF;
     background-color: #232B58;
 }
-
-@media (max-width: 950px) {
-    .navbar {
-        width: 40vw;
-        gap: 6.5vw;
-    }
-}
-
 
 
 ::-webkit-scrollbar {
@@ -389,7 +385,6 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 15vh;
 }
 
 #friendsRequest-content {
@@ -531,4 +526,42 @@ header {
 
 .friendsRequest-close:not(:hover) {
     transition: 0.7s;
+}
+
+
+
+@media (max-width: 1200px) {
+    .navbar {
+        width: 40vw;
+        gap: 6.5vw;
+        margin: 0;
+    }
+    header {
+        align-items: center;
+    }
+    .menu-icon {
+        height: 50px;
+        width: 50px;
+    }
+    .friendsList-container {
+        width: auto;
+        margin-right: 0px;
+    }
+    .friendsListButton {
+        padding-inline: 10px;
+        gap: 4px;   
+    }
+    #friendsListButtonTitle {
+        display: none;
+    }
+    .list-menu {
+        top: 90px;
+        right: 15px;
+    }
+}
+
+@media (max-width: 500px) {
+    .logo {
+        display: none;
+    }
 }

@@ -41,15 +41,19 @@
 					{
 						<img class="communityIcon" src="~/images/icons/user-icon.png" alt="Imagem de Perfil Padrão" style= "background-color: white;" />
 					}
-					<div class="communityName" id="communityInfo">@Model.getComunidade.nomeComunidade</div>
-					@{
-						int _comunidadeId = Model.getComunidade.comunidadeId;
-						int numberOfMembers = Model.GetNumberOfMembersInCommunity(_comunidadeId);
-					}
-					<div class="numberOfMembers" id="communityInfo">@numberOfMembers membros</div>
+
+						<div class="communityName" id="communityInfo">@Model.getComunidade.nomeComunidade</div>
+						@{
+							int _comunidadeId = Model.getComunidade.comunidadeId;
+							int numberOfMembers = Model.GetNumberOfMembersInCommunity(_comunidadeId);
+						}
+						<div class="numberOfMembers" id="communityInfo">@numberOfMembers membros</div>
+
 				</div>
 				<div class="buttons-container">
-
+						<div class="communityInfoModal-button">
+							<button type="button" class="joinQuitButton" data-bs-toggle="modal" data-bs-target="#communityInfo-modal"><img src="~/images/icons/list-icon.svg" alt=""></button>
+						</div>
 						@if (isMember != null && isMember.cargoComunidade.ToString() == "ADM")
 						{
 							<a asp-action="Edit" asp-route-id="@Model.getComunidade.comunidadeId"><img class="editIcon" src="~/images/icons/gear-icon.svg" alt=""></a>
@@ -58,17 +62,16 @@
 						{
 							<a><img class="reportIcon" src="~/images/icons/report-icon.svg"></a>
 						}
-
 						@if(isMember != null && isMember.cargoComunidade.ToString() == "Membro")
 						{
 							<form class="joinCommunity-form" id="joinCommunity-form" asp-action="DeixarComunidade">		
 								<input type="hidden" name="IdComunidade" value="@Model.getComunidade.comunidadeId" />
-								<button type="submit" class="joinQuitButton">Sair</button>
+								<button type="submit" class="joinQuitButton"><img src="~/images/icons/leave-icon.svg" alt=""></button>
 							</form>
 						}
 						else if(isMember != null && isMember.cargoComunidade.ToString() == "ADM")
 						{
-							<button class="joinQuitButton" data-bs-toggle="modal" data-bs-target="#deleteCommunity-modal">Apagar comunidade</button>
+							<button class="joinQuitButton" data-bs-toggle="modal" data-bs-target="#deleteCommunity-modal"><img src="~/images/icons/trash-icon.svg" alt=""></button>
 						}
 						else
 						{
@@ -80,30 +83,42 @@
 				</div>
 			</div>
 		</div>
-		<div class="descriptionBox">
+		<div class="descriptionBox" id="descriptionBox-static">
 			<div class="descriptionTitle">Descrição</div>
 			<div class="descriptionText-container">@Model.getComunidade.descricaoComunidade</div>
 		</div>
-		<div class="gamesListBox">
+		<div class="gamesListBox" id="gamesListBox-static">
 			<div class="gamesList-title">Jogos relacionados</div>
 			<div class="gamesList">
 				@if (Model.getComunidade.primeiroJogo != null && Model.getComunidade.segundoJogo != null && Model.getComunidade.terceiroJogo != null)
 				{
-					<div class="gamesList-items">
-						<div class="gameIcon-container">
-							<img src="~/images/icons/jogos/@(Model.getComunidade.primeiroJogo).svg" title="@(EnumHelper.GetDisplayName(Model.getComunidade.primeiroJogo))" alt="">
-						</div>                                     
-					</div>
-					<div class="gamesList-items">
-						<div class="gameIcon-container">
-							<img src="~/images/icons/jogos/@(Model.getComunidade.segundoJogo).svg" title="@(EnumHelper.GetDisplayName(Model.getComunidade.segundoJogo))" alt="" >
-						</div>                        
-					</div>
-					<div class="gamesList-items">
-						<div class="gameIcon-container">
-							<img src="~/images/icons/jogos/@(Model.getComunidade.terceiroJogo).svg" title="@(EnumHelper.GetDisplayName(Model.getComunidade.terceiroJogo))" alt="">
-						</div>
-					</div>
+					@if(Model.getComunidade.primeiroJogo == JogosEnum.Nenhum){}
+					else
+					{
+						<div class="gamesList-items">
+							<div class="gameIcon-container">
+								<img src="~/images/icons/jogos/@(Model.getComunidade.primeiroJogo).svg" title="@(EnumHelper.GetDisplayName(Model.getComunidade.primeiroJogo))" alt="">
+							</div>                                     
+						</div>						
+					}
+					@if(Model.getComunidade.segundoJogo == JogosEnum.Nenhum){}
+					else
+					{
+						<div class="gamesList-items">
+							<div class="gameIcon-container">
+								<img src="~/images/icons/jogos/@(Model.getComunidade.segundoJogo).svg" title="@(EnumHelper.GetDisplayName(Model.getComunidade.segundoJogo))" alt="" >
+							</div>                        
+						</div>						
+					}					
+					@if(Model.getComunidade.terceiroJogo == JogosEnum.Nenhum){}
+					else
+					{
+						<div class="gamesList-items">
+							<div class="gameIcon-container">
+								<img src="~/images/icons/jogos/@(Model.getComunidade.terceiroJogo).svg" title="@(EnumHelper.GetDisplayName(Model.getComunidade.terceiroJogo))" alt="">
+							</div>
+						</div>						
+					}					
 				}           
 			</div>
 		</div>
@@ -267,8 +282,8 @@
 
 
 <div class="modal fade" id="createPost-modal" tabindex="-1" aria-labelledby="usuarioModalLabel" aria-hidden="true">
-	<div class="modal-dialog" id="modal-dialog">
-		<div class="modal-content post" id="modal-content">
+	<div class="modal-dialog" id="postModal-dialog">
+		<div class="modal-content post" id="postModal-content">
 			<div class="commentsHeader">
 				<div class="modal-title" id="postModalLabel">Publicar em <span>@Model.getComunidade.nomeComunidade</span></div>
 				<button type="button" class="closeButton" data-bs-dismiss="modal" aria-label="Fechar">X</button>
@@ -277,7 +292,7 @@
 				<div class="createPost-inputs">
 					<input type="hidden" name="IdComunidade" value="@Model.getComunidade.comunidadeId" />
 					<textarea class="postText-creation" name="TextoPublicacao" placeholder="Digite o conteúdo de sua publicação"></textarea>
-					<div>Se quiser adicionar uma imagem a sua publicação,<br> escolha-a abaixo:</div>
+					<div>Se quiser adicionar uma imagem a sua publicação, escolha-a abaixo:</div>
 					<label class="postMedia-input" for="postMedia-input"><img class="uploadIcon" src="~/images/icons/upload-icon.svg" alt="">Selecionar imagem</label>
 					<input id="postMedia-input" name="midiaPublicacaoArquivo" type="file"/>
 				</div>		
@@ -300,6 +315,42 @@
 				<input type="hidden" name="IdComunidade" value="@Model.getComunidade.comunidadeId" />
 				<button type="submit" class="joinQuitButton" data-bs-toggle="modal">Apagar</button>
 			</form>
+		</div>
+	</div>
+</div>
+
+
+<div class="modal fade" id="communityInfo-modal" tabindex="-1" aria-labelledby="usuarioModalLabel" aria-hidden="true">
+	<div class="modal-dialog" id="communityInfoModel-dialog">
+		<div class="modal-content post" id="communityInfoModel-content">
+			<div class="descriptionBox">
+				<div class="descriptionTitle">Descrição</div>
+				<div class="descriptionText-container">@Model.getComunidade.descricaoComunidade</div>
+			</div>
+			<div class="gamesListBox">
+				<div class="gamesList-title">Jogos relacionados</div>
+				<div class="gamesList">
+					@if (Model.getComunidade.primeiroJogo != null && Model.getComunidade.segundoJogo != null && Model.getComunidade.terceiroJogo != null)
+					{
+						<div class="gamesList-items">
+							<div class="gameIcon-container">
+								<img src="~/images/icons/jogos/@(Model.getComunidade.primeiroJogo).svg" title="@(EnumHelper.GetDisplayName(Model.getComunidade.primeiroJogo))" alt="">
+							</div>                                     
+						</div>
+						<div class="gamesList-items">
+							<div class="gameIcon-container">
+								<img src="~/images/icons/jogos/@(Model.getComunidade.segundoJogo).svg" title="@(EnumHelper.GetDisplayName(Model.getComunidade.segundoJogo))" alt="" >
+							</div>                        
+						</div>
+						<div class="gamesList-items">
+							<div class="gameIcon-container">
+								<img src="~/images/icons/jogos/@(Model.getComunidade.terceiroJogo).svg" title="@(EnumHelper.GetDisplayName(Model.getComunidade.terceiroJogo))" alt="">
+							</div>
+						</div>
+					}           
+				</div>
+			</div>
+			<button type="button" class="closeCommunityInfo-button" data-bs-dismiss="modal" aria-label="Fechar">Fechar</button>
 		</div>
 	</div>
 </div>
