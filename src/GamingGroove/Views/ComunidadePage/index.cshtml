@@ -154,15 +154,14 @@
 							
 							<div class="userName">@Model.getUsuarioPublicacao.nomeUsuario</div>
 						</div></a>
-						@if(Model.getComunidadePublicacao.iconeComunidade != null)
+
+						@if(item.usuarioId.ToString() == User.FindFirstValue(ClaimTypes.NameIdentifier) || isMember != null && isMember.cargoComunidade.ToString() == "ADM")
 						{
-							<a href="~/ComunidadePage/@Model.getComunidadePublicacao.nomeComunidade"><img class="post-communityIcon" src="data:image/png;base64,@Convert.ToBase64String(Model.getComunidadePublicacao.iconeComunidade)" alt="Imagem de ícone da Comunidade"></a>
+							<form asp-action="ApagarPublicacao">
+								<input type="hidden" name="IdPublicacao" value="@item.publicacaoId">
+								<button class="deletePost-button" type="submit">X</button>
+							</form>				
 						}
-						else
-						{
-							<a href="~/ComunidadePage/@Model.getComunidadePublicacao.nomeComunidade"><img class="post-communityIcon" src="~/images/icons/empty-icon.png" alt="Imagem de ícone da Comunidade"></a>
-						}
-						
 					</div>
 					<div class="postContent">
 						<div class="postText">@item.textoPublicacao</div>

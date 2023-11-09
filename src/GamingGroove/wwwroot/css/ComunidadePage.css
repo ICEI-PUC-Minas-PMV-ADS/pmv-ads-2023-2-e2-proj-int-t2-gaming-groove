@@ -219,6 +219,7 @@ a {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    gap: 20px;
 }
 
 .gamesList-title {
@@ -228,15 +229,12 @@ a {
 }
 
 .gamesList-items {
-    width: 80%;
     display: flex;
     flex-direction: row;
     align-items: center; 
-    gap: 15px;
     font-size: 15px;
     padding-inline: 10px;
     padding-block: 5px;
-    margin-inline: 20px;
     border-radius: 6px;
 }
 
@@ -324,7 +322,8 @@ a {
     width: 93%;
     background-color: #232B58;
     box-shadow: black 0px 4px 4px;
-    padding: 20px;
+    padding-block: 20px;
+    padding-inline: 30px;
     border-radius: 6px;
     display: flex;
     flex-direction: column;
@@ -372,6 +371,17 @@ a {
 
 .userName {
     letter-spacing: 1px;
+}
+
+.deletePost-button {
+    background: none;
+    border: none;
+    font-family: Play;
+}
+
+.deletePost-button:hover {
+    transition: 0.6s;
+    color: #00F0FF;
 }
 
 .post-communityIcon {
@@ -907,8 +917,8 @@ a {
         background: none;
     }
     .gameIcon-container img {
-        height: 25px;
-        width: 25px;
+        height: 32px;
+        width: 32px;
     }
     .communityInfoModal-button {
         display: flex;
