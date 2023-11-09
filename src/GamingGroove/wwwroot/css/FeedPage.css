@@ -423,12 +423,12 @@ a {
 
 
 
-.modal-dialog {
+#commentsModal-dialog {
     display: flex;
     align-items: center;
 }
 
-.modal-content {
+#commentsModal-content {
     background-color: #232B58;
     padding: 20px;
     display: flex;
@@ -753,3 +753,18 @@ a {
     color: #ffffff;
 }
 
+
+
+
+#imageModal-dialog {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#imageModal-content {
+    height: fit-content;
+    width: fit-content;
+    max-height: 80vh;
+    max-width: 80vw;
+}
