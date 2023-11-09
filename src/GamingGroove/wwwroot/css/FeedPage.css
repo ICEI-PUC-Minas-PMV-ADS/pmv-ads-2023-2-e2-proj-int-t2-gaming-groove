@@ -113,24 +113,55 @@ a {
     display: flex;
     flex-direction: column;
     align-items: end;
+    justify-content: baseline;
     gap: 20px;
     padding-top: 10px;
+    min-width: 400px;
+}
+
+#postModal-content {
+    padding: 20px;
+}
+
+.createPost {
+    font-family: Play;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    border: #E5ABFF 2px solid;
+    padding-right: 15px;
+    padding-left: 8px;
+    background: none;
+    border-radius: 4px;
+    margin-right: 37px;
+    letter-spacing: 1px;
+    color: #E5ABFF;
+}
+
+.createPost:hover {
+    transition: 0.6s;
+    background-color: #E5ABFF;
+    color: black;
+    font-weight: bold;
 }
 
 .post-container {
     overflow: auto;
     display: flex;
     flex-direction: column;
+    justify-content: baseline;
     align-items: center;
     gap: 30px;
     width: 100%;
+    padding: 10px;
 }
 
 .post {
     width: 93%;
     background-color: #232B58;
-    box-shadow: black 2px 2px 6px;
-    padding: 20px;
+    box-shadow: black 0px 4px 4px;
+    padding-block: 20px;
+    padding-inline: 30px;
     border-radius: 6px;
     display: flex;
     flex-direction: column;
@@ -138,6 +169,7 @@ a {
     align-items: center;
     gap: 15px;
     font-family: Play;
+    box-shadow: black 2px 2px 6px;
 }
 
 .postHeader {
@@ -179,6 +211,25 @@ a {
     letter-spacing: 1px;
 }
 
+.deletePost-button {
+    background: none;
+    border: none;
+    font-family: Play;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+}
+
+.deletePost-button:hover {
+    transition: 0.6s;
+    color: #00F0FF;
+    background-color: #5965a0;
+}
+
+.deletePost-button:not(hover) {
+    transition: 0.6s;
+} 
+
 .post-communityIcon {
     height: 40px;
     width: 40px;
@@ -211,7 +262,6 @@ a {
 }
 
 .postImage {
-    height: 40vh;
     width: 100%;
     background-color: white;
     border-radius: 4px;
@@ -258,18 +308,22 @@ a {
     gap: 30px;
 }
 
-.interactionButtons-container img {
+#postButtons {
     height: 30px;
     filter: grayscale(100%) brightness(200%);
 }
 
-.interactionButtons-container img:hover {
+#postButtons:hover {
     transition: 0.7s;
     filter: none;
 } 
 
-.interactionButtons-container img:not(:hover) {
+#postButtons:not(:hover) {
     transition: 0.7s;
+}
+
+#postButtons-existLike {
+    height: 30px;
 }
 
 .reportButton {

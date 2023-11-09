@@ -104,11 +104,21 @@
 					</div>
 						<div class="postButtons">
 							<div class="interactionButtons-container">
-								<form asp-action="CurtirPublicacao">		
-									<input type="hidden" name="IdPublicacao" value="@item.publicacaoId" />
-									<button class="postLikes-hidden" type="submit"><img class="postLikes-button" src="~/images/icons/like-icon.svg" alt=""></button>
-								</form>			
-								<img type="button" class="postComments-button" data-bs-toggle="modal" data-bs-target="#publicacaoModal-@item.publicacaoId" src="~/images/icons/comment-icon.svg" alt="">			
+							<form asp-action="CurtirPublicacao">		
+								@{
+									var existeCurtida = Model.getTodasCurtidas.FirstOrDefault(uc => uc.usuarioId.ToString() == User.FindFirstValue(ClaimTypes.NameIdentifier) && uc.publicacaoId == item.publicacaoId);
+								}
+								<input type="hidden" name="IdPublicacao" value="@item.publicacaoId" />
+								@if(existeCurtida != null)
+								{
+									<button class="postLikes-hidden" type="submit"><img class="postLikes-button" id="postButtons-existLike" src="~/images/icons/like-icon.svg" ></button>
+								}
+								else
+								{
+									<button class="postLikes-hidden" type="submit"><img class="postLikes-button" id="postButtons" src="~/images/icons/like-icon.svg" ></button>
+								}	
+							</form>		
+								<img type="button" class="postComments-button" id="postButtons" data-bs-toggle="modal" data-bs-target="#publicacaoModal-@item.publicacaoId" src="~/images/icons/comment-icon.svg" alt="">			
 							</div>
 							<img class="reportButton" src="~/images/icons/report-icon.svg" alt="">
 						</div>
