@@ -47,7 +47,7 @@
 							int _comunidadeId = Model.getComunidade.comunidadeId;
 							int numberOfMembers = Model.GetNumberOfMembersInCommunity(_comunidadeId);
 						}
-						<div type="button" class="numberOfMembers" id="communityMembersInfo" data-bs-toggle="modal" data-bs-target="#membrosModal">@numberOfMembers membros</div>
+						<div type="button" class="numberOfMembers" id="communityMembersInfo" data-bs-toggle="modal" data-bs-target="#membersModal">@numberOfMembers membros</div>
 
 				</div>
 				<div class="buttons-container">
@@ -364,6 +364,7 @@
 	</div>
 </div>
 
+
 @foreach (var item in Model.getPublicacoes)
 {
 	Model.getUsuarioPublicacao = Model.getTodosUsuarios.FirstOrDefault(up => up.usuarioId == item.usuarioId);
@@ -414,4 +415,45 @@
         </div>
     </div>
 }
+
+
+
+
+<div class="modal fade" id="membersModal" tabindex="-1" aria-hidden="true">
+	<div class="modal-dialog" id="#membersModal-dialog">
+		<div class="modal-content" id="#membersModal-content">
+			<div class="membersHeader">
+				<div class="membersModal-title" id="usuarioModalLabel"><div>Membros de <span>@Model.getComunidade.nomeComunidade</span></div></div>
+				<button type="button" class="closeButton" data-bs-dismiss="modal" aria-label="Fechar">X</button>
+			</div>
+			<div class="membersList">
+				@{
+					var getMembrosComunidade = Model.getTodosUsuariosComunidades.Where(uc => uc.comunidadeId == Model.getComunidade.comunidadeId).ToList();
+				}
+				@if(getMembrosComunidade != null){
+					@foreach(var membro in getMembrosComunidade)
+					{
+						var getMembro = Model.getTodosUsuarios.FirstOrDefault(up => up.usuarioId == membro.usuarioId);
+						<div class="members-container">
+							<div class="member-header">
+								<a href="~/PerfilPage/@getMembro.nomeUsuario"><div class="memberUser">
+									@if(getMembro.iconePerfil != null)
+									{
+										<img class="userIcon-member" src="data:image/png;base64,@Convert.ToBase64String(getMembro.iconePerfil)" alt="Imagem de Perfil do Usuário" />
+									}
+									else
+									{
+										<img class="userIcon-member" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
+									}
+									<div class="userName-member">@getMembro.nomeUsuario</div>
+								</div></a>
+							</div>
+						</div>
+					}
+				}
+			</div>
+
+		</div>
+	</div>
+</div>
 

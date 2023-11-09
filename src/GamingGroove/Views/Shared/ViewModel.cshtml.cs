@@ -178,6 +178,8 @@ namespace GamingGroove.Views.Shared
             getTodosUsuarios = _cc.Usuarios.ToList();
 
             getTodasComunidades = _cc.Comunidades.ToList();
+            
+            getTodosUsuariosComunidades = _cc.UsuariosComunidades.ToList();
 
             getTodasCurtidas = _cc.Curtidas.ToList();
 
@@ -212,7 +214,6 @@ namespace GamingGroove.Views.Shared
                     .Where(uc => uc.comunidadeId == getComunidade.comunidadeId)
                     .ToList(); 
             }         
-
                              
         }
 
