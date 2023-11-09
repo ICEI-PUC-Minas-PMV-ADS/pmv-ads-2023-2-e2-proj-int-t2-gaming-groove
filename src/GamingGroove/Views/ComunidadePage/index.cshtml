@@ -47,7 +47,7 @@
 							int _comunidadeId = Model.getComunidade.comunidadeId;
 							int numberOfMembers = Model.GetNumberOfMembersInCommunity(_comunidadeId);
 						}
-						<div class="numberOfMembers" id="communityInfo">@numberOfMembers membros</div>
+						<div type="button" class="numberOfMembers" id="communityMembersInfo" data-bs-toggle="modal" data-bs-target="#membrosModal">@numberOfMembers membros</div>
 
 				</div>
 				<div class="buttons-container">
@@ -171,7 +171,7 @@
 						}					
 					</div>
 					<div class="postNumbers">
-						<div class="postLikes">@getCurtidasPublicacao curtidas</div>
+						<div class="postLikes" type="button" data-bs-toggle="modal" data-bs-target="#curtidasModal-@item.publicacaoId">@getCurtidasPublicacao curtidas</div>
 						<div class="postComments">@getComentariosPublicacao comentários</div>
 					</div>
 					<div class="postButtons">
@@ -220,8 +220,8 @@
 								<img class="list-communityIcon" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
 							}               
 							<div class="communityInfo-container">
-								<div class="communityName">@item.comunidade.nomeComunidade</div>                                
-								<div class="list-numberOfMembers">@numberOfMembersEachCommunity membros</div>
+								<div class="communityName">@item.comunidade.nomeComunidade</div>    
+								<div type="button" class="list-numberOfMembers" data-bs-toggle="modal" data-bs-target="#membrosModal">@numberOfMembersEachCommunity membros</div>
 							</div>
 						</div>	
 					</a>				
@@ -290,7 +290,7 @@
 }
 
 
-<div class="modal fade" id="createPost-modal" tabindex="-1" aria-labelledby="usuarioModalLabel" aria-hidden="true">
+<div class="modal fade" id="createPost-modal" tabindex="-1" aria-hidden="true">
 	<div class="modal-dialog" id="postModal-dialog">
 		<div class="modal-content post" id="postModal-content">
 			<div class="commentsHeader">
@@ -312,7 +312,7 @@
 </div>
 
 
-<div class="modal fade" id="deleteCommunity-modal" tabindex="-1" aria-labelledby="usuarioModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteCommunity-modal" tabindex="-1" aria-hidden="true">
 	<div class="modal-dialog" id="modal-dialog">
 		<div class="modal-content post" id="modal-content">
 			<div class="commentsHeader">
@@ -329,7 +329,7 @@
 </div>
 
 
-<div class="modal fade" id="communityInfo-modal" tabindex="-1" aria-labelledby="usuarioModalLabel" aria-hidden="true">
+<div class="modal fade" id="communityInfo-modal" tabindex="-1" aria-hidden="true">
 	<div class="modal-dialog" id="communityInfoModel-dialog">
 		<div class="modal-content post" id="communityInfoModel-content">
 			<div class="descriptionBox">
@@ -363,3 +363,55 @@
 		</div>
 	</div>
 </div>
+
+@foreach (var item in Model.getPublicacoes)
+{
+	Model.getUsuarioPublicacao = Model.getTodosUsuarios.FirstOrDefault(up => up.usuarioId == item.usuarioId);
+	Model.getCurtidasPublicacao = Model.getTodasCurtidas.Where(c => c.publicacaoId == item.publicacaoId).ToList();
+	int getCurtidasPublicacao = Model.getTodasCurtidas.Count(cp => cp.publicacaoId == item.publicacaoId);
+	
+    <div class="modal fade" id="curtidasModal-@item.publicacaoId" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog" id="likesModal-dialog">
+            <div class="modal-content" id="likesModal-content">
+                <div class="likesHeader">
+					<a href="~/PerfilPage/@Model.getUsuarioPublicacao.nomeUsuario">
+					@if(Model.getUsuarioPublicacao.iconePerfil != null)
+					{
+						<img class="userIcon-post" src="data:image/png;base64,@Convert.ToBase64String(Model.getUsuarioPublicacao.iconePerfil)" alt="Imagem de Perfil do Usuário" />
+					}
+					else
+					{
+						<img class="userIcon-post" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
+					}
+					</a>
+                    <div class="modal-title" id="usuarioModalLabel"><div>Publicação de <span>@Model.getUsuarioPublicacao.nomeUsuario</span><br>@getCurtidasPublicacao curtidas</div></div>
+                    <button type="button" class="closeButton" data-bs-dismiss="modal" aria-label="Fechar">X</button>
+                </div>
+                <div class="likesList">
+					
+                    @foreach(var curtida in Model.getCurtidasPublicacao)
+					{
+						var getUsuarioCurtida = Model.getTodosUsuarios.FirstOrDefault(up => up.usuarioId == curtida.usuarioId);
+						<div class="likes-container">
+							<div class="likes-header">
+								<a href="~/PerfilPage/@getUsuarioCurtida.nomeUsuario"><div class="likeUser">
+									@if(getUsuarioCurtida.iconePerfil != null)
+									{
+										<img class="userIcon-like" src="data:image/png;base64,@Convert.ToBase64String(getUsuarioCurtida.iconePerfil)" alt="Imagem de Perfil do Usuário" />
+									}
+									else
+									{
+										<img class="userIcon-like" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
+									}
+									<div class="userName-like">@getUsuarioCurtida.nomeUsuario</div>
+								</div></a>
+							</div>
+						</div>
+					}
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
+

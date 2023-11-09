@@ -36,6 +36,7 @@ namespace GamingGroove.Views.Shared
         public List<int> getComunidadesIds { get; set; }
         public ComunidadeModel getComunidadePublicacao { get; set; }
         public IEnumerable<ComunidadeModel> getTodasComunidades { get; set; }
+        public IEnumerable<UsuarioComunidadeModel> getTodosUsuariosComunidades { get; set; }
         public IEnumerable<UsuarioComunidadeModel> getComunidadesSugeridas { get; set; }
         public IEnumerable<UsuarioComunidadeModel> getComunidadesUsuario { get; set; }
         public List<int> infoComunidades { get; set; }
@@ -51,6 +52,7 @@ namespace GamingGroove.Views.Shared
         
         
         public IEnumerable<CurtidaModel> getTodasCurtidas { get; set; }
+        public IEnumerable<CurtidaModel> getCurtidasPublicacao { get; set; }
 
         public IEnumerable<ComentarioModel> getTodosComentarios { get; set; }
         public IEnumerable<ComentarioModel> getComentariosPublicacao { get; set; }
@@ -64,6 +66,8 @@ namespace GamingGroove.Views.Shared
 
         public void OnGetListaDeAmigos(int? usuarioLogado)
         {
+            getTodosUsuariosComunidades = _cc.UsuariosComunidades.ToList();
+
             getTodosUsuarios = _cc.Usuarios.ToList();
                         
             getTodasAmizades = _cc.Amizades.ToList();
@@ -99,6 +103,8 @@ namespace GamingGroove.Views.Shared
             getTodosUsuariosSolicitacoes = getTodosUsuariosSolicitacoes
                 .Where(solicitacao => solicitacao.usuarioId != IdUsuarioLogado)
                 .ToList();             
+
+                
         }
 
         //PerfilPage
