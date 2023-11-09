@@ -33,14 +33,14 @@
         @if (User.Identity.IsAuthenticated)
         {
             
-            var profileImage = Url.Action("GetIconeUsuario", "Login");
+            var profileImage = Url.Action("GetIconeUsuario", "HomePageCadastro");
 
 
             <button id="menu-icon" class="menu-icon" onclick="openMenu()"><img src="@profileImage" alt=""></button>
             <nav id="listMenu" class="list-menu">
                 <div class="list">
                     <a href="~/PerfilPage/@User.FindFirst(ClaimTypes.Name)?.Value">Perfil</a>
-                    <a asp-area="" asp-controller="Login" asp-action="Logout">Sair</a>
+                    <a asp-area="" asp-controller="HomePageLogin" asp-action="Logout">Sair</a>
                 </div>
             </nav>
         }

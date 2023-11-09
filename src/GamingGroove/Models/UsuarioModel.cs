@@ -26,7 +26,7 @@ namespace GamingGroove.Models
         [Required(ErrorMessage = "Informe um e-mail válido.")]
         public string? email { get; set; }
 
-        [Required(ErrorMessage = "Escolha uma senha válida. Sua senha deve possuir entre 6 e 12 caracteres e conter ao menos uma letra, um número e um símbolo.")]
+        [Required(ErrorMessage = "Sua senha deve ter entre 6 e 12 caracteres.")]
         [Display(Name = "Senha")]
         public string? senha { get; set; }
 

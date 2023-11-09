@@ -80,7 +80,7 @@ namespace GamingGroove
 
             app.MapControllerRoute(
                 name: "home",
-                pattern: "{controller=HomePage}/{action=Index}/{id?}");
+                pattern: "{controller=HomePageLogin}/{action=Index}/{id?}");
 
             app.MapControllerRoute(
                 name: "perfil",

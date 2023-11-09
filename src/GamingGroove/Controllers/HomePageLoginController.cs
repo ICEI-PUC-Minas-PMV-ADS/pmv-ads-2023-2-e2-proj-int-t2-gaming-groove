@@ -1,26 +1,30 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 using GamingGroove.Data;
 using GamingGroove.Models;
 using System.Security.Claims;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
 
 namespace GamingGroove.Controllers
 {
     [AllowAnonymous]
-    public class LoginController : Controller
+    public class HomePageLoginController : Controller
     {
         private readonly GamingGrooveDbContext _context;
 
-        public LoginController(GamingGrooveDbContext context)
+        public HomePageLoginController(GamingGrooveDbContext context)
         {
             _context = context;
         }
 
 
-        public IActionResult Login()
-        {
+        public IActionResult Index()
+        {           
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "FeedPage");
+            }
             return View();
         }
 
@@ -31,7 +35,7 @@ namespace GamingGroove.Controllers
             .Where(u => u.nomeUsuario == usuarioLogin.nomeUsuario)
             .FirstOrDefaultAsync();
 
-            if(dados == null)
+            if(dados == null || usuarioLogin.senha == null)
             {
                 ViewBag.Message = "Usuário e/o senha inválido(s).";
                 return View("Index");
@@ -79,57 +83,7 @@ namespace GamingGroove.Controllers
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync();
-            return RedirectToAction("Index", "HomePage");
+            return RedirectToAction("Index", "HomePageLogin");
         }
-
-
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("usuarioId,nomeUsuario,nomeCompleto,dataNascimento,email,senha,iconePerfil,capaPerfil,fotosGaleria,jogosFavoritos,biografia,registrationDate,tipoUsuario")] UsuarioModel usuarioModel)
-        {
-            if (ModelState.IsValid)
-            {
-                usuarioModel.primeiroJogo = JogosEnum.Nenhum;
-                usuarioModel.segundoJogo = JogosEnum.Nenhum;
-                usuarioModel.terceiroJogo = JogosEnum.Nenhum;
-
-                usuarioModel.senha = BCrypt.Net.BCrypt.HashPassword(usuarioModel.senha);                       
-                _context.Add(usuarioModel);
-                await _context.SaveChangesAsync();
-                return RedirectToAction("Index", "HomePage");
-            }
-
-            return View("Index", usuarioModel);
-        }
-
-                
-        [HttpGet]
-        public IActionResult GetIconeUsuario()
-        {           
-            var UsuarioID = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            var user = _context.Usuarios.FirstOrDefault(u => u.usuarioId == int.Parse(UsuarioID));
-            string IconePadrao = "images/icons/empty-icon.png";
-
-            var cacheProfile = new CacheProfile
-            {
-                NoStore = true,   
-                Duration = 0  
-            };
-
-            Response.Headers.Add("Cache-Control", "no-store, max-age=0");
-
-            if (user != null && user.iconePerfil != null)
-            {
-                return File(user.iconePerfil, "image/png");
-            }
-
-            return File(IconePadrao, "image/png");
-        }
-        
     }
 }
