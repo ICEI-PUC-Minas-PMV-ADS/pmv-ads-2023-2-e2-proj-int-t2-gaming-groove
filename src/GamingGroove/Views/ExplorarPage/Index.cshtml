@@ -24,52 +24,37 @@
     
     <div class="left-container">
         <div class="lfCamada1">
-            
-            <h3>USUARIOS</h3>
-            <form class="friendsList-form" role="search">
-                <input id="friendsList-input" class="friendsList-input" type="search" placeholder="Buscar" aria-label="Search">
-            </form>
-                <div class="lfCamada2">
-                   <div class="containerCard2">
-            <div class="internalContainer2">
-                <div class="gridContainerFlow2">
-            
-                    @foreach (var item in Model.getTodosUsuarios)
-                        {   <a href="~/PerfilPage/@item.nomeUsuario"><div class="user-container"></div>           
-                            <div class="cardTodosUsuarios">
-                                <div class="user-card-body">
-                                    <p class="card-textTodosUsuarios">
-                                       
-                                        @if (item.iconePerfil != null)
-                                            {
-                                                
-                                                <img class="user-icon" src="data:image/png;base64,@Convert.ToBase64String(item.iconePerfil)" alt="Imagem de Perfil" /> 
-                                                     
-                                            }
-                                                else
-                                            {
-                                                <img class="team-icon" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />                
-                                                    
-                                            }
-                                            <h3 class="nomedousuario">@item.nomeUsuario</h3>                                                   
-                                    </p>
-                                                 
-                                </div>
-                                
-                            </div>
-                              
-                            </a>    
-                        }
-                </div>            
-            </div>                
-            
-        </div>
+                <h2 class="tituloUsuarios" >USUARIOS</h2>
+                <form class="d-flex" id="searchInputUsuario2" role="search">
+                    <input class="form-control me-2" id="searchInputUsuario" type="search" placeholder="Search" aria-label="Search">
+                </form>
+            <div class="lfCamada2">
+                <div class="containerCard2">
+                    <div class="internalContainer2">
+                        <div class="gridContainerFlow2">
+                            @foreach (var item in Model.getTodosUsuarios)
+                                {              
+                                    <div class="cardTodosUsuarios">
+                                        <a href="~/PerfilPage/@item.nomeUsuario">
+                                            <div class="user-card-body">
+                                                @if (item.iconePerfil != null)
+                                                    {
+                                                        <img class="user-icon" src="data:image/png;base64,@Convert.ToBase64String(item.iconePerfil)" alt="Imagem de Perfil" />      
+                                                    }
+                                                        else
+                                                    {
+                                                        <img class="team-icon" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />                    
+                                                    }
+                                                    <h3 class="nomedousuario">@item.nomeUsuario</h3>                                                         
+                                            </div>
+                                        </a>  
+                                    </div>
+                                }
+                        </div>            
+                    </div>                
                 </div>
+            </div>
         </div>
-
-        
-
-
     </div>
 
     <div class="center-container">
@@ -79,7 +64,6 @@
         <div class="NavbarContainer">
             <form class="d-flex" role="search">
                 <input class="form-control me-2" id="searchInput" type="search" placeholder="Search" aria-label="Search">
-            
             </form>
 
          </div> 
@@ -128,12 +112,12 @@
         
 
         <div class="rhCamada1">
-            <h3 id="minhasComunidades">MINHAS COMUNIDADES</h3>
+            <h3 class = "tituloMinhasComunidades" id="minhasComunidades">MINHAS COMUNIDADES</h3>
             <div class="rhCamada2">
                 <div class="minhasComunidades">
                     <div class="ComunidadesUsuario">
                         @foreach (var item in Model.getComunidadesUsuario)
-                            {   <a href="~/ComunidadePage/@item.comunidade.nomeComunidade"><div class="communityItems"></div>
+                            {   <a href="~/ComunidadePage/@item.comunidade.nomeComunidade">
                                 <div class="cardMinhasComunidades">
                                     @if (item.comunidade.iconeComunidade != null)
                                         {
@@ -144,7 +128,7 @@
                                                 <img class="community-icon" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
                                         }  
                                       
-                                    <h2>@item.comunidade.nomeComunidade</h2>
+                                    <h4>@item.comunidade.nomeComunidade</h4>
 
                                 </div>
                                 </a>
@@ -164,7 +148,10 @@
 </style>
 
 
+<script>
 
+
+</script>
 
 
  
