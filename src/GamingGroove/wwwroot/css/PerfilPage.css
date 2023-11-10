@@ -770,6 +770,19 @@ h3 {
         height: 100px;
         width: 100px;
     }
+    .cover-pic {
+        flex-direction: column-reverse;
+        align-items: start; 
+    }    
+    .cover-second-container {
+        width: 100%;
+        position: relative;
+        margin-bottom: -20px;
+    }    
+    .user-add-friend-container {
+        flex-direction: column-reverse;
+        align-items: start;
+    }  
     .column {
         height: 60vh;
     }
