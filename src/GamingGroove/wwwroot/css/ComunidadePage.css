@@ -1168,24 +1168,6 @@ a {
 }
 
 
-#imageModal-dialog {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: red;
-    height: 100vh;
-}
-
-#imageModal-content {
-    height: fit-content;
-    width: fit-content;
-    max-height: 80vh;
-    max-width: 80vw;
-    border-radius: 4px;
-    margin-bottom: 300px;
-}
-
-
 
 
 
@@ -1464,7 +1446,18 @@ a {
 }
 
 
+#imageModal-dialog {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+#imageModal-content {
+    height: fit-content;
+    width: fit-content;
+    max-height: 80vh;
+    width: 80vw;
+}
 
 
 
@@ -1616,11 +1609,6 @@ a {
         border-radius: 6px;
         display: none;
     }
-    #imageModal-content {
-        max-width: 96vw;
-        margin-bottom: 120px;
-    }
-
 
     #createCommunity-dialog {
         display: flex;
@@ -1846,3 +1834,11 @@ a {
 }
 
 
+@media (max-width: 680px)
+{
+    #imageModal-content {
+        max-height: 100vw;
+        width: 100vh;
+        transform: rotate(90deg);
+    }
+}

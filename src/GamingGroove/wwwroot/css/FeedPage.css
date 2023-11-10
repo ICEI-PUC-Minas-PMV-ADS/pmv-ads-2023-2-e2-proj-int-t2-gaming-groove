@@ -774,8 +774,9 @@ a {
     height: fit-content;
     width: fit-content;
     max-height: 80vh;
-    max-width: 80vw;
+    width: 80vw;
 }
+
 
 
 
@@ -928,6 +929,14 @@ a {
     .right-container {
         display: none;
     }
+}
 
-    
+
+@media (max-width: 680px)
+{
+    #imageModal-content {
+        max-height: 100vw;
+        width: 100vh;
+        transform: rotate(90deg);
+    }
 }
