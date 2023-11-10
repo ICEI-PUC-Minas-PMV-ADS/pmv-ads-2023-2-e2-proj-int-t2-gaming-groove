@@ -337,6 +337,7 @@ a {
     justify-content: baseline;
     align-items: baseline;
     width: 200px;
+    margin: 0;
 }
 
 .profileImage-input input[type="file"]{
@@ -419,6 +420,12 @@ a {
     letter-spacing: 1px;
 }
 
+.favGames-label-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .biography {
     display: flex;
     flex-direction: column;
@@ -494,8 +501,18 @@ a {
     transition: 0.7s;
 }
 
+#createCommunity-dialog {
 
+}
 
+#createCommunity-content {
+    background-color: #232B58;
+    width: fit-content;
+    height: fit-content;
+    padding: 20px;
+    border: 1px solid #E5ABFF;
+    box-shadow: #D169FF 0px 0px 6px;
+}
 
 
 @media  (max-width: 1250px)
@@ -630,20 +647,17 @@ a {
         min-width: 0;
         width: 100%;
         font-family: Play;
-    }
-    
+    } 
     .createCommunity-container {
         display: flex;
         flex-direction: column;
         align-items: center;
         font-size: 14px;
     }
-    
     .createCommunity-title {
         font-size: 22px;
         margin-bottom: 30px;
-    }
-    
+    }  
     .secondSection-container {
         display: flex;
         flex-direction: column;
@@ -651,7 +665,6 @@ a {
         justify-content: center;
         gap: 30px;
     }
-    
     .communityName-container {
         display: flex;
         flex-direction: column;
@@ -660,7 +673,6 @@ a {
         gap: 20px;
         margin-bottom: 20px;
     }
-    
     .communityName-container input {
         font-family: Arial;
         letter-spacing: 1px;
@@ -672,18 +684,7 @@ a {
         padding-block: 5px;
         width: 260px;
         padding-inline: 15px;
-    }
-    
-    .favGames-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;   
-        gap: 1vh;
-        justify-content: baseline;
-        align-items: center;
-        width: 200px;
-    }
-    
+    }        
     .profileImage-input input[type="file"]{
         display: none;
     }
@@ -696,7 +697,7 @@ a {
     
     .imageInput {
         height: 40px;
-        width: 150px;
+        width: 90px;
         color: #E3A5FF;
         background-color: #111738;
         border-radius: 4px;
@@ -724,6 +725,14 @@ a {
     
     .imageInput:not(:hover) {
         transition: 0.7s;
+    }
+    .favGames-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;   
+        align-items: center;
+        gap: 1vh;
+        width: 200px;
     }
     
     .favGames-container select{
@@ -762,6 +771,10 @@ a {
         color: red;
         font-size: 12px;
         letter-spacing: 1px;
+    }
+    
+    .favGames-label-container select{
+        width: 150px;
     }
     
     .biography {
