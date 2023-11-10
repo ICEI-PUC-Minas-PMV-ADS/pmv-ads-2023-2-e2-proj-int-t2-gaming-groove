@@ -74,11 +74,11 @@
         <div class="cover-second-container">
             @if(User.Identity.Name == Model.getUsuario.nomeUsuario)
             {
-                <button type="button" class="profileButton" data-bs-toggle="modal" data-bs-target="#deleteCommunity-modal"><img class="edit-profile-icon" src="~/images/icons/edit-icon.svg" alt=""></button>
+                <button type="button" class="profileButton" data-bs-toggle="modal" data-bs-target="#editProfile-modal"><img class="edit-profile-icon" src="~/images/icons/edit-icon.svg" alt=""></button>
             }    
             else
             {
-                <button class="profileButton"><img class="report-icon" src="~/images/icons/report-icon.svg"></button>
+                <button type="button" class="profileButton" data-bs-toggle="modal" data-bs-target="#reportUser-modal"><img class="report-icon" src="~/images/icons/report-icon.svg"></button>
             }            
         </div>
     </div>
@@ -191,7 +191,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="deleteCommunity-modal" tabindex="-1" aria-labelledby="usuarioModalLabel" aria-hidden="true">
+<div class="modal fade" id="editProfile-modal" tabindex="-1" aria-labelledby="usuarioModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content post" id="postModal-content">
             <form class="main-container" asp-controller="PerfilPage" asp-action="EditarPerfil" enctype="multipart/form-data">
@@ -252,6 +252,43 @@
                         <div class="buttons-container">
                             <button class="submit-button" type="button" class="closeButton" data-bs-dismiss="modal" aria-label="Fechar">Cancelar</button>
                             <button class="submit-button" type="submit">Salvar alterações</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+		</div>
+	</div>
+</div>
+
+
+<div class="modal fade" id="reportUser-modal" tabindex="-1" aria-labelledby="usuarioModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content post" id="postModal-content">
+            <form class="main-container" asp-controller="Denuncia" asp-action="DenunciarUsuario" enctype="multipart/form-data">
+                <input type="hidden" name="DenunciadoId" value="@Model.getUsuario.usuarioId">
+                <div class="edit-container">
+                    <div class="editProfile-container">  
+                        <div class="reportUser-title">Você está prestes a denunciar <br><span>@Model.getUsuario.nomeUsuario</span></div>                  
+                        <div class="reportUser-container">
+                            <div class="favGames-container">
+                                <div class="favGames-label-container">
+                                    <div class="favGames-label">Selecione o tipo de denúncia:</div>
+                                    <div class="favGames-alert">@ViewBag.Message</div>
+                                </div>    
+                                <div class="form-group">
+                                    <select name="TipoDenuncia" class="form-control" asp-items="Html.GetEnumSelectList<TiposDenuncia>()"></select>
+                                </div>
+                            </div>
+                            <div class="biographyForm">
+                                <div>Faça uma descrição da denúncia:</div>
+                                <div class="form-group">
+                                    <textarea type="text" name="DescricaoDenuncia" id="bioText-form" class="form-control bio-text" rows="10" maxlength="534"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="buttons-container">
+                            <button class="reportSubmit-button" type="button" class="closeButton" data-bs-dismiss="modal" aria-label="Fechar">Cancelar</button>
+                            <button class="reportSubmit-button" type="submit">Enviar denúncia</button>
                         </div>
                     </div>
                 </div>
