@@ -394,6 +394,7 @@ h3 {
     flex-direction: row;
     width: 100%;
     justify-content: space-around;
+    align-items: center;
 }
 
 .community-icon {

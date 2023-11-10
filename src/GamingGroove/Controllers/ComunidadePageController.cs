@@ -68,7 +68,21 @@ namespace GamingGroove.Controllers
             }
 
             return RedirectToAction("Index", new { community = TempData["CommunityValue"] });
-        }        
+        }   
+
+        public async Task<IActionResult> ApagarPublicacao(int IdPublicacao)
+        {
+            var publicacaoModel = await _context.Publicacoes
+                .FirstOrDefaultAsync(uc => uc.publicacaoId == IdPublicacao);
+
+            if(publicacaoModel != null)
+            {
+                _context.Publicacoes.Remove(publicacaoModel);     
+                await _context.SaveChangesAsync();
+            }
+
+            return RedirectToAction("Index", new { community = TempData["CommunityValue"] });            
+        }             
 
         public async Task<IActionResult> Comentar(int? IdUsuario, int IdPublicacao, string TextoComentario, DateTime DataComentario)
         {

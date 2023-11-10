@@ -5,7 +5,13 @@
 	ViewData["Title"] = "FeedPage";
 }
 
-<title>Feed</title>
+@{
+	string notificacao = "";
+}
+@if(@Model.getTodosUsuariosSolicitacoes.Count() > 0){
+	 notificacao = "(" + Model.getTodosUsuariosSolicitacoes.Count().ToString() + ")";
+}   
+<title>Feed @notificacao</title>
 <link rel="stylesheet" href="~/css/FeedPage.css" asp-append-version="true" />
 
 <div class="main-container">
@@ -47,6 +53,10 @@
 	</div>
 
 	<div class="center-container">
+		<div class="buttons-container">
+			<button type="button" class="myCommunities-button" id="myCommunitiesButton" data-bs-toggle="modal" data-bs-target="#myCommunitiesModal">Minhas comunidades</button>	
+			<button type="button" class="myTeams-button" id="myTeamsButton" data-bs-toggle="modal" data-bs-target="#myTeamsModal">Minhas equipes</button>	
+		</div>
 		<div class="post-container">
 			@if(Model.getFeedPublicacoes.Count() == 0)
 			{
@@ -54,7 +64,7 @@
 			}
 			@foreach(var item in Model.getFeedPublicacoes.OrderByDescending(p => p.dataPublicacao))
 			{
-				var dataLimite = DateTime.Now.AddDays(-3);
+				var dataLimite = DateTime.Now.AddDays(-5);
 				if(item.dataPublicacao > dataLimite) 
 				{				
 					Model.getUsuarioPublicacao = Model.getTodosUsuarios.FirstOrDefault(up => up.usuarioId == item.usuarioId);
@@ -89,20 +99,30 @@
 							<div class="postText">@item.textoPublicacao</div>
 							@if(item.midiaPublicacao != null)
 							{
-								<img class="postImage" src="data:image/png;base64,@Convert.ToBase64String(item.midiaPublicacao)" alt="">
+								<img type="button" class="postImage"data-bs-toggle="modal" data-bs-target="#imageModal-@item.publicacaoId" src="data:image/png;base64,@Convert.ToBase64String(item.midiaPublicacao)" alt="">
 							}					
 						</div>
-						<div class="postNumbers">
-							<div class="postLikes">@getCurtidasPublicacao curtidas</div>
-							<div class="postComments">@getComentariosPublicacao comentários</div>
-						</div>
+					<div class="postNumbers">
+						<div class="postLikes" type="button" data-bs-toggle="modal" data-bs-target="#curtidasModal-@item.publicacaoId">@getCurtidasPublicacao curtidas</div>
+						<div class="postComments" type="button" id="postButtons" data-bs-toggle="modal" data-bs-target="#publicacaoModal-@item.publicacaoId">@getComentariosPublicacao comentários</div>
+					</div>
 						<div class="postButtons">
 							<div class="interactionButtons-container">
-								<form asp-action="CurtirPublicacao">		
-									<input type="hidden" name="IdPublicacao" value="@item.publicacaoId" />
-									<button class="postLikes-hidden" type="submit"><img class="postLikes-button" src="~/images/icons/like-icon.svg" alt=""></button>
-								</form>			
-								<img type="button" class="postComments-button" data-bs-toggle="modal" data-bs-target="#publicacaoModal-@item.publicacaoId" src="~/images/icons/comment-icon.svg" alt="">			
+							<form asp-action="CurtirPublicacao">		
+								@{
+									var existeCurtida = Model.getTodasCurtidas.FirstOrDefault(uc => uc.usuarioId.ToString() == User.FindFirstValue(ClaimTypes.NameIdentifier) && uc.publicacaoId == item.publicacaoId);
+								}
+								<input type="hidden" name="IdPublicacao" value="@item.publicacaoId" />
+								@if(existeCurtida != null)
+								{
+									<button class="postLikes-hidden" type="submit"><img class="postLikes-button" id="postButtons-existLike" src="~/images/icons/like-icon.svg" ></button>
+								}
+								else
+								{
+									<button class="postLikes-hidden" type="submit"><img class="postLikes-button" id="postButtons" src="~/images/icons/like-icon.svg" ></button>
+								}	
+							</form>		
+								<img type="button" class="postComments-button" id="postButtons" data-bs-toggle="modal" data-bs-target="#publicacaoModal-@item.publicacaoId" src="~/images/icons/comment-icon.svg" alt="">			
 							</div>
 							<img class="reportButton" src="~/images/icons/report-icon.svg" alt="">
 						</div>
@@ -147,8 +167,8 @@
 	Model.getComentariosPublicacao = Model.getTodosComentarios.Where(c => c.publicacaoId == item.publicacaoId).ToList();
 	
     <div class="modal fade" id="publicacaoModal-@item.publicacaoId" tabindex="-1" aria-labelledby="publicacaoModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
+        <div class="modal-dialog" id="commentsModal-dialog">
+            <div class="modal-content" id="commentsModal-content">
                 <div class="commentsHeader">
 					<a href="~/PerfilPage/@Model.getUsuarioPublicacao.nomeUsuario">
 					@if(Model.getUsuarioPublicacao.iconePerfil != null)
@@ -199,15 +219,150 @@
 
 
 
+@foreach (var item in Model.getFeedPublicacoes)
+{
+	Model.getUsuarioPublicacao = Model.getTodosUsuarios.FirstOrDefault(up => up.usuarioId == item.usuarioId);
+	Model.getCurtidasPublicacao = Model.getTodasCurtidas.Where(c => c.publicacaoId == item.publicacaoId).ToList();
+	int getCurtidasPublicacao = Model.getTodasCurtidas.Count(cp => cp.publicacaoId == item.publicacaoId);
+	
+    <div class="modal fade" id="curtidasModal-@item.publicacaoId" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog" id="likesModal-dialog">
+            <div class="modal-content" id="likesModal-content">
+                <div class="likesHeader">
+					<a href="~/PerfilPage/@Model.getUsuarioPublicacao.nomeUsuario">
+					@if(Model.getUsuarioPublicacao.iconePerfil != null)
+					{
+						<img class="userIcon-post" src="data:image/png;base64,@Convert.ToBase64String(Model.getUsuarioPublicacao.iconePerfil)" alt="Imagem de Perfil do Usuário" />
+					}
+					else
+					{
+						<img class="userIcon-post" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
+					}
+					</a>
+                    <div class="modal-title" id="usuarioModalLabel"><div>Publicação de <span>@Model.getUsuarioPublicacao.nomeUsuario</span><br>@getCurtidasPublicacao curtidas</div></div>
+                    <button type="button" class="closeButton" data-bs-dismiss="modal" aria-label="Fechar">X</button>
+                </div>
+                <div class="likesList">
+					
+                    @foreach(var curtida in Model.getCurtidasPublicacao)
+					{
+						var getUsuarioCurtida = Model.getTodosUsuarios.FirstOrDefault(up => up.usuarioId == curtida.usuarioId);
+						<div class="likes-container">
+							<div class="likes-header">
+								<a href="~/PerfilPage/@getUsuarioCurtida.nomeUsuario"><div class="likeUser">
+									@if(getUsuarioCurtida.iconePerfil != null)
+									{
+										<img class="userIcon-like" src="data:image/png;base64,@Convert.ToBase64String(getUsuarioCurtida.iconePerfil)" alt="Imagem de Perfil do Usuário" />
+									}
+									else
+									{
+										<img class="userIcon-like" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
+									}
+									<div class="userName-like">@getUsuarioCurtida.nomeUsuario</div>
+								</div></a>
+							</div>
+						</div>
+					}
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
 
 
 
 
 
 
+@foreach (var item in Model.getFeedPublicacoes)
+{	
+    <div class="modal fade" id="imageModal-@item.publicacaoId" tabindex="-1" aria-labelledby="publicacaoModalLabel" aria-hidden="true">
+        <div class="modal-dialog" id="imageModal-dialog">
+            <div class="modal-content" id="imageModal-content">
+                @if(item.midiaPublicacao != null)
+				{
+					<img class="postImageModal" src="data:image/png;base64,@Convert.ToBase64String(item.midiaPublicacao)" alt="">
+				}		
+            </div>
+        </div>
+    </div>
+}
 
 
 
+<div class="modal fade" id="myCommunitiesModal" tabindex="-1">
+	<div class="modal-dialog" id="myCommunitiesModal-dialog">
+		<div class="modal-content" id="myCommunitiesModal-content">
+			<div class="suggestedCommunities">
+				<div class="listTitle">Minhas comunidades</div>
+				<div class="communitiesList">
+					@if(Model.getComunidadesUsuario == null)
+					{
+						<div>Você ainda não faz parte de comunidades.</div>
+					}
+					else
+					{
+						@foreach (var item in Model.getComunidadesUsuario) {
+							
+							int _comunidadeIdCadaComunidade = item.comunidade.comunidadeId;
+							int numberOfMembersEachCommunity = Model.GetNumberOfMembersInCommunity(_comunidadeIdCadaComunidade);
+							<a href="~/ComunidadePage/@item.comunidade.nomeComunidade">
+								<div class="communities-items">
+									@if (item.comunidade.iconeComunidade != null)
+									{
+										<img class="list-communityIcon" src="data:image/png;base64,@Convert.ToBase64String(item.comunidade.iconeComunidade)" alt="Imagem de Perfil" />
+									}
+									else
+									{
+										<img class="list-communityIcon" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
+									}               
+									<div class="communityInfo-container">
+										<div class="communityName">@item.comunidade.nomeComunidade</div>                                
+										<div class="list-numberOfMembers">@numberOfMembersEachCommunity membros</div>
+									</div>
+								</div>	
+							</a>
+						}				
+					}
+				</div>
+				<button type="button" class="closeModal" data-bs-dismiss="modal" aria-label="Fechar">Fechar</button>
+			</div>	
+		</div>
+	</div>
+</div>
+
+
+
+<div class="modal fade" id="myTeamsModal" tabindex="-1">
+	<div class="modal-dialog" id="myCommunitiesModal-dialog">
+		<div class="modal-content" id="myCommunitiesModal-content">
+			<div class="suggestedTeams">
+				<div class="teamsListTitle">Minhas equipes</div>
+				<div class="teamsList">
+					@foreach (var item in Model.getEquipesUsuario) {
+						<a href="~/ComunidadePage/@item.equipe.nomeEquipe">
+							<div class="teamsItems">
+								@if (item.equipe.iconeEquipe != null)
+								{
+									<img class="list-teamIcon" src="data:image/png;base64,@Convert.ToBase64String(item.equipe.iconeEquipe)" alt="Imagem de Perfil" />
+								}
+								else
+								{
+									<img class="list-teamIcon" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
+								}               
+								<div class="communityInfo-container">
+									<div class="teamName">@item.equipe.nomeEquipe</div>                                
+								</div>
+							</div>	
+						</a>				
+					}
+				</div>
+				<button type="button" class="closeModal" data-bs-dismiss="modal" aria-label="Fechar">Fechar</button>
+			</div>
+		</div>
+	</div>
+</div>
 
 
 @* <div class= "container">

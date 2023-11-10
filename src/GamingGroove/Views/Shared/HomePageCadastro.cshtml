@@ -19,78 +19,55 @@
             <h2 class="slogan">Lorem ipsum dolor sit amet, consecteur adipiscing elit.</h2>
         </div>
         <div class="forms-container">
-            <div class="controls-container">
-                <div class="controls">
-                    <button id="login">Entrar</button>
-                    <button id="signup">Cadastrar</button>
-                </div>
-                <input class="checkbox" id="reg-log" type="checkbox" name="reg-log"/>
-                <label for="reg-log"></label>
-            </div>
-            <div class="cards" id="card-front">
-                <form class="card-front" id="login-card" asp-controller="Login" asp-action="Login">
-                    <label class="access-title">Acesse sua conta</label>
-                    <div class="login-alert">@ViewBag.Message</div>
-                    <div class="form-group">
-                        <img src="~/images/icons/homepage/user.svg" alt="">
-                        <input asp-for="nomeUsuario" type="text" class="form-box" placeholder="Nome de Usuario">
-                    </div>
-                    <div class="form-group">
-                        <img src="~/images/icons/homepage/lock-key.svg" alt="">
-                        <input asp-for="senha" type="password" class="form-box" placeholder="Senha">
-                    </div>
-                    <button type="submit" form="login-card">Entrar</button>
-                    <div class="forgot-password"><a href="">Esqueceu sua senha?</a></div>
-                </form>
-            </div>
-            
+            <div class="controls">
+                <a href="~/HomePageLogin"><button id="login">Entrar</button></a>
+                <a href="~/HomePageCadastro"><button id="signup-acitve">Cadastrar</button></a>
+            </div>            
             <div class="cards" id="card-back">
-                <form class="card-back" id="signup-card" asp-controller="Login" asp-action="Create">
+                <form class="card-back" id="signup-card" asp-controller="HomePageCadastro" asp-action="CriarConta">
                     <label class="access-title">Crie uma conta</label>
+                    <div class="text-danger">@ViewBag.Message</div>
                     <div class="container-input">
+                        <span asp-validation-for="nomeUsuario" class="text-danger"></span>    
                         <div class="form-group">
                             <img src="~/images/icons/homepage/user.svg" alt="">
                             <input asp-for="nomeUsuario" class="form-box" placeholder="Nome de Usuario">
                         </div> 
-                        <span asp-validation-for="nomeUsuario" class="text-danger"></span>    
                     </div>
                     <div class="container-input">
+                        <span asp-validation-for="nomeCompleto" class="text-danger"></span>
                         <div class="form-group">
                             <img src="~/images/icons/homepage/identification-card.svg" alt="">
                             <input asp-for="nomeCompleto" class="form-box" placeholder="Nome Completo">
                         </div>     
-                        <span asp-validation-for="nomeCompleto" class="text-danger"></span>
                     </div>
                     <div class="container-input">
+                        <span asp-validation-for="dataNascimento" class="text-danger"></span> 
                         <div class="form-group">
                             <img src="~/images/icons/homepage/calendar-blank.svg" alt="">
                             <input asp-for="dataNascimento" class="form-box" placeholder="Data de Nascimento">
                         </div>    
-                        <span asp-validation-for="dataNascimento" class="text-danger"></span> 
                     </div>
                     <div class="container-input">
+                        <div class="text-danger">@ViewBag.Message2</div>
+                        <span asp-validation-for="email" class="text-danger"></span>                        
                         <div class="form-group">
                             <img src="~/images/icons/homepage/at.svg" alt="">
                             <input asp-for="email" class="form-box" placeholder="E-mail">
                         </div>     
-                        <span asp-validation-for="email" class="text-danger"></span>
                     </div>               
                     <div class="container-input">
+                        <span asp-validation-for="senha" class="text-danger"></span>                        
                         <div class="form-group">
                             <img src="~/images/icons/homepage/lock-key.svg" alt="">
-                            <input asp-for="senha" class="form-box" placeholder="Senha">
-                        </div>     
-                        <span asp-validation-for="senha" class="text-danger"></span>
+                            <input type="password" asp-for="senha" class="form-box" placeholder="Senha">
+                        </div>    
                     </div>                                                                                              
                     <button type="submit" form="signup-card">Criar conta</button>
                 </form>
             </div>
-            
         </div>
     </main>
-    <footer>
-        <div>© 2023 - GamingGroove - Privacy</div>
-    </footer>
 
 
     <div class="container">

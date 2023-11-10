@@ -1,0 +1,58 @@
+@model GamingGroove.Models.UsuarioModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GamingGroove Login</title>
+    <link rel="icon" href="~/images/logos/gg-favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css" />
+    <link rel="stylesheet" href="~/css/HomePage.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/fonts.css" asp-append-version="true" />
+</head>
+<body>
+    <main class="main-container">
+        <div class="brand-container">
+            <img class="logo" src="~/images/logos/gaminggroove-logo.png" alt="Logo da Gaming Groove">
+            <h2 class="slogan">Lorem ipsum dolor sit amet, consecteur adipiscing elit.</h2>
+        </div>
+        <div class="forms-container">
+            <div class="controls">
+                <a href="~/HomePageLogin"><button id="login-active">Entrar</button></a>
+                <a href="~/HomePageCadastro"><button id="signup">Cadastrar</button></a>
+            </div>
+            <div class="cards" id="card-front">
+                <form class="card-front" id="login-card" asp-controller="HomePageLogin" asp-action="Login">
+                    <label class="access-title">Acesse sua conta</label>
+                    <div class="login-alert">@ViewBag.Message</div>
+                    <div class="form-group">
+                        <img src="~/images/icons/homepage/user.svg" alt="">
+                        <input asp-for="nomeUsuario" type="text" class="form-box" placeholder="Nome de Usuario">
+                    </div>
+                    <div class="form-group">
+                        <img src="~/images/icons/homepage/lock-key.svg" alt="">
+                        <input asp-for="senha" type="password" class="form-box" placeholder="Senha">
+                    </div>
+                    <button type="submit" form="login-card">Entrar</button>
+                </form>
+            </div>
+
+            <div class="slogan-footer">Lorem ipsum dolor sit amet, consecteur adipiscing elit.</div>
+        </div>
+    </main>
+
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+
+    <script src="~/js/HomePage.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
