@@ -791,6 +791,7 @@ a {
     align-items: center;
     height: fit-content;
     width: fit-content;
+    background: none;
 }
 .suggestedCommunities {
     margin: 0;

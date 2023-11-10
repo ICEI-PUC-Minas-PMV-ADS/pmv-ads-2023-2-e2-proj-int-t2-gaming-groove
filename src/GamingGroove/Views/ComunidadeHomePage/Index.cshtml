@@ -35,6 +35,10 @@
 			<div class="myCommunities-title">Comunidades que sou membro</div>
 			<div class="myCommunities-container">
 			<div class="myCommunities-list">
+				@if(Model.getComunidadesUsuario == null)
+				{
+					<div>Você ainda não é membro de nenhuma comunidade.</div>
+				}
 				@foreach(var item in Model.getComunidadesUsuario)
 				{
 					int _comunidadeIdCadaComunidade = item.comunidade.comunidadeId;
@@ -60,6 +64,10 @@
 			<div class="myCommunities-title">Comunidades que administro</div>
 			<div class="myCommunities-container">
 			<div class="myCommunities-list">
+				@if(Model.getComunidadesUsuario == null)
+				{
+					<div>Você ainda não é administrador de nenhuma comunidade.</div>
+				}
 				@foreach(var item in Model.getComunidadesUsuario)
 				{
 					int _comunidadeIdCadaComunidade = item.comunidade.comunidadeId;

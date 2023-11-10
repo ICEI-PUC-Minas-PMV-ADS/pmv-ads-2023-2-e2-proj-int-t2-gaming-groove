@@ -148,6 +148,45 @@ namespace GamingGroove.Controllers
             return RedirectToAction("Index", new { community = TempData["CommunityValue"] });            
         }
 
+        public async Task<IActionResult> EditarComunidade(int? ComunidadeId, string NomeComunidade, JogosEnum PrimeiroJogo, 
+        JogosEnum SegundoJogo, JogosEnum TerceiroJogo, string DescricaoComunidade, IFormFile iconeComunidadeArquivo, IFormFile capaComunidadeArquivo)
+        {
+            var existingCommunity = await _context.Comunidades.FindAsync(ComunidadeId);
+
+            if(existingCommunity != null)
+            {
+                existingCommunity.nomeComunidade = NomeComunidade;
+                existingCommunity.primeiroJogo = PrimeiroJogo;
+                existingCommunity.segundoJogo = SegundoJogo;
+                existingCommunity.terceiroJogo = TerceiroJogo;
+                existingCommunity.descricaoComunidade = DescricaoComunidade;
+                existingCommunity.dataCriacaoComunidade = DateTime.Now;
+
+                if (iconeComunidadeArquivo != null && iconeComunidadeArquivo.Length > 0)
+                {
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        await iconeComunidadeArquivo.CopyToAsync(memoryStream);
+                        existingCommunity.iconeComunidade = memoryStream.ToArray();
+                    }
+                }
+
+                if (capaComunidadeArquivo != null && capaComunidadeArquivo.Length > 0)
+                {
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        await capaComunidadeArquivo.CopyToAsync(memoryStream);
+                        existingCommunity.capaComunidade = memoryStream.ToArray();
+                    }
+                }
+
+                 _context.Entry(existingCommunity).State = EntityState.Modified;
+                await _context.SaveChangesAsync();
+            }
+            
+            return RedirectToAction("Index", "ComunidadePage", new { community = existingCommunity.nomeComunidade });
+        }        
+
         public async Task<IActionResult> ApagarComunidade(int? IdUsuario, int IdComunidade)
         {
             IdUsuario = HttpContext.Session.GetInt32("UsuarioId");
