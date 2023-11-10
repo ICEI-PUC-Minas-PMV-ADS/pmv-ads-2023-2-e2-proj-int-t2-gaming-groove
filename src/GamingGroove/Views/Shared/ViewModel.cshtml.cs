@@ -167,7 +167,6 @@ namespace GamingGroove.Views.Shared
                 .Where(ue => ue.usuarioId == IdUsuarioLogado)
                 .Include(ue => ue.equipe)
                 .ToList();                     
-
         }
 
         // ComunidadeHomePage + ComunidadePage 

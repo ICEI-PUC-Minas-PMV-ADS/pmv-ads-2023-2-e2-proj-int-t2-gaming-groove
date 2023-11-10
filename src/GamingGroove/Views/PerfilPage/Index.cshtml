@@ -262,31 +262,31 @@
 
 
 <div class="modal fade" id="reportUser-modal" tabindex="-1" aria-labelledby="usuarioModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content post" id="postModal-content">
+	<div class="modal-dialog" id="reportModal-dialog">
+		<div class="modal-content post" id="reportModal-content">
             <form class="main-container" asp-controller="Denuncia" asp-action="DenunciarUsuario" enctype="multipart/form-data">
                 <input type="hidden" name="DenunciadoId" value="@Model.getUsuario.usuarioId">
-                <div class="edit-container">
-                    <div class="editProfile-container">  
-                        <div class="reportUser-title">Você está prestes a denunciar <br><span>@Model.getUsuario.nomeUsuario</span></div>                  
-                        <div class="reportUser-container">
-                            <div class="favGames-container">
-                                <div class="favGames-label-container">
-                                    <div class="favGames-label">Selecione o tipo de denúncia:</div>
-                                    <div class="favGames-alert">@ViewBag.Message</div>
+                <div class="reportModal-container">
+                    <div class="report-container">  
+                        <div class="report-title">Você está prestes a denunciar <br><span>@Model.getUsuario.nomeUsuario</span></div>                  
+                        <div class="reportContent-container">
+                            <div class="reportType-container">
+                                <div class="reportTypeTitle-container">
+                                    <div class="reportType-title">Selecione o tipo de denúncia:</div>
+                                    <div class="reportType-alert">@ViewBag.Message</div>
                                 </div>    
                                 <div class="form-group">
                                     <select name="TipoDenuncia" class="form-control" asp-items="Html.GetEnumSelectList<TiposDenuncia>()"></select>
                                 </div>
                             </div>
-                            <div class="biographyForm">
+                            <div class="descriptionForm">
                                 <div>Faça uma descrição da denúncia:</div>
                                 <div class="form-group">
-                                    <textarea type="text" name="DescricaoDenuncia" id="bioText-form" class="form-control bio-text" rows="10" maxlength="534"></textarea>
+                                    <textarea type="text" name="DescricaoDenuncia" id="descriptionText-form" class="form-control bio-text" rows="10" maxlength="534"></textarea>
                                 </div>
                             </div>
                         </div>
-                        <div class="buttons-container">
+                        <div class="reportButtons-container">
                             <button class="reportSubmit-button" type="button" class="closeButton" data-bs-dismiss="modal" aria-label="Fechar">Cancelar</button>
                             <button class="reportSubmit-button" type="submit">Enviar denúncia</button>
                         </div>

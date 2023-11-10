@@ -720,6 +720,19 @@ h3 {
     transition: 0.7s;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media  (max-width: 1550px)
 {
     .main-container {
@@ -746,42 +759,6 @@ h3 {
     }
 }
 
-
-
-
-
-.reportCommunity-container {
-    display: flex;
-    flex-direction: column;
-    justify-self: center;
-    align-items: center;
-    gap: 25px;
-}
-
-.reportCommunity-title {
-    margin-bottom: 25px;
-    text-transform: uppercase;
-    text-align: center;
-}
-
-.editProfile-container span {
-    color: #00F0FF;
-    text-transform: none;
-}
-
-.reportSubmit-button {
-    font-family: Play;
-    font-weight: bold;
-    font-size: 12px;
-    text-transform: uppercase;
-    padding-inline: 20px;
-    padding-block: 15px;
-    color: white;
-    background-color: #110B31;
-    border: none;
-    border-radius: 6px;
-    margin-top: 15px;
-}
 
 
 

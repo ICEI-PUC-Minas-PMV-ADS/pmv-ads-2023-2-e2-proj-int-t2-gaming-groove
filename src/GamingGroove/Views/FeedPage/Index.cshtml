@@ -221,8 +221,6 @@
 }
 
 
-
-
 @foreach (var item in Model.getFeedPublicacoes)
 {
 	Model.getUsuarioPublicacao = Model.getTodosUsuarios.FirstOrDefault(up => up.usuarioId == item.usuarioId);
@@ -275,10 +273,6 @@
 }
 
 
-
-
-
-
 @foreach (var item in Model.getFeedPublicacoes)
 {	
     <div class="modal fade" id="imageModal-@item.publicacaoId" tabindex="-1" aria-labelledby="publicacaoModalLabel" aria-hidden="true">
@@ -292,7 +286,6 @@
         </div>
     </div>
 }
-
 
 
 <div class="modal fade" id="myCommunitiesModal" tabindex="-1">
@@ -367,6 +360,51 @@
 		</div>
 	</div>
 </div>
+
+
+@foreach (var item in Model.getFeedPublicacoes)
+{
+	Model.getComunidadePublicacao = Model.getTodasComunidades.FirstOrDefault(cp => cp.comunidadeId == item.comunidadeId);
+	Model.getUsuarioPublicacao = Model.getTodosUsuarios.FirstOrDefault(up => up.usuarioId == item.usuarioId);
+	
+	<div class="modal fade" id="reportPostModal-@item.publicacaoId" tabindex="-1" aria-hidden="true">
+		<div class="modal-dialog" id="reportModal-dialog">
+			<div class="modal-content" id="reportModal-content">
+				<form class="reportMain-container" asp-controller="Denuncia" asp-action="DenunciarPublicacao" enctype="multipart/form-data">
+					<input type="hidden" name="PublicacaoId" value="@item.publicacaoId">
+					<input type="hidden" name="NomeComunidade" value="@Model.getComunidadePublicacao.nomeComunidade">
+					<div class="reportModal-container">
+						<div class="report-container">  
+							<div class="report-title">Você está prestes a denunciar uma publicação de <br><span>@Model.getUsuarioPublicacao.nomeUsuario</span></div>                  
+							<div class="reportContent-container">
+								<div class="reportType-container">
+									<div class="favGames-label-container">
+										<div class="favGames-label">Selecione o tipo de denúncia:</div>
+										<div class="reportType-alert">@ViewBag.Message</div>
+									</div>    
+									<div class="form-group">
+										<select name="TipoDenuncia" class="form-control" asp-items="Html.GetEnumSelectList<TiposDenuncia>()"></select>
+									</div>
+								</div>
+								<div class="descriptionForm">
+									<div>Faça uma descrição da denúncia:</div>
+									<div class="form-group">
+										<textarea type="text" name="DescricaoDenuncia" id="descriptionText-form" class="form-control bio-text" rows="10" maxlength="534"></textarea>
+									</div>
+								</div>
+							</div>
+							<div class="reportButtons-container">
+								<button class="reportSubmit-button" type="button" class="closeButton" data-bs-dismiss="modal" aria-label="Fechar">Cancelar</button>
+								<button class="reportSubmit-button" type="submit">Enviar denúncia</button>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+}
+
 
 
 @* <div class= "container">
