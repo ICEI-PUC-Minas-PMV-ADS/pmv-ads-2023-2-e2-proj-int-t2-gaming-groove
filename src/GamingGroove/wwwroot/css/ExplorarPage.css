@@ -1,6 +1,4 @@
-*{
-    font-family: Gamer;
-}
+
 .main-container{
     
 }
@@ -51,23 +49,28 @@ background-color: #232B58;
 width: 20px;
 }
 
+.textoCentral{
+    font-family: Gamer;
+}
 
 .containerCard2{
 width: 100%;
 display: flex;
 padding: 10px;
 }
+
 .community-icon{
 text-align: end;
 border-radius: 5px;
 width: 75%;
-height: 50%;
+height: 60%;
 margin: 5px;
 }
 
 .nomedousuario{
     margin: 10px;
-    
+    font-family: Play;
+    font-size: 100%;
 }
 
 
@@ -78,11 +81,8 @@ margin: 5px;
     margin: 5px;
 
 }
-.communityItems{
-    width: 100%;
-}
+
 .user-card-body{
-    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -97,16 +97,12 @@ text-align: center;
 margin: 0;
 padding: 0;
 font-size: 120%;
+font-family: Play;
 
 
 }
 
-.card-textTodosUsuarios{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
+
 
 
 
@@ -117,13 +113,18 @@ height: 10px;
 }
 
 .minhasComunidades{
-
+display: flex;
+justify-content: center;
 border-radius: 5px;
+width: 10vw;
+font-family: Play;
 }
 
 #minhasComunidades{
 margin-bottom: 15px;
 margin-top: 10px;
+display: flex;
+justify-content: center;
 
 }
 
@@ -143,7 +144,7 @@ display: flex;
 flex-direction: column;
 background-color: #2b356c;  
 width: 100%;
-height: 100%    ;
+height: 100%;
 }
 
 
@@ -221,13 +222,6 @@ border-radius: 6px;
 }
 
 
-.ComunidadesUsuario{
-
-overflow: auto; 
-max-height: 70vh;
-border-radius: 5px;
-
-}
 
 .cardMinhasComunidades:not(:hover){
     transition: 0.7S;
@@ -244,7 +238,8 @@ padding: 5px;
 margin: 8px;
 border-radius: 5px;
 cursor: pointer;
-background-color: #2b356c; 
+background-color: #2b356c;
+
 
 }
 
@@ -290,7 +285,7 @@ padding: 10px;
 .card{
 display: flex;
 width: 100%;
-height: 35%;
+height: 25vh;
 background-color: transparent;
 border-radius: 5px;
 cursor: pointer;
@@ -307,16 +302,32 @@ text-align: center;
 padding: 10px;
 border-radius: 5px;
 
+}
 
+.tituloMinhasComunidades{
+    font-family: Gamer;
+}
+
+.tituloUsuarios{
+    font-family: Gamer;
+    
+}
+
+#searchInputUsuario{
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
 .rhCamada2{
 background-color: #111738;
-height: 85%;
+height: 82%;
 margin: 5px;
 text-align: center;
 border-radius: 5px;
 padding: 10px;
+display: flex;
+overflow-x: auto;
 
 
 }

@@ -233,7 +233,9 @@ namespace GamingGroove.Views.Shared
             getComunidadesSugeridas = _cc.UsuariosComunidades
                 .Where(uc => uc.usuarioId != IdUsuarioLogado && !infoComunidades.Contains(uc.comunidadeId))
                 .Include(uc => uc.comunidade)
-                .ToList();  
+                .GroupBy(uc => uc.comunidadeId)
+                .Select(group => group.First())
+                .ToList(); 
         }
     
 
