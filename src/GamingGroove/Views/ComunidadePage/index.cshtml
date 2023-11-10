@@ -60,7 +60,7 @@
 						}
 						else
 						{
-							<a><img class="reportIcon" src="~/images/icons/report-icon.svg"></a>
+							<img type="button" data-bs-toggle="modal" data-bs-target="#reportCommunity-modal" class="reportIcon" src="~/images/icons/report-icon.svg">
 						}
 						@if(isMember != null && isMember.cargoComunidade.ToString() == "Membro")
 						{
@@ -134,7 +134,7 @@
 			{
 				<div class="noPosts">Ainda não foram feitas publicações nesta comunidade.</div>
 			}
-			@foreach(var item in Model.getPublicacoes.Reverse().Take(50))
+			@foreach(var item in Model.getPublicacoes.Reverse().Take(100))
 			{
 				Model.getUsuarioPublicacao = Model.getTodosUsuarios.FirstOrDefault(up => up.usuarioId == item.usuarioId);
 				Model.getComunidadePublicacao = Model.getTodasComunidades.FirstOrDefault(cp => cp.comunidadeId == item.comunidadeId);
@@ -192,7 +192,11 @@
 							</form>			
 							<img type="button" class="postComments-button" id="postButtons" data-bs-toggle="modal" data-bs-target="#publicacaoModal-@item.publicacaoId" src="~/images/icons/comment-icon.svg" alt="">			
 						</div>
-						<img class="reportButton" src="~/images/icons/report-icon.svg" alt="">
+							@if(item.usuarioId.ToString() == User.FindFirstValue(ClaimTypes.NameIdentifier)){}
+							else
+							{
+								<img type="button" data-bs-toggle="modal" data-bs-target="#reportPostModal-@item.publicacaoId" class="reportButton" src="~/images/icons/report-icon.svg" alt="">
+							}						
 					</div>
 				</div>
 			}
@@ -461,7 +465,7 @@
 
 @foreach (var item in Model.getPublicacoes)
 {	
-    <div class="modal fade" id="imageModal-@item.publicacaoId" tabindex="-1" aria-labelledby="publicacaoModalLabel" aria-hidden="true">
+    <div class="modal fade" id="imageModal-@item.publicacaoId" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog" id="imageModal-dialog">
             <div class="modal-content" id="imageModal-content">
                 @if(item.midiaPublicacao != null)
@@ -474,7 +478,7 @@
 }
 
 
-<div class="modal fade" id="editCommunity-modal" tabindex="-1" aria-labelledby="usuarioModalLabel" aria-hidden="true">
+<div class="modal fade" id="editCommunity-modal" tabindex="-1" aria-hidden="true">
 	<div class="modal-dialog" id="createCommunity-dialog">
 		<div class="modal-content post" id="createCommunity-content">
 			<form class="createCommunity-form" asp-controller="ComunidadePage" asp-action="EditarComunidade" enctype="multipart/form-data">
@@ -534,3 +538,87 @@
 		</div>
 	</div>
 </div>
+
+
+
+
+<div class="modal fade" id="reportCommunity-modal" tabindex="-1" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content post" id="postModal-content">
+            <form class="main-container" asp-controller="Denuncia" asp-action="DenunciarComunidade" enctype="multipart/form-data">
+                <input type="hidden" name="ComunidadeId" value="@Model.getComunidade.comunidadeId">
+				<input type="hidden" name="NomeComunidade" value="@Model.getComunidade.nomeComunidade">
+                <div class="edit-container">
+                    <div class="editProfile-container">  
+                        <div class="reportCommunity-title">Você está prestes a denunciar <br><span>@Model.getComunidade.nomeComunidade</span></div>                  
+                        <div class="reportUser-container">
+                            <div class="favGames-container">
+                                <div class="favGames-label-container">
+                                    <div class="favGames-label">Selecione o tipo de denúncia:</div>
+                                    <div class="favGames-alert">@ViewBag.Message</div>
+                                </div>    
+                                <div class="form-group">
+                                    <select name="TipoDenuncia" class="form-control" asp-items="Html.GetEnumSelectList<TiposDenuncia>()"></select>
+                                </div>
+                            </div>
+                            <div class="biographyForm">
+                                <div>Faça uma descrição da denúncia:</div>
+                                <div class="form-group">
+                                    <textarea type="text" name="DescricaoDenuncia" id="bioText-form" class="form-control bio-text" rows="10" maxlength="534"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="buttons-container">
+                            <button class="reportSubmit-button" type="button" class="closeButton" data-bs-dismiss="modal" aria-label="Fechar">Cancelar</button>
+                            <button class="reportSubmit-button" type="submit">Enviar denúncia</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+		</div>
+	</div>
+</div>
+
+
+@foreach (var item in Model.getPublicacoes)
+{
+	Model.getUsuarioPublicacao = Model.getTodosUsuarios.FirstOrDefault(up => up.usuarioId == item.usuarioId);
+	
+	<div class="modal fade" id="reportPostModal-@item.publicacaoId" tabindex="-1" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content post" id="postModal-content">
+				<form class="main-container" asp-controller="Denuncia" asp-action="DenunciarPublicacao" enctype="multipart/form-data">
+					<input type="hidden" name="PublicacaoId" value="@item.publicacaoId">
+					<input type="hidden" name="NomeComunidade" value="@Model.getComunidade.nomeComunidade">
+					<div class="edit-container">
+						<div class="editProfile-container">  
+							<div class="reportCommunity-title">Você está prestes a denunciar uma publicação de <br><span>@Model.getUsuarioPublicacao.nomeUsuario</span></div>                  
+							<div class="reportUser-container">
+								<div class="favGames-container">
+									<div class="favGames-label-container">
+										<div class="favGames-label">Selecione o tipo de denúncia:</div>
+										<div class="favGames-alert">@ViewBag.Message</div>
+									</div>    
+									<div class="form-group">
+										<select name="TipoDenuncia" class="form-control" asp-items="Html.GetEnumSelectList<TiposDenuncia>()"></select>
+									</div>
+								</div>
+								<div class="biographyForm">
+									<div>Faça uma descrição da denúncia:</div>
+									<div class="form-group">
+										<textarea type="text" name="DescricaoDenuncia" id="bioText-form" class="form-control bio-text" rows="10" maxlength="534"></textarea>
+									</div>
+								</div>
+							</div>
+							<div class="buttons-container">
+								<button class="reportSubmit-button" type="button" class="closeButton" data-bs-dismiss="modal" aria-label="Fechar">Cancelar</button>
+								<button class="reportSubmit-button" type="submit">Enviar denúncia</button>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+}
+

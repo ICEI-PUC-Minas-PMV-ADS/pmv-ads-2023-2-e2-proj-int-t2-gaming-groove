@@ -43,6 +43,60 @@ namespace GamingGroove.Controllers
         }
 
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DenunciarComunidade(int? Denunciante, int ComunidadeId, string DescricaoDenuncia, TiposDenuncia TipoDenuncia, string NomeComunidade)
+        {
+            Denunciante = HttpContext.Session.GetInt32("UsuarioId");
+
+            DenunciaModel denunciaModel = new ()
+            {
+                denuncianteId = (int)Denunciante,
+                denunciadoId = null,
+                publicacaoId = null,
+                comunidadeId = ComunidadeId,
+                descricaoDenuncia = DescricaoDenuncia,
+                TipoDenuncia = TipoDenuncia,
+                situacaoDenuncia = SituacaoDenuncia.Aberta,
+                dataDenuncia = DateTime.Now
+            };
+
+            if (ModelState.IsValid)
+            {
+                _context.Add(denunciaModel);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index", "ComunidadePage", new { community = NomeComunidade });
+            }
+            return RedirectToAction("Index", "ComunidadePage", new { community = NomeComunidade });
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DenunciarPublicacao(int? Denunciante, int PublicacaoId, string DescricaoDenuncia, TiposDenuncia TipoDenuncia, string NomeComunidade)
+        {
+            Denunciante = HttpContext.Session.GetInt32("UsuarioId");
+
+            DenunciaModel denunciaModel = new ()
+            {
+                denuncianteId = (int)Denunciante,
+                denunciadoId = null,
+                publicacaoId = PublicacaoId,
+                comunidadeId = null,
+                descricaoDenuncia = DescricaoDenuncia,
+                TipoDenuncia = TipoDenuncia,
+                situacaoDenuncia = SituacaoDenuncia.Aberta,
+                dataDenuncia = DateTime.Now
+            };
+
+            if (ModelState.IsValid)
+            {
+                _context.Add(denunciaModel);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index", "ComunidadePage", new { community = NomeComunidade });
+            }
+            return RedirectToAction("Index", "ComunidadePage", new { community = NomeComunidade });
+        }
+
 
 
 

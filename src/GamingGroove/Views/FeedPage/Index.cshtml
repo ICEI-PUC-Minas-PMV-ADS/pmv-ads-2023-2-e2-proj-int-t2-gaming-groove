@@ -64,7 +64,7 @@
 			}
 			@foreach(var item in Model.getFeedPublicacoes.OrderByDescending(p => p.dataPublicacao))
 			{
-				var dataLimite = DateTime.Now.AddDays(-5);
+				var dataLimite = DateTime.Now.AddDays(-7);
 				if(item.dataPublicacao > dataLimite) 
 				{				
 					Model.getUsuarioPublicacao = Model.getTodosUsuarios.FirstOrDefault(up => up.usuarioId == item.usuarioId);
@@ -124,7 +124,11 @@
 							</form>		
 								<img type="button" class="postComments-button" id="postButtons" data-bs-toggle="modal" data-bs-target="#publicacaoModal-@item.publicacaoId" src="~/images/icons/comment-icon.svg" alt="">			
 							</div>
-							<img class="reportButton" src="~/images/icons/report-icon.svg" alt="">
+								@if(item.usuarioId.ToString() == User.FindFirstValue(ClaimTypes.NameIdentifier)){}
+								else
+								{
+									<img type="button" data-bs-toggle="modal" data-bs-target="#reportPostModal-@item.publicacaoId" class="reportButton" src="~/images/icons/report-icon.svg" alt="">
+								}	
 						</div>
 					</div>
 				}	
