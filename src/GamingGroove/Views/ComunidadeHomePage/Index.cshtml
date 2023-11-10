@@ -17,14 +17,19 @@
 
 
 <div class="main-container">
-
 	<div class="left-container">
-		<div class="newCommunity-container">
-			<div class="newCommunity-title">Crie uma nova comunidade</div>
-			<button type="button" class="newCommunity-button" data-bs-toggle="modal" data-bs-target="#createPost-modal">Criar</button>			
+		<div class="large-screen">
+			<div class="newCommunity-container">
+				<div class="newCommunity-title">Crie uma nova comunidade
+					<button type="button" class="newCommunity-button" data-bs-toggle="modal" data-bs-target="#createPost-modal">Criar</button>
+				</div>			
+			</div>
 		</div>
-	</div>
 
+		<div class="short-screen">
+			<button type="button" class="newCommunity-button" data-bs-toggle="modal" data-bs-target="#createPost-modal">Criar comunidade</button>
+		</div>
+	</div>	
 	<div class="center-container">
 		<div class="communities-container">
 			<div class="myCommunities-title">Comunidades que sou membro</div>
@@ -166,8 +171,8 @@
 							</div>
 						</div>
 						<div class="buttons-container">
-							<button class="submit-button" href="~/ComunidadeHomePage">Cancelar</button>
-							<button class="submit-button" value="CriarComunidade" type="submit">Criar comunidade</button>
+							<button type="button" class="submit-button" data-bs-dismiss="modal">Cancelar</button>
+							<button class="submit-button" value="CriarComunidade" type="submit">Criar</button>
 						</div>
 					</div>
 				</div>

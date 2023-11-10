@@ -865,7 +865,7 @@ a {
         font-size: 14px;
     }
     .buttons-container button{
-        padding-block: 5px;
+        padding-block: 10px;
         padding-inline: 15px;
         border-radius: 6px;
         background: none;

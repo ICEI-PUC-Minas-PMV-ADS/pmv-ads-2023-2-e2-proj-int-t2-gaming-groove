@@ -121,6 +121,8 @@ header {
     box-shadow: #B100FF 0 0 10px 3px;
     border-radius: 50%;
     overflow: hidden;
+    min-height: 55px;
+    min-width: 55px;
 }
 
 .menu-icon img{
