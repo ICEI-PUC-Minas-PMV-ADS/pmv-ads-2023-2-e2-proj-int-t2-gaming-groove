@@ -411,6 +411,13 @@ h3 {
     padding-top: 9px;
 }
 
+.community-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 136px;
+}
+
 .community-members {
     font-size: 13px;
     color: #00F0FF;
@@ -466,6 +473,8 @@ h3 {
     align-items: center;
     letter-spacing: 2px;
     box-shadow: #B100FF 0px 0px 12px;
+    margin-top: 30px;
+    width: 100%;
 }
 
 .visit-button:hover {

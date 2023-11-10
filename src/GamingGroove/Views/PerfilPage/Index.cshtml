@@ -260,4 +260,28 @@
 	</div>
 </div>
 
-<script src="~/js/PerfilPage.js"></script>
+
+
+<script>
+    const communityButtons = document.querySelectorAll(".user-communities-items");
+
+    communityButtons.forEach(communityButton => {
+        const communityHidden = communityButton.querySelector(".hidden");
+
+        communityButton.addEventListener("click", function() {
+            communityButtons.forEach(button => {
+                const hidden = button.querySelector(".hidden");
+                if (communityHidden.style.display === 'block') {
+                    communityHidden.style.display = 'none';
+                    communityButton.classList.add('ativo')
+                } else {
+                    communityHidden.style.display = 'block';
+                    communityButton.classList.remove('ativo')
+                }
+            });
+        });
+    });
+
+
+
+</script>

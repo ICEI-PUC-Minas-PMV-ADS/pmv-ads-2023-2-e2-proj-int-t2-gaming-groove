@@ -43,7 +43,7 @@ header {
     min-width: 300px;
     border: solid #AFD3FF 2px;
     border-radius: 30px;
-    box-shadow: #0277F9 0 0 20px 9px;
+    box-shadow: #0277F9 0 0 15px 4px;
     display: flex;
     flex-direction: row;
     justify-content: center;
