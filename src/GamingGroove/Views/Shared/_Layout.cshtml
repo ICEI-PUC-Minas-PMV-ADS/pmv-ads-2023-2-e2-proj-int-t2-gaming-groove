@@ -91,7 +91,7 @@
                             else
                             {   
                                 
-                                <a href="~/PerfilPage/@amizade.nomeUsuario"><div class="friendsList-items" data-username="@amizade.nomeUsuario" id="friendsList-items">
+                                <a href="http://localhost:3000/chat?amizadeId=@amizade.usuarioId&usuarioId=@User.FindFirst(ClaimTypes.NameIdentifier)?.Value"><div class="friendsList-items" data-username="@amizade.nomeUsuario" id="friendsList-items">
                                     @if(amizade.iconePerfil != null)
                                     {
                                         <img class="friendIcon" id="friendIcon" src="data:image/png;base64,@Convert.ToBase64String(amizade.iconePerfil)" alt="">
