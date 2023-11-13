@@ -487,7 +487,7 @@
 						<div class="createCommunity-title">Edite sua comunidade</div>
 						<div class="communityName-container">
 							<div class="communityName">Escolha um nome para a sua comunidade:</div>
-							<input name="NomeComunidade" id="communityName-input"/>
+							<input name="NomeComunidade" id="communityName-input" value="@Model.getComunidade.nomeComunidade"/>
 						</div>     
 						<div class="secondSection-container"> 
 							<div class="favGames-container">              
@@ -510,20 +510,26 @@
 									<div class="favGames-label">Selecione três jogos:</div>
 									<div class="favGames-alert">@ViewBag.Message</div>
 									<div class="form-group">
-										<select name="PrimeiroJogo" class="form-control" asp-items="Html.GetEnumSelectList<JogosEnum>()"></select>
+										<select name="PrimeiroJogo" class="form-control" asp-items="Html.GetEnumSelectList<JogosEnum>()">
+											<option value="@Model.getComunidade.primeiroJogo">@EnumHelper.GetDisplayName(Model.getComunidade.primeiroJogo)</option>
+										</select>
 									</div>
 									<div class="form-group">
-										<select name="SegundoJogo" class="form-control" asp-items="Html.GetEnumSelectList<JogosEnum>()"></select>
+										<select name="SegundoJogo" class="form-control" asp-items="Html.GetEnumSelectList<JogosEnum>()">
+											<option value="@Model.getComunidade.segundoJogo">@EnumHelper.GetDisplayName(Model.getComunidade.segundoJogo)</option>
+										</select>
 									</div>
 									<div class="form-group">
-										<select name="TerceiroJogo" class="form-control" asp-items="Html.GetEnumSelectList<JogosEnum>()"></select>
+										<select name="TerceiroJogo" class="form-control" asp-items="Html.GetEnumSelectList<JogosEnum>()">
+											<option value="@Model.getComunidade.terceiroJogo">@EnumHelper.GetDisplayName(Model.getComunidade.terceiroJogo)</option>
+										</select>
 									</div>   									
 								</div>					
 							</div>
 							<div class="biography">
 								<div>Faça uma descrição da sua comunidade:</div>
 								<div class="form-group">
-									<textarea name="DescricaoComunidade" class="form-control bio-text" rows="10"></textarea>
+									<textarea name="DescricaoComunidade" class="form-control bio-text" rows="10">@Model.getComunidade.descricaoComunidade</textarea>
 								</div>
 							</div>
 						</div>
