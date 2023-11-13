@@ -26,24 +26,39 @@ initDb();
 
 
 app.use(express.static('public'));
+app.get('/chat', (req, res) => {
+    res.sendFile(__dirname + '/public/index.html'); // Certifique-se de que o caminho está correto
+});
 
 io.on('connection', async (socket) => {
     console.log('Novo usuário conectado');
-    const [rows] = await connection.execute('SELECT historico FROM Chats ORDER BY chatId DESC LIMIT 50');
+    const usuarioId = socket.handshake.query.usuarioId;
+    const amizadeId = socket.handshake.query.amizadeId;
+
+    // Agora você pode usar usuarioId e salaId
+    
+    
+    console.log(`Usuário ID: ${usuarioId}, amizadeId: ${amizadeId}`);
+    const amizade = await connection.execute(`SELECT amizadeId FROM Amizades a where a.solicitanteId = ${amizadeId} and a.receptorId = ${usuarioId} `);
+    console.log('amizadeId: ',amizade[0][0].amizadeId);
+    const [chatrows] = await connection.execute('SELECT historico FROM Chats ORDER BY chatId DESC LIMIT 50');
+    const [rows] = await connection.execute(`SELECT historico FROM Chats c where c.amizadeId = ${amizade[0][0].amizadeId} ORDER BY c.chatId DESC LIMIT 50`);
     for (let row of rows.reverse()) {
         socket.emit('receiveMessage', row.historico);
     }
 
     socket.on('sendMessage', async (message) => {
         io.emit('receiveMessage', message);
+        
         // Insere a mensagem no banco de dados
         try {
+            
             const colunas = ["chatId",
                 "equipeId",
                 "amizadeId",
                 "historico"]
 
-            const valores = [rows.length + 1 , 1, 1, `'${message}'`]
+            const valores = [chatrows.length + 1 , 1, amizade[0][0].amizadeId, `'${message}'`]
 
             await connection.execute(`INSERT INTO Chats (${colunas})
                                       VALUES (${valores})`);

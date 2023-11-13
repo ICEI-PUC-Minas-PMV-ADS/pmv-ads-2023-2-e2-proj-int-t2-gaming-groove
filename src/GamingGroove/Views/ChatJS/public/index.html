@@ -1,9 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat em Tempo Real</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
 
@@ -14,7 +16,16 @@
 
 <script src="/socket.io/socket.io.js"></script>
 <script>
-    const socket = io();
+    const urlParams = new URLSearchParams(window.location.search);
+    const usuarioId = urlParams.get('usuarioId');
+    const amizadeId = urlParams.get('amizadeId');
+    const socket = io({
+        query: {
+            usuarioId,
+            amizadeId
+        }
+    });
+
 
     function sendMessage() {
         const message = document.getElementById('message').value;
