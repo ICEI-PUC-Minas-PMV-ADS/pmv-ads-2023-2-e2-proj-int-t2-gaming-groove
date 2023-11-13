@@ -105,7 +105,7 @@
                                             <div class="friendUsername" id="friendUsername">@amizade.nomeUsuario</div>
                                         </div>
                                     </a>
-                                    <a href="http://localhost:3000/chat?amizadeId=@amizade.usuarioId&usuarioId=@User.FindFirst(ClaimTypes.NameIdentifier)?.Value">
+                                    <a href="http://localhost:3000/chat?amizadeId=@amizade.usuarioId&usuarioId=@User.FindFirst(ClaimTypes.NameIdentifier)?.Value" title="Abrir chat com @amizade.nomeUsuario">
                                         <img class="chatButton" src="~/images/icons/comment-icon.svg">
                                     </a>
                                 </div>
