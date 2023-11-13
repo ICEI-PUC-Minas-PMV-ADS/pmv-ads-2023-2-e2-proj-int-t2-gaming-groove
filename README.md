@@ -18,7 +18,7 @@
   `Segundo Semestre`
 </div>
 
-  Gaming Groove é uma rede social dedicada a gamers, proporcionando um espaço centralizado para compartilhamento de informações sobre jogos, comunicação entre os jogadores, formação de grupos e equipes, e discussões por meio de mensagens diretas e publicações em comunidades. A plataforma foi projetada para aprimorar a experiência dos jogadores, facilitando a conexão entre aqueles que possuem interesses comuns.
+  Gaming Groove é uma rede social dedicada a gamers com o objetivo de proporcionar um espaço centralizado para compartilhamento de informações sobre jogos, comunicação entre os jogadores, formação de equipes, e discussões por meio de mensagens diretas e publicações em comunidades. A plataforma foi projetada para aprimorar a experiência dos jogadores, facilitando a conexão entre aqueles que possuem interesses em comum.
 
 ## Integrantes
 
@@ -35,13 +35,7 @@
 
 ## Instruções de utilização
 
-Assim que a primeira versão do sistema estiver disponível, deverá complementar com as instruções de utilização. Descreva como instalar eventuais dependências e como executar a aplicação.
-
-Não deixe de informar o link onde a aplicação estiver disponível para acesso (por exemplo: https://adota-pet.herokuapp.com/src/index.html).
-
-Se houver usuário de teste, o login e a senha também deverão ser informados aqui (por exemplo: usuário - admin / senha - admin).
-
-O link e o usuário/senha descritos acima são apenas exemplos de como tais informações deverão ser apresentadas.
+É possível criar uma conta e acessar a aplicação através do seguinte link: https://gaminggroove.azurewebsites.net
 
 # Documentação
 
