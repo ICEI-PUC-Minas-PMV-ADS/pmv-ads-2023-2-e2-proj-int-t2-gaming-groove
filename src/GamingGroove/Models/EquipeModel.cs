@@ -6,6 +6,7 @@ namespace GamingGroove.Models
     [Table("Equipes")]
     public class EquipeModel
     {
+
         [Key]
         public int equipeId { get; set; }
 
@@ -24,6 +25,11 @@ namespace GamingGroove.Models
         [Display(Name = "Data de Criação")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public DateTime? dataCriacaoEquipe { get; set;}
+
+       
+
+
+
 
 
         public ICollection<ChatModel>? chatEquipe { get; set; }

@@ -143,7 +143,7 @@ namespace GamingGroove.Controllers
 
                         _context.Add(usuarioComunidadeModel);
                         await _context.SaveChangesAsync();
-                        return RedirectToAction("Index", "ComunidadePage", new { community = comunidadeModel.nomeComunidade });    
+                        return RedirectToAction("Index", "EquipePage");    
                     }
                 }
                 catch (Exception ex)
