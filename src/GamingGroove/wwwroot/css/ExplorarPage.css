@@ -149,7 +149,7 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     padding-top: 10px;
     min-width: 400px;
     font-family: Play
