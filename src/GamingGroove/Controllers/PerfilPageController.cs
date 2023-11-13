@@ -271,7 +271,9 @@ namespace GamingGroove.Controllers
 
             var IdSolicitante = _context.Usuarios.FirstOrDefault(u => u.usuarioId == SolicitanteId);
             
-            return RedirectToAction("Index", "PerfilPage", new { user = IdSolicitante.nomeUsuario });
+            string returnUrl = Request.Headers["Referer"].ToString();
+
+            return Redirect(returnUrl);
         }
 
         public async Task<IActionResult> RecusarAmizade(int? IdUsuario, int SolicitanteId)
@@ -281,16 +283,18 @@ namespace GamingGroove.Controllers
             var findIdAmizade = _context.Amizades.FirstOrDefault(u => u.solicitanteId == SolicitanteId && u.receptorId == IdUsuario);
 
             var existingAmizade = await _context.Amizades.FindAsync(findIdAmizade.amizadeId);
+            
+            string returnUrl = Request.Headers["Referer"].ToString();
 
             if (existingAmizade != null)
             {
                 _context.Amizades.Remove(existingAmizade);     
                 await _context.SaveChangesAsync();
                 
-                return RedirectToAction("Index", "FeedPage");
+                return Redirect(returnUrl);
             }
             
-            return RedirectToAction("Index", "FeedPage");
+            return Redirect(returnUrl);
         }        
     }
 }

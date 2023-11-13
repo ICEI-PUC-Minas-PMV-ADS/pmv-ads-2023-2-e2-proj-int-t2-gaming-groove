@@ -27,7 +27,7 @@ a {
     justify-content: baseline; 
 }
 
-.suggestedCommunities {
+.myCommunities {
     background-color: #232B58;
     height: 60vh;
     width: 290px;
@@ -794,7 +794,7 @@ a {
     width: fit-content;
     background: none;
 }
-.suggestedCommunities {
+.myCommunities {
     margin: 0;
 }
 .closeModal {

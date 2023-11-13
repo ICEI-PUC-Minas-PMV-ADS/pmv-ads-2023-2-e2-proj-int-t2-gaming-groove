@@ -52,7 +52,7 @@ namespace GamingGroove.Controllers
                         usuarioModel.senha = BCrypt.Net.BCrypt.HashPassword(usuarioModel.senha);                       
                         _context.Add(usuarioModel);
                         await _context.SaveChangesAsync();
-                        return RedirectToAction("Login", "HomePageLogin");
+                        return RedirectToAction("Index", "HomePageLogin");
                     }                    
                 }                
             }

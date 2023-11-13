@@ -102,9 +102,7 @@ namespace GamingGroove.Views.Shared
 
             getTodosUsuariosSolicitacoes = getTodosUsuariosSolicitacoes
                 .Where(solicitacao => solicitacao.usuarioId != IdUsuarioLogado)
-                .ToList();             
-
-                
+                .ToList();                             
         }
 
         //PerfilPage

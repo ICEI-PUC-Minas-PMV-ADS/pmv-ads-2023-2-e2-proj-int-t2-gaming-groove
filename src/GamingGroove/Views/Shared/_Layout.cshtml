@@ -31,10 +31,8 @@
                         
         </nav>
         @if (User.Identity.IsAuthenticated)
-        {
-            
+        {     
             var profileImage = Url.Action("GetIconeUsuario", "HomePageCadastro");
-
 
             <button id="menu-icon" class="menu-icon" onclick="openMenu()"><img src="@profileImage" alt=""></button>
             <nav id="listMenu" class="list-menu">
@@ -78,7 +76,7 @@
                     </div>
                 }                
                 <form class="friendsList-form" role="search">
-                    <input id="friendsList-input" class="friendsList-input" type="search" placeholder="Buscar" aria-label="Search">
+                    <input id="friendsList-input" class="friendsList-input" type="search" placeholder="Buscar amigo" aria-label="Search">
                 </form>
                 <div class="friendsListItems">
 
@@ -86,12 +84,11 @@
                     {
 
                         @foreach(var amizade in Model.getTodosUsuariosAmigos)
-                        {  
+                        {
                             @if(amizade.nomeUsuario == User.Identity.Name){}
                             else
-                            {   
-                                
-                                <a href="~/PerfilPage/@amizade.nomeUsuario"><div class="friendsList-items" data-username="@amizade.nomeUsuario" id="friendsList-items">
+                            {                            
+                                <a href="~/PerfilPage/@amizade.nomeUsuario"><div class="friendsList-items" data-username="@amizade.nomeUsuario" id="friendsList-items" title="@amizade.nomeUsuario">
                                     @if(amizade.iconePerfil != null)
                                     {
                                         <img class="friendIcon" id="friendIcon" src="data:image/png;base64,@Convert.ToBase64String(amizade.iconePerfil)" alt="">
@@ -102,8 +99,9 @@
                                     }
                                     
                                     <div class="friendUsername" id="friendUsername">@amizade.nomeUsuario</div>
-                                </div></a>
-                                <div class="divLine"></div>
+                                </div>
+                                <div class="divLine"></div></a>
+                                
                             }
                         }
                     }
