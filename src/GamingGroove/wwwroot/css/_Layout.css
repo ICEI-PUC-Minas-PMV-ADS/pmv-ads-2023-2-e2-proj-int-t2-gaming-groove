@@ -268,6 +268,24 @@ header {
     overflow-y: scroll;
 }
 
+.friendInfo-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.chatButton {
+    height: 25px;
+    width: 25px;
+    filter: grayscale(100%) brightness(200%);
+}
+
+.chatButton:hover {
+    transition: 1s;
+    filter: none;
+}
+
 .friendsList-form {
     display: flex;
     flex-direction: row;
@@ -312,7 +330,7 @@ header {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: baseline;
+    justify-content: space-between;
     padding-left: 10px;
     gap: 15px;
     width: 220px;
@@ -321,25 +339,20 @@ header {
     margin-left: 6px;
 }
 
-.friendsList-items:hover {
+.friendInfo-container:hover {
     transition: 1s;
     .friendIcon {
         border: 1px solid #00F0FF;
         box-shadow: #00F0FF 0px 0px 4px;
     }
+    #friendUsername {
+        transition: 0.8s;
+        color: #00F0FF;
+    }
 }
 
 .friendsList-items:not(:hover) {
-    transition: 1s;
-}
-
-.friendsList-items:hover > #friendUsername {
-    transition: 1s;
-    color: #00F0FF;
-}
-
-.friendsList-items:not(:hover) > #friendUsername {
-    transition: 1s;
+    transition: 0.8s;
 }
 
 #friendUsername {

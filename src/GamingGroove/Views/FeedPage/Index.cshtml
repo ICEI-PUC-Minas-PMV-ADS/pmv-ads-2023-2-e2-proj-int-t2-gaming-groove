@@ -291,40 +291,39 @@
 <div class="modal fade" id="myCommunitiesModal" tabindex="-1">
 	<div class="modal-dialog" id="myCommunitiesModal-dialog">
 		<div class="modal-content" id="myCommunitiesModal-content">
-			<div class="suggestedCommunities">
-				<div class="listTitle">Minhas comunidades</div>
-				<div class="communitiesList">
-					@if(Model.getComunidadesUsuario == null)
-					{
-						<div>Você ainda não faz parte de comunidades.</div>
-					}
-					else
-					{
-						@foreach (var item in Model.getComunidadesUsuario) {
-							
-							int _comunidadeIdCadaComunidade = item.comunidade.comunidadeId;
-							int numberOfMembersEachCommunity = Model.GetNumberOfMembersInCommunity(_comunidadeIdCadaComunidade);
-							<a href="~/ComunidadePage/@item.comunidade.nomeComunidade">
-								<div class="communities-items">
-									@if (item.comunidade.iconeComunidade != null)
-									{
-										<img class="list-communityIcon" src="data:image/png;base64,@Convert.ToBase64String(item.comunidade.iconeComunidade)" alt="Imagem de Perfil" />
-									}
-									else
-									{
-										<img class="list-communityIcon" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
-									}               
-									<div class="communityInfo-container">
-										<div class="communityName">@item.comunidade.nomeComunidade</div>                                
-										<div class="list-numberOfMembers">@numberOfMembersEachCommunity membros</div>
-									</div>
-								</div>	
-							</a>
-						}				
-					}
-				</div>
-				<button type="button" class="closeModal" data-bs-dismiss="modal" aria-label="Fechar">Fechar</button>
-			</div>	
+		<div class="myCommunities">
+			<div class="listTitle">Minhas comunidades</div>
+			<div class="communitiesList">
+				@if(Model.getComunidadesUsuario == null)
+				{
+					<div>Você ainda não faz parte de comunidades.</div>
+				}
+				else
+				{
+					@foreach (var item in Model.getComunidadesUsuario) {
+						
+						int _comunidadeIdCadaComunidade = item.comunidade.comunidadeId;
+						int numberOfMembersEachCommunity = Model.GetNumberOfMembersInCommunity(_comunidadeIdCadaComunidade);
+						<a href="~/ComunidadePage/@item.comunidade.nomeComunidade">
+							<div class="communities-items">
+								@if (item.comunidade.iconeComunidade != null)
+								{
+									<img class="list-communityIcon" src="data:image/png;base64,@Convert.ToBase64String(item.comunidade.iconeComunidade)" alt="Imagem de Perfil" />
+								}
+								else
+								{
+									<img class="list-communityIcon" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
+								}               
+								<div class="communityInfo-container">
+									<div class="communityName">@item.comunidade.nomeComunidade</div>                                
+									<div class="list-numberOfMembers">@numberOfMembersEachCommunity membros</div>
+								</div>
+							</div>	
+						</a>
+					}				
+				}
+			</div>
+		</div>
 		</div>
 	</div>
 </div>

@@ -61,7 +61,8 @@
             <div class="friendsListButton" id="friendsListButton">
                 <img class="friendsListButton-icon" id="friendsListButtonIcon" src="~/images/icons/friendsList-icon.svg" alt="">
                 <div id="friendsListButtonTitle">Lista de Amigos</div>            
-                @if(@Model.getTodosUsuariosSolicitacoes.Count > 0){
+                @if(@Model.getTodosUsuariosSolicitacoes.Count > 0)
+                {
                     <div id="friendsRequest-alert">
                     (@Model.getTodosUsuariosSolicitacoes.Count)
                     </div> 
@@ -89,20 +90,26 @@
                             else
                             {   
                                 
-                                <a href="http://localhost:3000/chat?amizadeId=@amizade.usuarioId&usuarioId=@User.FindFirst(ClaimTypes.NameIdentifier)?.Value"><div class="friendsList-items" data-username="@amizade.nomeUsuario" id="friendsList-items">
-                                    @if(amizade.iconePerfil != null)
-                                    {
-                                        <img class="friendIcon" id="friendIcon" src="data:image/png;base64,@Convert.ToBase64String(amizade.iconePerfil)" alt="">
-                                    }
-                                    else
-                                    {
-                                        <img class="friendIcon" id="friendIcon" src="~/images/icons/empty-icon.png" alt="">
-                                    }
-                                    
-                                    <div class="friendUsername" id="friendUsername">@amizade.nomeUsuario</div>
+                                <div class="friendsList-items" data-username="@amizade.nomeUsuario" id="friendsList-items">
+                                    <a href="~/PerfilPage/@amizade.nomeUsuario">
+                                        <div class="friendInfo-container">
+                                            @if(amizade.iconePerfil != null)
+                                            {
+                                                <img class="friendIcon" id="friendIcon" src="data:image/png;base64,@Convert.ToBase64String(amizade.iconePerfil)" alt="">
+                                            }
+                                            else
+                                            {
+                                                <img class="friendIcon" id="friendIcon" src="~/images/icons/empty-icon.png" alt="">
+                                            }
+                                            
+                                            <div class="friendUsername" id="friendUsername">@amizade.nomeUsuario</div>
+                                        </div>
+                                    </a>
+                                    <a href="http://localhost:3000/chat?amizadeId=@amizade.usuarioId&usuarioId=@User.FindFirst(ClaimTypes.NameIdentifier)?.Value">
+                                        <img class="chatButton" src="~/images/icons/comment-icon.svg">
+                                    </a>
                                 </div>
-                                <div class="divLine"></div></a>
-                                
+                                <div class="divLine"></div>
                             }
                         }
                     }

@@ -32,6 +32,7 @@ namespace GamingGroove.Controllers
         {
             var existingUser = _context.Usuarios.FirstOrDefault(uc => uc.nomeUsuario == usuarioModel.nomeUsuario);
             var existingEmail = _context.Usuarios.FirstOrDefault(uc => uc.email == usuarioModel.email);
+
             if(existingUser != null)
             {
                 ViewBag.Message = "O nome de usuário já existe.";
@@ -43,17 +44,31 @@ namespace GamingGroove.Controllers
                 }
                 else
                 {
-                    if (ModelState.IsValid)
+                    if(string.IsNullOrEmpty(usuarioModel.nomeUsuario) || usuarioModel.nomeUsuario.Length < 6)
                     {
-                        usuarioModel.primeiroJogo = JogosEnum.Nenhum;
-                        usuarioModel.segundoJogo = JogosEnum.Nenhum;
-                        usuarioModel.terceiroJogo = JogosEnum.Nenhum;
+                        ViewBag.Message = "O nome de usuário deve ter pelo menos 6 caracteres.";
+                    }
+                    else
+                    {
+                        if(string.IsNullOrEmpty(usuarioModel.senha) || usuarioModel.senha.Length < 8)
+                        {
+                            ViewBag.PasswordMessage = "A senha deve ter ao menos 6 caracteres.";
+                        }
+                        else
+                        {
+                            if (ModelState.IsValid)
+                            {
+                                usuarioModel.primeiroJogo = JogosEnum.Nenhum;
+                                usuarioModel.segundoJogo = JogosEnum.Nenhum;
+                                usuarioModel.terceiroJogo = JogosEnum.Nenhum;
 
-                        usuarioModel.senha = BCrypt.Net.BCrypt.HashPassword(usuarioModel.senha);                       
-                        _context.Add(usuarioModel);
-                        await _context.SaveChangesAsync();
-                        return RedirectToAction("Index", "HomePageLogin");
-                    }                    
+                                usuarioModel.senha = BCrypt.Net.BCrypt.HashPassword(usuarioModel.senha);                       
+                                _context.Add(usuarioModel);
+                                await _context.SaveChangesAsync();
+                                return RedirectToAction("Index", "HomePageLogin");
+                            }   
+                        }
+                    }                 
                 }                
             }
             return View("Index", usuarioModel);
