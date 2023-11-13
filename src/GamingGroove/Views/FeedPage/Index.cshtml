@@ -17,7 +17,7 @@
 <div class="main-container">
 
 	<div class="left-container">
-		<div class="suggestedCommunities">
+		<div class="myCommunities">
 			<div class="listTitle">Minhas comunidades</div>
 			<div class="communitiesList">
 				@if(Model.getComunidadesUsuario == null)
@@ -64,7 +64,7 @@
 			}
 			@foreach(var item in Model.getFeedPublicacoes.OrderByDescending(p => p.dataPublicacao))
 			{
-				var dataLimite = DateTime.Now.AddDays(-5);
+				var dataLimite = DateTime.Now.AddDays(-7);
 				if(item.dataPublicacao > dataLimite) 
 				{				
 					Model.getUsuarioPublicacao = Model.getTodosUsuarios.FirstOrDefault(up => up.usuarioId == item.usuarioId);
@@ -124,7 +124,11 @@
 							</form>		
 								<img type="button" class="postComments-button" id="postButtons" data-bs-toggle="modal" data-bs-target="#publicacaoModal-@item.publicacaoId" src="~/images/icons/comment-icon.svg" alt="">			
 							</div>
-							<img class="reportButton" src="~/images/icons/report-icon.svg" alt="">
+								@if(item.usuarioId.ToString() == User.FindFirstValue(ClaimTypes.NameIdentifier)){}
+								else
+								{
+									<img type="button" data-bs-toggle="modal" data-bs-target="#reportPostModal-@item.publicacaoId" class="reportButton" src="~/images/icons/report-icon.svg" alt="">
+								}	
 						</div>
 					</div>
 				}	
@@ -217,8 +221,6 @@
 }
 
 
-
-
 @foreach (var item in Model.getFeedPublicacoes)
 {
 	Model.getUsuarioPublicacao = Model.getTodosUsuarios.FirstOrDefault(up => up.usuarioId == item.usuarioId);
@@ -271,10 +273,6 @@
 }
 
 
-
-
-
-
 @foreach (var item in Model.getFeedPublicacoes)
 {	
     <div class="modal fade" id="imageModal-@item.publicacaoId" tabindex="-1" aria-labelledby="publicacaoModalLabel" aria-hidden="true">
@@ -290,44 +288,42 @@
 }
 
 
-
 <div class="modal fade" id="myCommunitiesModal" tabindex="-1">
 	<div class="modal-dialog" id="myCommunitiesModal-dialog">
 		<div class="modal-content" id="myCommunitiesModal-content">
-			<div class="suggestedCommunities">
-				<div class="listTitle">Minhas comunidades</div>
-				<div class="communitiesList">
-					@if(Model.getComunidadesUsuario == null)
-					{
-						<div>Você ainda não faz parte de comunidades.</div>
-					}
-					else
-					{
-						@foreach (var item in Model.getComunidadesUsuario) {
-							
-							int _comunidadeIdCadaComunidade = item.comunidade.comunidadeId;
-							int numberOfMembersEachCommunity = Model.GetNumberOfMembersInCommunity(_comunidadeIdCadaComunidade);
-							<a href="~/ComunidadePage/@item.comunidade.nomeComunidade">
-								<div class="communities-items">
-									@if (item.comunidade.iconeComunidade != null)
-									{
-										<img class="list-communityIcon" src="data:image/png;base64,@Convert.ToBase64String(item.comunidade.iconeComunidade)" alt="Imagem de Perfil" />
-									}
-									else
-									{
-										<img class="list-communityIcon" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
-									}               
-									<div class="communityInfo-container">
-										<div class="communityName">@item.comunidade.nomeComunidade</div>                                
-										<div class="list-numberOfMembers">@numberOfMembersEachCommunity membros</div>
-									</div>
-								</div>	
-							</a>
-						}				
-					}
-				</div>
-				<button type="button" class="closeModal" data-bs-dismiss="modal" aria-label="Fechar">Fechar</button>
-			</div>	
+		<div class="myCommunities">
+			<div class="listTitle">Minhas comunidades</div>
+			<div class="communitiesList">
+				@if(Model.getComunidadesUsuario == null)
+				{
+					<div>Você ainda não faz parte de comunidades.</div>
+				}
+				else
+				{
+					@foreach (var item in Model.getComunidadesUsuario) {
+						
+						int _comunidadeIdCadaComunidade = item.comunidade.comunidadeId;
+						int numberOfMembersEachCommunity = Model.GetNumberOfMembersInCommunity(_comunidadeIdCadaComunidade);
+						<a href="~/ComunidadePage/@item.comunidade.nomeComunidade">
+							<div class="communities-items">
+								@if (item.comunidade.iconeComunidade != null)
+								{
+									<img class="list-communityIcon" src="data:image/png;base64,@Convert.ToBase64String(item.comunidade.iconeComunidade)" alt="Imagem de Perfil" />
+								}
+								else
+								{
+									<img class="list-communityIcon" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
+								}               
+								<div class="communityInfo-container">
+									<div class="communityName">@item.comunidade.nomeComunidade</div>                                
+									<div class="list-numberOfMembers">@numberOfMembersEachCommunity membros</div>
+								</div>
+							</div>	
+						</a>
+					}				
+				}
+			</div>
+		</div>
 		</div>
 	</div>
 </div>
@@ -363,6 +359,51 @@
 		</div>
 	</div>
 </div>
+
+
+@foreach (var item in Model.getFeedPublicacoes)
+{
+	Model.getComunidadePublicacao = Model.getTodasComunidades.FirstOrDefault(cp => cp.comunidadeId == item.comunidadeId);
+	Model.getUsuarioPublicacao = Model.getTodosUsuarios.FirstOrDefault(up => up.usuarioId == item.usuarioId);
+	
+	<div class="modal fade" id="reportPostModal-@item.publicacaoId" tabindex="-1" aria-hidden="true">
+		<div class="modal-dialog" id="reportModal-dialog">
+			<div class="modal-content" id="reportModal-content">
+				<form class="reportMain-container" asp-controller="Denuncia" asp-action="DenunciarPublicacao" enctype="multipart/form-data">
+					<input type="hidden" name="PublicacaoId" value="@item.publicacaoId">
+					<input type="hidden" name="NomeComunidade" value="@Model.getComunidadePublicacao.nomeComunidade">
+					<div class="reportModal-container">
+						<div class="report-container">  
+							<div class="report-title">Você está prestes a denunciar uma publicação de <br><span>@Model.getUsuarioPublicacao.nomeUsuario</span></div>                  
+							<div class="reportContent-container">
+								<div class="reportType-container">
+									<div class="favGames-label-container">
+										<div class="favGames-label">Selecione o tipo de denúncia:</div>
+										<div class="reportType-alert">@ViewBag.Message</div>
+									</div>    
+									<div class="form-group">
+										<select name="TipoDenuncia" class="form-control" asp-items="Html.GetEnumSelectList<TiposDenuncia>()"></select>
+									</div>
+								</div>
+								<div class="descriptionForm">
+									<div>Faça uma descrição da denúncia:</div>
+									<div class="form-group">
+										<textarea type="text" name="DescricaoDenuncia" id="descriptionText-form" class="form-control bio-text" rows="10" maxlength="534"></textarea>
+									</div>
+								</div>
+							</div>
+							<div class="reportButtons-container">
+								<button class="reportSubmit-button" type="button" class="closeButton" data-bs-dismiss="modal" aria-label="Fechar">Cancelar</button>
+								<button class="reportSubmit-button" type="submit">Enviar denúncia</button>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+}
+
 
 
 @* <div class= "container">

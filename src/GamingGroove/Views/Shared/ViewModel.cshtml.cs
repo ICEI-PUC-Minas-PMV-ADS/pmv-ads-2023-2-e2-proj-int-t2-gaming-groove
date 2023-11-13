@@ -102,9 +102,7 @@ namespace GamingGroove.Views.Shared
 
             getTodosUsuariosSolicitacoes = getTodosUsuariosSolicitacoes
                 .Where(solicitacao => solicitacao.usuarioId != IdUsuarioLogado)
-                .ToList();             
-
-                
+                .ToList();                             
         }
 
         //PerfilPage
@@ -167,7 +165,6 @@ namespace GamingGroove.Views.Shared
                 .Where(ue => ue.usuarioId == IdUsuarioLogado)
                 .Include(ue => ue.equipe)
                 .ToList();                     
-
         }
 
         // ComunidadeHomePage + ComunidadePage 

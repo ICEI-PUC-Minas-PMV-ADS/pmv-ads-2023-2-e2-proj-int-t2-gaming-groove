@@ -29,9 +29,17 @@ a {
     gap: 2vh;
 }
 
+.large-screen {
+    display: flex;
+}
+
+.short-screen {
+    display: none;
+}
+
 .newCommunity-container {
     height: 170px;
-    width: 15vw;
+    width: 250px;
     min-width: 205px;
     border-radius: 6px;
     border: 2px solid #E3A5FF;
@@ -53,12 +61,15 @@ a {
 
 .newCommunity-button {
     padding-inline: 35px;
-    padding-block: 2px;
-    border-radius: 4px;
+    margin-top: 10px;
+    border-radius: 8px;
     background-color: transparent;
     border: 2px solid #E087FF;
     box-shadow: #D169FF 0px 0px 8px;
     letter-spacing: 1px;
+    font-size: 18px;
+    color: #E3A5FF;
+    padding-block: 2px;
 }
 
 .newCommunity-button:hover {
@@ -112,6 +123,7 @@ a {
     justify-content: center;
     border: solid 1px #0163D4;
     box-shadow: #0163D4 0px 0px 8px;
+    min-height: 140px;
 }
 
 .myCommunities-list {
@@ -146,13 +158,18 @@ a {
 .communityIcon {
     height: 120px;
     width: 120px;
-    border-radius: 6px;
+    border-radius: 4px;
     object-fit: cover;
     margin-bottom: 16px;
+    background-color: white;
 }
 
 .myCommunityName {
     font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100px;
 }
 
 .communityMembers {
@@ -322,6 +339,7 @@ a {
     justify-content: baseline;
     align-items: baseline;
     width: 200px;
+    margin: 0;
 }
 
 .profileImage-input input[type="file"]{
@@ -404,6 +422,12 @@ a {
     letter-spacing: 1px;
 }
 
+.favGames-label-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .biography {
     display: flex;
     flex-direction: column;
@@ -479,39 +503,357 @@ a {
     transition: 0.7s;
 }
 
-@media  (max-width: 1550px)
-{
-    .create-container {
-        flex-direction: column-reverse;
-        gap: 10vh;
-    }
+#createCommunity-dialog {
+
 }
 
-@media  (max-width: 900px)
+#createCommunity-content {
+    background-color: #232B58;
+    width: fit-content;
+    height: fit-content;
+    padding: 20px;
+    border: 1px solid #E5ABFF;
+    box-shadow: #D169FF 0px 0px 6px;
+}
+
+
+@media  (max-width: 1250px)
 {
-    .modal-dialog {
+    main {
         margin-top: 0;
     }
-    .modal-content {
-        width: 95vw;
-    }
-    .secondSection-container {
+    header{
+        position: fixed;
+        width: 100%;
+        height: 100px;
+    }    
+    .main-container {
         flex-direction: column;
+        justify-content: baseline;
+        align-items: center;
+        height: 100vh;
+        width: 100vw;
+        overflow-x: hidden;
+        gap: 3vh;
+    }
+    .left-container {
+        height: fit-content;
+        font-family: Play;
+        width: 100%;
+        flex-direction: row;
+        gap: 0;
+        margin-top: 100px;
+    }
+    .large-screen {
+        display: none;
+    }
+    .short-screen {
+        display: flex;
+    }
+    .newCommunity-button {
+        font-size: 14px;
+        padding-inline: 18px;
+    }
+    .center-container {
+        height: 100vh;
+        width: 100%;
+        position: static;
+        left: 0;
+        transform: none;
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        padding: 0; 
+        margin: 0;       
+    }
+    .communities-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: start;
+    }    
+    .myCommunities-title {
+        text-transform: uppercase;
+        margin-top: 0;
+        font-family: Gamer;
+        font-size: 30px;
+        width: 100%;
+        text-align: center;
+    }    
+    .myCommunities-container {
+        padding: 10px;
+        border-radius: 4px;
+        height: fit-content;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        border: solid 1px #0163D4;
+        box-shadow: #0163D4 0px 0px 8px;
+    }
+    .myCommunities-list {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-items: center;
+        align-items: baseline;
+        gap: 20px;
+        overflow: auto;
+    }   
+    .communityItems {
+        height: fit-content;
+        width: fit-content;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #232B58;
+        border-radius: 6px; 
+        margin-bottom: 20px;
+        padding: 5px;
+    } 
+    .communityIcon {
+        height: 100px;
+        width: 100px;
+    }    
+    .myCommunityName {
+        font-size: 10px;
+    }
+    .communityMembers {
+        font-size: 10px
+    }
+    .right-container {
+        display: none;
+    }
+
+
+    #createCommunity-dialog {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 0;
+    }
+    
+    #createCommunity-content {
+        background-color: #232B58;
+        padding-block: 10px;
+        padding-inline: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        border: 1px solid #E5ABFF;
+        box-shadow: #D169FF 0px 0px 6px;
+        border-radius: 8px;
+        min-width: 0;
+        width: 100%;
+        font-family: Play;
+    } 
+    .createCommunity-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 14px;
+    }
+    .createCommunity-title {
+        font-size: 22px;
+        margin-bottom: 30px;
+    }  
+    .secondSection-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+    }
+    .communityName-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        margin-bottom: 20px;
+    }
+    .communityName-container input {
+        font-family: Arial;
+        letter-spacing: 1px;
+        font-size: 12px;
+        color: #E3A5FF;
+        background-color: #111738;
+        border: 2px solid #111738;
+        border-radius: 4px;
+        padding-block: 5px;
+        width: 260px;
+        padding-inline: 15px;
+    }        
+    .profileImage-input input[type="file"]{
+        display: none;
+    }
+    
+    .imageInput-container {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .imageInput {
+        height: 40px;
+        width: 90px;
+        color: #E3A5FF;
+        background-color: #111738;
+        border-radius: 4px;
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: baseline;
+        padding-left: 10px;
+        gap: 10px;
+    }
+    
+    .uploadIcon {
+        height: 20px;
+    }
+    
+    .imageInput:hover {
+        transition: 0.7s;
+        color: black;
+        font-weight: bold;
+        background-color: #AFD3FF;
+        .uploadIcon {
+            filter: brightness(0);
+        }
+    }
+    
+    .imageInput:not(:hover) {
+        transition: 0.7s;
     }
     .favGames-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;   
         align-items: center;
-        width: 100%;
-        background-color: red;
-    }    
-    .imageInput-container {
-        justify-content: center;
-        align-items: center;
+        gap: 1vh;
+        width: 200px;
     }
+    
+    .favGames-container select{
+        font-size: 12px;
+        color: #E3A5FF;
+        background-color: #111738;
+        border: none;
+        width: 200px;
+    }
+    
+    .favGames-container select:hover {
+        transition: 0.7s;
+        color: black;
+        font-weight: bold;
+        background-color: #AFD3FF;
+        .uploadIcon {
+            filter: brightness(0);
+        }
+    }
+    
+    .favGames-container select:not(:hover) {
+        transition: 0.7s;
+    }
+    
+    .form-control option {
+        color: rgb(255, 255, 255);
+        background-color: #111738;
+    }
+    
+    .form-control:focus {
+        background-color: #111738;
+        color: white;
+    }
+    
+    .favGames-alert {
+        color: red;
+        font-size: 12px;
+        letter-spacing: 1px;
+    }
+    
+    .favGames-label-container select{
+        width: 150px;
+    }
+    
     .biography {
-        justify-content: center;
-        align-items: center;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
     }
-    .bio-text{
-        width: 60vw;
+    
+    .bio-text {
+        font-family: Arial;
+        letter-spacing: 1px;
+        font-size: 12px;
+        color: #E3A5FF;
+        background-color: #111738;
+        height: 95px;
+        width: 290px;
+        resize: none;
+        border: 2px solid #111738;
+        border-radius: 8px;
+        text-align: justify;
+    }
+    
+    .bio-text:focus {
+        color: white;
+        background-color: #111738;
+        border: 2px solid #111738;
+    }
+    
+    ::-webkit-scrollbar {
+        width: 9px;
+        background-color: #111738;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background-color: #2b356c;
+        border-radius: 6px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+        background-color: #E3A5FF;
+        border-radius: 6px;
+    }
+    
+    .buttons-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        margin-top: 15px;
+    }
+    
+    .submit-button {
+        font-family: Play;
+        font-weight: bold;
+        font-size: 12px;
+        text-transform: uppercase;
+        padding-inline: 20px;
+        padding-block: 15px;
+        color: white;
+        background-color: #110B31;
+        border: none;
+        border-radius: 6px;
+        margin-top: 0;
+    }
+    
+    .submit-button:hover {
+        font-weight: bold;
+        background: #AFD3FF;
+        color: black;
+        box-shadow: none;
+        transition: 0.7s;
+    }
+    
+    .submit-button:not(:hover) {
+        transition: 0.7s;
+    }
+    .communityName {
+        font-size: 14px;
     }
 }

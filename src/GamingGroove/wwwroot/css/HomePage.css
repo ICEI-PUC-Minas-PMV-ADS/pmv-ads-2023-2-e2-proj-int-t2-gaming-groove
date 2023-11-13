@@ -123,6 +123,7 @@ body {
   font-size: 12px;
   letter-spacing: 1px;
   color: black;
+  margin-left: 22px;
 }
 
 input::placeholder {
@@ -178,7 +179,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .form-group img {
   height: 20px;
   opacity: 0.5;
-  margin-right: -38px;
+  margin-right: -54px;
   margin-bottom: 3px;
 }
 
@@ -218,8 +219,8 @@ footer {
     flex-direction: column;
     align-items:center;
     justify-content: start; 
-    gap: 8vh;
-    margin-top: 20px;
+    gap: 3vh;
+    margin-top: 10px;
   }
   .brand-container {
     width: 100%;

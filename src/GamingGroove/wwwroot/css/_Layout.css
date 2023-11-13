@@ -43,7 +43,7 @@ header {
     min-width: 300px;
     border: solid #AFD3FF 2px;
     border-radius: 30px;
-    box-shadow: #0277F9 0 0 20px 9px;
+    box-shadow: #0277F9 0 0 15px 4px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -121,6 +121,8 @@ header {
     box-shadow: #B100FF 0 0 10px 3px;
     border-radius: 50%;
     overflow: hidden;
+    min-height: 55px;
+    min-width: 55px;
 }
 
 .menu-icon img{
@@ -266,6 +268,24 @@ header {
     overflow-y: scroll;
 }
 
+.friendInfo-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.chatButton {
+    height: 25px;
+    width: 25px;
+    filter: grayscale(100%) brightness(200%);
+}
+
+.chatButton:hover {
+    transition: 1s;
+    filter: none;
+}
+
 .friendsList-form {
     display: flex;
     flex-direction: row;
@@ -310,7 +330,7 @@ header {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: baseline;
+    justify-content: space-between;
     padding-left: 10px;
     gap: 15px;
     width: 220px;
@@ -319,25 +339,20 @@ header {
     margin-left: 6px;
 }
 
-.friendsList-items:hover {
+.friendInfo-container:hover {
     transition: 1s;
     .friendIcon {
         border: 1px solid #00F0FF;
         box-shadow: #00F0FF 0px 0px 4px;
     }
+    #friendUsername {
+        transition: 0.8s;
+        color: #00F0FF;
+    }
 }
 
 .friendsList-items:not(:hover) {
-    transition: 1s;
-}
-
-.friendsList-items:hover > #friendUsername {
-    transition: 1s;
-    color: #00F0FF;
-}
-
-.friendsList-items:not(:hover) > #friendUsername {
-    transition: 1s;
+    transition: 0.8s;
 }
 
 #friendUsername {
@@ -345,8 +360,8 @@ header {
 }
 
 .friendIcon {
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 40px;
     object-fit: cover;
     border-radius: 4px;
     background-color: white;
@@ -526,6 +541,190 @@ header {
 }
 
 .friendsRequest-close:not(:hover) {
+    transition: 0.7s;
+}
+
+
+
+
+
+#reportModal-dialog {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#reportModal-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+}
+
+.reportMain-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.reportModal-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+}
+
+.report-container {
+    padding: 2vh 20px 2vh 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #222B58;
+    border: solid 1px #AFD3FF;
+    box-shadow: #0277F9 0px 0px 8px;
+    border-radius: 6px;
+    gap: 20px;
+    width: 100%;
+    max-width: 350px;
+}
+
+.report-title {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.report-title span {
+    color: #00F0FF;
+    text-transform: none;
+}
+
+.reportContent-container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 20px;
+}
+
+.reportContent-container select:not(:hover) {
+    transition: 0.7s;
+}
+
+.reportContent-container select{
+    font-size: 12px;
+    color: #E3A5FF;
+    background-color: #111738;
+    border: none;
+}
+
+.reportContent-container select:hover {
+    transition: 0.7s;
+    color: black;
+    font-weight: bold;
+    background-color: #AFD3FF;
+    .uploadIcon {
+        filter: brightness(0);
+    }
+}
+
+.reportContent-container select:not(:hover) {
+    transition: 0.7s;
+}
+
+.reportType-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 10px;  
+}
+
+.form-control option {
+    color: rgb(255, 255, 255);
+    background-color: #111738;
+}
+
+.form-control:focus {
+    background-color: #111738;
+    color: white;
+}
+
+.reportType-alert {
+    color: red;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.descriptionForm {
+    display: flex;
+    flex-direction: column;
+    grid-area: 10px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;  
+    gap: 10px;  
+}
+
+#descriptionText-form {
+    font-family: Arial;
+    letter-spacing: 1px;
+    font-size: 12px;
+    color: #E3A5FF;
+    background-color: #111738;
+    height: 25vh;
+    resize: none;
+    border: 2px solid #111738;
+    border-radius: 8px;
+    min-width: 260px;
+    text-align: justify;
+}
+
+::-webkit-scrollbar {
+    width: 9px;
+    background-color: #111738;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #2b356c;
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #E3A5FF;
+    border-radius: 6px;
+}
+
+.reportButtons-container {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.reportSubmit-button {
+    font-family: Play;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding-inline: 20px;
+    padding-block: 15px;
+    color: white;
+    background-color: #110B31;
+    border: none;
+    border-radius: 6px;
+}
+
+.reportSubmit-button:hover {
+    font-weight: bold;
+    background: #AFD3FF;
+    color: black;
+    box-shadow: none;
+    transition: 0.7s;
+}
+
+.reportSubmit-button:not(:hover) {
     transition: 0.7s;
 }
 
