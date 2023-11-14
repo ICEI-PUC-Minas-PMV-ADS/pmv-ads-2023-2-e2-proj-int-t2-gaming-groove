@@ -78,7 +78,10 @@ https://github.com/shigerysasaki/pmv-ads-2023-2-e2-proj-int-t2-gaming-groove/ass
 
 | **Caso de Teste**   | **Caso de Teste 13 – Denunciar Usuários** |
 |:---:	|:---:	|
-|	Ainda nao foi realizado.| OFF |
+|	O sistema de denuncia e report é realizado para a equipe de suport. Dentro do perfil do usuario é possivel fazer essa denuncia.| ok |
+
+https://github.com/shigerysasaki/pmv-ads-2023-2-e2-proj-int-t2-gaming-groove/assets/126729120/3a5fee69-fda7-4ae2-b6e7-8fb16eba83d7
+
 
 | **Caso de Teste**   | **Caso de Teste 14 – Denunciar Comunidades** |
 |:---:	|:---:	|
@@ -86,11 +89,15 @@ https://github.com/shigerysasaki/pmv-ads-2023-2-e2-proj-int-t2-gaming-groove/ass
 
 | **Caso de Teste**   | **Caso de Teste 15 – Denunciar Publicação** |
 |:---:	|:---:	|
-|	Ainda nao foi realizado.| OFF |
+|	O sistema permite a denuncia de publicaçõe, visto que algumas vezes as publicações feitas pelos usuarios das comunidades nem sempre vao com o bom senso. | ok |
+
+https://github.com/shigerysasaki/pmv-ads-2023-2-e2-proj-int-t2-gaming-groove/assets/126729120/39492ed7-1a2d-467f-943f-a778104a82db
 
 | **Caso de Teste**   | **Caso de Teste 16 – Gerenciar Perfil** |
 |:---:	|:---:	|
-|	Ainda nao foi realizado.| OFF |
+|	Gerenciando o perfil é possivel trocar sua foto de capa, sua foto de perfil e ainda colocar os jogos que mais gosta.| ok |
+
+https://github.com/shigerysasaki/pmv-ads-2023-2-e2-proj-int-t2-gaming-groove/assets/126729120/b23c80ad-9d74-4a99-8f65-c081963fc3a7
 
 
 
