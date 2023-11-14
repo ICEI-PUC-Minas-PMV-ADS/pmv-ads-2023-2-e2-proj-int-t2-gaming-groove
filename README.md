@@ -3,8 +3,9 @@
 <br>
 
 <div align="center">
-  <img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e2-proj-int-t2-gaming-groove/assets/89418479/c9a9829d-613f-425f-a894-8b625dd1c22c" height="200" />
+  <img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e2-proj-int-t2-gaming-groove/assets/89418479/9d42471d-ad96-4846-bea0-7dfe0bf9743b" alt="gaminggroove-logo" height="200">
 </div>
+
 
 <br>
 <br>
