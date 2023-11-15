@@ -15,7 +15,92 @@
 <title>Formador de Equipes @notificacao</title>
 <link rel="stylesheet" href="~/css/EquipePage.css" asp-append-version="true" />
 
+
 <div class="main-container">
+
+    <div class="left-container">
+        <div class="suggestedTeams">
+			<div class="teamsListTitle">Minhas equipes</div>
+			<div class="teamsList">
+				@foreach (var item in Model.getEquipesUsuario) {
+					<a href="~/ComunidadePage/@item.equipe.nomeEquipe">
+						<div class="teamsItems">
+							@if (item.equipe.iconeEquipe != null)
+							{
+								<img class="list-teamIcon" src="data:image/png;base64,@Convert.ToBase64String(item.equipe.iconeEquipe)" alt="Imagem de Perfil" />
+							}
+							else
+							{
+								<img class="list-teamIcon" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
+							}               
+							<div class="communityInfo-container">
+								<div class="teamName">@item.equipe.nomeEquipe</div>                                
+							</div>
+						</div>	
+					</a>				
+				}
+			</div>
+		</div>		
+    </div>
+
+
+    <div class="center-container">
+        <div class="findTeams-title">Encontre equipes</div>
+        <div class="findTeams">
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" id="teamsSearch" type="search" placeholder="Buscar equipe">
+            </form>
+            <div class="findTeams-container">
+                <div class="findTeams-list">
+                    @foreach (var equipe in Model.getEquipes)
+                    {
+                        int _comunidadeIdCadaComunidade = equipe.equipeId;
+                        int numberOfMembersEachCommunity = Model.GetNumberOfMembersInCommunity(_comunidadeIdCadaComunidade);
+
+                        <div type="button" class="findTeams-items"  data-bs-toggle="modal" data-bs-target="#teamsModal-@equipe.equipeId">
+                            <div class="teamInfo-container">
+                                @if (equipe.iconeEquipe != null)
+                                {
+                                    <img class="teamIcon" src="data:image/png;base64,@Convert.ToBase64String(equipe.iconeEquipe)" />
+                                }
+                                else
+                                {
+                                    <img class="teamIcon" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
+                                }
+                                <div class="teamInfo">
+                                    <div class="teamName">@equipe.nomeEquipe</div>
+                                    <div class="teamGame">@equipe.jogoEquipe</div>
+                                </div>
+                            </div>
+                            <div class="teamNumberOfMembers">@numberOfMembersEachCommunity/12</div>
+                        </div>
+                    }                    
+                </div>
+            </div>            
+        </div>
+    </div>
+
+
+    <div class="right-container">
+        <div class="large-screen">
+            <div class="newCommunity-container">
+                <div class="newCommunity-title">Crie uma nova equipe</div>			
+                <button type="button" class="newCommunity-button" data-bs-toggle="modal" data-bs-target="#createPost-modal">Criar</button>
+            </div>
+        </div>
+
+        <div class="short-screen">
+            <button type="button" class="newCommunity-button" data-bs-toggle="modal" data-bs-target="#createPost-modal">Criar equipe</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+@* <div class="main-container">
     <div class="left-container">
         <div class="minhasEquipes">
             <div class="listTitle">Minhas Equipes</div>
@@ -104,6 +189,11 @@
 
         
     </div>
+ *@
+
+
+
+
 
 <div class="modal fade" id="createPost-modal" tabindex="-1" aria-labelledby="usuarioModalLabel" aria-hidden="true">
     <div class="modal-dialog" id="modal-dialog">
@@ -151,7 +241,7 @@
                             </div>
                         </div>
                         <div class="buttons-container">
-                            <button class="submit-button" href="~/EquipePage">Cancelar</button>
+                            <button type="button" class="submit-button" data-bs-dismiss="modal">Cancelar</button>
                             <button class="submit-button" value="CriarEquipe" type="submit">Criar equipe</button>
                         </div>
                     </div>
@@ -166,33 +256,65 @@
 
 @foreach (var item in Model.getEquipes)
 {
-   
-
-    <div class="modal fade" id="equipeModal-@item.equipeId" tabindex="-1">
-        <div class="modal-dialog" #modal-equipe-dialog>
-            <div class="modal-content" #modal-equipe-content>
-                <div class="commentsHeader">
+    <div class="modal fade" id="teamsModal-@item.equipeId" tabindex="-1">
+        <div class="modal-dialog" id="teamsModal-dialog">
+            <div class="modal-content" id="teamsModal-content">
+                <div class="teamFirstContainer">
+                    <div class="teamHeader">
                         @if (item.iconeEquipe != null)
                         {
-                            <img class="userIcon-post" src="data:image/png;base64,@Convert.ToBase64String(item.iconeEquipe)" alt="Imagem de Perfil do Usuário" />
+                            <img class="teamIcon-modal" src="data:image/png;base64,@Convert.ToBase64String(item.iconeEquipe)" alt="Imagem de Perfil do Usuário" />
                         }
                         else
                         {
-                            <img class="userIcon-post" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
+                            <img class="teamIcon-modal" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
                         }
-                    <div class=" ">@item.nomeEquipe</div>
-
-                    <div class=" ">@item.jogoEquipe</div>
-                    <button type="button" class="closeButton" data-bs-dismiss="modal" aria-label="Fechar">X</button>
+                        <div class="teamInfo">
+                            <div class="teamName-modal">@item.nomeEquipe</div>
+                            <div class="teamGame-modal">@item.jogoEquipe</div>
+                        </div>
+                    </div>
+                    <div class="teamButtons-container">
+                        <button type="button" class="closeButton" data-bs-dismiss="modal" aria-label="Fechar">X</button>
+                        <form asp-controller="EquipePage" asp-action="IngressarEquipe">
+                            <input type="hidden" name="IdEquipe" value="@item.equipeId">
+                            <button type="submit" class="joinButton">Entrar na equipe</button>
+                        </form>
+                    </div>
                 </div>
-               @*  BOTAO DE ENTRAR NA EQUIPE *@
-                <button type="button" class="button-entrar" asp-controller="EquipePage" asp-action="">Entrar na equipe</button>
-
-               <div class="team-description">@item.descricaoEquipe</div>
-               
-
-               
-                
+                <div class="teamSecondContainer">
+                    <div class="teamDescription-container">
+                        <div class="descriptionTitle">Descrição da equipe</div>
+                        <div class="teamDescription-box">@item.descricaoEquipe</div>
+                    </div>
+                    <div class="teamMembers-container">
+                        <div class="teamMembers-title">Membros</div>
+                        <div class="teamMembers-list">
+                            @{
+                                var getMembrosEquipe = Model.getTodosUsuariosEquipes.Where(uc => uc.equipeId == item.equipeId).ToList();
+                            }                            
+                            @foreach (var membro in getMembrosEquipe)
+                            {
+                                var getMembro = Model.getTodosUsuarios.FirstOrDefault(up => up.usuarioId == membro.usuarioId);
+                                <div class="members-container">
+                                    <div class="member-header">
+                                        <a href="~/PerfilPage/@getMembro.nomeUsuario"><div class="memberUser">
+                                            @if(getMembro.iconePerfil != null)
+                                            {
+                                                <img class="userIcon-member" src="data:image/png;base64,@Convert.ToBase64String(getMembro.iconePerfil)" alt="Imagem de Perfil do Usuário" />
+                                            }
+                                            else
+                                            {
+                                                <img class="userIcon-member" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
+                                            }
+                                            <div class="userName-member">@getMembro.nomeUsuario</div>
+                                        </div></a>		
+                                    </div>
+                                </div>                            		
+                            }
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -200,12 +322,7 @@
 
 
 
-   
 
 
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-
-        <script src="/js/EquipePage.js"></script>
 
 

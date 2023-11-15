@@ -1,3 +1,531 @@
+.iconBackground4 {
+    outline: double 6px #D169FF;
+    background-color: rgb(236, 236, 236);
+}
+
+#icon4 {
+    filter: hue-rotate(100deg) saturate(350%);
+}
+ 
+a {
+    text-decoration: none;
+}
+
+.main-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-inline: 1vw;
+}
+
+
+
+
+
+.left-container {
+    height: 100%;
+    width: 20vw;
+    display: flex;
+    justify-content: start; 
+}
+
+.suggestedTeams {
+    background-color: #232B58;
+    height: 60vh;
+    width: 290px;
+    margin-top: 5vh;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    box-shadow: black 2px 2px 6px;
+}
+
+.teamsListTitle {
+    font-family: Gamer;
+    font-size: 28px;
+    text-transform: uppercase;
+    width: 270px;
+    text-align: center;
+}
+
+.teamsList {
+    background-color: #111738;
+    height: 90%;
+    width: 100%;
+    padding-inline: 15px;
+    padding-block: 10px;
+    overflow: auto;
+}
+
+.teamsItems {
+    height: 60px;
+    width: 100%;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-inline: 10px;
+    padding-block: 35px;
+    gap: 10px;
+    font-family: Play;
+    cursor: pointer;
+}
+
+.teamsItems:hover {
+    transition: 0.8s;
+    background-color: #232B58;
+    .list-communityIcon {
+        border: #00F0FF solid 1px;
+        box-shadow: #00F0FF 0px 0px 8px;
+    }
+}
+
+.teamsItems:not(:hover){
+    transition: 0.8s;   
+}
+
+.list-teamIcon {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: white;
+}
+
+.teamName {
+    font-size: 14px;
+}
+
+
+
+
+
+
+.center-container {
+    height: 87.7vh;
+    width: 46vw;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding-top: 10px;
+    min-width: 400px;
+    font-family: Play
+}
+
+.findTeams-title {
+    font-size: 1.5rem;
+}
+
+#teamsSearch {
+    border-radius: 20px;
+    height: 25px;
+    background-color: rgb(255, 255, 255);
+    outline: 2px solid #00F0FF;
+    padding-left: 18px;
+    padding-block: 16px;
+    margin-bottom: 20px;
+    color: black;
+    width: 25vw;
+}
+
+.findTeams {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.findTeams-container {
+    width: 100%;
+    height: 75vh;
+    border-radius: 8px;
+    padding: 5px;
+    background-color: #232B58;
+    box-shadow: #000000 2px 2px 6px;
+}
+
+.findTeams-list {
+    display: grid;
+    grid-template-columns:repeat(2, 1fr);
+    align-content: start;
+    height: 100%;
+    width: 100%;
+    gap: 4px;
+    overflow: auto;
+    overflow-x: hidden;
+    padding: 4px;
+}
+
+.findTeams-items {
+    width: 100%;
+    height: fit-content;
+    background-color: #414A77;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px;
+    border-radius: 4px;
+    justify-content: space-between;
+}
+
+.findTeams-items:hover {
+    transition: 0.8s;
+    background-color: #7383C5;
+    .teamName {
+        transition: 0.8s;
+        color: #00F0FF;
+    }
+    .teamGame {
+        transition: 0.8s;
+        color: #E3A5FF;
+    }
+    .teamIcon {
+        transition: 0.8s;
+        border: 1px solid #00F0FF;
+    }
+}
+
+.findTeams-items:not(:hover) {
+    transition: 1.6s;
+    .teamName {
+        transition: 1.6s;
+    }
+    .teamGame {
+        transition: 1.6s;
+    }
+    .teamIcon {
+        transition: 1.6s;
+    }
+}
+
+.teamInfo-container{
+    display: flex;
+    flex-direction: row;    
+    align-items: center;
+    gap: 15px;
+}
+
+.teamName {
+    font-size: 16px;
+}
+
+.teamGame {
+    font-size: 12px;
+    color: #00F0FF;
+}
+
+.teamInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+}
+
+.teamIcon {
+    height: 55px;
+    width: 55px;
+    border-radius: 4px;
+    background-color: white;
+    object-fit: cover;
+}
+
+.teamNumberOfMembers {
+    padding-inline: 10px;
+}
+
+
+
+
+
+.right-container {
+    height: 100%;
+    width: 27vw;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    gap: 2vh;
+}
+
+.large-screen {
+    display: flex;
+}
+
+.short-screen {
+    display: none;
+}
+
+.newCommunity-container {
+    height: 170px;
+    width: 250px;
+    min-width: 205px;
+    border-radius: 6px;
+    border: 2px solid #E3A5FF;
+    margin-top: 5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    font-family: PlayMeGames;
+    box-shadow: #D169FF 0px 0px 8px;
+}
+
+.newCommunity-title {
+    font-size: 26px;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.newCommunity-button {
+    padding-inline: 35px;
+    margin-top: 10px;
+    border-radius: 8px;
+    background-color: transparent;
+    border: 2px solid #E087FF;
+    box-shadow: #D169FF 0px 0px 8px;
+    letter-spacing: 1px;
+    font-size: 18px;
+    color: #E3A5FF;
+    padding-block: 2px;
+}
+
+.newCommunity-button:hover {
+    transition: 0.6s;
+    color: black;
+    background-color: #E087FF;
+    box-shadow: none;
+}
+
+.newCommunity-button:not(:hover) {
+    transition: 0.6s;
+}
+
+
+
+
+#teamsModal-dialog {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8vh;
+}
+
+#teamsModal-content {
+    background-color: #111738;
+    padding-block: 30px;
+    padding-inline: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    border: 1px solid #E5ABFF;
+    box-shadow: #D169FF 0px 0px 6px;
+    border-radius: 8px;
+    min-width: 720px;
+    font-family: Play;
+}
+
+.teamFirstContainer {
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.teamHeader {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.teamName-modal {
+    padding-block: 2px;
+    padding-inline: 30px;
+    background-color: #7383C5;
+    border-radius: 4px;
+}
+
+.teamInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.teamGame-modal {
+    color: #00F0FF;
+    font-size: 14px;
+}
+
+.teamGame-modal img {
+    height: 35px;
+    width: 35px;
+    background-color: black;
+    border-radius: 50%;
+    border: 1px white solid;
+    object-fit: contain;
+    padding: 2px;
+}
+
+.teamIcon-modal {
+    height: 130px;
+    width: 130px;
+    object-fit: cover;
+    border-radius: 4px;
+    background-color: white;
+    outline: 1px white solid;
+}
+
+.teamButtons-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: end;
+}
+
+.closeButton {
+    height: fit-content;
+    width: fit-content;
+    border: none;
+    background: none;
+}
+
+.joinButton {
+    padding-block: 5px;
+    padding-inline: 20px;
+    background: none;
+    border: 2px solid #E3A5FF;
+    color: #E3A5FF;
+    border-radius: 6px;
+}
+
+.joinButton:hover {
+    transition: 0.7s;
+    background-color: #E3A5FF;
+    color: black;
+}
+
+.joinButton:not(:hover) {
+    transition: 0.7s;
+}
+
+.teamSecondContainer {
+    display: flex;
+    flex-direction: row;
+    height: fit-content;
+    width: 100%;
+    gap: 30px;
+}
+
+.teamDescription-container, .teamMembers-container {
+    height: 350px;
+    width: 100%;
+    background-color: #222B58;
+    border-radius: 4px;
+    padding-bottom: 15px;
+    padding-inline: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.descriptionTitle, .teamMembers-title {
+    font-family: Gamer;
+    text-transform: uppercase;
+    font-size: 28px;
+    padding: 10px;
+}
+
+.teamDescription-box, .teamMembers-list {
+    height: 100%;
+    width: 100%;
+    background-color: #111738;
+    border-radius: 4px;
+    padding: 10px;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+
+
+
+.members-container {
+    padding-block: 8px;
+    padding-inline: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+    align-items: baseline;
+    width: 95%;
+    border-radius: 6px;
+    gap: 6px;
+}
+
+.members-container:hover {
+    transition: 0.7s;
+    background-color: #414A77;
+    .userIcon-member {
+        outline: 1px solid #00F0FF;
+    }
+    .userName-member {
+        color: #00F0FF;
+    }
+}
+
+.members-container:not(:hover) {
+    transition: 1.4s;
+}
+
+.member-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.memberUser {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    gap: 15px;
+    border-radius: 20px;
+}
+
+.memberUser:hover {
+    transition: 0.6s;
+    padding: 0px 30px 0px 0px;
+    background-color: #5965a0;
+    .userName-like {
+        color: #00F0FF; 
+    } 
+}
+
+.userIcon-member {
+    height: 40px;
+    width: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+    background-color: white;
+
+}
+.userName-member {
+    color: #ffffff;
+}
+
+/* 
 .body {
     margin: 0;
     padding: 0;
@@ -6,10 +534,10 @@
 .container {
     margin: 0px;
     padding: 0px;
-}
+} */
 
 /*CONTAINER DA ESQUERDA*/
-
+/* 
 .left-container {
     background-color: #232B58;
     height: 60vh;
@@ -116,13 +644,13 @@
 .list-numberOfMembers {
     color: #00F0FF;
     font-size: 12px;
-}
+} */
 
 
 
 /*CONTAINER CENTRAL*/
 
-
+/* 
 .main-container {
     height: 100%;
     width: 100vw;
@@ -270,14 +798,14 @@
     height: 50px;
     border-radius: 50px;
 }
-
+ */
 
 
    
 /*CONTAINER DIREITA*/
 
 
-.right-container {
+/* .right-container {
     height: 100%;
     width: 27vw;
     display: flex;
@@ -327,12 +855,12 @@
 
     .newCommunity-button:not(:hover) {
         transition: 0.6s;
-    }
+    } */
 
 
     /*MODAL*/
 
-.modal-dialog {
+/* .modal-dialog {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -606,4 +1134,4 @@
     .bio-text {
         width: 60vw;
     }
-}
+} */

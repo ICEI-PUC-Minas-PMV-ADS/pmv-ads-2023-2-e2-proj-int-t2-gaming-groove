@@ -9,15 +9,15 @@ namespace GamingGroove.Controllers
 {
     public class EquipePageController : BaseController
     {
-        private readonly GamingGrooveDbContext _cc;
+        private readonly GamingGrooveDbContext _context;
 
-        public EquipePageController(GamingGrooveDbContext cc)
+        public EquipePageController(GamingGrooveDbContext context)
         {
-            _cc = cc;
+            _context = context;
         }
         public IActionResult Index()
         {
-            var viewModel = new ViewModel(_cc);
+            var viewModel = new ViewModel(_context);
             var IdUsuarioLogado = HttpContext.Session.GetInt32("UsuarioId");
 
             viewModel.OnGetListaDeAmigos(IdUsuarioLogado);
@@ -47,7 +47,7 @@ namespace GamingGroove.Controllers
                 dataCriacaoEquipe = DateTime.Now
             };
 
-            var existingEquipe = await _cc.Equipes.FirstOrDefaultAsync(c => c.nomeEquipe == equipeModel.nomeEquipe);
+            var existingEquipe = await _context.Equipes.FirstOrDefaultAsync(c => c.nomeEquipe == equipeModel.nomeEquipe);
 
             if (existingEquipe != null)
             {
@@ -71,8 +71,8 @@ namespace GamingGroove.Controllers
 
                    
 
-                    _cc.Add(equipeModel);
-                    await _cc.SaveChangesAsync();
+                    _context.Add(equipeModel);
+                    await _context.SaveChangesAsync();
                     return RedirectToAction("Index", "EquipePage");
 
                     
@@ -89,6 +89,34 @@ namespace GamingGroove.Controllers
 
 
             return RedirectToAction("Index", equipeModel);
+        }
+
+        public async Task<IActionResult> IngressarEquipe(int? IdUsuario, int IdEquipe)
+        {
+            IdUsuario = HttpContext.Session.GetInt32("UsuarioId");
+
+            UsuarioEquipeModel usuarioEquipeModel = new ()
+            {
+                usuarioId = (int)IdUsuario,
+                equipeId = IdEquipe,
+                cargoEquipe = CargosEnum.Membro,
+                dataVinculoEquipe = DateTime.Now
+            };
+
+            if (ModelState.IsValid)
+            {
+                var ultimoUsuarioEquipeId = _context.UsuariosEquipes
+                    .OrderByDescending(uc => uc.usuarioEquipeId)
+                    .FirstOrDefault()?.usuarioEquipeId ?? 0;
+
+                usuarioEquipeModel.usuarioEquipeId = ultimoUsuarioEquipeId + 1;
+
+                _context.Add(usuarioEquipeModel);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index", "EquipePage");
+            }
+
+            return RedirectToAction("Index", "EquipePage");
         }
     }
 

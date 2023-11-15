@@ -121,8 +121,8 @@ a {
     width: 100%;
     display: flex;
     justify-content: center;
-    border: solid 1px #0163D4;
-    box-shadow: #0163D4 0px 0px 8px;
+    border: solid 2px #AFD3FF;
+    box-shadow: #006fee 0px 0px 10px;
     min-height: 140px;
 }
 

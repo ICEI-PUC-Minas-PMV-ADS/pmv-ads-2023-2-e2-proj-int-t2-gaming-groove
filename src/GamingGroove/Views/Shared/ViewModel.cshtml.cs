@@ -49,6 +49,7 @@ namespace GamingGroove.Views.Shared
 
         public IEnumerable<EquipeModel> getEquipes { get; set; }
         public IEnumerable<UsuarioEquipeModel> getEquipesUsuario { get; set; }
+        public IEnumerable<UsuarioEquipeModel> getTodosUsuariosEquipes { get; set; }
         
         
         public IEnumerable<CurtidaModel> getTodasCurtidas { get; set; }
@@ -247,14 +248,14 @@ namespace GamingGroove.Views.Shared
         public void OnGetEquipePage(int? usuario)
         {
             getEquipes = _cc.Equipes.ToList();
+
+            getTodosUsuariosEquipes = _cc.UsuariosEquipes.ToList();
             
             getEquipesUsuario = _cc.UsuariosEquipes
                 .Where(ue => ue.usuarioId == usuario)
                 .Include(ue => ue.equipe)
                 .ToList();       
         }
-
-
     }
 }
 
