@@ -155,13 +155,19 @@ a {
     transition: 0.6s;
     background-color: #E5ABFF;
     color: #0E1A35;
+    .leaveDeleteIcon {
+        filter: brightness(0);
+    }
 }
 
 .joinQuitButton:not(:hover) {
     transition: 0.6s;
+    .leaveDeleteIcon {
+        transition: 0.6s;
+    }
 }
 
-.joinQuitButton img {
+.leaveDeleteIcon {
     height: 20px;
     width: 20px;
 }
@@ -656,6 +662,9 @@ a {
     background: transparent;
     border: none;
     cursor: pointer;
+    position: relative;
+    margin-top: -10px;
+    margin-right: -10px;
 }
 
 .closeButton:hover {
@@ -1130,9 +1139,15 @@ a {
 .member-header {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: baseline;
     align-items: center;
     width: 100%;
+    gap: 10px;
+}
+
+.admIcon {
+    height: 20px;
+    width: 20px;
 }
 
 .memberUser {

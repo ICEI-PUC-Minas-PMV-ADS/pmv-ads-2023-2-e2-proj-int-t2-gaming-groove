@@ -418,6 +418,7 @@ a {
     width: 50px;
     border-radius: 50%;
     object-fit: cover;
+    background-color: white;
 }
 
 .teamName {
@@ -819,6 +820,567 @@ a {
 .suggestedTeams {
     margin: 0;
 }
+
+
+
+
+
+
+#teamsModal-dialog {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.4%;
+}
+
+#teamsModal-content {
+    background-color: #111738;
+    padding-block: 30px;
+    padding-inline: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    border: 1px solid #E5ABFF;
+    box-shadow: #D169FF 0px 0px 6px;
+    border-radius: 8px;
+    width: fit-content;
+    font-family: Play;
+}
+
+.teamFirstContainer {
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.teamHeader {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.teamName-modal {
+    padding-block: 2px;
+    padding-inline: 30px;
+    background-color: #7383C5;
+    border-radius: 4px;
+}
+
+.teamInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: baseline;
+}
+
+.teamGame-modal {
+    color: #00F0FF;
+    font-size: 14px;
+}
+
+.teamGame-modal img {
+    height: 35px;
+    width: 35px;
+    background-color: black;
+    border-radius: 50%;
+    border: 1px white solid;
+    object-fit: contain;
+    padding: 2px;
+}
+
+.editTeamButton{
+    height: 30px;
+    width: 40px;
+    background-color: #121433;
+    border: solid white 1px;
+    border-radius: 4px;
+    color: #00F0FF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.editTeamButton:hover {
+    transition: 1s;
+    background-color: #00F0FF;
+    .report-icon {
+        filter: brightness(0);
+    }
+    .editTeamButton-icon {
+        filter: brightness(0);
+    }
+}
+
+.editTeamButton img{
+    height: 20px;
+}
+
+.teamIcon-modal {
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+    border-radius: 4px;
+    background-color: white;
+    outline: 1px white solid;
+}
+
+.teamButtons-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: end;
+}
+
+.closeButton {
+    height: fit-content;
+    width: fit-content;
+    border: none;
+    background: none;
+}
+
+.joinButton {
+    padding-block: 5px;
+    padding-inline: 20px;
+    background: none;
+    border: 2px solid #E3A5FF;
+    color: #E3A5FF;
+    border-radius: 6px;
+}
+
+.joinButton:hover {
+    transition: 0.7s;
+    background-color: #E3A5FF;
+    color: black;
+}
+
+.joinButton:not(:hover) {
+    transition: 0.7s;
+}
+
+.teamSecondContainer {
+    display: flex;
+    flex-direction: row;
+    height: fit-content;
+    width: 100%;
+    gap: 30px;
+}
+
+.teamDescription-container, .teamMembers-container, .teamRequests-container {
+    height: 350px;
+    width: 100%;
+    border: 1px solid #E3A5FF;
+    box-shadow: #D169FF 0px 0px 4px;
+    border-radius: 8px;
+    padding-bottom: 15px;
+    padding-inline: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 300px;
+}
+
+.descriptionTitle, .teamMembers-title, .teamRequests-title {
+    font-family: Gamer;
+    text-transform: uppercase;
+    font-size: 28px;
+    padding: 10px;
+}
+
+.teamMembers-title {
+    padding-bottom: 0;
+}
+
+.teamMembers-number {
+    font-family: 'Black Ops One';
+    font-size: 14px;
+    color: #00F0FF;
+}
+
+.teamDescription-box, .teamMembers-list, .teamRequests-list {
+    height: 100%;
+    width: 100%;
+    border-radius: 4px;
+    padding: 10px;
+    text-align: justify;
+    overflow: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.members-container {
+    padding-block: 8px;
+    padding-inline: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+    align-items: baseline;
+    width: 95%;
+    border-radius: 6px;
+    gap: 6px;
+}
+
+.members-container:hover {
+    transition: 0.7s;
+    background-color: #414A77;
+    .userIcon-member {
+        outline: 1px solid #00F0FF;
+    }
+    .userName-member {
+        color: #00F0FF;
+    }
+}
+
+.members-container:not(:hover) {
+    transition: 1.4s;
+}
+
+.admIcon {
+    height: 20px;
+    width: 20px;
+}
+
+.member-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: baseline;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.memberUser {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    gap: 15px;
+    border-radius: 20px;
+}
+
+.memberUser:hover {
+    transition: 0.6s;
+    padding: 0px 30px 0px 0px;
+    background-color: #5965a0;
+    .userName-like {
+        color: #00F0FF; 
+    } 
+}
+
+.userIcon-member {
+    height: 40px;
+    width: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+    background-color: white;
+
+}
+.userName-member {
+    color: #ffffff;
+}
+
+.closeButton {
+    font-family: Play;
+    height: 40px;
+    width: 40px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    margin-top: -20px;
+    margin-right: -25px;
+}
+
+.closeButton:hover {
+    transition: 0.6s;
+    color: #00F0FF;
+}
+
+.joinQuitButton {
+    font-family: Play;
+    color: #E5ABFF;
+    background-color: #0E1A35;
+    border: 2px solid #E5ABFF;
+    padding-inline: 9px;
+    padding-block: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    letter-spacing: 1px;
+}
+
+.joinQuitButton:hover {
+    transition: 0.6s;
+    background-color: #E5ABFF;
+    color: #0E1A35;
+    .leaveDeleteIcon {
+        filter: brightness(0);
+    }
+}
+
+.joinQuitButton:not(:hover) {
+    transition: 0.6s;
+    .leaveDeleteIcon {
+        transition: 0.6s;
+    }
+}
+
+.leaveDeleteIcon {
+    height: 20px;
+    width: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+#deleteTeamModal-content {
+    background-color: #222B58;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    gap: 10px;
+    text-align: center;
+    margin-top: 10vh;
+    border-radius: 6px;
+    border: 2px solid #93f8ff;
+    box-shadow: #00F0FF 0px 0px 6px;
+}
+
+
+
+
+
+#editTeamModal-dialog {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#editTeamModal-content {
+    background-color: #222B58;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    padding-inline: 30px;
+    gap: 10px;
+    text-align: center;
+    margin-top: 10vh;
+    border-radius: 6px;
+    border: 1px solid #93f8ff;
+    box-shadow: #00F0FF 0px 0px 6px;
+    width: fit-content;
+}
+
+.editTeamHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.editTeamModal-title {
+    font-size: 22px;
+}
+
+.modal-title {
+    margin-top: 10px;
+    letter-spacing: 1px;
+}
+
+.modal-title span {
+    color: #00F0FF;
+}
+
+.closeButton-delete {
+    font-family: Play;
+    height: 40px;
+    width: 40px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    margin-top: -21px;
+    margin-right: -14px;
+}
+
+.closeButton-delete:hover {
+    transition: 0.6s;
+    color: #00F0FF;
+}
+
+.editTeam-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.editTeam-form input {
+    font-family: Arial;
+    letter-spacing: 1px;
+    font-size: 12px;
+    color: #E3A5FF;
+    background-color: #111738;
+    border: 2px solid #111738;
+    border-radius: 4px;
+    padding-block: 5px;
+    width: 260px;
+    padding-inline: 15px;
+}
+
+.favGames-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;   
+    gap: 2vh;
+}
+
+.profileImage-input input[type="file"]{
+    display: none;
+}
+
+.imageInput-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.imageInput {
+    height: 40px;
+    width: 150px;
+    color: #E3A5FF;
+    background-color: #111738;
+    border-radius: 4px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: baseline;
+    padding-left: 10px;
+    gap: 10px;
+}
+
+.uploadIcon {
+    height: 20px;
+}
+
+.imageInput:hover {
+    transition: 0.7s;
+    color: black;
+    background-color: #AFD3FF;
+    .uploadIcon {
+        filter: brightness(0);
+    }
+}
+
+.imageInput:not(:hover) {
+    transition: 0.7s;
+}
+
+.editTeam-form select{
+    font-size: 12px;
+    color: #E3A5FF;
+    background-color: #111738;
+    border: none;
+}
+
+.editTeam-form select:hover {
+    transition: 0.7s;
+    color: black;
+    font-weight: bold;
+    background-color: #AFD3FF;
+    .uploadIcon {
+        filter: brightness(0);
+    }
+}
+
+.editTeam-form select:not(:hover) {
+    transition: 0.7s;
+}
+
+.form-control option {
+    color: rgb(255, 255, 255);
+    background-color: #111738;
+}
+
+.teamDescription-edit {
+    font-family: Arial;
+    letter-spacing: 1px;
+    font-size: 12px;
+    color: #E3A5FF;
+    background-color: #111738;
+    height: 15vh;
+    width: 20vw;
+    resize: none;
+    border: 2px solid #111738;
+    border-radius: 8px;
+    min-width: 190px;
+    padding: 10px;
+    text-align: justify;
+}
+
+::-webkit-scrollbar {
+    width: 9px;
+    background-color: #111738;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #2b356c;
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #E3A5FF;
+    border-radius: 6px;
+}
+
+.submit-button {
+    font-family: Play;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding-inline: 20px;
+    padding-block: 15px;
+    color: white;
+    background-color: #110B31;
+    border: none;
+    border-radius: 6px;
+    margin-top: 50px;
+}
+
+.submit-button:hover {
+    font-weight: bold;
+    background: #AFD3FF;
+    color: black;
+    box-shadow: none;
+    transition: 0.7s;
+}
+
+.submit-button:not(:hover) {
+    transition: 0.7s;
+}
+
 
 
 

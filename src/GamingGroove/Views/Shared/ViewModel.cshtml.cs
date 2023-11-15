@@ -49,7 +49,9 @@ namespace GamingGroove.Views.Shared
 
         public IEnumerable<EquipeModel> getEquipes { get; set; }
         public IEnumerable<UsuarioEquipeModel> getEquipesUsuario { get; set; }
+        public IEnumerable<UsuarioEquipeModel> getEquipesSugeridas { get; set; }
         public IEnumerable<UsuarioEquipeModel> getTodosUsuariosEquipes { get; set; }
+        public List<int> infoEquipes { get; set; }
         
         
         public IEnumerable<CurtidaModel> getTodasCurtidas { get; set; }
@@ -165,7 +167,26 @@ namespace GamingGroove.Views.Shared
             getEquipesUsuario = _cc.UsuariosEquipes
                 .Where(ue => ue.usuarioId == IdUsuarioLogado)
                 .Include(ue => ue.equipe)
-                .ToList();                     
+                .ToList();     
+
+            getEquipes = _cc.Equipes.ToList();
+
+            getTodosUsuariosEquipes = _cc.UsuariosEquipes.ToList();
+            
+            getEquipesUsuario = _cc.UsuariosEquipes
+                .Where(ue => ue.usuarioId == IdUsuarioLogado)
+                .Include(ue => ue.equipe)
+                .ToList();       
+            
+            infoEquipes = getEquipesUsuario.Select(ue => ue.equipe.equipeId).ToList();
+
+            getEquipesSugeridas = _cc.UsuariosEquipes
+                .Where(uc => uc.usuarioId != IdUsuarioLogado && !infoEquipes.Contains(uc.equipeId))
+                .Include(uc => uc.equipe)
+                .GroupBy(uc => uc.equipeId)
+                .Select(group => group.First())
+                .ToList(); 
+                                
         }
 
         // ComunidadeHomePage + ComunidadePage 
@@ -221,6 +242,12 @@ namespace GamingGroove.Views.Shared
                 .Count(uc => uc.comunidadeId == _comunidadeId);
         }
 
+        public int GetNumberOfMembersInTeam(int _equipeId)
+        {
+            return _cc.UsuariosEquipes
+                .Count(uc => uc.equipeId == _equipeId);
+        }
+
         // ExplorarPage
         public void OnGetExplorarPage(int? usuario)
         {                      
@@ -255,6 +282,15 @@ namespace GamingGroove.Views.Shared
                 .Where(ue => ue.usuarioId == usuario)
                 .Include(ue => ue.equipe)
                 .ToList();       
+            
+            infoEquipes = getEquipesUsuario.Select(ue => ue.equipe.equipeId).ToList();
+
+            getEquipesSugeridas = _cc.UsuariosEquipes
+                .Where(uc => uc.usuarioId != IdUsuarioLogado && !infoEquipes.Contains(uc.equipeId))
+                .Include(uc => uc.equipe)
+                .GroupBy(uc => uc.equipeId)
+                .Select(group => group.First())
+                .ToList(); 
         }
     }
 }

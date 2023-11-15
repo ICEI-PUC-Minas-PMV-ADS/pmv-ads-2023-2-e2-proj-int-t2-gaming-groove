@@ -160,7 +160,6 @@ namespace GamingGroove.Controllers
                 existingCommunity.segundoJogo = SegundoJogo;
                 existingCommunity.terceiroJogo = TerceiroJogo;
                 existingCommunity.descricaoComunidade = DescricaoComunidade;
-                existingCommunity.dataCriacaoComunidade = DateTime.Now;
 
                 if (iconeComunidadeArquivo != null && iconeComunidadeArquivo.Length > 0)
                 {
