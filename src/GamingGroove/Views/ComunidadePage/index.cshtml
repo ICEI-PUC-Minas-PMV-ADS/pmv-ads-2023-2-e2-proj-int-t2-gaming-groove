@@ -52,7 +52,7 @@
 				</div>
 				<div class="buttons-container">
 						<div class="communityInfoModal-button">
-							<button type="button" class="joinQuitButton" data-bs-toggle="modal" data-bs-target="#communityInfo-modal"><img src="~/images/icons/list-icon.svg" alt=""></button>
+							<button type="button" class="joinQuitButton" data-bs-toggle="modal" data-bs-target="#communityInfo-modal"><img class="listIcon" src="~/images/icons/list-icon.svg" alt=""></button>
 						</div>
 						@if (isMember != null && isMember.cargoComunidade.ToString() == "ADM")
 						{
@@ -66,12 +66,12 @@
 						{
 							<form class="joinCommunity-form" id="joinCommunity-form" asp-action="DeixarComunidade">		
 								<input type="hidden" name="IdComunidade" value="@Model.getComunidade.comunidadeId" />
-								<button type="submit" class="joinQuitButton"><img src="~/images/icons/leave-icon.svg" alt=""></button>
+								<button type="submit" class="joinQuitButton" title="Deixar comunidade"><img class="leaveDeleteIcon" src="~/images/icons/leave-icon.svg"></button>
 							</form>
 						}
 						else if(isMember != null && isMember.cargoComunidade.ToString() == "ADM")
 						{
-							<button class="joinQuitButton" data-bs-toggle="modal" data-bs-target="#deleteCommunity-modal"><img src="~/images/icons/trash-icon.svg" alt=""></button>
+							<button class="joinQuitButton" data-bs-toggle="modal" data-bs-target="#deleteCommunity-modal" title="Apagar comunidade"><img class="leaveDeleteIcon" src="~/images/icons/trash-icon.svg"></button>
 						}
 						else
 						{
@@ -439,6 +439,15 @@
 						var getMembro = Model.getTodosUsuarios.FirstOrDefault(up => up.usuarioId == membro.usuarioId);
 						<div class="members-container">
 							<div class="member-header">
+								@if(membro.cargoComunidade == CargosEnum.ADM)
+								{
+									<img class="admIcon" src="~/images/icons/crown-icon.svg" title="Líder da equipe">
+								}
+								else
+								{
+									<img class="admIcon" src="~/images/icons/crown-icon.svg" title="Líder da equipe" style="visibility: hidden;">
+								}
+                                        
 								<a href="~/PerfilPage/@getMembro.nomeUsuario"><div class="memberUser">
 									@if(getMembro.iconePerfil != null)
 									{
@@ -495,13 +504,13 @@
 									<div>Selecione as imagens:</div>
 									<div class="profileIcon-input-container">
 										<div class="profileImage-input">
-											<label class="imageInput" for="profileIcon-input"><img class="uploadIcon" src="~/images/icons/upload-icon.svg" alt="">Ícone</label>
+											<label class="imageInput" for="profileIcon-input"><img class="uploadIcon" src="~/images/icons/upload-icon.svg">Ícone</label>
 											<input id="profileIcon-input" name="iconeComunidadeArquivo" type="file"/>
 										</div>                        
 									</div>
 									<div class="profileCover-input-container">
 										<div class="profileImage-input">
-											<label class="imageInput" for="profileCover-input"><img class="uploadIcon" src="~/images/icons/upload-icon.svg" alt="">Capa</label>
+											<label class="imageInput" for="profileCover-input"><img class="uploadIcon" src="~/images/icons/upload-icon.svg">Capa</label>
 											<input id="profileCover-input" name="capaComunidadeArquivo" type="file"/>
 										</div>                        
 									</div>

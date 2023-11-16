@@ -115,14 +115,14 @@ header {
 }
 
 .menu-icon {
-    height: 60px;
-    width: 60px;
+    height: 50px;
+    width: 50px;
     border: solid 2px #E3A5FF;
     box-shadow: #B100FF 0 0 10px 3px;
     border-radius: 50%;
     overflow: hidden;
-    min-height: 55px;
-    min-width: 55px;
+    min-height: 50px;
+    min-width: 50px;
 }
 
 .menu-icon img{
@@ -765,5 +765,64 @@ header {
 @media (max-width: 500px) {
     .logo {
         display: none;
+    }
+
+    .iconBackground1 {
+        border-radius: 50%;
+        width: 45px;
+        height: 45px;
+        position: absolute;
+        left: 13%; 
+        transform: translateX(-50%); 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .iconBackground2 {
+        border-radius: 50%;
+        width: 45px;
+        height: 45px;
+        position: absolute;
+        left: 38%; 
+        transform: translateX(-50%); 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .iconBackground3 {
+        border-radius: 50%;
+        width: 45px;
+        height: 45px;
+        position: absolute;
+        left: 63%;
+        transform: translateX(-50%); 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .iconBackground4 {
+        border-radius: 50%;
+        width: 45px;
+        height: 45px;
+        position: absolute;
+        left: 88%;
+        transform: translateX(-50%); 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .navbar img {
+        height: 24px;
+    }
+
+    .navbar {
+        height: 42px;
+        width: 40vw;
+        gap: 6.5vw;
+        margin: 0;
     }
 }

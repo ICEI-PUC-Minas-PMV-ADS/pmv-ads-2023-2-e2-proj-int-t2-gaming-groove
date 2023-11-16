@@ -81,6 +81,61 @@ namespace GamingGroove
             await _context.SaveChangesAsync();
 
             return RedirectToAction("Index", "FeedPage"); 
-        }                 
+        }     
+
+
+        public async Task<IActionResult> DeixarEquipe(int? IdUsuario, int IdEquipe)
+        {
+            IdUsuario = HttpContext.Session.GetInt32("UsuarioId");
+
+            var usuarioEquipeModel = await _context.UsuariosEquipes
+                .FirstOrDefaultAsync(uc => uc.usuarioId == IdUsuario && uc.equipeId == IdEquipe);
+
+            _context.UsuariosEquipes.Remove(usuarioEquipeModel);     
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index", "FeedPage");            
+        }
+
+        public async Task<IActionResult> ApagarEquipe(int? IdUsuario, int IdEquipe)
+        {
+            IdUsuario = HttpContext.Session.GetInt32("UsuarioId");
+
+            var equipeModel = await _context.Equipes
+                .FirstOrDefaultAsync(uc => uc.equipeId == IdEquipe);
+
+            _context.Equipes.Remove(equipeModel);     
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index", "FeedPage");           
+        }    
+
+
+        public async Task<IActionResult> EditarEquipe(int? EquipeId, string NomeEquipe, JogosEnum JogoEquipe, 
+        string DescricaoEquipe, IFormFile iconeEquipeArquivo)
+        {
+            var existingTeam = await _context.Equipes.FindAsync(EquipeId);
+
+            if(existingTeam != null)
+            {
+                existingTeam.nomeEquipe = NomeEquipe;
+                existingTeam.jogoEquipe = JogoEquipe;
+                existingTeam.descricaoEquipe = DescricaoEquipe;
+
+                if (iconeEquipeArquivo != null && iconeEquipeArquivo.Length > 0)
+                {
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        await iconeEquipeArquivo.CopyToAsync(memoryStream);
+                        existingTeam.iconeEquipe = memoryStream.ToArray();
+                    }
+                }
+
+                 _context.Entry(existingTeam).State = EntityState.Modified;
+                await _context.SaveChangesAsync();
+            }
+            
+            return RedirectToAction("Index", "FeedPage");
+        }                           
     }
 }
