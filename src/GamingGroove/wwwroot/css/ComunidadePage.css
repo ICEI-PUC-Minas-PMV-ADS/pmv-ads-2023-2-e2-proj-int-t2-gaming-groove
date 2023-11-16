@@ -167,6 +167,11 @@ a {
     }
 }
 
+.listIcon {
+    height: 16px;
+    width: 16px;
+}
+
 .leaveDeleteIcon {
     height: 20px;
     width: 20px;

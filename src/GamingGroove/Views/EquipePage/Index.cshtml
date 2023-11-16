@@ -19,7 +19,7 @@
 <div class="main-container">
 
     <div class="left-container">
-        <div class="suggestedTeams">
+        <div class="myTeams-box">
 			<div class="teamsListTitle">Minhas equipes</div>
 			<div class="teamsList">
 				@foreach (var item in Model.getEquipesUsuario.OrderBy(m => m.cargoEquipe)) {
@@ -60,6 +60,10 @@
 		</div>		
     </div>
 
+    <div class="shortScreen-buttons">
+        <button type="button" class="leftContainer-shortScreen" data-bs-toggle="modal" data-bs-target="#myTeamsModal">Minhas equipes</button>
+        <button type="button" class="rightContainer-shortScreen" data-bs-toggle="modal" data-bs-target="#createTeamModal-modal">Criar equipe</button>
+    </div>
 
     <div class="center-container">
         <div class="findTeams-title">Encontre equipes</div>
@@ -116,6 +120,53 @@
 
 
 
+<div class="modal fade" id="myTeamsModal" tabindex="-1">
+	<div class="modal-dialog" id="myTeamsModal-dialog">
+		<div class="modal-content" id="myTeamsModal-content">
+            <div class="myTeams-box">
+                <div class="teamsListTitle">Minhas equipes</div>
+                <div class="teamsList">
+                    @foreach (var item in Model.getEquipesUsuario.OrderBy(m => m.cargoEquipe)) {
+                        <div type="button" class="teamsItems" data-bs-toggle="modal" data-bs-target="#teamsModal-@item.equipeId">
+                            @if(item.cargoEquipe == CargosEnum.ADM)
+                            {
+                                @if (item.equipe.iconeEquipe != null)
+                                {
+                                    <img class="list-teamIcon" src="data:image/png;base64,@Convert.ToBase64String(item.equipe.iconeEquipe)" style="border: 2px solid #FFE27C;" alt="Imagem de Perfil"/>
+                                }
+                                else
+                                {
+                                    <img class="list-teamIcon" src="~/images/icons/empty-icon.png" style="border: 2px solid #FFE27C;" alt="Imagem de Perfil"/>
+                                }    
+                                <img class="crownIcon-list" src="~/images/icons/crown-icon.svg">
+                                <div class="communityInfo-container">
+                                    <div class="teamName" style="color: #FFE27C;">@item.equipe.nomeEquipe</div>                                
+                                </div>
+                                
+                            }      
+                            else {
+                                @if (item.equipe.iconeEquipe != null)
+                                {
+                                    <img class="list-teamIcon" src="data:image/png;base64,@Convert.ToBase64String(item.equipe.iconeEquipe)" alt="Imagem de Perfil"/>
+                                }
+                                else
+                                {
+                                    <img class="list-teamIcon" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil"/>
+                                }   
+                                <div class="communityInfo-container">
+                                    <div class="teamName">@item.equipe.nomeEquipe</div>                                
+                                </div>
+                            }     
+                            
+                        </div>			
+                    }
+                </div>
+                <button type="button" class="modalCloseButton" data-bs-dismiss="modal" aria-label="Fechar">Fechar</button>
+		    </div>
+		</div>
+	</div>
+</div>
+
 
 
 <div class="modal fade" id="createTeamModal-modal" tabindex="-1" aria-labelledby="usuarioModalLabel" aria-hidden="true">
@@ -130,25 +181,18 @@
                             <input name="NomeEquipe" id="communityName-input" />
                         </div>
                         <div class="secondSection-container">
-                            <div class="favGames-container">
+                            <div class="teamGame-container">
                                 <div class="imageInput-container">
-                                    <div>Selecione as imagens:</div>
-                                    <div class="profileIcon-input-container">
-                                        <div class="profileImage-input">
-                                            <label class="imageInput" for="profileIcon-input"><img class="uploadIcon" src="~/images/icons/upload-icon.svg" alt="">Ícone</label>
-                                            <input id="profileIcon-input" name="iconeEquipeArquivo" type="file" />
+                                    <div>Selecione o ícone:</div>
+                                    <div class="teamIcon-input-container">
+                                        <div class="teamIcon-input">
+                                            <label class="imageInput" for="teamIcon-input"><img class="uploadIcon" src="~/images/icons/upload-icon.svg">Ícone</label>
+                                            <input id="teamIcon-input" name="iconeEquipeArquivo" type="file" />
                                         </div>
                                     </div>
-                                    @* <div class="profileCover-input-container">
-                                        <div class="profileImage-input">
-                                            <label class="imageInput" for="profileCover-input"><img class="uploadIcon" src="~/images/icons/upload-icon.svg" alt="">Capa</label>
-                                            <input id="profileCover-input" name="capaComunidadeArquivo" type="file" />
-                                        </div>
-                                    </div> *@
                                 </div>
-                                <div class="favGames-label-container">
-                                    <div class="favGames-label">Selecione um jogo:</div>
-                                    <div class="favGames-alert">@ViewBag.Message</div>
+                                <div class="teamGame-label-container">
+                                    <div class="teamGame-label">Selecione um jogo:</div>
                                 </div>
 
                                 <div class="form-group">
@@ -156,10 +200,10 @@
                                 </div>
                                
                             </div>
-                            <div class="biography">
+                            <div class="createDescription-container">
                                 <div>Faça uma descrição da sua equipe:</div>
                                 <div class="form-group">
-                                    <textarea name="DescricaoEquipe" class="form-control bio-text" rows="10"></textarea>
+                                    <textarea name="DescricaoEquipe" class="form-control createDescription" rows="10"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -360,6 +404,7 @@
 }
 
 
+
 <script>
     const findTeamsItems = document.querySelectorAll(".findTeams-items");
     const teamsSearch = document.getElementById("teamsSearch");
@@ -377,5 +422,22 @@
             }
         });
     });
+
+
+    var errorMessage1 = '@TempData["ErrorMessageCharsNumber"]';
+    if (errorMessage1) {
+        alert(errorMessage1);
+    }
+
+    
+    var errorMessage2 = '@TempData["ErrorMessageRepeatedName"]';
+    if (errorMessage2) {
+        alert(errorMessage2);
+    }
+
+    var errorMessage3 = '@TempData["ErrorMessageEmptyDescription"]';
+    if (errorMessage3) {
+        alert(errorMessage3);
+    }
 </script>
 

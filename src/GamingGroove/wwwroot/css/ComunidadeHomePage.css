@@ -552,7 +552,8 @@ a {
     }
     .newCommunity-button {
         font-size: 14px;
-        padding-inline: 18px;
+        padding-inline: 12px;
+        border-radius: 6px;
     }
     .center-container {
         height: 100vh;

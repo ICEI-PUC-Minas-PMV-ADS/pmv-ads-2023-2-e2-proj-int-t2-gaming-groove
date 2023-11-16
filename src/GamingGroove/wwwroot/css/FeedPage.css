@@ -355,7 +355,7 @@ a {
     justify-content: end; 
 }
 
-.suggestedTeams {
+.myTeams-box {
     background-color: #232B58;
     height: 60vh;
     width: 290px;
@@ -395,9 +395,10 @@ a {
     align-items: center;
     padding-inline: 10px;
     padding-block: 35px;
-    gap: 10px;
+    gap: 30px;
     font-family: Play;
     cursor: pointer;
+    padding-top: 42px;
 }
 
 .teamsItems:hover {
@@ -423,6 +424,152 @@ a {
 
 .teamName {
     font-size: 14px;
+}
+
+.crownIcon-list {
+    height: 20px;
+    width: 20px;
+    position: relative;
+    margin-left: -65px;
+    margin-top: -60px;
+}
+
+
+
+
+.center-container {
+    height: 87.7vh;
+    width: 46vw;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: baseline;
+    padding-top: 10px;
+    min-width: 400px;
+    font-family: Play
+}
+
+.findTeams-title {
+    font-size: 1.5rem;
+}
+
+#teamsSearch {
+    border-radius: 20px;
+    height: 25px;
+    background-color: rgb(255, 255, 255);
+    outline: 2px solid #00F0FF;
+    padding-left: 18px;
+    padding-block: 16px;
+    margin-bottom: 20px;
+    color: black;
+    width: 25vw;
+}
+
+.findTeams {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.findTeams-container {
+    width: 100%;
+    height: 75vh;
+    border-radius: 8px;
+    padding: 5px;
+    background-color: #232B58;
+    box-shadow: #000000 2px 2px 6px;
+}
+
+.findTeams-list {
+    display: grid;
+    grid-template-columns:repeat(2, 1fr);
+    align-content: start;
+    height: 100%;
+    width: 100%;
+    gap: 4px;
+    overflow: auto;
+    overflow-x: hidden;
+    padding: 4px;
+}
+
+.findTeams-items {
+    width: 100%;
+    height: fit-content;
+    background-color: #414A77;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px;
+    border-radius: 4px;
+    justify-content: space-between;
+}
+
+.findTeams-items:hover {
+    transition: 0.8s;
+    background-color: #7383C5;
+    .teamName {
+        transition: 0.8s;
+        color: #00F0FF;
+    }
+    .teamGame {
+        transition: 0.8s;
+        color: #E3A5FF;
+    }
+    .teamIcon {
+        transition: 0.8s;
+        border: 1px solid #00F0FF;
+    }
+}
+
+.findTeams-items:not(:hover) {
+    transition: 1.6s;
+    .teamName {
+        transition: 1.6s;
+    }
+    .teamGame {
+        transition: 1.6s;
+    }
+    .teamIcon {
+        transition: 1.6s;
+    }
+}
+
+.teamInfo-container{
+    display: flex;
+    flex-direction: row;    
+    align-items: center;
+    gap: 15px;
+}
+
+.teamName {
+    font-size: 16px;
+}
+
+.teamGame {
+    font-size: 12px;
+    color: #00F0FF;
+}
+
+.teamInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+}
+
+.teamIcon {
+    height: 55px;
+    width: 55px;
+    border-radius: 4px;
+    background-color: white;
+    object-fit: cover;
+}
+
+.teamNumberOfMembers {
+    padding-inline: 10px;
 }
 
 
@@ -817,7 +964,7 @@ a {
     transition: 0.7s;
 }
 
-.suggestedTeams {
+.myTeams-box {
     margin: 0;
 }
 
@@ -1399,7 +1546,31 @@ a {
 }
 
 
+.modalCloseButton {
+    font-family: Play;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding-inline: 20px;
+    padding-block: 15px;
+    color: white;
+    background-color: #110B31;
+    border: none;
+    border-radius: 6px;
+    margin-top: 20px;
+}
 
+.modalCloseButton:hover {
+    font-weight: bold;
+    background: #AFD3FF;
+    color: black;
+    box-shadow: none;
+    transition: 0.7s;
+}
+
+.modalCloseButton:not(:hover) {
+    transition: 0.7s;
+}
 
 
 
@@ -1421,6 +1592,17 @@ a {
         overflow-x: hidden;
         gap: 10px;
     }   
+
+    .myCommunities {
+        height: 80vh;
+        width: 320px;
+    }
+    
+    .myTeams-box {
+        height: 80vh;
+        width: 320px;
+    }
+
     .center-container {
         margin-top: 100px;
         height: 100%;

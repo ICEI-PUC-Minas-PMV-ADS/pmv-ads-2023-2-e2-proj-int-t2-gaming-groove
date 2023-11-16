@@ -38,7 +38,6 @@ namespace GamingGroove.Controllers
         {
             IdUsuario = HttpContext.Session.GetInt32("UsuarioId");
 
-
             EquipeModel equipeModel = new()
             {
                 nomeEquipe = NomeEquipe,
@@ -47,11 +46,26 @@ namespace GamingGroove.Controllers
                 dataCriacaoEquipe = DateTime.Now
             };
 
+            
+
+
             var existingEquipe = await _context.Equipes.FirstOrDefaultAsync(c => c.nomeEquipe == equipeModel.nomeEquipe);
+
+            if(string.IsNullOrEmpty(equipeModel.nomeEquipe) || equipeModel.nomeEquipe.Length < 6 || equipeModel.nomeEquipe.Length > 16)
+            {
+                TempData["ErrorMessageCharsNumber"] = "O nome de sua equipe deve ter entre 6 e 16 caracteres.";
+                return RedirectToAction("Index", equipeModel);
+            }
 
             if (existingEquipe != null)
             {
-                TempData["ErrorMessage"] = "O nome de equipe fornecido ja existe. Escolha outro e tente novamente.";
+                TempData["ErrorMessageRepeatedName"] = "O nome de equipe fornecido ja existe. Escolha outro e tente novamente.";
+                return RedirectToAction("Index", equipeModel);
+            }
+
+            if (equipeModel.descricaoEquipe == null)
+            {
+                TempData["ErrorMessageEmptyDescription"] = "O campo de descricao da equipe e obrigatorio.";
                 return RedirectToAction("Index", equipeModel);
             }
 
@@ -171,6 +185,21 @@ namespace GamingGroove.Controllers
         {
             var existingTeam = await _context.Equipes.FindAsync(EquipeId);
 
+            if(string.IsNullOrEmpty(NomeEquipe) || NomeEquipe.Length < 6 || NomeEquipe.Length > 16)
+            {
+                TempData["ErrorMessageCharsNumber"] = "O nome de sua equipe deve ter entre 6 e 16 caracteres.";
+                return RedirectToAction("Index", "EquipePage");
+            }
+
+
+            var existingTeamName = _context.Equipes.FirstOrDefault(uc => uc.nomeEquipe == NomeEquipe);
+            
+            if (existingTeam != null && existingTeamName != null && existingTeamName.nomeEquipe != null && existingTeamName.nomeEquipe != existingTeam.nomeEquipe)
+            {
+                TempData["ErrorMessageRepeatedName"] = "O nome de equipe fornecido ja existe. Escolha outro e tente novamente.";
+                return RedirectToAction("Index", "EquipePage");
+            }
+
             if(existingTeam != null)
             {
                 existingTeam.nomeEquipe = NomeEquipe;
@@ -184,6 +213,12 @@ namespace GamingGroove.Controllers
                         await iconeEquipeArquivo.CopyToAsync(memoryStream);
                         existingTeam.iconeEquipe = memoryStream.ToArray();
                     }
+                }
+                
+                if (existingTeam.descricaoEquipe == null)
+                {
+                    TempData["ErrorMessageEmptyDescription"] = "O campo de descricao da equipe e obrigatorio.";
+                    return RedirectToAction("Index", "EquipePage");
                 }
 
                  _context.Entry(existingTeam).State = EntityState.Modified;

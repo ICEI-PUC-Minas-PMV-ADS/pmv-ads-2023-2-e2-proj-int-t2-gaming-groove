@@ -21,7 +21,9 @@ a {
 }
 
 
-
+.shortScreen-buttons {
+    display: none;
+}
 
 
 .left-container {
@@ -31,7 +33,7 @@ a {
     justify-content: start; 
 }
 
-.suggestedTeams {
+.myTeams-box {
     background-color: #232B58;
     height: 60vh;
     width: 290px;
@@ -122,7 +124,7 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: baseline;
     padding-top: 10px;
     min-width: 400px;
     font-family: Play
@@ -130,6 +132,7 @@ a {
 
 .findTeams-title {
     font-size: 1.5rem;
+    margin-bottom: 20px;
 }
 
 #teamsSearch {
@@ -153,11 +156,12 @@ a {
 
 .findTeams-container {
     width: 100%;
-    height: 75vh;
+    height: fit-content;
     border-radius: 8px;
     padding: 5px;
     background-color: #232B58;
     box-shadow: #000000 2px 2px 6px;
+    max-height: 100%;
 }
 
 .findTeams-list {
@@ -472,7 +476,7 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 300px;
+    min-width: 390px;
 }
 
 .descriptionTitle, .teamMembers-title, .teamRequests-title {
@@ -946,7 +950,7 @@ a {
     padding-inline: 15px;
 }
 
-.favGames-container {
+.teamGame-container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;   
@@ -957,35 +961,21 @@ a {
     margin: 0;
 }
 
-.profileImage-input input[type="file"]{
+.teamIcon-input input[type="file"]{
     display: none;
 }
 
-.imageInput-container {
+.teamIcon-container {
     display: flex;
     flex-direction: column;
     gap: 20px;
-}
-
-.imageInput {
-    height: 40px;
-    width: 150px;
-    color: #E3A5FF;
-    background-color: #111738;
-    border-radius: 4px;
-    font-size: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: baseline;
-    padding-left: 10px;
-    gap: 10px;
 }
 
 .uploadIcon {
     height: 20px;
 }
 
-.imageInput:hover {
+.teamIcon:hover {
     transition: 0.7s;
     color: black;
     font-weight: bold;
@@ -995,11 +985,11 @@ a {
     }
 }
 
-.imageInput:not(:hover) {
+.teamIcon:not(:hover) {
     transition: 0.7s;
 }
 
-.favGames-container select{
+.teamGame-container select{
     font-size: 12px;
     color: #E3A5FF;
     background-color: #111738;
@@ -1007,7 +997,7 @@ a {
     width: 200px;
 }
 
-.favGames-container select:hover {
+.teamGame-container select:hover {
     transition: 0.7s;
     color: black;
     font-weight: bold;
@@ -1017,7 +1007,7 @@ a {
     }
 }
 
-.favGames-container select:not(:hover) {
+.teamGame-container select:not(:hover) {
     transition: 0.7s;
 }
 
@@ -1031,25 +1021,19 @@ a {
     color: white;
 }
 
-.favGames-alert {
-    color: red;
-    font-size: 12px;
-    letter-spacing: 1px;
-}
-
-.favGames-label-container {
+.teamGame-label-container {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.biography {
+.createDescription-container {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.bio-text {
+.createDescription {
     font-family: Arial;
     letter-spacing: 1px;
     font-size: 12px;
@@ -1063,7 +1047,7 @@ a {
     text-align: justify;
 }
 
-.bio-text:focus {
+.createDescription:focus {
     color: white;
     background-color: #111738;
     border: 2px solid #111738;
@@ -1118,15 +1102,238 @@ a {
     transition: 0.7s;
 }
 
-#createCommunity-dialog {
 
+
+
+#myTeamsModal-dialog {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-#createCommunity-content {
-    background-color: #232B58;
-    width: fit-content;
+#myTeamsModal-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: fit-content;
-    padding: 20px;
-    border: 1px solid #E5ABFF;
-    box-shadow: #D169FF 0px 0px 6px;
+    width: fit-content;
+    background: none;
 }
+
+.modalCloseButton {
+    font-family: Play;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding-inline: 20px;
+    padding-block: 15px;
+    color: white;
+    background-color: #110B31;
+    border: none;
+    border-radius: 6px;
+    margin-top: 20px;
+}
+
+@media (max-width: 1200px)
+{    
+    main {
+        margin-top: 0;
+    }
+    header{
+        position: fixed;
+        width: 100%;
+        height: 100px;
+    }
+    .main-container {
+        flex-direction: column;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+    }
+    .myTeams-box {
+        margin-top: 0;
+        height: 80vh;
+        width: 320px;
+    }
+    .left-container {
+        display: none;
+    }
+
+    .shortScreen-buttons {
+        margin-top: 110px;
+        margin-bottom: 20px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding-inline: 5px;
+    }
+    
+    .shortScreen-buttons button {
+        padding-inline: 15px;
+        border-radius: 6px;
+        background-color: transparent;
+        border: 2px solid #E087FF;
+        box-shadow: #D169FF 0px 0px 8px;
+        letter-spacing: 1px;
+        font-size: 14px;
+        color: #E3A5FF;
+        padding-block: 2px;
+    }
+    
+    .shortScreen-buttons button:hover {
+        transition: 0.6s;
+        color: black;
+        background-color: #E087FF;
+        box-shadow: none;
+    }
+    
+    .shortScreen-buttons button:not(:hover) {
+        transition: 0.6s;
+    }
+    
+    #createTeamModal-dialog {
+        margin-top: 0;
+    }
+
+    #createTeamModal-content {
+        min-width: 0;
+        gap: 10px;
+        padding-block: 15px;
+    }
+    .createTeamModal-title {
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+    .teamName-container {
+        gap: 10px;
+    }
+    .secondSection-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .teamGame-container {
+        align-items: center;
+    }
+    .imageInput-container {
+        align-items: center;
+        gap: 5px;
+    }
+    .teamGame-label-container {
+        gap: 10px;
+    }
+    .createDescription-container {
+        align-items: center;
+        gap: 10px;
+    }
+    .createDescription {
+        height: 150px;
+    }
+    .submit-button {
+        margin-top: 18px;
+    }
+    .center-container {
+        position: static;
+        left: 0;
+        transform: none;
+        width: 100%;
+        justify-content: start;
+        align-items: center;
+        max-width: 700px;
+        overflow: auto;
+    }
+    
+    .findTeams-title {
+        margin-bottom: 0;
+    } 
+    
+    .centerContainer-header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    #teamsSearch {
+        height: 0px;
+        padding-block: 14px;
+        width: 260px;
+        font-size: 14px;
+        margin-top: 15px;
+    }
+
+    .findTeams-container {
+        height: fit-content;
+        width: 90%;
+        padding-bottom: 30px;
+    }
+
+    .right-container {
+        display: none;
+    }
+    ::-webkit-scrollbar {
+        width: 10px;
+        background-color: rgba(0, 0, 0, 0);
+        display: none;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: #2b356c;
+        border-radius: 6px;
+        display: none;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background-color: #E3A5FF;
+        border-radius: 6px;
+        display: none;
+    }
+    .userSearch-container {
+        height: 50vh;
+        margin: 0;
+    }
+
+
+    
+    #teamsModal-content {
+        width: 100%;
+        min-width: 350px;
+    }
+    .teamFirstContainer {
+    }
+    .teamHeader {
+        gap: 4px;
+    }
+    .teamIcon-modal {
+        height: 60px;
+        width: 60px;
+    }
+    .teamName-modal {
+        font-size: 14px;
+        padding-inline: 8px;
+    }
+    .teamSecondContainer {
+        overflow-x: auto;
+        gap: 10px;
+    }
+    .teamDescription-container, .teamMembers-container, .teamRequests-container {
+        min-width: 90%;
+    }
+
+}
+
+@media (max-width: 550px) {
+    .findTeams-list {
+        display: grid;
+        grid-template-columns:repeat(1, 1fr);
+        align-content: start;
+        height: 100%;
+        width: 100%;
+        gap: 4px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding: 4px;
+    }
+}
+
+
+
