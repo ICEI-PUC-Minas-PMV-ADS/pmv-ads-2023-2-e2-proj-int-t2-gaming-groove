@@ -1689,6 +1689,35 @@ a {
     .right-container {
         display: none;
     }
+
+    #teamsModal-content {
+        width: 100%;
+        min-width: 350px;
+    }
+    .teamFirstContainer {
+    }
+    .teamHeader {
+        gap: 8px;
+    }
+    .teamIcon-modal {
+        height: 85px;
+        width: 85px;
+    }
+    .teamName-modal {
+        font-size: 14px;
+        padding-inline: 8px;
+    }
+    .teamSecondContainer {
+        overflow-x: auto;
+        gap: 10px;
+    }
+    .teamDescription-container, .teamMembers-container, .teamRequests-container {
+        min-width: 90%;
+    }
+    .editTeamButton {
+        position: relative;
+        margin-left: -40px;
+    }
 }
 
 

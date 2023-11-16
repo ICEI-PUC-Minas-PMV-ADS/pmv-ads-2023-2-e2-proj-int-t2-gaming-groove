@@ -1301,11 +1301,11 @@ a {
     .teamFirstContainer {
     }
     .teamHeader {
-        gap: 4px;
+        gap: 8px;
     }
     .teamIcon-modal {
-        height: 60px;
-        width: 60px;
+        height: 85px;
+        width: 85px;
     }
     .teamName-modal {
         font-size: 14px;
