@@ -103,12 +103,12 @@
         <div class="large-screen">
             <div class="newCommunity-container">
                 <div class="newCommunity-title">Crie uma nova equipe</div>			
-                <button type="button" class="newCommunity-button" data-bs-toggle="modal" data-bs-target="#createPost-modal">Criar</button>
+                <button type="button" class="newCommunity-button" data-bs-toggle="modal" data-bs-target="#createTeamModal-modal">Criar</button>
             </div>
         </div>
 
         <div class="short-screen">
-            <button type="button" class="newCommunity-button" data-bs-toggle="modal" data-bs-target="#createPost-modal">Criar equipe</button>
+            <button type="button" class="newCommunity-button" data-bs-toggle="modal" data-bs-target="#createTeamModal-modal">Criar equipe</button>
         </div>
     </div>
 </div>
@@ -118,15 +118,15 @@
 
 
 
-<div class="modal fade" id="createPost-modal" tabindex="-1" aria-labelledby="usuarioModalLabel" aria-hidden="true">
-    <div class="modal-dialog" id="modal-dialog">
-        <div class="modal-content post" id="modal-content">
+<div class="modal fade" id="createTeamModal-modal" tabindex="-1" aria-labelledby="usuarioModalLabel" aria-hidden="true">
+    <div class="modal-dialog" id="createTeamModal-dialog">
+        <div class="modal-content post" id="createTeamModal-content">
             <form class="createTeam-form" asp-controller="EquipePage" asp-action="CriarEquipe" enctype="multipart/form-data">
                 <div class="create-container">
-                    <div class="createCommunity-container">
-                        <div class="createCommunity-title">Crie sua Equipe</div>
-                        <div class="communityName-container">
-                            <div class="communityName">Escolha um nome para a sua equipe:</div>
+                    <div class="createTeamModal-container">
+                        <div class="createTeamModal-title">Crie sua Equipe</div>
+                        <div class="teamName-container">
+                            <div class="teamName">Escolha um nome para a sua equipe:</div>
                             <input name="NomeEquipe" id="communityName-input" />
                         </div>
                         <div class="secondSection-container">
@@ -344,13 +344,13 @@
                         <input type="hidden" name="EquipeId" value="@item.equipeId"/>
                         <input type="text" name="NomeEquipe" value="@item.nomeEquipe"/>
                         <div class="profileImage-input">
-                            <label class="imageInput" for="profileIcon-input"><img class="uploadIcon" src="~/images/icons/upload-icon.svg" alt="">Ícone da equipe</label>
-                            <input id="profileIcon-input" type="file" name="iconeEquipeArquivo" value="@item.iconeEquipe"/>
-                        </div>   
+                            <input type="file" id="teamIcon-input" name="iconeEquipeArquivo"/>
+                        </div>
+
                         <select name="JogoEquipe" class="form-control" asp-items="Html.GetEnumSelectList<JogosEnum>()">
                             <option value="@item.jogoEquipe">@EnumHelper.GetDisplayName(item.jogoEquipe)</option>
                         </select>
-                        <textarea class="teamDescription-edit" name="TextoPublicacao">@item.descricaoEquipe</textarea>
+                        <textarea class="teamDescription-edit" name="DescricaoEquipe">@item.descricaoEquipe</textarea>
                     </div>
                     <button type="submit" class="submit-button" data-bs-toggle="modal">Salvar alterações</button>
                 </form>
