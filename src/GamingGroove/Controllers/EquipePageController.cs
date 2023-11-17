@@ -125,7 +125,7 @@ namespace GamingGroove.Controllers
             return RedirectToAction("Index", equipeModel);
         }
 
-        public async Task<IActionResult> IngressarEquipe(int? IdUsuario, int IdEquipe)
+        public async Task<IActionResult> SolicitarIngressoEquipe(int? IdUsuario, int IdEquipe)
         {
             IdUsuario = HttpContext.Session.GetInt32("UsuarioId");
 
@@ -133,7 +133,7 @@ namespace GamingGroove.Controllers
             {
                 usuarioId = (int)IdUsuario,
                 equipeId = IdEquipe,
-                cargoEquipe = CargosEnum.Membro,
+                cargoEquipe = CargosEnum.Pendente,
                 dataVinculoEquipe = DateTime.Now
             };
 
@@ -152,6 +152,62 @@ namespace GamingGroove.Controllers
 
             return RedirectToAction("Index", "EquipePage");
         }
+
+        public async Task<IActionResult> AceitarIngressoEquipe(int? IdUsuario, int IdEquipe)
+        {
+            var existingUsuarioEquipe = _context.UsuariosEquipes.FirstOrDefault(u => u.usuarioId == IdUsuario && u.equipeId == IdEquipe);
+
+            if(existingUsuarioEquipe != null)
+            {
+                existingUsuarioEquipe.usuarioId = (int)IdUsuario;
+                existingUsuarioEquipe.equipeId = IdEquipe;
+                existingUsuarioEquipe.cargoEquipe = CargosEnum.Membro;
+                existingUsuarioEquipe.dataVinculoEquipe = DateTime.Now;
+
+
+                 _context.Entry(existingUsuarioEquipe).State = EntityState.Modified;
+                await _context.SaveChangesAsync();
+            }
+            
+            string returnUrl = Request.Headers["Referer"].ToString();
+
+            return Redirect(returnUrl);
+        }        
+
+        public async Task<IActionResult> ExpulsarMembroEquipe(int? IdUsuario, int IdEquipe)
+        {
+            var existingMembro = await _context.UsuariosEquipes
+                .FirstOrDefaultAsync(c => c.usuarioId == IdUsuario && c.equipeId == IdEquipe);
+
+            string returnUrl = Request.Headers["Referer"].ToString();
+
+            if (existingMembro != null)
+            {
+                _context.UsuariosEquipes.Remove(existingMembro);     
+                await _context.SaveChangesAsync();
+                
+                return Redirect(returnUrl);
+            }
+            
+            return Redirect(returnUrl);
+        }       
+
+                public async Task<IActionResult> RecusarIngressoEquipe(int? IdUsuario, int IdEquipe)
+        {
+            var existingUsuarioEquipe = _context.UsuariosEquipes.FirstOrDefault(u => u.usuarioId == IdUsuario && u.equipeId == IdEquipe);
+
+            string returnUrl = Request.Headers["Referer"].ToString();
+
+            if (existingUsuarioEquipe != null)
+            {
+                _context.UsuariosEquipes.Remove(existingUsuarioEquipe);     
+                await _context.SaveChangesAsync();
+                
+                return Redirect(returnUrl);
+            }
+            
+            return Redirect(returnUrl);
+        }  
 
         public async Task<IActionResult> DeixarEquipe(int? IdUsuario, int IdEquipe)
         {

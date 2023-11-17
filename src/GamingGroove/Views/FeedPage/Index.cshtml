@@ -38,7 +38,7 @@
 								}
 								else
 								{
-									<img class="list-communityIcon" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
+									<img class="list-communityIcon" src="~/images/icons/user-standard.png" alt="Imagem de Perfil" />
 								}               
 								<div class="communityInfo-container">
 									<div class="communityName">@item.comunidade.nomeComunidade</div>                                
@@ -80,7 +80,7 @@
 								}
 								else
 								{
-									<img class="userIcon" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
+									<img class="userIcon" src="~/images/icons/user-standard.png" alt="Imagem de Perfil" />
 								}
 								
 								<div class="userName">@Model.getUsuarioPublicacao.nomeUsuario</div>
@@ -91,7 +91,7 @@
 							}
 							else
 							{
-								<a href="~/ComunidadePage/@Model.getComunidadePublicacao.nomeComunidade"><img class="post-communityIcon" src="~/images/icons/empty-icon.png" alt="Imagem de ícone da Comunidade" title="@Model.getComunidadePublicacao.nomeComunidade"></a>
+								<a href="~/ComunidadePage/@Model.getComunidadePublicacao.nomeComunidade"><img class="post-communityIcon" src="~/images/icons/user-standard.png" alt="Imagem de ícone da Comunidade" title="@Model.getComunidadePublicacao.nomeComunidade"></a>
 							}
 							
 						</div>
@@ -153,7 +153,7 @@
                             }
                             else
                             {
-                                <img class="list-teamIcon" src="~/images/icons/empty-icon.png" style="border: 2px solid #FFE27C;" alt="Imagem de Perfil"/>
+                                <img class="list-teamIcon" src="~/images/icons/user-standard.png" style="border: 2px solid #FFE27C;" alt="Imagem de Perfil"/>
                             }    
                             <img class="crownIcon-list" src="~/images/icons/crown-icon.svg">
                             <div class="communityInfo-container">
@@ -168,7 +168,7 @@
                             }
                             else
                             {
-                                <img class="list-teamIcon" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil"/>
+                                <img class="list-teamIcon" src="~/images/icons/user-standard.png" alt="Imagem de Perfil"/>
                             }   
                             <div class="communityInfo-container">
                                 <div class="teamName">@item.equipe.nomeEquipe</div>                                
@@ -200,7 +200,7 @@
 					}
 					else
 					{
-						<img class="userIcon-post" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
+						<img class="userIcon-post" src="~/images/icons/user-standard.png" alt="Imagem de Perfil" />
 					}
 					</a>
                     <div class="modal-title" id="usuarioModalLabel">COMENTÁRIOS<div>Publicação de <span>@Model.getUsuarioPublicacao.nomeUsuario</span></div></div>
@@ -219,7 +219,7 @@
 									}
 									else
 									{
-										<img class="userIcon-comment" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
+										<img class="userIcon-comment" src="~/images/icons/user-standard.png" alt="Imagem de Perfil" />
 									}
 									<div class="userName-comment">@Model.getUsuarioComentario.nomeUsuario</div>
 								</div></a>
@@ -257,7 +257,7 @@
 					}
 					else
 					{
-						<img class="userIcon-post" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
+						<img class="userIcon-post" src="~/images/icons/user-standard.png" alt="Imagem de Perfil" />
 					}
 					</a>
                     <div class="modal-title" id="usuarioModalLabel"><div>Publicação de <span>@Model.getUsuarioPublicacao.nomeUsuario</span><br>@getCurtidasPublicacao curtidas</div></div>
@@ -277,7 +277,7 @@
 									}
 									else
 									{
-										<img class="userIcon-like" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
+										<img class="userIcon-like" src="~/images/icons/user-standard.png" alt="Imagem de Perfil" />
 									}
 									<div class="userName-like">@getUsuarioCurtida.nomeUsuario</div>
 								</div></a>
@@ -331,7 +331,7 @@
 									}
 									else
 									{
-										<img class="list-communityIcon" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
+										<img class="list-communityIcon" src="~/images/icons/user-standard.png" alt="Imagem de Perfil" />
 									}               
 									<div class="communityInfo-container">
 										<div class="communityName">@item.comunidade.nomeComunidade</div>                                
@@ -351,48 +351,48 @@
 
 
 <div class="modal fade" id="myTeamsModal" tabindex="-1">
-	<div class="modal-dialog" id="myCommunitiesModal-dialog">
-		<div class="modal-content" id="myCommunitiesModal-content">
-			<div class="myTeams-box">
-				<div class="teamsListTitle">Minhas equipes</div>
-				<div class="teamsList">
-					@foreach (var item in Model.getEquipesUsuario.OrderBy(m => m.cargoEquipe)) {
-						<div type="button" class="teamsItems" data-bs-toggle="modal" data-bs-target="#teamsModal-@item.equipeId">
-							@if(item.cargoEquipe == CargosEnum.ADM)
-							{
-								@if (item.equipe.iconeEquipe != null)
-								{
-									<img class="list-teamIcon" src="data:image/png;base64,@Convert.ToBase64String(item.equipe.iconeEquipe)" style="border: 2px solid #FFE27C;" alt="Imagem de Perfil"/>
-								}
-								else
-								{
-									<img class="list-teamIcon" src="~/images/icons/empty-icon.png" style="border: 2px solid #FFE27C;" alt="Imagem de Perfil"/>
-								}    
-								<img class="crownIcon-list" src="~/images/icons/crown-icon.svg">
-								<div class="communityInfo-container">
-									<div class="teamName" style="color: #FFE27C;">@item.equipe.nomeEquipe</div>                                
-								</div>
-								
-							}      
-							else {
-								@if (item.equipe.iconeEquipe != null)
-								{
-									<img class="list-teamIcon" src="data:image/png;base64,@Convert.ToBase64String(item.equipe.iconeEquipe)" alt="Imagem de Perfil"/>
-								}
-								else
-								{
-									<img class="list-teamIcon" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil"/>
-								}   
-								<div class="communityInfo-container">
-									<div class="teamName">@item.equipe.nomeEquipe</div>                                
-								</div>
-							}     
-
-						</div>			
-					}
-				</div>
-				<button type="button" class="modalCloseButton" data-bs-dismiss="modal" aria-label="Fechar">Fechar</button>
-			</div>
+	<div class="modal-dialog" id="myTeamsModal-dialog">
+		<div class="modal-content" id="myTeamsModal-content">
+            <div class="myTeams-box">
+                <div class="teamsListTitle">Minhas equipes</div>
+                <div class="teamsList">
+                    @foreach (var item in Model.getEquipesUsuario.OrderBy(m => m.cargoEquipe)) {
+                        <div type="button" class="teamsItems" data-bs-toggle="modal" data-bs-target="#teamsModal-@item.equipeId">
+                            @if(item.cargoEquipe == CargosEnum.ADM)
+                            {
+                                @if (item.equipe.iconeEquipe != null)
+                                {
+                                    <img class="list-teamIcon" src="data:image/png;base64,@Convert.ToBase64String(item.equipe.iconeEquipe)" style="border: 2px solid #FFE27C;" alt="Imagem de Perfil"/>
+                                }
+                                else
+                                {
+                                    <img class="list-teamIcon" src="~/images/icons/user-standard.png" style="border: 2px solid #FFE27C;" alt="Imagem de Perfil"/>
+                                }    
+                                <img class="crownIcon-list" src="~/images/icons/crown-icon.svg">
+                                <div class="communityInfo-container">
+                                    <div class="teamName" style="color: #FFE27C;">@item.equipe.nomeEquipe</div>                                
+                                </div>
+                                
+                            }      
+                            else {
+                                @if (item.equipe.iconeEquipe != null)
+                                {
+                                    <img class="list-teamIcon" src="data:image/png;base64,@Convert.ToBase64String(item.equipe.iconeEquipe)" alt="Imagem de Perfil"/>
+                                }
+                                else
+                                {
+                                    <img class="list-teamIcon" src="~/images/icons/user-standard.png" alt="Imagem de Perfil"/>
+                                }   
+                                <div class="communityInfo-container">
+                                    <div class="teamName">@item.equipe.nomeEquipe</div>                                
+                                </div>
+                            }     
+                            
+                        </div>			
+                    }
+                </div>
+                <button type="button" class="modalCloseButton" data-bs-dismiss="modal" aria-label="Fechar">Fechar</button>
+		    </div>
 		</div>
 	</div>
 </div>
@@ -449,6 +449,7 @@
 @foreach (var item in Model.getEquipes)
 {
 	var isMember = Model.getEquipesUsuario.FirstOrDefault(uc => uc.equipe.nomeEquipe == item.nomeEquipe);
+    var equipesSolicitadas = Model.getTodosUsuariosEquipes.FirstOrDefault(uc => uc.equipe.nomeEquipe == item.nomeEquipe && uc.cargoEquipe == CargosEnum.Pendente);
 
     int _equipeIdCadaEquipe = item.equipeId;
     int numberOfMembersEachTeam = Model.GetNumberOfMembersInTeam(_equipeIdCadaEquipe);
@@ -464,7 +465,7 @@
                         }
                         else
                         {
-                            <img class="teamIcon-modal" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
+                            <img class="teamIcon-modal" src="~/images/icons/user-standard.png" alt="Imagem de Perfil" />
                         }
                         <div class="teamInfo">
                             <div class="teamName-modal">@item.nomeEquipe</div>
@@ -477,23 +478,37 @@
                     </div>
                     <div class="teamButtons-container">
                         <button type="button" class="closeButton" data-bs-dismiss="modal" aria-label="Fechar">X</button>
-						@if(isMember != null && isMember.cargoEquipe.ToString() == "Membro")
+						@if(isMember != null && isMember.cargoEquipe == CargosEnum.Membro)
 						{
 							<form class="joinCommunity-form" id="joinCommunity-form" asp-controller="EquipePage" asp-action="DeixarEquipe">		
 								<input type="hidden" name="IdEquipe" value="@item.equipeId" />
 								<button type="submit" class="joinQuitButton" title="Deixar equipe"><img class="leaveDeleteIcon" src="~/images/icons/leave-icon.svg"></button>
 							</form>
 						}
-						else if(isMember != null && isMember.cargoEquipe.ToString() == "ADM")
+						else if(isMember != null && isMember.cargoEquipe == CargosEnum.ADM)
 						{
                             <button type="button" class="joinQuitButton" data-bs-toggle="modal" data-bs-target="#deleteTeamModal-@item.equipeId" title="Apagar equipe"><img class="leaveDeleteIcon" src="~/images/icons/trash-icon.svg"></button>
 						}
 						else
 						{
-							<form class="joinTeam-form" id="joinTeam-form" asp-controller="EquipePage" asp-action="IngressarEquipe">		
-								<input type="hidden" name="IdEquipe" value="@item.equipeId" />
-								<button type="submit" class="joinQuitButton">Entrar</button>
-							</form>
+                            if(numberOfMembersEachTeam >= 12)
+                            {
+                                <div class="joinQuitButton" style="filter: grayscale(50%);" title="Não existem mais vagas nesta equipe">Entrar</div>
+                            }
+                            else
+                            { 
+                                if(equipesSolicitadas != null)
+                                {
+                                    <div class="joinQuitButton" style="filter: grayscale(50%);" title="Solicitação de ingresso enviada">...</div>
+                                }
+                                else
+                                {
+                                    <form class="joinTeam-form" id="joinTeam-form" asp-controller="EquipePage" asp-action="SolicitarIngressoEquipe">		
+                                        <input type="hidden" name="IdEquipe" value="@item.equipeId" />
+                                        <button type="submit" class="joinQuitButton">Entrar</button>
+                                    </form>
+                                }
+                            }
 						}
                     </div>
                 </div>
@@ -507,35 +522,50 @@
                         <div class="teamMembers-number">@numberOfMembersEachTeam/12</div>
                         <div class="teamMembers-list">
                             @{
-                                var getMembrosEquipe = Model.getTodosUsuariosEquipes.Where(uc => uc.equipeId == item.equipeId).ToList();
+                                var getMembrosEquipe = Model.getTodasSolicitacoes
+                                    .Where(uc => uc.equipeId == item.equipeId && uc.cargoEquipe != CargosEnum.Pendente)
+                                    .ToList();
                             }                            
                             @foreach (var membro in getMembrosEquipe.OrderBy(m => m.cargoEquipe))
                             {
                                 var getMembro = Model.getTodosUsuarios.FirstOrDefault(up => up.usuarioId == membro.usuarioId);
                                 <div class="members-container">
                                     <div class="member-header">
-                                        @if(membro.cargoEquipe == CargosEnum.ADM)
-                                        {
-                                            <img class="admIcon" src="~/images/icons/crown-icon.svg" title="Líder da equipe">
+                                        <div class="memberHeader-info">
+                                            @if(membro.cargoEquipe == CargosEnum.ADM)
+                                            {
+                                                <img class="admIcon" src="~/images/icons/crown-icon.svg" title="Líder da equipe">
+                                            }
+                                            else
+                                            {
+                                                <img class="admIcon" src="~/images/icons/sword-icon.svg" title="Membro da equipe">
+                                            }
+                                            
+                                            <a href="~/PerfilPage/@getMembro.nomeUsuario">
+                                                <div class="memberUser">
+                                                    @if(getMembro.iconePerfil != null)
+                                                    {
+                                                        <img class="userIcon-member" src="data:image/png;base64,@Convert.ToBase64String(getMembro.iconePerfil)" alt="Imagem de Perfil do Usuário" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <img class="userIcon-member" src="~/images/icons/user-standard.png" alt="Imagem de Perfil" />
+                                                    }
+                                                    <div class="userName-member">@getMembro.nomeUsuario</div>
+                                                </div>
+                                            </a>		
+                                        </div>
+                                        @{
+                                            var IdEquipe = Model.getTodasSolicitacoes.FirstOrDefault(up => up.equipeId == item.equipeId && up.cargoEquipe == CargosEnum.ADM);
                                         }
-                                        else
+                                        @if(membro.cargoEquipe != CargosEnum.ADM && User.FindFirst(ClaimTypes.NameIdentifier)?.Value == IdEquipe.usuarioId.ToString())
                                         {
-                                            <img class="admIcon" src="~/images/icons/sword-icon.svg" title="Membro da equipe">
-                                        }
-                                        
-                                        <a href="~/PerfilPage/@getMembro.nomeUsuario">
-                                            <div class="memberUser">
-                                                @if(getMembro.iconePerfil != null)
-                                                {
-                                                    <img class="userIcon-member" src="data:image/png;base64,@Convert.ToBase64String(getMembro.iconePerfil)" alt="Imagem de Perfil do Usuário" />
-                                                }
-                                                else
-                                                {
-                                                    <img class="userIcon-member" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
-                                                }
-                                                <div class="userName-member">@getMembro.nomeUsuario</div>
-                                            </div>
-                                        </a>		
+                                            <form class="teamRequest-form" asp-controller="EquipePage" asp-action="ExpulsarMembroEquipe">
+                                                <input type="hidden" name="IdUsuario" value="@membro.usuarioId">
+                                                <input type="hidden" name="IdEquipe" value="@item.equipeId">
+                                                <button type="submit" class="teamRequest-submit" title="Expulsar membro."><img class="xIcon-team" src="~/images/icons/x-icon.svg" title="Líder da equipe"></button>
+                                            </form>
+                                        }	
                                     </div>
                                 </div>                            		
                             }
@@ -547,13 +577,15 @@
                             <div class="teamRequests-title">Solicitações</div>
                             <div class="teamRequests-list">
                                 @{
-                                    var getMembrosEquipe2 = Model.getTodosUsuariosEquipes.Where(uc => uc.equipeId == item.equipeId).ToList();
+                                    var getSolicitacoesEquipe = Model.getTodasSolicitacoes
+                                        .Where(uc => uc.equipeId == item.equipeId && uc.cargoEquipe == CargosEnum.Pendente)
+                                        .ToList(); 
                                 }                            
-                                @foreach (var membro in getMembrosEquipe)
+                                @foreach (var membro in getSolicitacoesEquipe)
                                 {
                                     var getMembro = Model.getTodosUsuarios.FirstOrDefault(up => up.usuarioId == membro.usuarioId);
                                     <div class="members-container">
-                                        <div class="member-header">
+                                        <div class="request-header">
                                             <a href="~/PerfilPage/@getMembro.nomeUsuario"><div class="memberUser">
                                                 @if(getMembro.iconePerfil != null)
                                                 {
@@ -561,10 +593,22 @@
                                                 }
                                                 else
                                                 {
-                                                    <img class="userIcon-member" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
+                                                    <img class="userIcon-member" src="~/images/icons/user-standard.png" alt="Imagem de Perfil" />
                                                 }
                                                 <div class="userName-member">@getMembro.nomeUsuario</div>
-                                            </div></a>		
+                                            </div></a>	
+                                            <div class="teamRequest-buttons">
+                                                <form class="teamRequest-form" asp-controller="EquipePage" asp-action="AceitarIngressoEquipe">
+                                                    <input type="hidden" name="IdUsuario" value="@membro.usuarioId">
+                                                    <input type="hidden" name="IdEquipe" value="@item.equipeId">
+                                                    <button class="teamRequest-submit" type="submit"><img class="checkIcon-team" src="~/images/icons/check-icon.svg"></button>
+                                                </form>   
+                                                <form class="teamRequest-form" asp-controller="EquipePage" asp-action="RecusarIngressoEquipe">
+                                                    <input type="hidden" name="IdUsuario" value="@membro.usuarioId">
+                                                    <input type="hidden" name="IdEquipe" value="@item.equipeId">
+                                                    <button class="teamRequest-submit" type="submit"><img class="xIcon-team" src="~/images/icons/x-icon.svg"></button>
+                                                </form>   
+                                            </div>	
                                         </div>
                                     </div>                            		
                                 }

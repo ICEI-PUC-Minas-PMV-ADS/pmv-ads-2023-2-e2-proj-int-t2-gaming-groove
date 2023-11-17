@@ -44,9 +44,9 @@ namespace GamingGroove.Controllers
                 }
                 else
                 {
-                    if(string.IsNullOrEmpty(usuarioModel.nomeUsuario) || usuarioModel.nomeUsuario.Length < 6)
+                    if(string.IsNullOrEmpty(usuarioModel.nomeUsuario) || usuarioModel.nomeUsuario.Length < 6 || usuarioModel.nomeUsuario.Length > 14)
                     {
-                        ViewBag.Message = "O nome de usuário deve ter pelo menos 6 caracteres.";
+                        ViewBag.Message = "O nome de usuário deve ter entre 6 e 14 caracteres.";
                     }
                     else
                     {
@@ -80,7 +80,7 @@ namespace GamingGroove.Controllers
         {           
             var UsuarioID = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var user = _context.Usuarios.FirstOrDefault(u => u.usuarioId == int.Parse(UsuarioID));
-            string IconePadrao = "images/icons/empty-icon.png";
+            string IconePadrao = "images/icons/user-standard.png";
 
             var cacheProfile = new CacheProfile
             {
