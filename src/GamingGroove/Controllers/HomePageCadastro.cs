@@ -80,7 +80,7 @@ namespace GamingGroove.Controllers
         {           
             var UsuarioID = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var user = _context.Usuarios.FirstOrDefault(u => u.usuarioId == int.Parse(UsuarioID));
-            string IconePadrao = "images/icons/empty-icon.png";
+            string IconePadrao = "images/icons/user-standard.png";
 
             var cacheProfile = new CacheProfile
             {
