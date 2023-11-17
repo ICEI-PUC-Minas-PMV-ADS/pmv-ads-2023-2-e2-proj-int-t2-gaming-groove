@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using GamingGroove.Data;
 using GamingGroove.Models;
 
 namespace GamingGroove.Controllers
 {
-    public class ComunidadeController : Controller
+    public class ComunidadeController : BaseController
     {
         private readonly GamingGrooveDbContext _context;
 
@@ -56,10 +51,28 @@ namespace GamingGroove.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("comunidadeId,nomeComunidade,iconeComunidade,capaComunidade,jogosRelacionados,descricaoComunidade,dataCriacaoComunidade")] ComunidadeModel comunidadeModel)
+        public async Task<IActionResult> Create([Bind("comunidadeId,nomeComunidade,iconeComunidade,capaComunidade,primeiroJogo,segundoJogo,terceiroJogo,descricaoComunidade,dataCriacaoComunidade")] ComunidadeModel comunidadeModel, IFormFile? iconeComunidadeArquivo, IFormFile? capaComunidadeArquivo)
         {
             if (ModelState.IsValid)
             {
+                if (iconeComunidadeArquivo != null && iconeComunidadeArquivo.Length > 0)
+                {
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        await iconeComunidadeArquivo.CopyToAsync(memoryStream);
+                        comunidadeModel.iconeComunidade = memoryStream.ToArray();
+                    }
+                }
+
+                if (capaComunidadeArquivo != null && capaComunidadeArquivo.Length > 0)
+                {
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        await capaComunidadeArquivo.CopyToAsync(memoryStream);
+                        comunidadeModel.capaComunidade = memoryStream.ToArray();
+                    }   
+                }      
+                       
                 _context.Add(comunidadeModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -88,9 +101,9 @@ namespace GamingGroove.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("comunidadeId,nomeComunidade,iconeComunidade,capaComunidade,jogosRelacionados,descricaoComunidade,dataCriacaoComunidade")] ComunidadeModel comunidadeModel)
+        public async Task<IActionResult> Edit(int id, [Bind("comunidadeId,nomeComunidade,iconeComunidade,capaComunidade,primeiroJogo,segundoJogo,terceiroJogo,descricaoComunidade,dataCriacaoComunidade")] ComunidadeModel comunidadeModel, IFormFile? iconeComunidadeArquivo, IFormFile? capaComunidadeArquivo)
         {
-            if (id != comunidadeModel.comunidadeId)
+             if (id != comunidadeModel.comunidadeId)
             {
                 return NotFound();
             }
@@ -99,8 +112,41 @@ namespace GamingGroove.Controllers
             {
                 try
                 {
-                    _context.Update(comunidadeModel);
-                    await _context.SaveChangesAsync();
+                    var existingCommunity = await _context.Comunidades.FindAsync(id);
+
+                    if (existingCommunity != null)
+                    {
+                        existingCommunity.nomeComunidade = comunidadeModel.nomeComunidade;
+                        existingCommunity.primeiroJogo = comunidadeModel.primeiroJogo;
+                        existingCommunity.segundoJogo = comunidadeModel.segundoJogo;
+                        existingCommunity.terceiroJogo = comunidadeModel.terceiroJogo;
+                        existingCommunity.descricaoComunidade = comunidadeModel.descricaoComunidade;
+
+                        if (iconeComunidadeArquivo != null && iconeComunidadeArquivo.Length > 0)
+                        {
+                            using (var memoryStream = new MemoryStream())
+                            {
+                                await iconeComunidadeArquivo.CopyToAsync(memoryStream);
+                                existingCommunity.iconeComunidade = memoryStream.ToArray();
+                            }
+                        }
+
+                        if (capaComunidadeArquivo != null && capaComunidadeArquivo.Length > 0)
+                        {
+                            using (var memoryStream = new MemoryStream())
+                            {
+                                await capaComunidadeArquivo.CopyToAsync(memoryStream);
+                                existingCommunity.capaComunidade = memoryStream.ToArray();
+                            }
+                        }
+
+                        _context.Entry(existingCommunity).State = EntityState.Modified;
+                        await _context.SaveChangesAsync();
+                    }
+                    else
+                    {
+                        return NotFound();
+                    }
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -159,5 +205,8 @@ namespace GamingGroove.Controllers
         {
           return (_context.Comunidades?.Any(e => e.comunidadeId == id)).GetValueOrDefault();
         }
+
+        
+
     }
 }

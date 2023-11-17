@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using GamingGroove.Data;
@@ -10,7 +6,7 @@ using GamingGroove.Models;
 
 namespace GamingGroove.Controllers
 {
-    public class ComentarioController : Controller
+    public class ComentarioController : BaseController
     {
         private readonly GamingGrooveDbContext _context;
 
@@ -170,5 +166,7 @@ namespace GamingGroove.Controllers
         {
           return (_context.Comentarios?.Any(e => e.comentarioId == id)).GetValueOrDefault();
         }
+
+        
     }
 }

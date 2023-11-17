@@ -1,0 +1,828 @@
+* {
+    padding: 0;
+    margin: 0;
+    color: white;
+}
+
+a {
+    text-decoration: none;
+}
+
+.modal {
+    margin-top: 10vh;
+}
+
+main {
+    margin-top: 2vh;
+    height: 87.8vh;
+
+}
+
+body {
+    background: #110B31;
+    height: 100vh;   
+}
+
+header {
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 2%;
+    background-color: #110B31;
+}
+
+.logo {
+    height: 60px;
+}
+
+.navbar {
+    width: 500px;
+    height: 48px;
+    min-width: 300px;
+    border: solid #AFD3FF 2px;
+    border-radius: 30px;
+    box-shadow: #0277F9 0 0 15px 4px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+    margin-top: 40px;
+    position: relative; /* Adicione esta linha */
+}
+
+.iconBackground1 {
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    position: absolute;
+    left: 13%; 
+    transform: translateX(-50%); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.iconBackground2 {
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    position: absolute;
+    left: 38%; 
+    transform: translateX(-50%); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.iconBackground3 {
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    position: absolute;
+    left: 63%;
+    transform: translateX(-50%); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.iconBackground4 {
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    position: absolute;
+    left: 88%;
+    transform: translateX(-50%); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar img {
+    height: 28px;
+}
+
+.navbar a:hover {
+    transition: 0.2s;
+    outline: double 6px #D169FF;
+    background-color: rgb(236, 236, 236);
+    .icon {
+        filter: hue-rotate(100deg) saturate(350%);
+    }
+}
+
+.menu-icon {
+    height: 50px;
+    width: 50px;
+    border: solid 2px #E3A5FF;
+    box-shadow: #B100FF 0 0 10px 3px;
+    border-radius: 50%;
+    overflow: hidden;
+    min-height: 50px;
+    min-width: 50px;
+}
+
+.menu-icon img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.menu-icon:hover {
+    transition: 1s;
+    border: solid 2px #AFD3FF;
+    box-shadow: #0277F9 0 0 10px 3px;
+}
+
+.menu-icon:not(:hover) {
+    transition: 1s;
+    border: solid 2px #E3A5FF;
+    box-shadow: #B100FF 0 0 10px 3px;
+}
+
+.list-menu {
+    position: absolute;
+    top: 90px;
+    right: 85px;
+    height: 70px;
+    width: 150px;
+    background-color: #111738;
+    border: solid 2px #E3A5FF;
+    box-shadow: #B100FF 0 0 10px 3px;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    display: none;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+    padding-top: 4px;
+}
+
+.list a {
+    text-align: center;
+    font-family: Play;
+    width: 100%;
+    border: none;
+    background: none;
+    color: white;
+    letter-spacing: 1px;
+    text-decoration: none;
+}
+
+.list a:hover {
+    transition: 0.4s;
+    color: #00F0FF;
+    background-color: #232B58;
+}
+
+
+::-webkit-scrollbar {
+    width: 10px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #2b356c;
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #E3A5FF;
+    border-radius: 6px;
+}
+
+
+.friendsList-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 270px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin-right: 20px;
+    font-family: Play;
+}
+
+.friendsListButton {
+    background-color: #110B31;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-block: 8px;
+    gap: 20px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border: 2px solid #E3A5FF;
+}
+
+.friendsListButton-icon {
+    height: 28px;
+}
+
+#friendsRequest-alert {
+    font-size: 16px;
+    color: rgb(255, 104, 104);
+}
+
+.friendsList {
+    display: none;
+    height: 60vh;
+    width: 100%;
+    background-color: #110B31;
+    flex-direction: column;
+    justify-content: baseline;
+    align-items: center;
+    padding: 8px;
+    border-left: 1px solid #E3A5FF;
+    border-right: 1px solid #E3A5FF;
+    border-bottom: 1px solid #E3A5FF;
+}
+
+.friendsListItems {
+    height: 100%;
+    width: 100%;    
+    display: flex;
+    flex-direction: column;
+    gap: 6px; 
+    overflow-y: scroll;
+}
+
+.friendInfo-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.chatButton {
+    height: 25px;
+    width: 25px;
+    filter: grayscale(100%) brightness(200%);
+}
+
+.chatButton:hover {
+    transition: 1s;
+    filter: none;
+}
+
+.friendsList-form {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    justify-content: center;
+}
+
+.friendsList-input {
+    border-radius: 12px;
+    height: 25px;
+    width: 90%;
+    background-color: black;
+    outline: 2px solid #00F0FF;
+    padding-left: 18px;
+    padding-block: 12px;
+}
+
+.btn {
+    height: 25px;
+    border: none;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #00F0FF;
+}
+
+.btn:hover {
+    transition: 0.6s;
+    background-color: #E3A5FF;
+}
+
+.searchIcon {
+    height: 16px;
+}
+
+.friendsList-items {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 10px;
+    gap: 15px;
+    width: 220px;
+    padding-block: 8px;
+    border-radius: 4px;
+    margin-left: 6px;
+}
+
+.friendInfo-container:hover {
+    transition: 1s;
+    .friendIcon {
+        border: 1px solid #00F0FF;
+        box-shadow: #00F0FF 0px 0px 4px;
+    }
+    #friendUsername {
+        transition: 0.8s;
+        color: #00F0FF;
+    }
+}
+
+.friendsList-items:not(:hover) {
+    transition: 0.8s;
+}
+
+#friendUsername {
+    color: white;
+}
+
+.friendIcon {
+    height: 40px;
+    width: 40px;
+    object-fit: cover;
+    border-radius: 4px;
+    background-color: white;
+    border: 1px solid white;
+}
+
+.divLine {
+    height: 2px;
+    width: 100%;
+    background: linear-gradient(to right, #222B58,#E3A5FF,#222B58);
+}
+
+.friendsRequest-container {
+    color: rgb(0, 0, 0);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: Play;
+    width: 100%;
+    background-color: #00F0FF;
+    border-radius: 4px;
+}
+
+.friendsRequest-button {
+    color: black;
+    background: none;
+    border: none;
+    width: 100%;
+}
+
+
+
+
+
+#friendsRequest-dialog {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#friendsRequest-content {
+    background-color: #232B58;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    border: 1px solid #E5ABFF;
+    box-shadow: #D169FF 0px 0px 6px;
+    border-radius: 8px;
+    font-family: Play;
+    width: 400px;
+}
+
+.friendsRequestModal-title {
+    font-size: 24px;
+}
+
+.friendsRequestModal-container {
+    background-color: #110B31;
+    height: 60vh;
+    width: 100%;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.friendsRequestList {
+    background-color: #110B31;
+    height: 40vh;
+    width: 100%;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    overflow: auto;
+    gap: 25px;
+}
+
+.friendsRequestItems {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #222B58;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.userRequest-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+}
+
+.userRequest-info:hover {
+    transition: 0.6s;
+    background-color: #39458c;
+    padding-right: 30px;
+    border-radius: 30px;
+ 
+    .userIcon-request {
+        transition: 0.6s;
+        border: solid 1px #00F0FF;
+        box-shadow: #00F0FF 0px 0px 4px;
+    }
+    .friendRequest-username {
+        transition: 0.6s;
+        color: #00F0FF;
+    }
+}
+
+.userRequest-info:not(:hover) {
+    transition: 0.6s;
+}
+
+.userIcon-request {
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.friendsRequest-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.friendsRequest-submit {
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    height: 30px;
+    width: 30px;
+}
+
+.friendsRequest-submit:hover {
+    transition: 0.6s;
+    background-color: #39458c;
+    border-radius: 4px;
+}
+
+.checkIcon {
+    height: 20px;
+    width: 20px;
+}
+
+.xIcon {
+    height: 15px;
+    width: 15px;
+}
+
+.friendsRequest-close {
+    font-family: Play;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding-inline: 20px;
+    padding-block: 15px;
+    color: white;
+    background-color: #110B31;
+    border: none;
+    border-radius: 6px;
+}
+
+.friendsRequest-close:hover {
+    font-weight: bold;
+    background: #AFD3FF;
+    color: black;
+    box-shadow: none;
+    transition: 0.7s;
+}
+
+.friendsRequest-close:not(:hover) {
+    transition: 0.7s;
+}
+
+
+
+
+
+#reportModal-dialog {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#reportModal-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+}
+
+.reportMain-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.reportModal-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+}
+
+.report-container {
+    padding: 2vh 20px 2vh 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #222B58;
+    border: solid 1px #AFD3FF;
+    box-shadow: #0277F9 0px 0px 8px;
+    border-radius: 6px;
+    gap: 20px;
+    width: 100%;
+    max-width: 350px;
+}
+
+.report-title {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.report-title span {
+    color: #00F0FF;
+    text-transform: none;
+}
+
+.reportContent-container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 20px;
+}
+
+.reportContent-container select:not(:hover) {
+    transition: 0.7s;
+}
+
+.reportContent-container select{
+    font-size: 12px;
+    color: #E3A5FF;
+    background-color: #111738;
+    border: none;
+}
+
+.reportContent-container select:hover {
+    transition: 0.7s;
+    color: black;
+    font-weight: bold;
+    background-color: #AFD3FF;
+    .uploadIcon {
+        filter: brightness(0);
+    }
+}
+
+.reportContent-container select:not(:hover) {
+    transition: 0.7s;
+}
+
+.reportType-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 10px;  
+}
+
+.form-control option {
+    color: rgb(255, 255, 255);
+    background-color: #111738;
+}
+
+.form-control:focus {
+    background-color: #111738;
+    color: white;
+}
+
+.reportType-alert {
+    color: red;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.descriptionForm {
+    display: flex;
+    flex-direction: column;
+    grid-area: 10px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;  
+    gap: 10px;  
+}
+
+#descriptionText-form {
+    font-family: Arial;
+    letter-spacing: 1px;
+    font-size: 12px;
+    color: #E3A5FF;
+    background-color: #111738;
+    height: 25vh;
+    resize: none;
+    border: 2px solid #111738;
+    border-radius: 8px;
+    min-width: 260px;
+    text-align: justify;
+}
+
+::-webkit-scrollbar {
+    width: 9px;
+    background-color: #111738;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #2b356c;
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #E3A5FF;
+    border-radius: 6px;
+}
+
+.reportButtons-container {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.reportSubmit-button {
+    font-family: Play;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding-inline: 20px;
+    padding-block: 15px;
+    color: white;
+    background-color: #110B31;
+    border: none;
+    border-radius: 6px;
+}
+
+.reportSubmit-button:hover {
+    font-weight: bold;
+    background: #AFD3FF;
+    color: black;
+    box-shadow: none;
+    transition: 0.7s;
+}
+
+.reportSubmit-button:not(:hover) {
+    transition: 0.7s;
+}
+
+
+
+@media (max-width: 1200px) {
+    .navbar {
+        width: 40vw;
+        gap: 6.5vw;
+        margin: 0;
+    }
+    header {
+        align-items: center;
+        height: 180px;
+        z-index: 2;
+    }
+    .menu-icon {
+        height: 50px;
+        width: 50px;
+    }
+    .friendsList-container {
+        width: auto;
+        margin-right: 0px;
+    }
+    .friendsListButton {
+        padding-inline: 10px;
+        gap: 4px;   
+    }
+    #friendsListButtonTitle {
+        display: none;
+    }
+    .list-menu {
+        top: 90px;
+        right: 15px;
+    }
+}
+
+@media (max-width: 500px) {
+    .logo {
+        display: none;
+    }
+
+    .iconBackground1 {
+        border-radius: 50%;
+        width: 45px;
+        height: 45px;
+        position: absolute;
+        left: 13%; 
+        transform: translateX(-50%); 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .iconBackground2 {
+        border-radius: 50%;
+        width: 45px;
+        height: 45px;
+        position: absolute;
+        left: 38%; 
+        transform: translateX(-50%); 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .iconBackground3 {
+        border-radius: 50%;
+        width: 45px;
+        height: 45px;
+        position: absolute;
+        left: 63%;
+        transform: translateX(-50%); 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .iconBackground4 {
+        border-radius: 50%;
+        width: 45px;
+        height: 45px;
+        position: absolute;
+        left: 88%;
+        transform: translateX(-50%); 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .navbar img {
+        height: 24px;
+    }
+
+    .navbar {
+        height: 42px;
+        width: 40vw;
+        gap: 6.5vw;
+        margin: 0;
+    }
+}

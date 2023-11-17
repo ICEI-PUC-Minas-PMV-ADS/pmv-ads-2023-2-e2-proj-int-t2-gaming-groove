@@ -19,7 +19,9 @@ namespace GamingGroove.Models
         public byte[]? capaComunidade { get; set; }
 
         [Display(Name = "Jogos Relacionados")]
-        public JogosEnum? jogosRelacionados { get; set; }    
+        public JogosEnum? primeiroJogo { get; set; }    
+        public JogosEnum? segundoJogo { get; set; }
+        public JogosEnum? terceiroJogo { get; set; }  
 
         [Display(Name = "Descrição")]
         public string? descricaoComunidade { get; set; }    
@@ -33,6 +35,7 @@ namespace GamingGroove.Models
         public ICollection<DenunciaModel>? ComunidadeDenuncia { get; set; }
 
         public ICollection<PublicacaoModel>? ComunidadePublicacao { get; set; }
+
 
         public ICollection<UsuarioComunidadeModel>? usuarioComunidade { get; set; }
     }

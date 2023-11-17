@@ -126,12 +126,18 @@ namespace GamingGroove.Migrations
                     b.Property<byte[]>("iconeComunidade")
                         .HasColumnType("longblob");
 
-                    b.Property<int?>("jogosRelacionados")
-                        .HasColumnType("int");
-
                     b.Property<string>("nomeComunidade")
                         .IsRequired()
                         .HasColumnType("longtext");
+
+                    b.Property<int?>("primeiroJogo")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("segundoJogo")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("terceiroJogo")
+                        .HasColumnType("int");
 
                     b.HasKey("comunidadeId");
 
@@ -269,58 +275,52 @@ namespace GamingGroove.Migrations
 
             modelBuilder.Entity("GamingGroove.Models.UsuarioComunidadeModel", b =>
                 {
-                    b.Property<int>("usuarioComunidadeId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int>("cargo")
+                    b.Property<int>("usuarioId")
                         .HasColumnType("int");
 
                     b.Property<int>("comunidadeId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("cargoComunidade")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("dataVinculoComunidade")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int>("usuarioId")
+                    b.Property<int>("usuarioComunidadeId")
                         .HasColumnType("int");
 
-                    b.HasKey("usuarioComunidadeId");
+                    b.HasKey("usuarioId", "comunidadeId");
 
                     b.HasIndex("comunidadeId");
 
-                    b.HasIndex("usuarioId");
-
-                    b.ToTable("UsuarioComunidade");
+                    b.ToTable("UsuariosComunidades");
                 });
 
             modelBuilder.Entity("GamingGroove.Models.UsuarioEquipeModel", b =>
                 {
-                    b.Property<int>("usuarioEquipeId")
-                        .ValueGeneratedOnAdd()
+                    b.Property<int>("usuarioId")
                         .HasColumnType("int");
 
-                    b.Property<int>("cargoEquipe")
+                    b.Property<int>("equipeId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("cargoEquipe")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("dataVinculoEquipe")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int>("equipeId")
+                    b.Property<int>("usuarioEquipeId")
                         .HasColumnType("int");
 
-                    b.Property<int>("usuarioId")
-                        .HasColumnType("int");
-
-                    b.HasKey("usuarioEquipeId");
+                    b.HasKey("usuarioId", "equipeId");
 
                     b.HasIndex("equipeId");
 
-                    b.HasIndex("usuarioId");
-
-                    b.ToTable("UsuarioEquipe");
+                    b.ToTable("UsuariosEquipes");
                 });
 
             modelBuilder.Entity("GamingGroove.Models.UsuarioModel", b =>
@@ -339,6 +339,10 @@ namespace GamingGroove.Migrations
                         .IsRequired()
                         .HasColumnType("datetime(6)");
 
+                    b.Property<DateTime?>("dataRegistro")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("email")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -349,9 +353,6 @@ namespace GamingGroove.Migrations
                     b.Property<byte[]>("iconePerfil")
                         .HasColumnType("longblob");
 
-                    b.Property<int?>("jogosFavoritos")
-                        .HasColumnType("int");
-
                     b.Property<string>("nomeCompleto")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -360,13 +361,18 @@ namespace GamingGroove.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<DateTime?>("registrationDate")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("primeiroJogo")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("segundoJogo")
+                        .HasColumnType("int");
 
                     b.Property<string>("senha")
                         .IsRequired()
                         .HasColumnType("longtext");
+
+                    b.Property<int?>("terceiroJogo")
+                        .HasColumnType("int");
 
                     b.Property<int?>("tipoUsuario")
                         .HasColumnType("int");
@@ -381,13 +387,13 @@ namespace GamingGroove.Migrations
                     b.HasOne("GamingGroove.Models.UsuarioModel", "receptor")
                         .WithMany("receptorAmizade")
                         .HasForeignKey("receptorId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("GamingGroove.Models.UsuarioModel", "solicitante")
                         .WithMany("solicitanteAmizade")
                         .HasForeignKey("solicitanteId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("receptor");
@@ -438,13 +444,13 @@ namespace GamingGroove.Migrations
                     b.HasOne("GamingGroove.Models.PublicacaoModel", "publicacao")
                         .WithMany("publicacaoCurtida")
                         .HasForeignKey("publicacaoId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("GamingGroove.Models.UsuarioModel", "usuario")
                         .WithMany("usuarioCurtida")
                         .HasForeignKey("usuarioId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("publicacao");
@@ -460,13 +466,12 @@ namespace GamingGroove.Migrations
 
                     b.HasOne("GamingGroove.Models.UsuarioModel", "denunciado")
                         .WithMany("denunciadoDenuncia")
-                        .HasForeignKey("denunciadoId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .HasForeignKey("denunciadoId");
 
                     b.HasOne("GamingGroove.Models.UsuarioModel", "denunciante")
                         .WithMany("denuncianteDenuncia")
                         .HasForeignKey("denuncianteId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("GamingGroove.Models.PublicacaoModel", "publicacao")

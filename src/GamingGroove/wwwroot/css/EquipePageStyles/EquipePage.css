@@ -1,0 +1,360 @@
+.body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    margin: 0px;
+    padding: 0px;
+}
+
+/*CONTAINER DA ESQUERDA*/
+
+.left-container {
+    background-color: #232B58;
+    height: 60vh;
+    width: 290px;
+    margin-top: 5vh;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    box-shadow: black 2px 2px 6px;
+}
+
+
+
+
+
+.myTeams {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    margin-top: 2vh;
+    border-radius: 6px;
+    padding: 12px;
+    box-shadow: black 2px 2px 6px;
+    height: 10vh;
+    width: 180px;
+}
+
+.suggestedCommunities {
+    background-color: #232B58;
+    height: 60vh;
+    width: 290px;
+    margin-top: 5vh;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    box-shadow: black 2px 2px 6px;
+}
+
+.listTitle {
+    font-family: Gamer;
+    font-size: 28px;
+    text-transform: uppercase;
+    width: 270px;
+    text-align: center;
+}
+
+.teamsList {
+    background-color: #111738;
+    height: 50vh;
+    width: 100%;
+    padding-inline: 15px;
+    padding-block: 10px;
+    overflow: auto;
+}
+
+.teams-items {
+    height: 60px;
+    width: 100%;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-inline: 10px;
+    padding-block: 35px;
+    gap: 10px;
+    font-family: Play;
+    cursor: pointer;
+}
+
+    .teams-items:hover {
+        transition: 0.8s;
+        background-color: #232B58;
+        .list-communityIcon
+
+{
+    border: #00F0FF solid 1px;
+    box-shadow: #00F0FF 0px 0px 8px;
+}
+
+}
+
+.teams-items:not(:hover) {
+    transition: 0.8s;
+}
+
+.list-communityIcon {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.communityName {
+    font-size: 14px;
+}
+
+.list-numberOfMembers {
+    color: #00F0FF;
+    font-size: 12px;
+}
+
+
+
+/*CONTAINER CENTRAL*/
+
+
+.main-container {
+    height: 100%;
+    width: 100vw;
+    padding: 10px;
+    margin: 30px auto; 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-inline: 20px;
+    
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.center-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    height: 100%;
+    border-radius: 5px;
+    width: 100%;
+    margin-left: 65px;
+
+}
+
+.search-bar {
+    width: 26vw;
+}
+
+
+.container-card {
+    height: 70vh;
+    align-content: start;
+    justify-content:space-between;
+    width: 50vw;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    order: 2;
+    overflow: auto;
+    background-color: #222b58;
+    padding: 10px;
+}
+
+
+
+
+
+.card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    width: 97%;
+    height: 9vh;
+    background-color: #414a77;
+    margin-top: 1vh;
+    
+    font-family: Play;
+    cursor: pointer;
+}
+
+    .card:hover {
+        transition: 0.8s;
+        background-color: #5965a0;
+        .list-communityIcon
+
+{
+    border: #00F0FF solid 1px;
+    box-shadow: #00F0FF 0px 0px 8px;
+}
+
+}
+
+.card:not(:hover) {
+    transition: 0.8s;
+}
+
+.container-info {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 15vw;
+    padding: 10px;
+    
+}
+
+.teamName {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    
+}
+
+.teamGame {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    
+}
+
+.team-icon {
+    display: flex;
+    justify-content: start;
+    height: 60px;
+    background-color: white;
+    object-fit: cover;
+}
+
+.listnumberOfMembers { 
+    display: flex;
+    flex-direction: column;
+    align-items:end;
+    justify-content: end;
+   
+    
+}
+
+#searchInput {
+    border-radius: 20px;
+    height: 35px;
+}
+
+.botao {
+    
+    width: 70px;
+    border-radius: 20px;
+    background-color: #da87ff;
+}
+
+.imagem {
+    filter: brightness(1000%);
+}
+
+
+
+.team-icon2 {
+    
+    justify-content: start;
+    align-items: center;
+    height: 50px;
+    border-radius: 50px;
+}
+
+
+
+   
+/*CONTAINER DIREITA*/
+
+
+.right-container {
+    height: 100%;
+    width: 27vw;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2vh;
+}
+
+.newCommunity-container {
+    height: 160px;
+    width: 19vw;
+    min-width: 205px;
+    border-radius: 6px;
+    border: 2px solid #E3A5FF;
+    margin-top: 5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    font-family: PlayMeGames;
+    box-shadow: #D169FF 0px 0px 8px;
+}
+
+.newCommunity-title {
+    font-size: 26px;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.newCommunity-button {
+    padding-inline: 35px;
+    padding-block: 2px;
+    border-radius: 4px;
+    background-color: transparent;
+    border: 2px solid #E087FF;
+    box-shadow: #D169FF 0px 0px 8px;
+    letter-spacing: 1px;
+}
+
+    .newCommunity-button:hover {
+        transition: 0.6s;
+        color: black;
+        background-color: #E087FF;
+        box-shadow: none;
+    }
+
+    .newCommunity-button:not(:hover) {
+        transition: 0.6s;
+    }
+
+/* MODAL*/
+
+.modal-dialog {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10vh;
+}
+
+.modal-content {
+    background-color: #232B58;
+    padding-block: 30px;
+    padding-inline: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    border: 1px solid #E5ABFF;
+    box-shadow: #D169FF 0px 0px 6px;
+    border-radius: 8px;
+    min-width: 700px;
+    font-family: Play;
+}
+
+.createCommunity-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

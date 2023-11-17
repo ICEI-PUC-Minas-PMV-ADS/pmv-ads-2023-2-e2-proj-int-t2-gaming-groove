@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Details";
+    Layout = "";    
 }
 
 <h1>Details</h1>
@@ -59,11 +60,17 @@
             @Html.DisplayFor(model => model.fotosGaleria)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.jogosFavoritos)
+            @Html.DisplayNameFor(model => model.primeiroJogo)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.jogosFavoritos)
+            @Html.DisplayFor(model => model.primeiroJogo)
         </dd>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.segundoJogo)
+        </dd>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.terceiroJogo)
+        </dd>                
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.biografia)
         </dt>
@@ -71,10 +78,10 @@
             @Html.DisplayFor(model => model.biografia)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.registrationDate)
+            @Html.DisplayNameFor(model => model.dataRegistro)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.registrationDate)
+            @Html.DisplayFor(model => model.dataRegistro)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.tipoUsuario)

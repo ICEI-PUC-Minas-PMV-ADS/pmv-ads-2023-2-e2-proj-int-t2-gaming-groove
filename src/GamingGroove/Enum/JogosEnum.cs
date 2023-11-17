@@ -2,6 +2,9 @@ using System.ComponentModel.DataAnnotations;
 
 public enum JogosEnum 
 {
+    [Display(Name = "Nenhum")]
+    Nenhum,
+    
     [Display(Name = "League of Legends")]
     LeagueOfLegends,
     
@@ -24,5 +27,5 @@ public enum JogosEnum
     DeadByDaylight,
     
     [Display(Name = "Call of Duty: Warzone")]
-    CallOfDutyWarzone
+    CallOfDutyWarzone,
 }

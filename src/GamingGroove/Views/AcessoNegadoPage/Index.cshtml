@@ -1,0 +1,39 @@
+@model GamingGroove.Models.UsuarioModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Acesso Negado</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css" />
+    <link rel="stylesheet" href="~/css/AcessoNegadoPage.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/fonts.css" asp-append-version="true" />
+
+</head>
+<body>
+    <main class="main-container">
+        <div class="brand-container">
+            <img class="logo" src="~/images/logos/gaminggroove-logo.png" alt="Logo da Gaming Groove">
+        </div>
+ 
+        <div class="error-message-container">
+           
+            <img src="~/images/icons/alert-icon.png" alt="">
+            <div class="error-message-title">ACESSO NEGADO</div>
+            <div class="error-message-text">Você não possui acesso a essa página. Acesse sua conta.</div>
+            <a href="~/HomePageLogin"><div class="redirect-button">Efetuar login</div></a>
+        </div>            
+
+        </div>
+    </main>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

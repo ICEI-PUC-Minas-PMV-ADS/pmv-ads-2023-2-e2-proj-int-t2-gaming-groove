@@ -37,7 +37,16 @@
                 @Html.DisplayFor(modelItem => item.nomeEquipe)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.iconeEquipe)
+                @{
+                    if (item.iconeEquipe != null && item.iconeEquipe.Length > 10)
+                    {
+                        <text>@item.iconeEquipe.ToString().Substring(0, 10)</text>
+                    }
+                    else
+                    {
+                        @item.iconeEquipe
+                    }
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.descricaoEquipe)

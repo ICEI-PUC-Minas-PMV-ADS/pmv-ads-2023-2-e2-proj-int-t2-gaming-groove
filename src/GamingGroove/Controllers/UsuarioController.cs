@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using GamingGroove.Data;
 using GamingGroove.Models;
+using System.Security.Claims;
+using GamingGroove.Views.Shared;
 
 namespace GamingGroove.Controllers
 {
@@ -56,11 +53,23 @@ namespace GamingGroove.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("usuarioId,nomeUsuario,nomeCompleto,dataNascimento,email,senha,iconePerfil,capaPerfil,fotosGaleria,jogosFavoritos,biografia,registrationDate,tipoUsuario")] UsuarioModel usuarioModel)
+        public async Task<IActionResult> Create([Bind("usuarioId,nomeUsuario,nomeCompleto,dataNascimento,email,senha,iconePerfil,capaPerfil,fotosGaleria,primeiroJogo,segundoJogo,terceiroJogo,biografia,registrationDate,tipoUsuario")] ViewModel usuarioModel)
         {
+            
             if (ModelState.IsValid)
             {
-                usuarioModel.senha = BCrypt.Net.BCrypt.HashPassword(usuarioModel.senha);
+                usuarioModel.getUsuario.senha = BCrypt.Net.BCrypt.HashPassword(usuarioModel.getUsuario.senha);
+                
+                if (usuarioModel.getUsuario.primeiroJogo != null && usuarioModel.getUsuario.segundoJogo != null && usuarioModel.getUsuario.terceiroJogo != null)
+                {
+                    if (usuarioModel.getUsuario.primeiroJogo == usuarioModel.getUsuario.segundoJogo || 
+                        usuarioModel.getUsuario.primeiroJogo == usuarioModel.getUsuario.terceiroJogo || 
+                        usuarioModel.getUsuario.segundoJogo == usuarioModel.getUsuario.terceiroJogo)
+                    {
+                        ModelState.AddModelError("", "Escolha três jogos diferentes.");
+                        return View(usuarioModel);
+                    }
+                }
                 _context.Add(usuarioModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index", "HomePage");
@@ -68,56 +77,87 @@ namespace GamingGroove.Controllers
             return View("Index", usuarioModel);
         }
 
-        // GET: Usuario/Edit/5
+
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Usuarios == null)
+            if (User.FindFirst(ClaimTypes.NameIdentifier)?.Value == id.ToString())
             {
-                return NotFound();
-            }
+                if (id == null || _context.Usuarios == null)
+                {
+                    return NotFound();
+                }
 
-            var usuarioModel = await _context.Usuarios.FindAsync(id);
-            if (usuarioModel == null)
-            {
-                return NotFound();
+                var usuarioModel = await _context.Usuarios.FindAsync(id);
+                if (usuarioModel == null)
+                {
+                    return NotFound();
+                }
+                return View(usuarioModel);                    
             }
-            return View(usuarioModel);
+            else
+            {
+                return RedirectToAction("Index", "AcessoNegadoPage");
+            }  
         }
 
-        // POST: Usuario/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("usuarioId,nomeUsuario,nomeCompleto,dataNascimento,email,senha,iconePerfil,capaPerfil,fotosGaleria,jogosFavoritos,biografia,registrationDate,tipoUsuario")] UsuarioModel usuarioModel)
+        public async Task<IActionResult> Edit(int id, UsuarioModel usuarioModel, IFormFile? iconePerfilArquivo, IFormFile? capaPerfilArquivo)
         {
             if (id != usuarioModel.usuarioId)
             {
                 return NotFound();
             }
-
             if (ModelState.IsValid)
             {
                 try
                 {
                     var existingUser = await _context.Usuarios.FindAsync(id);
-                    
-                    if (existingUser == null)
-                    {
-                        return NotFound();
-                    }
 
-                    if (usuarioModel.senha != existingUser.senha)
+                    if (existingUser != null)
                     {
-                        usuarioModel.senha = BCrypt.Net.BCrypt.HashPassword(usuarioModel.senha);
+
+                        existingUser.primeiroJogo = usuarioModel.primeiroJogo;
+                        existingUser.segundoJogo = usuarioModel.segundoJogo;
+                        existingUser.terceiroJogo = usuarioModel.terceiroJogo;
+                        existingUser.biografia = usuarioModel.biografia;
+
+                        if (iconePerfilArquivo != null && iconePerfilArquivo.Length > 0)
+                        {
+                            using (var memoryStream = new MemoryStream())
+                            {
+                                await iconePerfilArquivo.CopyToAsync(memoryStream);
+                                existingUser.iconePerfil = memoryStream.ToArray();
+                            }
+                        }
+
+                        if (capaPerfilArquivo != null && capaPerfilArquivo.Length > 0)
+                        {
+                            using (var memoryStream = new MemoryStream())
+                            {
+                                await capaPerfilArquivo.CopyToAsync(memoryStream);
+                                existingUser.capaPerfil = memoryStream.ToArray();
+                            }
+                        }
+
+                        existingUser.nomeUsuario = usuarioModel.nomeUsuario;
+                        existingUser.nomeCompleto = usuarioModel.nomeCompleto;
+                        existingUser.dataNascimento = usuarioModel.dataNascimento;
+                        existingUser.email = usuarioModel.email;
+                        existingUser.senha = usuarioModel.senha;
+                        existingUser.primeiroJogo = usuarioModel.primeiroJogo;
+                        existingUser.segundoJogo = usuarioModel.segundoJogo;
+                        existingUser.terceiroJogo = usuarioModel.terceiroJogo;
+                        existingUser.biografia = usuarioModel.biografia;
+
+                        _context.Entry(existingUser).State = EntityState.Modified;
+                        await _context.SaveChangesAsync();
                     }
                     else
                     {
-                        usuarioModel.senha = existingUser.senha;
+                        return NotFound();
                     }
-              
-                    _context.Entry(existingUser).CurrentValues.SetValues(usuarioModel);
-                    await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -130,9 +170,12 @@ namespace GamingGroove.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index");
             }
-            return View(usuarioModel);
+            else
+            {
+        }
+        return View(usuarioModel);
         }
 
         // GET: Usuario/Delete/5

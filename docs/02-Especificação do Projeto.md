@@ -49,14 +49,16 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 |ID    | Descrição do Requisito  | Prioridade |
 |------|-----------------------------------------|----|
-|RF-001| Permitir que o usuário se cadastre e faça login. | ALTA | 
-|RF-002| A plataforma deve possuir um sistema de chat.| ALTA |
-|RF-003| A plataforma deve possuir um sistema de comunidades. | ALTA | 
-|RF-004| A plataforma deve possuir um sistema de formação de equipes e gerenciamento de membros. | ALTA | 
-|RF-005| A plataforma deve conter uma ferramenta para adicionar, remover ou bloquear usuários.| ALTA | 
-|RF-006| A plataforma deve conter uma ferramenta de pesquisa de usuários ou comunidades. | ALTA | 
-|RF-007| A plataforma deve conter uma ferramenta para denunciar usuários, comunidades e postagens. | MÉDIA | 
-|RF-008| A plataforma deve permitir gerenciamento de perfil. | MÉDIA | 
+|RF-001| A plataforma deve permitir que o usuário se cadastre. | ALTA | 
+|RF-002| A plataforma deve permitir que o usuário faça login. | ALTA |
+|RF-003| A plataforma deve possuir um sistema de chat.| ALTA |
+|RF-004| A plataforma deve possuir um sistema que permita que o usuário realize publicações. | ALTA |
+|RF-005| A plataforma deve possuir um sistema de comunidades. | ALTA | 
+|RF-006| A plataforma deve possuir um sistema de formação de equipes e gerenciamento de membros. | ALTA | 
+|RF-007| A plataforma deve conter uma ferramenta para adicionar, remover ou bloquear usuários.| ALTA | 
+|RF-008| A plataforma deve conter uma ferramenta de pesquisa de usuários ou comunidades. | ALTA | 
+|RF-009| A plataforma deve conter uma ferramenta para denunciar usuários, comunidades e postagens. | MÉDIA | 
+|RF-010| A plataforma deve permitir que cada usuário possua uma página de perfil editável. | MÉDIA | 
 
 ### Requisitos não Funcionais
 

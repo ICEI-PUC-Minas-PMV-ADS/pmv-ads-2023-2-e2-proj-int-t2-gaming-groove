@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace GamingGroove.Models
 {
@@ -25,7 +26,7 @@ namespace GamingGroove.Models
         [Required(ErrorMessage = "Informe um e-mail válido.")]
         public string? email { get; set; }
 
-        [Required(ErrorMessage = "Escolha uma senha válida. Sua senha deve possuir entre 6 e 12 caracteres e conter ao menos uma letra, um número e um símbolo.")]
+        [Required(ErrorMessage = "Sua senha deve ter entre 6 e 12 caracteres.")]
         [Display(Name = "Senha")]
         public string? senha { get; set; }
 
@@ -39,7 +40,9 @@ namespace GamingGroove.Models
         public byte[]? fotosGaleria { get; set; }
 
         [Display(Name = "Jogos Favoritos")]
-        public JogosEnum? jogosFavoritos { get; set; }    
+        public JogosEnum? primeiroJogo { get; set; }    
+        public JogosEnum? segundoJogo { get; set; }
+        public JogosEnum? terceiroJogo { get; set; }
 
         [Display(Name = "Biografia")]
         public string? biografia { get; set; }    
@@ -49,7 +52,7 @@ namespace GamingGroove.Models
 
         [Display(Name = "Data de Registro")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public DateTime? registrationDate { get; set; }
+        public DateTime? dataRegistro { get; set; }
 
 
         
@@ -68,6 +71,5 @@ namespace GamingGroove.Models
         public ICollection<UsuarioComunidadeModel>? usuarioComunidade { get; set; }
 
         public ICollection<UsuarioEquipeModel>? usuarioEquipe { get; set; }
-
     }
 }

@@ -1,9 +1,13 @@
+using System;
 using System.Globalization;
+using GamingGroove.Controllers;
 using GamingGroove.Data;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.AspNetCore.Http; // Adicionar para SameSiteMode
+using Microsoft.AspNetCore.SignalR; // Adicionar para o SignalR
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Builder;
 
 namespace GamingGroove
 {
@@ -13,35 +17,49 @@ namespace GamingGroove
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.Configure<IISServerOptions>(options =>
+            {
+                options.AllowSynchronousIO = true;
+            });            
 
             builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 
+            #if DEBUG
             builder.Services.AddDbContext<GamingGrooveDbContext>(
-                options => options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
+                options => options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnectionLocal"),
                 new MySqlServerVersion(new Version(8, 0, 34))) 
             );
+            #else
+            builder.Services.AddDbContext<GamingGrooveDbContext>(
+                options => options.UseMySql(builder.Configuration.GetConnectionString("AzureConnection"),
+                new MySqlServerVersion(new Version(8, 0, 34))) 
+            );
+            #endif
 
             builder.Services.Configure<CookiePolicyOptions>(options =>
             {
-                options.CheckConsentNeeded = ContextBoundObject => true;
+                options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
             builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options => {
-                    options.AccessDeniedPath = "/Usuarios/AccessDenied/";
-                    options.LoginPath = "/Usuarios/Login/";
-                });
+                    options.AccessDeniedPath = "/AcessoNegadoPage";
+                    options.LoginPath = "/AcessoNegadoPage";
+            });
+
+            builder.Services.AddDistributedMemoryCache();
+            builder.Services.AddSession();    
+
+            builder.Services.AddSignalR();
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
@@ -50,18 +68,28 @@ namespace GamingGroove
 
             app.UseRouting();
 
+            app.MapHub<ChatHub>("/chatHub");
+
+            app.UseSession();
+
             app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllerRoute(
-                name: "default",
-                pattern: "{controller=HomePage}/{action=Index}/{id?}");
+                name: "home",
+                pattern: "{controller=HomePageLogin}/{action=Index}/{id?}");
+
+            app.MapControllerRoute(
+                name: "perfil",
+                pattern: "PerfilPage/{user}",
+                defaults: new { controller = "PerfilPage", action = "Index" });
+                
+            app.MapControllerRoute(
+                name: "comunidades",
+                pattern: "ComunidadePage/{community}",
+                defaults: new { controller = "ComunidadePage", action = "Index" });
 
             app.Run();
-
         }
     }
 }
-
-
-

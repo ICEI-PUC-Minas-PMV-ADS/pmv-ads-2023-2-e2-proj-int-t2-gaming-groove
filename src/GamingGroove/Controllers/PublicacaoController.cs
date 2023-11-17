@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using GamingGroove.Data;
@@ -10,7 +6,7 @@ using GamingGroove.Models;
 
 namespace GamingGroove.Controllers
 {
-    public class PublicacaoController : Controller
+    public class PublicacaoController : BaseController
     {
         private readonly GamingGrooveDbContext _context;
 
@@ -59,10 +55,19 @@ namespace GamingGroove.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("publicacaoId,usuarioId,comunidadeId,textoPublicacao,midiaPublicacao,dataPublicacao")] PublicacaoModel publicacaoModel)
+        public async Task<IActionResult> Create([Bind("publicacaoId,usuarioId,comunidadeId,textoPublicacao,midiaPublicacao,dataPublicacao")] PublicacaoModel publicacaoModel, IFormFile? midiaPublicacaoArquivo)
         {
             if (ModelState.IsValid)
             {
+                if (midiaPublicacaoArquivo != null && midiaPublicacaoArquivo.Length > 0)
+                {
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        await midiaPublicacaoArquivo.CopyToAsync(memoryStream);
+                        publicacaoModel.midiaPublicacao = memoryStream.ToArray();
+                    }
+                }   
+
                 _context.Add(publicacaoModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

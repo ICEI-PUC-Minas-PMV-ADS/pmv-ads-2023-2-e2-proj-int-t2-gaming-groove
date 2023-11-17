@@ -8,8 +8,17 @@ Por exemplo: a tabela a seguir deverá ser preenchida considerando os artefatos 
 
 |ID    | Descrição do Requisito  | Artefato(s) produzido(s) |
 |------|-----------------------------------------|----|
-|RF-001| Permitir que o usuário cadastre tarefas | tarefas.shtml / tarefas.cs / controllertarefas.cs | 
-|RF-002| Emitir um relatório de tarefas no mês   | relatorio.shtml |
+|RF-001| A plataforma deve permitir que o usuário se cadastre. | UsuarioController.cs / UsuarioModel.cs / (Login)Index.cshtml/ (HomePage)Index.cshtml | 
+|RF-002| A plataforma deve permitir que o usuário faça login. | LoginController.cs / UsuarioModel.cs / (Login)Index.cshtml/ (HomePage)Index.cshtml |
+|RF-003| A plataforma deve possuir um sistema de chat.| ChatController.cs / ChatModel.cs |
+|RF-004| A plataforma deve possuir um sistema de comunidades. | ComunidadeController.cs / ComunidadeModel.cs | 
+|RF-005| A plataforma deve possuir um sistema que permita que o usuário realize publicações. | PublicacaoController.cs / PublicacaoModel.cs / ComunidadeModel.cs / FeedPage.cs | 
+|RF-006| A plataforma deve possuir um sistema de formação de equipes e gerenciamento de membros. | EquipeController.cs / EquipeModel.cs / EquipePage.cshtml | 
+|RF-007| A plataforma deve conter uma ferramenta para adicionar, remover ou bloquear usuários.| AmizadeController.cs / AmizadeModel.cs | 
+|RF-008| A plataforma deve conter uma ferramenta de pesquisa de usuários ou comunidades. | UsuarioController.cs / ComunidadeController.cs / UsuarioModel.cs / ComunidadeModel.cs | 
+|RF-009| A plataforma deve conter uma ferramenta para denunciar usuários, comunidades e postagens. | DenunciaController / DenunciaModel.cs | 
+|RF-010| A plataforma deve permitir que cada usuário possua uma página de perfil editável. | PerfilPageController.cs / LoginControler.cs / UsuarioModel.cs / PerfilPage.cshtml | 
+
 
 # Instruções de acesso
 

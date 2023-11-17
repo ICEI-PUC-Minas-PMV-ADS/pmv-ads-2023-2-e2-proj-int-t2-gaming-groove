@@ -1,0 +1,359 @@
+@model GamingGroove.Views.Shared.ViewModel
+
+
+@using System.Security.Claims
+
+@{
+    ViewData["Title"] = "Explorar";
+}
+
+
+@{
+	string notificacao = "";
+}
+@if(@Model.getTodosUsuariosSolicitacoes.Count() > 0){
+	 notificacao = "(" + Model.getTodosUsuariosSolicitacoes.Count().ToString() + ")";
+}   
+<title>Explorar @notificacao</title>
+<link rel="stylesheet" href="~/css/ExplorarPage.css" asp-append-version="true" />
+
+
+<div class="main-container">
+    
+    
+    
+	<div class="left-container">
+		<div class="userSearch-container">
+			<div class="userSearch-title">Buscar usuários</div>
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" id="usersSearch" type="search" placeholder="Buscar usuário" aria-label="Search">
+            </form>
+			<div class="usersList">
+                @foreach (var item in Model.getTodosUsuarios) {
+                    if(item.usuarioId.ToString() != User.FindFirstValue(ClaimTypes.NameIdentifier))
+                    {
+                        <a href="~/PerfilPage/@item.nomeUsuario" class="users" data-username="@item.nomeUsuario" title="@item.nomeUsuario">
+                            <div class="usersList-items">
+                                @if (item.iconePerfil != null)
+                                {
+                                    <img class="list-userIcon" src="data:image/png;base64,@Convert.ToBase64String(item.iconePerfil)" alt="Imagem de Perfil" />
+                                }
+                                else
+                                {
+                                    <img class="list-userIcon" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
+                                }               
+                                <div class="userInfo-container">
+                                    <div class="userName">@item.nomeUsuario</div>                                
+                                </div>
+                            </div>	
+                            <div class="divLine"></div>
+                        </a>
+                    }			
+				}
+			</div>
+		</div>		
+	</div>
+
+    <div class="center-container">
+        <div class="userButton-container">
+            <button class="searchUsers-button" data-bs-toggle="modal" data-bs-target="#usersModal"><img src="~/images/icons/searchList-icon.svg" alt=""><div>Usuários</div></button>
+        </div>
+        <div class="findCommunities-title">Encontre comunidades</div>
+        <div class="findCommunities">
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" id="communitiesSearch" type="search" placeholder="Buscar comunidade" aria-label="Search">
+            </form>
+            <div class="findCommunities-container">
+                <div class="findCommunities-list">
+                    @foreach (var item in Model.getComunidadesSugeridas.OrderByDescending(c => Model.GetNumberOfMembersInCommunity(c.comunidadeId)))
+                    {
+                        int _comunidadeId = item.comunidadeId;
+                        int numberOfMembers = Model.GetNumberOfMembersInCommunity(_comunidadeId);   
+                        <a class="findCommunitiesItems-container" href="~/ComunidadePage/@item.comunidade.nomeComunidade" data-communityName="@item.comunidade.nomeComunidade"
+                        data-communityFirstGame="@item.comunidade.primeiroJogo" data-communitySecondGame="@item.comunidade.segundoJogo" data-communityThirdGame="@item.comunidade.terceiroJogo" title="@item.comunidade.nomeComunidade">               
+                            <div class="findCommunities-items">
+                                @if (item.comunidade.iconeComunidade != null)
+                                {
+                                    <img class="communityIcon" src="data:image/png;base64,@Convert.ToBase64String(item.comunidade.iconeComunidade)" alt="Imagem de Perfil" />
+                                    }
+                                    else
+                                    {
+                                    <img class="communityIcon" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
+                                    
+                                }  
+                                <div class="communityInfo">
+                                    <div class="communityListName">@item.comunidade.nomeComunidade</div>
+                                    <div class="community-games-container">
+                                        @if(item.comunidade.primeiroJogo != JogosEnum.Nenhum)
+                                        {
+                                            <div class="community-games-background">
+                                                <img src="~/images/icons/jogos/@(item.comunidade.primeiroJogo).svg" title="@(EnumHelper.GetDisplayName(item.comunidade.primeiroJogo))">
+                                            </div>
+                                        }
+                                        @if(item.comunidade.segundoJogo != JogosEnum.Nenhum)
+                                        {
+                                            <div class="community-games-background">
+                                                <img src="~/images/icons/jogos/@(item.comunidade.segundoJogo).svg" title="@(EnumHelper.GetDisplayName(item.comunidade.segundoJogo))">
+                                            </div>
+                                        }
+                                        @if(item.comunidade.terceiroJogo != JogosEnum.Nenhum)
+                                        {
+                                            <div class="community-games-background">
+                                                <img src="~/images/icons/jogos/@(item.comunidade.terceiroJogo).svg" title="@(EnumHelper.GetDisplayName(item.comunidade.terceiroJogo))">
+                                            </div>   
+                                        }                                                                                 
+                                    </div>  
+                                    <div class="communityMembers">@numberOfMembers membros</div>                                                                               
+                                </div>
+                            </div>
+                        </a>
+                    }
+                </div>
+            </div>            
+        </div>
+    </div>
+
+	<div class="right-container">
+		<div class="myCommunities">
+			<div class="listTitle">Minhas comunidades</div>
+			<div class="communitiesList">
+				@if(Model.getComunidadesUsuario == null)
+				{
+					<div>Você ainda não faz parte de comunidades.</div>
+				}
+				else
+				{
+					@foreach (var item in Model.getComunidadesUsuario) {
+						
+						int _comunidadeIdCadaComunidade = item.comunidade.comunidadeId;
+						int numberOfMembersEachCommunity = Model.GetNumberOfMembersInCommunity(_comunidadeIdCadaComunidade);
+						<a href="~/ComunidadePage/@item.comunidade.nomeComunidade" title="@item.comunidade.nomeComunidade">
+							<div class="communities-items">
+								@if (item.comunidade.iconeComunidade != null)
+								{
+									<img class="list-communityIcon" src="data:image/png;base64,@Convert.ToBase64String(item.comunidade.iconeComunidade)" alt="Imagem de Perfil" />
+								}
+								else
+								{
+									<img class="list-communityIcon" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
+								}               
+								<div class="communityInfo-container">
+									<div class="communityName">@item.comunidade.nomeComunidade</div>                                
+									<div class="list-numberOfMembers">@numberOfMembersEachCommunity membros</div>
+								</div>                                      
+							</div>	
+						</a>
+					}				
+				}
+			</div>
+		</div>		
+	</div>
+
+
+
+<div class="modal fade" id="usersModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog" id="usersModal-dialog">
+        <div class="modal-content" id="usersModal-content">
+            <div class="userSearch-container">
+                <div class="userSearch-title">Buscar usuários</div>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" id="usersSearch" type="search" placeholder="Buscar usuário" aria-label="Search">
+                </form>
+                <div class="usersList">
+                    @foreach (var item in Model.getTodosUsuarios) {
+                        if(item.usuarioId.ToString() != User.FindFirstValue(ClaimTypes.NameIdentifier))
+                        {
+                            <a href="~/PerfilPage/@item.nomeUsuario" class="users" data-username="@item.nomeUsuario" title="@item.nomeUsuario">
+                                <div class="usersList-items">
+                                    @if (item.iconePerfil != null)
+                                    {
+                                        <img class="list-userIcon" src="data:image/png;base64,@Convert.ToBase64String(item.iconePerfil)" alt="Imagem de Perfil" />
+                                    }
+                                    else
+                                    {
+                                        <img class="list-userIcon" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
+                                    }               
+                                    <div class="userInfo-container">
+                                        <div class="userName">@item.nomeUsuario</div>                                
+                                    </div>
+                                </div>	
+                                <div class="divLine"></div>
+                            </a>
+                        }			
+                    }
+                </div>
+            </div>	
+        </div>
+    </div>
+</div>
+
+
+
+    @* <div class="left-container">
+        <div class="lfCamada1">
+                <h2 class="tituloUsuarios" >USUARIOS</h2>
+                <form class="d-flex" id="searchInputUsuario2" role="search">
+                    <input class="form-control me-2" id="searchInputUsuario" type="search" placeholder="Search" aria-label="Search">
+                </form>
+            <div class="lfCamada2">
+                <div class="containerCard2">
+                    <div class="internalContainer2">
+                        <div class="gridContainerFlow2">
+                            @foreach (var item in Model.getTodosUsuarios)
+                                {              
+                                    <div class="cardTodosUsuarios">
+                                        <a href="~/PerfilPage/@item.nomeUsuario">
+                                            <div class="user-card-body">
+                                                @if (item.iconePerfil != null)
+                                                    {
+                                                        <img class="user-icon" src="data:image/png;base64,@Convert.ToBase64String(item.iconePerfil)" alt="Imagem de Perfil" />      
+                                                    }
+                                                        else
+                                                    {
+                                                        <img class="team-icon" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />                    
+                                                    }
+                                                    <h3 class="nomedousuario">@item.nomeUsuario</h3>                                                         
+                                            </div>
+                                        </a>  
+                                    </div>
+                                }
+                        </div>            
+                    </div>                
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="center-container">
+        <div class="TituloComunidades">
+            <h1 class="textoCentral">DESCUBRA COMUNIDADES</h1>
+        </div>
+        <div class="NavbarContainer">
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" id="searchInput" type="search" placeholder="Search" aria-label="Search">
+            </form>
+
+         </div> 
+        <div class="containerCard">
+            <div class="internalContainer">
+                <div class="gridContainerFlow">
+                    
+                    @foreach (var item in Model.getComunidadesSugeridas)
+                        {
+                            int _comunidadeId = item.comunidadeId;
+                            int numberOfMembers = Model.GetNumberOfMembersInCommunity(_comunidadeId);
+                            <div class="card">
+                                            
+                                <div class="card-body">
+                                        <a href="~/ComunidadePage/@item.comunidade.nomeComunidade"><div class="communityItems"></div>
+                                        @if (item.comunidade.iconeComunidade != null)
+                                            
+                                            
+                                            {
+                                                <img class="community-icon" src="data:image/png;base64,@Convert.ToBase64String(item.comunidade.iconeComunidade)" alt="Imagem de Perfil" />
+                                                }
+                                                else
+                                                {
+                                                <img class="team-icon-comunity" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
+                                                
+                                            }  
+                                                <div class="community-info">
+                                                    <div class="community-name">@item.comunidade.nomeComunidade</div>
+                                                    <div class="community-members">Membros: @numberOfMembers</div>                                        
+                                                </div>
+
+                                        </a>
+                                </div>
+                            </div>
+                                
+                        }
+                </div>            
+            </div>                
+            
+        </div>
+        
+    </div>
+
+    <div class="right-container">
+
+        
+
+        <div class="rhCamada1">
+            <h3 class = "tituloMinhasComunidades" id="minhasComunidades">MINHAS COMUNIDADES</h3>
+            <div class="rhCamada2">
+                <div class="minhasComunidades">
+                    <div class="ComunidadesUsuario">
+                        @foreach (var item in Model.getComunidadesUsuario)
+                            {   <a href="~/ComunidadePage/@item.comunidade.nomeComunidade">
+                                <div class="cardMinhasComunidades">
+                                    @if (item.comunidade.iconeComunidade != null)
+                                        {
+                                                <img class="community-icon" src="data:image/png;base64,@Convert.ToBase64String(item.comunidade.iconeComunidade)" alt="Imagem de Perfil" />
+                                        }
+                                                else
+                                            {
+                                                <img class="community-icon" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
+                                        }  
+                                      
+                                    <h4>@item.comunidade.nomeComunidade</h4>
+
+                                </div>
+                                </a>
+                            }
+                    </div>    
+                </div>
+            </div>
+        </div>
+
+        
+    </div> *@
+
+</div>
+
+
+
+<script>
+    const findCommunitiesItems = document.querySelectorAll(".findCommunitiesItems-container");
+    const communitiesSearch = document.getElementById("communitiesSearch");
+
+    communitiesSearch.addEventListener("input", () => {
+        const searchValue = communitiesSearch.value.toLowerCase();
+
+        findCommunitiesItems.forEach(item => {
+            const communityName = item.getAttribute("data-communityName").toLowerCase();
+            const communityFirstGame = item.getAttribute("data-communityFirstGame").toLowerCase();
+            const communitySecondGame = item.getAttribute("data-communitySecondGame").toLowerCase();
+            const communityThirdGame = item.getAttribute("data-communityThirdGame").toLowerCase();
+            if (communityName.includes(searchValue) || communityFirstGame.includes(searchValue) || 
+            communitySecondGame.includes(searchValue) || communityThirdGame.includes(searchValue)){
+                item.style.display = "flex";
+            } else {
+                item.style.display = "none";
+            }
+        });
+    });
+
+
+    const users = document.querySelectorAll(".users");
+    const usersSearch = document.getElementById("usersSearch");
+
+    usersSearch.addEventListener("input", () => {
+        const searchValue = usersSearch.value.toLowerCase();
+
+        users.forEach(item => {
+            const username = item.getAttribute("data-username").toLowerCase();
+            if (username.includes(searchValue)) {
+                item.style.display = "flex";
+            } else {
+                item.style.display = "none";
+            }
+        });
+    });
+</script>
+
+
+ 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+<script src="~/js/ExplorarPage.js"></script>
+
+

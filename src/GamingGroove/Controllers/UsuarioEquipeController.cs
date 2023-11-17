@@ -1,7 +1,3 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -19,14 +15,12 @@ namespace GamingGroove.Controllers
             _context = context;
         }
 
-        // GET: UsuarioEquipe
         public async Task<IActionResult> Index()
         {
-            var gamingGrooveDbContext = _context.UsuariosEquipes.Include(u => u.equipe).Include(u => u.usuario);
+            var gamingGrooveDbContext = _context.UsuariosEquipes.Include(t => t.equipe).Include(t => t.usuario);
             return View(await gamingGrooveDbContext.ToListAsync());
         }
 
-        // GET: UsuarioEquipe/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.UsuariosEquipes == null)
@@ -35,9 +29,9 @@ namespace GamingGroove.Controllers
             }
 
             var usuarioEquipeModel = await _context.UsuariosEquipes
-                .Include(u => u.equipe)
-                .Include(u => u.usuario)
-                .FirstOrDefaultAsync(m => m.usuarioEquipeId == id);
+                .Include(t => t.equipe)
+                .Include(t => t.usuario)
+                .FirstOrDefaultAsync(m => m.usuarioId == id);
             if (usuarioEquipeModel == null)
             {
                 return NotFound();
@@ -46,7 +40,6 @@ namespace GamingGroove.Controllers
             return View(usuarioEquipeModel);
         }
 
-        // GET: UsuarioEquipe/Create
         public IActionResult Create()
         {
             ViewData["equipeId"] = new SelectList(_context.Equipes, "equipeId", "equipeId");
@@ -54,15 +47,19 @@ namespace GamingGroove.Controllers
             return View();
         }
 
-        // POST: UsuarioEquipe/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("usuarioEquipeId,usuarioId,equipeId,cargoEquipe,dataVinculoEquipe")] UsuarioEquipeModel usuarioEquipeModel)
         {
             if (ModelState.IsValid)
             {
+
+                var ultimoRegistroEquipeId = _context.UsuariosEquipes
+                    .OrderByDescending(uc => uc.usuarioEquipeId)
+                    .FirstOrDefault()?.usuarioEquipeId ?? 0;
+
+                usuarioEquipeModel.usuarioEquipeId = ultimoRegistroEquipeId + 1;   
+
                 _context.Add(usuarioEquipeModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -72,7 +69,6 @@ namespace GamingGroove.Controllers
             return View(usuarioEquipeModel);
         }
 
-        // GET: UsuarioEquipe/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.UsuariosEquipes == null)
@@ -80,7 +76,8 @@ namespace GamingGroove.Controllers
                 return NotFound();
             }
 
-            var usuarioEquipeModel = await _context.UsuariosEquipes.FindAsync(id);
+            var usuarioEquipeModel = await _context.UsuariosEquipes
+                .FirstOrDefaultAsync(uc => uc.usuarioEquipeId == id);
             if (usuarioEquipeModel == null)
             {
                 return NotFound();
@@ -90,9 +87,6 @@ namespace GamingGroove.Controllers
             return View(usuarioEquipeModel);
         }
 
-        // POST: UsuarioEquipe/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("usuarioEquipeId,usuarioId,equipeId,cargoEquipe,dataVinculoEquipe")] UsuarioEquipeModel usuarioEquipeModel)
@@ -106,8 +100,17 @@ namespace GamingGroove.Controllers
             {
                 try
                 {
-                    _context.Update(usuarioEquipeModel);
-                    await _context.SaveChangesAsync();
+                    var existingUsuarioEquipe = await _context.UsuariosEquipes.FirstOrDefaultAsync(uc => uc.usuarioEquipeId == id);
+
+                    if (existingUsuarioEquipe != null)
+                    {
+                        existingUsuarioEquipe.usuarioId = usuarioEquipeModel.usuarioId;
+                        existingUsuarioEquipe.equipeId = usuarioEquipeModel.equipeId;
+                        existingUsuarioEquipe.cargoEquipe = usuarioEquipeModel.cargoEquipe;
+                        
+                        _context.Update(existingUsuarioEquipe);
+                        await _context.SaveChangesAsync();
+                    }
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -127,7 +130,6 @@ namespace GamingGroove.Controllers
             return View(usuarioEquipeModel);
         }
 
-        // GET: UsuarioEquipe/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.UsuariosEquipes == null)
@@ -136,8 +138,8 @@ namespace GamingGroove.Controllers
             }
 
             var usuarioEquipeModel = await _context.UsuariosEquipes
-                .Include(u => u.equipe)
-                .Include(u => u.usuario)
+                .Include(t => t.equipe)
+                .Include(t => t.usuario)
                 .FirstOrDefaultAsync(m => m.usuarioEquipeId == id);
             if (usuarioEquipeModel == null)
             {
@@ -147,7 +149,6 @@ namespace GamingGroove.Controllers
             return View(usuarioEquipeModel);
         }
 
-        // POST: UsuarioEquipe/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -156,7 +157,8 @@ namespace GamingGroove.Controllers
             {
                 return Problem("Entity set 'GamingGrooveDbContext.UsuariosEquipes'  is null.");
             }
-            var usuarioEquipeModel = await _context.UsuariosEquipes.FindAsync(id);
+            var usuarioEquipeModel = await _context.UsuariosEquipes
+                .FirstOrDefaultAsync(uc => uc.usuarioEquipeId == id);
             if (usuarioEquipeModel != null)
             {
                 _context.UsuariosEquipes.Remove(usuarioEquipeModel);

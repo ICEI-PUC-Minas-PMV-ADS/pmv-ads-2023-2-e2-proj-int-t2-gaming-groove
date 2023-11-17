@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Index";
+    Layout = "";
 }
 
 <h1>Index</h1>
@@ -37,13 +38,19 @@
                 @Html.DisplayNameFor(model => model.fotosGaleria)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.jogosFavoritos)
+                @Html.DisplayNameFor(model => model.primeiroJogo)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.segundoJogo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.terceiroJogo)
+            </th>                        
             <th>
                 @Html.DisplayNameFor(model => model.biografia)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.registrationDate)
+                @Html.DisplayNameFor(model => model.dataRegistro)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.tipoUsuario)
@@ -67,25 +74,58 @@
                 @Html.DisplayFor(modelItem => item.email)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.senha)
+                <text>@item.senha.Substring(0, 10)</text>
             </td>            
             <td>
-                @Html.DisplayFor(modelItem => item.iconePerfil)
+                @{
+                    if (item.iconePerfil != null && item.iconePerfil.Length > 10)
+                    {
+                        <text>@item.iconePerfil.ToString().Substring(0, 10)</text>
+                    }
+                    else
+                    {
+                        @item.iconePerfil
+                    }
+                }
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.capaPerfil)
+                @{
+                    if (item.capaPerfil != null && item.capaPerfil.Length > 10)
+                    {
+                        <text>@item.capaPerfil.ToString().Substring(0, 10)</text>
+                    }
+                    else
+                    {
+                        @item.capaPerfil
+                    }
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.fotosGaleria)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.jogosFavoritos)
+                @Html.DisplayFor(modelItem => item.primeiroJogo)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.biografia)
+                @Html.DisplayFor(modelItem => item.segundoJogo)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.registrationDate)
+                @Html.DisplayFor(modelItem => item.terceiroJogo)
+            </td>  
+            <td>
+                @{
+                    if (item.biografia != null && item.biografia.Length > 50)
+                    {
+                        <text>@item.biografia.Substring(0, 50)</text><div>...</div>
+                    }
+                    else
+                    {
+                        @item.biografia
+                    }
+                }
+            </td>                                    
+            <td>
+                @Html.DisplayFor(modelItem => item.dataRegistro)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.tipoUsuario)

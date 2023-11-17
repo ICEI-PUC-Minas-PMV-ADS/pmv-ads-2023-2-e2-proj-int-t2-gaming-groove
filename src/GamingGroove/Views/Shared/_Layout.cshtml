@@ -1,73 +1,225 @@
-﻿<!DOCTYPE html>
+﻿@using System.Security.Claims
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
+    <link rel="icon" href="~/images/logos/gg-favicon.png" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - GamingGroove</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/GamingGroove.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css" />
+    <link rel="stylesheet" href="~/css/_Layout.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/fonts.css" asp-append-version="true" />
 </head>
+
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">GamingGroove</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Usuario">Usuários</a>
-                        </li>                      
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Comunidade">Comunidades</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Equipe">Equipes</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Publicacao">Publicações</a>
-                        </li>    
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Comentario">Comentários</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Curtida">Curtidas</a>
-                        </li>     
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Amizade">Amizades</a>
-                        </li>                                                                            
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Chat">Chats</a>
-                        </li>                                                                                                    
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Denuncia">Denúncias</a>
-                        </li>                                                                                                                                                                   
-                    </ul>
+    <header>      
+        <a href="~/FeedPage"><img class="logo" src="~/images/logos/gg-logo.png" alt=""></a>
+        <nav class="navbar">
+            <a href="~/FeedPage" class="iconBackground1" title="Feed">
+                <img class="icon" id="icon1" src="~/images/icons/feed-icon.svg" alt="">
+            </a>
+            <a href="~/ComunidadeHomePage" class="iconBackground2" title="Suas Comunidades">
+                <img class="icon" id="icon2" src="~/images/icons/communities-icon.svg" alt="">
+            </a>
+            <a href="~/ExplorarPage" class="iconBackground3" title="Explorar">
+                <img class="icon" id="icon3" src="~/images/icons/explore-icon.svg" alt="">
+            </a>
+            <a href="~/EquipePage" class="iconBackground4" title="Formador de Equipes">
+                <img class="icon" id="icon4" src="~/images/icons/teams-icon.svg" alt="">
+            </a>
+                        
+        </nav>
+        @if (User.Identity.IsAuthenticated)
+        {     
+            var profileImage = Url.Action("GetIconeUsuario", "HomePageCadastro");
+
+            <button id="menu-icon" class="menu-icon" onclick="openMenu()"><img src="@profileImage" alt=""></button>
+            <nav id="listMenu" class="list-menu">
+                <div class="list">
+                    <a href="~/PerfilPage/@User.FindFirst(ClaimTypes.Name)?.Value">Perfil</a>
+                    <a asp-area="" asp-controller="HomePageLogin" asp-action="Logout">Sair</a>
+                </div>
+            </nav>
+        }
+        else
+        {
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Login"></a>
+            </li>
+        }
+
+    </header>
+
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+
+
+    <footer>
+        <div class="friendsList-container">
+            <div class="friendsListButton" id="friendsListButton">
+                <img class="friendsListButton-icon" id="friendsListButtonIcon" src="~/images/icons/friendsList-icon.svg" alt="">
+                <div id="friendsListButtonTitle">Lista de Amigos</div>            
+                @if(@Model.getTodosUsuariosSolicitacoes.Count > 0)
+                {
+                    <div id="friendsRequest-alert">
+                    (@Model.getTodosUsuariosSolicitacoes.Count)
+                    </div> 
+                }             
+            </div>
+            <div class="friendsListItems-container"></div>
+            <div class="friendsList" id="friendsList">
+                @if(Model.getTodosUsuariosSolicitacoes.Count >= 1)
+                {
+                    <div class="friendsRequest-container">
+                        <button type="button" class="friendsRequest-button" data-bs-toggle="modal" data-bs-target="#friedsRequest-modal">Solicitações de amizade (@Model.getTodosUsuariosSolicitacoes.Count)</button>			
+                    </div>
+                }                
+                <form class="friendsList-form" role="search">
+                    <input id="friendsList-input" class="friendsList-input" type="search" placeholder="Buscar amigo" aria-label="Search">
+                </form>
+                <div class="friendsListItems">
+
+                    @if(Model.getAmizadesUsuario != null)
+                    {
+
+                        @foreach(var amizade in Model.getTodosUsuariosAmigos)
+                        {
+                            @if(amizade.nomeUsuario == User.Identity.Name){}
+                            else
+                            {   
+                                
+                                <div class="friendsList-items" data-username="@amizade.nomeUsuario" id="friendsList-items">
+                                    <a href="~/PerfilPage/@amizade.nomeUsuario">
+                                        <div class="friendInfo-container">
+                                            @if(amizade.iconePerfil != null)
+                                            {
+                                                <img class="friendIcon" id="friendIcon" src="data:image/png;base64,@Convert.ToBase64String(amizade.iconePerfil)" alt="">
+                                            }
+                                            else
+                                            {
+                                                <img class="friendIcon" id="friendIcon" src="~/images/icons/empty-icon.png" alt="">
+                                            }
+                                            
+                                            <div class="friendUsername" id="friendUsername">@amizade.nomeUsuario</div>
+                                        </div>
+                                    </a>
+                                    <a href="http://localhost:3000/chat?amizadeId=@amizade.usuarioId&usuarioId=@User.FindFirst(ClaimTypes.NameIdentifier)?.Value" title="Abrir chat com @amizade.nomeUsuario">
+                                        <img class="chatButton" src="~/images/icons/comment-icon.svg">
+                                    </a>
+                                </div>
+                                <div class="divLine"></div>
+                            }
+                        }
+                    }
+                    else {
+                        <div>Você ainda não adicionou nenhum amigo :(</div>
+                    }
                 </div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - GamingGroove - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
+
+
+
+<div class="modal fade" id="friedsRequest-modal" tabindex="-1 aria-hidden="true">
+	<div class="modal-dialog" id="friendsRequest-dialog">
+		<div class="modal-content post" id="friendsRequest-content">
+            <div class="friendsRequestModal-title">Solicitações de amizade:</div>
+            <div class="friendsRequestList">
+                @if(Model.getTodosUsuariosSolicitacoes == null)
+                {
+                    <div>Você não tem solicitações de amizade no momento.</div>
+                }
+                else
+                {
+                    @foreach(var solicitacao in Model.getTodosUsuariosSolicitacoes)
+                    {
+                        <div class="friendsRequestItems">
+                            <a href="~/PerfilPage/@solicitacao.nomeUsuario"><div class="userRequest-info">
+                                @if(solicitacao.iconePerfil != null)
+                                {
+                                    <img class="userIcon-request" src="data:image/png;base64,@Convert.ToBase64String(solicitacao.iconePerfil)" alt="Imagem de Perfil do Usuário" />
+                                }
+                                else
+                                {
+                                    <img class="userIcon-request" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
+                                }
+                                <div class="friendRequest-username">@solicitacao.nomeUsuario</div>
+                            </div></a>
+                            <div class="friendsRequest-buttons">
+                                <form class="friendsRequest-form" asp-controller="PerfilPage" asp-action="AceitarAmizade">
+                                    <input type="hidden" name="SolicitanteId" value="@solicitacao.usuarioId">
+                                    <button class="friendsRequest-submit" type="submit"><img class="checkIcon" src="~/images/icons/check-icon.svg"></button>
+                                </form>   
+                                <form class="friendsRequest-form" asp-controller="PerfilPage" asp-action="RecusarAmizade">
+                                    <input type="hidden" name="SolicitanteId" value="@solicitacao.usuarioId">
+                                    <button class="friendsRequest-submit" type="submit"><img class="xIcon" src="~/images/icons/x-icon.svg"></button>
+                                </form>   
+                            </div>
+                        </div>                                              
+                    }
+                }
+
+            </div>
+            <button type="button" class="friendsRequest-close" data-bs-dismiss="modal" aria-label="Fechar">Fechar</button>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+    <script src="~/js/Menu.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+
+
+<script>
+    const friendsListButton = document.getElementById("friendsListButton");
+    const friendsList = document.getElementById("friendsList");
+    const friendsListButtonTitle = document.getElementById("friendsListButtonTitle");
+    const friendsListButtonIcon = document.getElementById("friendsListButtonIcon");
+    const friendsRequestAlert = document.getElementById("friendsRequest-alert");
+
+    friendsListButton.addEventListener("click", () => {
+    if (friendsList.style.display === "flex") {
+        friendsList.style.display = "none";
+        friendsListButton.style.backgroundColor = "#110B31";
+        friendsListButtonTitle.style.color = "white";
+        friendsListButtonTitle.style.fontWeight = "normal";
+        friendsListButtonIcon.style.filter = "none"
+        friendsRequestAlert.style.display = "flex";
+    } else {
+        friendsList.style.display = "flex";
+        friendsListButton.style.backgroundColor = "#E3A5FF";
+        friendsListButtonTitle.style.color = "black";
+        friendsListButtonTitle.style.fontWeight = "bold";
+        friendsListButtonIcon.style.filter = "brightness(0%)"
+        friendsRequestAlert.style.display = "none";
+
+    }
+    });
+
+    const friendsListItems = document.querySelectorAll(".friendsList-items");
+    const friendsListInput = document.getElementById("friendsList-input");
+
+    friendsListInput.addEventListener("input", () => {
+        const searchValue = friendsListInput.value.toLowerCase();
+
+        friendsListItems.forEach(item => {
+            const username = item.getAttribute("data-username").toLowerCase();
+            if (username.includes(searchValue)) {
+                item.style.display = "flex";
+            } else {
+                item.style.display = "none";
+            }
+        });
+    });
+</script>

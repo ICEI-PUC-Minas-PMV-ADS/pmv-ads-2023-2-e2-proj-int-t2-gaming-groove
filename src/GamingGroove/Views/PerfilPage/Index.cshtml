@@ -1,0 +1,324 @@
+@model GamingGroove.Views.Shared.ViewModel
+@using System.Security.Claims
+
+@{
+    ViewData["Title"] = "PerfilPage";
+}
+
+
+@{
+	string notificacao = "";
+}
+@if(@Model.getTodosUsuariosSolicitacoes.Count() > 0){
+	 notificacao = "(" + Model.getTodosUsuariosSolicitacoes.Count().ToString() + ")";
+}   
+<title>Perfil de @Model.getUsuario.nomeUsuario @notificacao</title>
+<link rel="stylesheet" href="~/css/PerfilPage.css" asp-append-version="true" />
+
+<div class="main-container">
+            
+    @{
+        var background = "#c6c6c6;";
+    }
+    @if (Model.getUsuario.capaPerfil != null)
+    {
+        background = "url('data:image/png;base64," + Convert.ToBase64String(Model.getUsuario.capaPerfil) + "') no-repeat center center / cover";
+    }
+
+    <div class="cover-pic" style="background: @background;">   
+        <div class="cover-first-container">
+            @if (Model.getUsuario.iconePerfil != null)
+            {
+                <img class="profile-pic" src="data:image/png;base64,@Convert.ToBase64String(Model.getUsuario.iconePerfil)" alt="Imagem de Perfil" />
+            }
+            else
+            {
+                <img class="profile-pic" src="~/images/icons/user-icon.png" alt="Imagem de Perfil Padrão" style= "background-color: white;" />
+            }
+
+                <div class="user-add-friend-container">
+                    <div class="user-border">
+                        <div class="username">@Model.getUsuario.nomeUsuario</div>
+                    </div>
+                    @if(User.Identity.Name == Model.getUsuario.nomeUsuario)
+                    {
+
+                    }
+                    else 
+                    {
+                        @if(Model.amizadeExistente != null && Model.amizadeExistente.estadoAmizade == EstadoAmizade.Pendente && Model.amizadeExistente.solicitanteId != Model.IdUsuarioLogado)
+                        {
+                            <button class="requestedFriendRequest-button" title="Você tem uma solicitação pendente deste usuário.">...</button>
+                        }
+                        @if(Model.amizadeExistente != null && Model.amizadeExistente.estadoAmizade == EstadoAmizade.Pendente && Model.amizadeExistente.solicitanteId == Model.IdUsuarioLogado)
+                        {
+                            <button class="requestedFriendRequest-button" title="Você já solicitou amizade a este usuário.">...</button>
+                        }
+                        @if(Model.amizadeExistente != null && Model.amizadeExistente.estadoAmizade == EstadoAmizade.Aceita)
+                        {
+                            <form asp-action="DesfazerAmizade">
+                                <input type="hidden" name="IdUsuarioPagina" value="@Model.getUsuario.usuarioId">
+                                <button class="removeFriend-button"><img class="removeUser-icon" src="~/images/icons/checkCircle-icon.svg" title="Desfazer amizade"></button>
+                            </form>
+                        }
+                        @if(Model.amizadeExistente == null)
+                        {
+                            <form asp-action="SolicitarAmizade">
+                                <input type="hidden" name="IdUsuarioPagina" value="@Model.getUsuario.usuarioId">
+                                <button type="submit" class="addFriend-button"><img class="addUser-icon" src="~/images/icons/add-user.svg" title="Adicionar amigo"></button>
+                            </form>
+                        }
+                    }
+                </div>
+        </div>
+        <div class="cover-second-container">
+            @if(User.Identity.Name == Model.getUsuario.nomeUsuario)
+            {
+                <button type="button" class="profileButton" data-bs-toggle="modal" data-bs-target="#editProfile-modal"><img class="edit-profile-icon" src="~/images/icons/edit-icon.svg" alt=""></button>
+            }    
+            else
+            {
+                <button type="button" class="profileButton" data-bs-toggle="modal" data-bs-target="#reportUser-modal"><img class="report-icon" src="~/images/icons/report-icon.svg"></button>
+            }            
+        </div>
+    </div>
+    <div class="profile-informations">
+        <div class="profile-container">
+
+                <div class="column">
+                    <h3>BIOGRAFIA</h3>
+                    <div class="inside-column">
+                        <div class="bio-text">
+                            @Model.getUsuario.biografia
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <h3>JOGOS FAvORITOS</h3>
+                    <div class="inside-column">
+                        <div class="favorite-games-container">
+                            @if (Model.getUsuario.primeiroJogo != null && Model.getUsuario.segundoJogo != null && Model.getUsuario.terceiroJogo != null)
+                            {
+                                <div class="favorite-games-items">
+                                    <div class="gameIcon-container">
+                                        <img src="~/images/icons/jogos/@(Model.getUsuario.primeiroJogo).svg" alt="">
+                                    </div>
+                                    <div>@EnumHelper.GetDisplayName(Model.getUsuario.primeiroJogo)</div>                                      
+                                </div>
+                                <div class="favorite-games-items">
+                                    <div class="gameIcon-container">
+                                        <img src="~/images/icons/jogos/@(Model.getUsuario.segundoJogo).svg" alt="">
+                                    </div>
+                                    <div>@EnumHelper.GetDisplayName(Model.getUsuario.segundoJogo)</div>                                               
+                                </div>
+                                <div class="favorite-games-items">
+                                    <div class="gameIcon-container">
+                                        <img src="~/images/icons/jogos/@(Model.getUsuario.terceiroJogo).svg" alt="">
+                                    </div>
+                                    <div>@EnumHelper.GetDisplayName(Model.getUsuario.terceiroJogo)</div>                                              
+                                </div>
+                            }                                     
+                        </div>                                                                  
+                    </div>
+                </div>
+                <div class="column">
+                    <h3>EQUIPES</h3>
+                    <div class="inside-column">
+                        <div class="user-teams-list">
+                            @foreach (var item in Model.getEquipesUsuario)
+                            {
+                                <div class="user-teams-items">                
+                                    @if (item.equipe.iconeEquipe != null)
+                                    {
+                                        <img class="team-icon" src="data:image/png;base64,@Convert.ToBase64String(item.equipe.iconeEquipe)" alt="Imagem de Perfil" />
+                                    }
+                                    else
+                                    {
+                                        <img class="team-icon" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
+                                    }  
+                                    <div class="team-info">
+                                        <div class="team-name">@item.equipe.nomeEquipe</div>                                
+                                        <div class="team-game">@EnumHelper.GetDisplayName(@item.equipe.jogoEquipe)</div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <h3>COMUNIDADES</h3>
+                    <div class="inside-column">
+                        <div class="user-communities-list">
+                            @foreach (var item in Model.getComunidadesUsuario)
+                            {
+                                int _comunidadeId = item.comunidadeId;
+                                int numberOfMembers = Model.GetNumberOfMembersInCommunity(_comunidadeId);
+                                <button class="user-communities-items">
+                                    <div class="community-header">
+                                        @if (item.comunidade.iconeComunidade != null)
+                                        {
+                                            <img class="community-icon" src="data:image/png;base64,@Convert.ToBase64String(item.comunidade.iconeComunidade)" alt="Imagem de Perfil" />
+                                        }
+                                        else
+                                        {
+                                            <img class="community-icon" src="~/images/icons/empty-icon.png" alt="Imagem de Perfil" />
+                                        }               
+                                        <div class="community-info">
+                                            <div class="community-name">@item.comunidade.nomeComunidade</div>
+                                            <div class="community-members">Membros: @numberOfMembers</div>                                        
+                                        </div>
+                                    </div>
+                                    <div class="hidden" id="communityHidden">
+                                        <div class="community-games-container">
+                                            <div class="community-games-background">
+                                                <img src="~/images/icons/jogos/@(item.comunidade.primeiroJogo).svg" title="@(EnumHelper.GetDisplayName(item.comunidade.primeiroJogo))">
+                                            </div>
+                                            <div class="community-games-background">
+                                                <img src="~/images/icons/jogos/@(item.comunidade.segundoJogo).svg" title="@(EnumHelper.GetDisplayName(item.comunidade.segundoJogo))">
+                                            </div>
+                                            <div class="community-games-background">
+                                                <img src="~/images/icons/jogos/@(item.comunidade.terceiroJogo).svg" title="@(EnumHelper.GetDisplayName(item.comunidade.terceiroJogo))">
+                                            </div>                                                                                   
+                                        </div> 
+                                        <a href="~/ComunidadePage/@item.comunidade.nomeComunidade"><div class="visit-button"><div>Visitar</div></div></a>                                                         
+                                    </div>
+                                </button>
+                            }
+                        </div>                            
+                    </div>
+                </div>      
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editProfile-modal" tabindex="-1" aria-labelledby="usuarioModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content post" id="postModal-content">
+            <form class="main-container" asp-controller="PerfilPage" asp-action="EditarPerfil" enctype="multipart/form-data">
+                <div class="edit-container">
+                    <div class="userData-input">
+                        <input type="hidden" name="NomeUsuario" value="@Model.getUsuario.nomeUsuario"/>
+                        <input type="hidden" name="NomeCompleto" value="@Model.getUsuario.nomeCompleto" />
+                        <input type="hidden" name="DataNascimento" value="@Model.getUsuario.dataNascimento" />
+                        <input type="hidden" name="Email" value="@Model.getUsuario.email" />
+                        <input type="hidden" name="Senha" value="@Model.getUsuario.senha" />
+                    </div>
+                    <div class="editProfile-container">                    
+                        <div class="secondSection-container">
+                            <div class="favGames-container">
+                                <div class="imageInput-container">
+                                    <div>Selecione suas imagens de perfil:</div>
+                                    <div class="profileIcon-input-container">
+                                        <div class="profileImage-input">
+                                            <label class="imageInput" for="profileIcon-input"><img class="uploadIcon" src="~/images/icons/upload-icon.svg" alt="">Ícone de perfil</label>
+                                            <input id="profileIcon-input" type="file" name="IconePerfilArquivo" value="@Model.getUsuario.iconePerfil"/>
+                                        </div>                        
+                                    </div>
+                                    <div class="profileCover-input-container">
+                                        <div class="profileImage-input">
+                                            <label class="imageInput" for="profileCover-input"><img  class="uploadIcon" src="~/images/icons/upload-icon.svg" alt="">Imagem de capa</label>
+                                            <input id="profileCover-input" type="file" name="CapaPerfilArquivo" value="@Model.getUsuario.capaPerfil"/>
+                                        </div>                        
+                                    </div>
+                                </div>
+                                <div class="favGames-label-container">
+                                    <div class="favGames-label">Selecione seus três jogos favoritos:</div>
+                                    <div class="favGames-alert">@ViewBag.Message</div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <select name="PrimeiroJogo" value="@Model.getUsuario.primeiroJogo" class="form-control" asp-items="Html.GetEnumSelectList<JogosEnum>()">
+                                        <option value="@Model.getUsuario.primeiroJogo">@EnumHelper.GetDisplayName(Model.getUsuario.primeiroJogo)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select name="SegundoJogo" value="@Model.getUsuario.segundoJogo" class="form-control" asp-items="Html.GetEnumSelectList<JogosEnum>()">
+                                        <option value="@Model.getUsuario.segundoJogo">@EnumHelper.GetDisplayName(Model.getUsuario.segundoJogo)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select name="TerceiroJogo" value="@Model.getUsuario.terceiroJogo" class="form-control" asp-items="Html.GetEnumSelectList<JogosEnum>()">
+                                        <option value="@Model.getUsuario.segundoJogo">@EnumHelper.GetDisplayName(Model.getUsuario.segundoJogo)</option>
+                                    </select>
+                                </div>   
+                            </div>
+                            <div class="biographyForm">
+                                <div>Fale um pouco sobre você:</div>
+                                <div class="form-group">
+                                    <textarea type="text" name="Biografia" id="bioText-form" class="form-control bio-text" rows="10" maxlength="534">@Model.getUsuario.biografia</textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="buttons-container">
+                            <button class="submit-button" type="button" class="closeButton" data-bs-dismiss="modal" aria-label="Fechar">Cancelar</button>
+                            <button class="submit-button" type="submit">Salvar alterações</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+		</div>
+	</div>
+</div>
+
+
+<div class="modal fade" id="reportUser-modal" tabindex="-1" aria-labelledby="usuarioModalLabel" aria-hidden="true">
+	<div class="modal-dialog" id="reportModal-dialog">
+		<div class="modal-content post" id="reportModal-content">
+            <form class="main-container" asp-controller="Denuncia" asp-action="DenunciarUsuario" enctype="multipart/form-data">
+                <input type="hidden" name="DenunciadoId" value="@Model.getUsuario.usuarioId">
+                <div class="reportModal-container">
+                    <div class="report-container">  
+                        <div class="report-title">Você está prestes a denunciar <br><span>@Model.getUsuario.nomeUsuario</span></div>                  
+                        <div class="reportContent-container">
+                            <div class="reportType-container">
+                                <div class="reportTypeTitle-container">
+                                    <div class="reportType-title">Selecione o tipo de denúncia:</div>
+                                    <div class="reportType-alert">@ViewBag.Message</div>
+                                </div>    
+                                <div class="form-group">
+                                    <select name="TipoDenuncia" class="form-control" asp-items="Html.GetEnumSelectList<TiposDenuncia>()"></select>
+                                </div>
+                            </div>
+                            <div class="descriptionForm">
+                                <div>Faça uma descrição da denúncia:</div>
+                                <div class="form-group">
+                                    <textarea type="text" name="DescricaoDenuncia" id="descriptionText-form" class="form-control bio-text" rows="10" maxlength="534"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="reportButtons-container">
+                            <button class="reportSubmit-button" type="button" class="closeButton" data-bs-dismiss="modal" aria-label="Fechar">Cancelar</button>
+                            <button class="reportSubmit-button" type="submit">Enviar denúncia</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+		</div>
+	</div>
+</div>
+
+
+
+<script>
+    const communityButtons = document.querySelectorAll(".user-communities-items");
+
+    communityButtons.forEach(communityButton => {
+        const communityHidden = communityButton.querySelector(".hidden");
+
+        communityButton.addEventListener("click", function() {
+            communityButtons.forEach(button => {
+                const hidden = button.querySelector(".hidden");
+                if (communityHidden.style.display === 'block') {
+                    communityHidden.style.display = 'none';
+                    communityButton.classList.add('ativo')
+                } else {
+                    communityHidden.style.display = 'block';
+                    communityButton.classList.remove('ativo')
+                }
+            });
+        });
+    });
+
+
+
+</script>
