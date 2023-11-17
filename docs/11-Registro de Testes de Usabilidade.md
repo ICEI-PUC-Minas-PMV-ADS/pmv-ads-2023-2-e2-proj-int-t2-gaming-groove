@@ -75,9 +75,9 @@ Os resultados dos testes de usabilidade estão sendo registrados por meio das ta
 **Parâmetro 010 – Bloquear usuários**
 | **Usuário** 	| **Avaliação** | 
 | --- 	| --- |
-| Amanda Oliveira	| |
-| Thiago Nunes     | |
-| Roberto Tanaka    	| | 
+| Amanda Oliveira	|Fácil |
+| Thiago Nunes     |Fácil |
+| Roberto Tanaka    	|Fácil | 
 
 **Parâmetro 011 – Navegar no menu explorar**
 | **Usuário** 	| **Avaliação** | 
@@ -89,9 +89,9 @@ Os resultados dos testes de usabilidade estão sendo registrados por meio das ta
 **Parâmetro 012 – Denunciar usuários, comunidades e publicações**
 | **Usuário** 	| **Avaliação** | 
 | --- 	| --- |
-| Amanda Oliveira	| |
-| Thiago Nunes     | |
-| Roberto Tanaka    	| | 
+| Amanda Oliveira	| Fácil|
+| Thiago Nunes     |Fácil |
+| Roberto Tanaka    	| Fácil| 
 
 <br>
 <br>
