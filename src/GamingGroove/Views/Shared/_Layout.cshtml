@@ -80,7 +80,6 @@
                     <input id="friendsList-input" class="friendsList-input" type="search" placeholder="Buscar amigo" aria-label="Search">
                 </form>
                 <div class="friendsListItems">
-
                     @if(Model.getAmizadesUsuario != null)
                     {
 
@@ -105,9 +104,19 @@
                                             <div class="friendUsername" id="friendUsername">@amizade.nomeUsuario</div>
                                         </div>
                                     </a>
-                                    <a href="http://localhost:3000/chat?amizadeId=@amizade.usuarioId&usuarioId=@User.FindFirst(ClaimTypes.NameIdentifier)?.Value" title="Abrir chat com @amizade.nomeUsuario">
-                                        <img class="chatButton" src="~/images/icons/comment-icon.svg">
-                                    </a>
+
+                                    @if (((IEnumerable<dynamic>)Model.getAmizadesUsuario).Any(u => u.receptorId == amizade.usuarioId && u.solicitanteId.ToString() == User.FindFirst(ClaimTypes.NameIdentifier)?.Value))
+                                    {
+                                        <a href="http://localhost:3000/chat?amizadeId=@User.FindFirst(ClaimTypes.NameIdentifier)?.Value&usuarioId=@amizade.usuarioId" title="Abrir chat com @amizade.nomeUsuario">
+                                            <img class="chatButton" src="~/images/icons/comment-icon.svg">
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <a href="http://localhost:3000/chat?amizadeId=@amizade.usuarioId&usuarioId=@User.FindFirst(ClaimTypes.NameIdentifier)?.Value" title="Abrir chat com @amizade.nomeUsuario">
+                                            <img class="chatButton" src="~/images/icons/comment-icon.svg">
+                                        </a>
+                                    }
                                 </div>
                                 <div class="divLine"></div>
                             }
