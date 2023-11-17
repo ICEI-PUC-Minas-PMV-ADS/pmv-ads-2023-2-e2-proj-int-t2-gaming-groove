@@ -53,7 +53,6 @@ namespace GamingGroove
             builder.Services.AddDistributedMemoryCache();
             builder.Services.AddSession();    
 
-            // 1. Adicionar suporte ao SignalR
             builder.Services.AddSignalR();
 
             var app = builder.Build();
@@ -69,10 +68,8 @@ namespace GamingGroove
 
             app.UseRouting();
 
-            // 2. Adicionar o mapeamento para o hub do chat
             app.MapHub<ChatHub>("/chatHub");
 
-            // 3. Adicione as configurações de sessão antes de UseAuthentication e UseAuthorization
             app.UseSession();
 
             app.UseAuthentication();
