@@ -62,6 +62,7 @@ namespace GamingGroove.Views.Shared
         public IEnumerable<ComentarioModel> getComentariosPublicacao { get; set; }
 
         public IEnumerable<AmizadeModel> getTodasAmizades { get; set; }
+        public AmizadeModel getAmizadeChat { get; set; }
         public IEnumerable<AmizadeModel> getAmizadesUsuario { get; set; }
         public IEnumerable<AmizadeModel> getSolicitacoes { get; set; }
         public AmizadeModel amizadeExistente { get; set; }
@@ -93,9 +94,6 @@ namespace GamingGroove.Views.Shared
 
             getTodosUsuariosAmigos = _cc.Usuarios.Where(usuario => amizadeUserIds.Contains(usuario.usuarioId)).ToList();
             
-
-
-
             getSolicitacoes = _cc.Amizades
                 .Where(uc => uc.receptorId == IdUsuarioLogado && uc.estadoAmizade == EstadoAmizade.Pendente && uc.solicitanteId != IdUsuarioLogado)
                 .ToList();         
@@ -107,6 +105,9 @@ namespace GamingGroove.Views.Shared
             getTodosUsuariosSolicitacoes = getTodosUsuariosSolicitacoes
                 .Where(solicitacao => solicitacao.usuarioId != IdUsuarioLogado)
                 .ToList();                             
+
+
+            getAmizadeChat = _cc.Amizades.FirstOrDefault(uc => uc.solicitanteId == IdUsuarioLogado);
         }
 
         //PerfilPage
