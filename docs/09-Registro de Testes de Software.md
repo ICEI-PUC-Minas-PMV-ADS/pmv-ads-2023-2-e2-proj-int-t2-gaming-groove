@@ -67,15 +67,14 @@ https://github.com/shigerysasaki/pmv-ads-2023-2-e2-proj-int-t2-gaming-groove/ass
 
 | **Caso de Teste**   | **Caso de Teste 10 – Bloquear Usuário** |
 |:---:	|:---:	|
-|	Ainda nao foi realizado.| OFF |
+|	É possivel bloquear o usuario pela lista de amigos removendo do seus contatos.| ok |
+https://github.com/shigerysasaki/pmv-ads-2023-2-e2-proj-int-t2-gaming-groove/assets/126729120/c75e117f-e365-4fa6-8e61-9e3a171c830e
 
 | **Caso de Teste**   | **Caso de Teste 11 – Pesquisar Usuário** |
 |:---:	|:---:	|
 |	Como demonstrado no video, na barra de Explorar é possivel encontrar o campo "Pesquisar Usuarios". Nela, você consegue pesquisar os Usuarios de acordo com seus nomes.| ok |
 
-
 https://github.com/shigerysasaki/pmv-ads-2023-2-e2-proj-int-t2-gaming-groove/assets/126729120/b27c40b4-4062-49b0-bcb0-7ed48bbbd44b
-
 
 | **Caso de Teste**   | **Caso de Teste 12 – Pesquisar Comunidade** |
 |:---:	|:---:	|
@@ -92,7 +91,9 @@ https://github.com/shigerysasaki/pmv-ads-2023-2-e2-proj-int-t2-gaming-groove/ass
 
 | **Caso de Teste**   | **Caso de Teste 14 – Denunciar Comunidades** |
 |:---:	|:---:	|
-|	Ainda nao foi realizado.| OFF |
+| Durante os testes foi realizado a denuncia de comunidade tentro da página de perfil da propria comunidade.| ok |
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e2-proj-int-t2-gaming-groove/assets/126729120/580eafef-bbf3-4f42-9386-7f5f477c27be
 
 | **Caso de Teste**   | **Caso de Teste 15 – Denunciar Publicação** |
 |:---:	|:---:	|
@@ -107,7 +108,3 @@ https://github.com/shigerysasaki/pmv-ads-2023-2-e2-proj-int-t2-gaming-groove/ass
 https://github.com/shigerysasaki/pmv-ads-2023-2-e2-proj-int-t2-gaming-groove/assets/126729120/b23c80ad-9d74-4a99-8f65-c081963fc3a7
 
 
-
-
-
- As estratégias para abordar essas deficiências incluem testes abrangentes de compatibilidade, auditorias de segurança, documentação aprimorada e implementação de melhorias no gerenciamento de sessões e validação de dados. Além disso, o projeto concentrou-se na criação bem-sucedida da tela de login e do cadastro de clientes, que representam marcos significativos no desenvolvimento da aplicação.
