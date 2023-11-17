@@ -2,12 +2,12 @@
 
 # Registro de Testes de Software
 
+## Avaliação
+
 
 | **Caso de Teste** 	| **Caso de Teste 01 – Cadastrar perfil** 	|
 |:---:	|:---:	|
 |	Cadastro de usuarios e visualização de alteração no banco de dados|  ok |
-
-## Avaliação
 
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e2-proj-int-t2-gaming-groove/assets/126729120/74e63893-d93f-4eed-8e44-0f79669c612d
