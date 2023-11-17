@@ -1,4 +1,5 @@
 public enum CargosEnum {
     ADM,
-    Membro
+    Membro,
+    Pendente
 }

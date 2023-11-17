@@ -44,9 +44,9 @@ namespace GamingGroove.Controllers
                 }
                 else
                 {
-                    if(string.IsNullOrEmpty(usuarioModel.nomeUsuario) || usuarioModel.nomeUsuario.Length < 6)
+                    if(string.IsNullOrEmpty(usuarioModel.nomeUsuario) || usuarioModel.nomeUsuario.Length < 6 || usuarioModel.nomeUsuario.Length > 14)
                     {
-                        ViewBag.Message = "O nome de usuário deve ter pelo menos 6 caracteres.";
+                        ViewBag.Message = "O nome de usuário deve ter entre 6 e 14 caracteres.";
                     }
                     else
                     {

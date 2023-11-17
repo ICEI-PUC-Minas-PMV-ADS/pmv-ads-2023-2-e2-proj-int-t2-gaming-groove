@@ -51,6 +51,7 @@ namespace GamingGroove.Views.Shared
         public IEnumerable<UsuarioEquipeModel> getEquipesUsuario { get; set; }
         public IEnumerable<UsuarioEquipeModel> getEquipesSugeridas { get; set; }
         public IEnumerable<UsuarioEquipeModel> getTodosUsuariosEquipes { get; set; }
+        public IEnumerable<UsuarioEquipeModel> getTodasSolicitacoes { get; set; }
         public List<int> infoEquipes { get; set; }
         
         
@@ -120,7 +121,7 @@ namespace GamingGroove.Views.Shared
             if (getUsuario != null)
             {
                 getEquipesUsuario = _cc.UsuariosEquipes
-                    .Where(ue => ue.usuarioId == getUsuario.usuarioId)
+                    .Where(ue => ue.usuarioId == getUsuario.usuarioId && ue.cargoEquipe != CargosEnum.Pendente)
                     .Include(ue => ue.equipe)
                     .ToList();  
 
@@ -142,6 +143,8 @@ namespace GamingGroove.Views.Shared
             IdUsuarioLogado = usuarioLogado;
             
             getTodosUsuarios = _cc.Usuarios.ToList();
+
+            getTodasSolicitacoes = _cc.UsuariosEquipes.ToList();     
 
             getTodasComunidades = _cc.Comunidades.ToList();
 
@@ -165,18 +168,13 @@ namespace GamingGroove.Views.Shared
                 .ToList();
             
             getEquipesUsuario = _cc.UsuariosEquipes
-                .Where(ue => ue.usuarioId == IdUsuarioLogado)
+                .Where(ue => ue.usuarioId == IdUsuarioLogado && ue.cargoEquipe != CargosEnum.Pendente)
                 .Include(ue => ue.equipe)
                 .ToList();     
 
             getEquipes = _cc.Equipes.ToList();
 
             getTodosUsuariosEquipes = _cc.UsuariosEquipes.ToList();
-            
-            getEquipesUsuario = _cc.UsuariosEquipes
-                .Where(ue => ue.usuarioId == IdUsuarioLogado)
-                .Include(ue => ue.equipe)
-                .ToList();       
             
             infoEquipes = getEquipesUsuario.Select(ue => ue.equipe.equipeId).ToList();
 
@@ -233,6 +231,25 @@ namespace GamingGroove.Views.Shared
                     .Where(uc => uc.comunidadeId == getComunidade.comunidadeId)
                     .ToList(); 
             }         
+
+            getTodosUsuariosEquipes = _cc.UsuariosEquipes
+                .Where(ue => ue.usuarioId == IdUsuarioLogado)
+                .Include(ue => ue.equipe)
+                .ToList();       
+            
+            getEquipesUsuario = _cc.UsuariosEquipes
+                .Where(ue => ue.usuarioId == IdUsuarioLogado && ue.cargoEquipe != CargosEnum.Pendente)
+                .Include(ue => ue.equipe)
+                .ToList();       
+            
+            infoEquipes = getEquipesUsuario.Select(ue => ue.equipe.equipeId).ToList();
+
+            getEquipesSugeridas = _cc.UsuariosEquipes
+                .Where(uc => uc.usuarioId != IdUsuarioLogado && !infoEquipes.Contains(uc.equipeId))
+                .Include(uc => uc.equipe)
+                .GroupBy(uc => uc.equipeId)
+                .Select(group => group.First())
+                .ToList(); 
                              
         }
 
@@ -245,7 +262,7 @@ namespace GamingGroove.Views.Shared
         public int GetNumberOfMembersInTeam(int _equipeId)
         {
             return _cc.UsuariosEquipes
-                .Count(uc => uc.equipeId == _equipeId);
+                .Count(uc => uc.equipeId == _equipeId && uc.cargoEquipe != CargosEnum.Pendente);
         }
 
         // ExplorarPage
@@ -276,10 +293,15 @@ namespace GamingGroove.Views.Shared
         {
             getEquipes = _cc.Equipes.ToList();
 
-            getTodosUsuariosEquipes = _cc.UsuariosEquipes.ToList();
+            getTodasSolicitacoes = _cc.UsuariosEquipes.ToList();     
+
+            getTodosUsuariosEquipes = _cc.UsuariosEquipes
+                .Where(ue => ue.usuarioId == IdUsuarioLogado)
+                .Include(ue => ue.equipe)
+                .ToList();       
             
             getEquipesUsuario = _cc.UsuariosEquipes
-                .Where(ue => ue.usuarioId == usuario)
+                .Where(ue => ue.usuarioId == IdUsuarioLogado && ue.cargoEquipe != CargosEnum.Pendente)
                 .Include(ue => ue.equipe)
                 .ToList();       
             
