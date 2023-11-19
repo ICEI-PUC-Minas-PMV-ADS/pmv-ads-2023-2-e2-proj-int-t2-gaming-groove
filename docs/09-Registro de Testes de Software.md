@@ -22,7 +22,10 @@ https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e2-proj-int-t2-gaming-g
 
 | **Caso de Teste**   | **Caso de Teste 03 – Iniciar conversa no chat** |
 |:---:	|:---:	|
-|	Ainda nao foi realizado.| OFF |
+|	O Chat está em beta, mas ja é possivel conversas entre dois usuarios conforme registro.| ok |
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e2-proj-int-t2-gaming-groove/assets/126729120/92305727-bf70-4291-8ada-ede54535976a
+
 
 | **Caso de Teste**   | **Caso de Teste 04 - Acessar comunidades** |
 |:---:	|:---:	|
