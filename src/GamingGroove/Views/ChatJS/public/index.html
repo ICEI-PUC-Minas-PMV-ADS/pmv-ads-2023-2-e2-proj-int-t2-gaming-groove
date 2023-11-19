@@ -1,18 +1,153 @@
 
+
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat em Tempo Real</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="~/css/ChatPage.css" asp-append-version="true" />
+    
 </head>
-<body>
 
-<div id="chat-box" style="width: 400px; height: 400px; border: 1px solid black; overflow-y: scroll;"></div>
-<input type="text" id="message" placeholder="Digite sua mensagem">
-<button onclick="sendMessage()">Enviar</button>
-<a href="http://localhost:5065/FeedPage" class="btn btn-primary">Redirecionar</a>
+<body>
+    <div class="logoVoltar">
+        
+        <a href="https://localhost:44358/FeedPage"><img src="gg-logo.png" id="logoVoltar"></img></a>
+        
+    </div>
+    ><div class="mainContainer">
+        <div class="containerChat">
+            <div class="containerInterno">
+                <div class="chatBox" id="chat-box">
+                </div>
+
+                <Div class="barraDeDigitacao">
+                    <input type="text" id="message" placeholder="Digite sua mensagem">
+                    <button id="botaoEnviarMensagem" onclick="sendMessage()">Enviar</button>
+                </Div>
+
+            </div>
+        </div>
+        
+        
+    </div> 
+
+
+
+<style>
+::-webkit-scrollbar {
+        width: 10px;
+        background-color: rgba(0, 0, 0, 0);
+        display: none;
+    }
+
+::-webkit-scrollbar-thumb {
+        background-color: #2b356c;
+        border-radius: 6px;
+        display: none;
+    }
+
+::-webkit-scrollbar-thumb:hover {
+        background-color: #E3A5FF;
+        border-radius: 6px;
+        display: none;
+    }
+
+body{
+    background-color: #110B31;
+    width: 100vw;
+    height: 100vh;
+    margin-bottom: 20px;
+    
+    
+}    
+.logoVoltar{
+    display:flex;
+    justify-content:center;
+
+}
+
+.containerChat{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    
+    
+}
+.containerInterno{
+    width: 70vw; 
+    height: 75vh;
+    background-color: #232B58;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #E3A5FF;
+    box-shadow: #D169FF 0px 0px 8px;
+    border-radius: 10px; 
+
+}
+.chatBox{
+    width: 60vw; 
+    height: 60vh; 
+    background-color: #111738;
+    overflow-x:auto;
+    color: white;
+    font-family: Play;
+    padding: 20px;
+    border-radius: 10px;    
+    margin: 20px;
+    
+    
+}
+
+.barraDeDigitacao{
+    width: 100%;  
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    align-items:center;
+}
+
+#botaoEnviarMensagem{
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+   
+    
+}
+
+.paragrafo{
+
+}
+
+#message{
+    width: 30%;
+    height: 10vh;
+    margin: 5px;
+    border-radius: 10px;
+    font-family: Play;
+    padding: 20px;
+    word-break: normal;
+    overflow-x:auto;
+
+}
+
+
+#logoVoltar {
+    
+    width: 10vw;
+     
+    }
+
+</style>
+
+
+
 
 <script src="/socket.io/socket.io.js"></script>
 <script>
@@ -39,6 +174,7 @@
         const chatBox = document.getElementById('chat-box');
         const messageElement = document.createElement('p');
         messageElement.innerText = message;
+        messageElement.classList.add('paragrafo');
         chatBox.appendChild(messageElement);
 
         // Scroll para a última mensagem
