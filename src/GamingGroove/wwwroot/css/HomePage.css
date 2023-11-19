@@ -29,20 +29,20 @@ body {
     justify-content: center;
     text-align: center;
     gap: 50px;
-    max-width: 500px;
+    max-width: 600px;
     margin-top: 4%;
 }
 
 .logo {
-    height: 200px;
+    width: 100%;
 }
 
 .slogan {
     color: white;
-    font-family: PlayMeGames;
+    font-family: Play;
     font-weight: 200;
-    letter-spacing: 3px;
-    font-size: 2em;
+    letter-spacing: 1px;
+    font-size: 1.8em;
 }
 
 .slogan-footer {
@@ -236,7 +236,7 @@ footer {
   }
   .slogan {
     color: white;
-    font-family: PlayMeGames;
+    font-family: Play;
     font-weight: 200;
     letter-spacing: 3px;
     font-size: 1em;
@@ -247,7 +247,7 @@ footer {
     position: fixed;
     bottom: 20px;
     color: white;
-    font-family: PlayMeGames;
+    font-family: Play;
     font-weight: 200;
     letter-spacing: 3px;
     font-size: 1em;
