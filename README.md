@@ -36,7 +36,7 @@
 
 ## Instruções de utilização
 
-É possível criar uma conta e acessar a aplicação através do seguinte link: https:/ggroove.azurewebsites.net
+É possível criar uma conta e acessar a aplicação através do seguinte link: <a href="https:/ggroove.azurewebsites.net">https:/ggroove.azurewebsites.net</a>;
 
 # Documentação
 
