@@ -36,12 +36,12 @@
 
 ## Instruções de utilização
 
-É possível criar uma conta e acessar a aplicação através do seguinte link: <a href="https:/ggroove.azurewebsites.net">https:/ggroove.azurewebsites.net</a>;
+É possível criar uma conta e acessar a aplicação através do seguinte link: <a href="https://ggroove.azurewebsites.net/">https://ggroove.azurewebsites.net/</a>
 
 # Documentação
 
 <ol>
-<li><a href="docs/01-Documentação de Contexto.md"> Documentação de Contexto</a></li>
+<li><a href="docs/01-Documentação de Contexto.md"> Documentação de Contexto</a></li=
 <li><a href="docs/02-Especificação do Projeto.md"> Especificação do Projeto</a></li>
 <li><a href="docs/03-Metodologia.md"> Metodologia</a></li>
 <li><a href="docs/04-Projeto de Interface.md"> Projeto de Interface</a></li>
