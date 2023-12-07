@@ -4,3 +4,8 @@ GamingGroove foi projetada com ferramentas como Figma e Draw.io, e desenvolvida 
 
 https://github.com/renanstankev/GamingGroove/assets/89418479/85cd7f71-54c1-4978-9abf-20442c389500
 
+
+
+#YOU TUBE
+
+https://www.youtube.com/watch?v=Xb5rd3KyjcQ
