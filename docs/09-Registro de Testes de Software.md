@@ -113,7 +113,7 @@ https://github.com/shigerysasaki/pmv-ads-2023-2-e2-proj-int-t2-gaming-groove/ass
 
 
 
-##PRINCIPAIS DIFICLDADES DURANTE O PROJETO
+## RELATORIO DAS PRINCIPAIS DIFICLDADES DURANTE O PROJETO
 
 A execução deste projeto ambicioso exigiu esforço e dedicação incansáveis por parte do grupo, e estamos satisfeitos com os resultados alcançados. Apesar dos inúmeros desafios enfrentados ao longo da implementação, acreditamos que o desfecho foi verdadeiramente bem-sucedido.
 
