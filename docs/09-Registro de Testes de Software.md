@@ -111,3 +111,18 @@ https://github.com/shigerysasaki/pmv-ads-2023-2-e2-proj-int-t2-gaming-groove/ass
 https://github.com/shigerysasaki/pmv-ads-2023-2-e2-proj-int-t2-gaming-groove/assets/126729120/b23c80ad-9d74-4a99-8f65-c081963fc3a7
 
 
+
+
+##PRINCIPAIS DIFICLDADES DURANTE O PROJETO
+
+A execução deste projeto ambicioso exigiu esforço e dedicação incansáveis por parte do grupo, e estamos satisfeitos com os resultados alcançados. Apesar dos inúmeros desafios enfrentados ao longo da implementação, acreditamos que o desfecho foi verdadeiramente bem-sucedido.
+
+A escolha do modelo MVC apresentou desafios notáveis, especialmente ao adotarmos a modalidade Model View, resultando em um contratempo inicial devido à dificuldade em utilizar as tabelas de outra Model. Após intensas pesquisas e orientações valiosas vindas de monitorias, professores e colegas com experiência na área, conseguimos superar esse obstáculo e dar continuidade à aplicação.
+
+Outro desafio significativo foi a implementação do Chat, para o qual decidimos adotar uma versão beta mais simplificada devido às restrições temporais impostas pelo cronograma do projeto. Ao estudar a complexidade envolvida na criação de um Chat, percebemos que isso poderia facilmente tornar-se um projeto independente devido à sua complexidade.
+
+A inexperiência da equipe em subir uma aplicação para a nuvem, incluindo um banco de dados, revelou-se um desafio adicional. O material fornecido pela instituição mostrou-se insuficiente, e a falta de orientações precisas nos levou a subir a aplicação várias vezes, aprendendo principalmente por meio de tentativa e erro. Os créditos disponíveis foram praticamente totalmente consumidos, restando-nos apenas 60 minutos diários do plano mais simples.
+
+
+
+
